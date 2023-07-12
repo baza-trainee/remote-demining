@@ -1,6 +1,9 @@
 .container {
     padding: 120px 40px;
 
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
     @media screen and (max-width: 767px) {}
 
     @media screen and (min-width: 768px) and (max-width: 1023px) {}
