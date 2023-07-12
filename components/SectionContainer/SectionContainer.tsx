@@ -25,12 +25,14 @@ const SectionContainer: React.FC<ContainerProps> = ({
     color: titleColor,
   };
 
+  const containerClassName = `${styles.container} ${bgImg ? styles.hasBgImg : ""}`;
+
   const containerHeaderWrapperClassName = centerTitle
     ? `${styles.containerHeaderWrapper} ${styles.centered}`
     : styles.containerHeaderWrapper;
 
   return (
-    <div className={styles.container} style={containerStyle}>
+    <div className={containerClassName} style={containerStyle}>
       <div className={containerHeaderWrapperClassName}>
         {title && (
           <h2 className={styles.title} style={titleStyle}>
