@@ -1,6 +1,7 @@
 .card {
   border-radius: var(--card-border-rad);
   overflow: hidden;
+  color: var(--button-primary-color);
 }
 
 .image {
@@ -11,4 +12,12 @@
 
 .body {
   padding: 24px;
+}
+
+.primary {
+  background-color: var(--bg-primary-color);
+}
+
+.light-blue {
+  background-color: var(--bg-light-blue);
 }
