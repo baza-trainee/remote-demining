@@ -9,6 +9,10 @@
     @media screen and (min-width: 768px) and (max-width: 1023px) {}
 }
 
+.container.hasBgImg {
+    padding: 40px 40px;
+}
+
 .title {
     font-family: Open Sans;
     font-size: 40px;
