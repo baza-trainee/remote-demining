@@ -1,0 +1,20 @@
+.header {
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: inherit;
+  background-color: var(--bg-primary-color);
+}
+.container {
+  display: flex;
+  height: 100px;
+  max-width: 1360px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.btn {
+  font-size: 1.25rem;
+  padding: 0.875rem 1.5rem;
+  border-radius: var(--button-donate-border-rad);
+  margin-right: 40px;
+}

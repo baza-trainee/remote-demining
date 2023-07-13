@@ -1,0 +1,34 @@
+.logo {
+  font-size: 1.25rem;
+  margin-left: 40px;
+}
+.sub_logo {
+  font-size: 1rem;
+  display: block;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 769px) {
+  .logo::before {
+    content: "Національна академія наук України";
+  }
+  .sub_logo::before {
+    content: "НДП НДЦ проблем надрокористування “Георесурс“";
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 768px) {
+  .logo::before {
+    content: "НАН України";
+  }
+  .sub_logo::before {
+    content: "ДП НДЦ “Георесурс“";
+  }
+}
+@media screen and (max-width: 360px)  {
+  .logo::before {
+    content: "НAHУ";
+  }
+  .sub_logo::before {
+    content: "ДП НДЦ “Георесурс“";
+  }
+}
