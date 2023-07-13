@@ -31,8 +31,6 @@
 /* styles for donateBtn */
 .donateBtn {
   border-radius: var(--button-primary-border-rad);
-  width: 169px;
-  height: 55px;
 }
 
 /* Hover and focus styles for donateBtn */
