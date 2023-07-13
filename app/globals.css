@@ -34,6 +34,11 @@
   --card-primary-bg-color: #ebf2ff;
   --card-secondary-bg-color: #f5f5f5;
   --card-img-height: 240px;
+
+  /* Section */
+
+  --section-padding-main: 120px 40px;
+  --section-padding-bgImg: 40px 40px;
 }
 
 @media (prefers-color-scheme: dark) {
