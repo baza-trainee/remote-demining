@@ -14,27 +14,21 @@
 }
 
 .title {
-    font-family: Open Sans;
     font-size: 40px;
-    font-style: normal;
     font-weight: 600;
-    line-height: normal;
 }
 
 .desc {
-    color: #151515;
-    font-family: Open Sans;
+    color: var(--section-title-color);
     font-size: 16px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
 }
 
 .descLine {
     display: inline-block;
     width: 1px;
     height: 66px;
-    background: #151515;
+    background: var(--section-title-color);
     margin-right: 32px;
     margin-left: 32px;
 }
