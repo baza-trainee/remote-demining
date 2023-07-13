@@ -32,7 +32,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
     : styles.containerHeaderWrapper;
 
   return (
-    <div className={containerClassName} style={containerStyle}>
+    <section className={containerClassName} style={containerStyle}>
       <div className={containerHeaderWrapperClassName}>
         {title && (
           <h2 className={styles.title} style={titleStyle}>
@@ -47,7 +47,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
         )}
       </div>
       {children}
-    </div>
+    </section>
   );
 };
 
