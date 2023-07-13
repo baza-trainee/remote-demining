@@ -39,8 +39,12 @@ const SectionContainer: React.FC<ContainerProps> = ({
             {title}
           </h2>
         )}
-        {description && <span className={styles.descLine}></span>}
-        {description && <p className={styles.desc}>{description}</p>}
+        {description && (
+          <>
+            <span className={styles.descLine}></span>
+            <p className={styles.desc}>{description}</p>
+          </>
+        )}
       </div>
       {children}
     </div>
