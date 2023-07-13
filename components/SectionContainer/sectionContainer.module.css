@@ -1,0 +1,46 @@
+.container {
+    padding: var(--section-padding-main);
+
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+
+    @media screen and (max-width: 767px) {}
+
+    @media screen and (min-width: 768px) and (max-width: 1023px) {}
+}
+
+.container.hasBgImg {
+    padding: var(--section-padding-bgImg);
+}
+
+.title {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.desc {
+    color: var(--section-title-color);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.descLine {
+    display: inline-block;
+    width: 1px;
+    height: 66px;
+    background: var(--section-title-color);
+    margin-right: 32px;
+    margin-left: 32px;
+}
+
+.containerHeaderWrapper {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
