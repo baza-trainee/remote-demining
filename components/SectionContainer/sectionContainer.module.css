@@ -1,5 +1,5 @@
 .container {
-    padding: 120px 40px;
+    padding: var(--section-padding-main);
 
     background-repeat: no-repeat;
     background-size: 100% auto;
@@ -10,7 +10,7 @@
 }
 
 .container.hasBgImg {
-    padding: 40px 40px;
+    padding: var(--section-padding-bgImg);
 }
 
 .title {
