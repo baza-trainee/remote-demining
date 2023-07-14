@@ -46,7 +46,7 @@ const Drone = () => {
           )}
         ></div>
         <div className={classNames(styles["animated"], styles["text"])}>
-          <p>404</p>
+          <img src="/drone/404.svg" alt="alt" />
         </div>
       </div>
     </div>

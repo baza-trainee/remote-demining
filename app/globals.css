@@ -40,6 +40,12 @@
   --section-padding-main: 120px 40px;
   --section-padding-bgImg: 40px 40px;
   --section-title-color: #151515;
+
+  /* 404 animations */
+  --drone-box-rotation: 30deg;
+  --drone-animation-duration: 5s;
+  --drone-timing-function: linear;
+  --drone-fill-mode: forwards;
 }
 
 @media (prefers-color-scheme: dark) {

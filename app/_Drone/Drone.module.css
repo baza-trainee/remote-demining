@@ -14,16 +14,16 @@
 }
 @keyframes rotateAnimation-left {
   0% {
-    transform: rotate(20deg);
+    transform: rotate(var(--drone-box-rotation));
   }
   20% {
-    transform: rotate(20deg);
+    transform: rotate(var(--drone-box-rotation));
   }
   50% {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(20deg);
+    transform: rotate(var(--drone-box-rotation));
   }
 }
 @keyframes rotateAnimation-right {
@@ -34,23 +34,33 @@
     transform: rotate(0deg);
   }
   50% {
-    transform: rotate(-20deg);
+    transform: rotate(calc(-1 * var(--drone-box-rotation)));
   }
   100% {
-    transform: rotate(-20deg);
+    transform: rotate(calc(-1 * var(--drone-box-rotation)));
   }
 }
 @keyframes text {
   0% {
     opacity: 0;
-  }
-  25% {
-    opacity: 0.2;
     bottom: 0;
     position: absolute;
     left: 50%;
     transform: scale(0.95) translate(-50%, 0);
+  }
+  25% {
     opacity: 0.5;
+    bottom: 0;
+    position: absolute;
+    left: 50%;
+    transform: scale(0.95) translate(-50%, 0);
+  }
+  50% {
+    opacity: 0.75;
+    bottom: 0;
+    position: absolute;
+    left: 50%;
+    transform: scale(0.95) translate(-50%, 0);
   }
 
   100% {
@@ -63,9 +73,9 @@
 }
 .animated {
   animation-iteration-count: 1;
-  animation-duration: 5s;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
+  animation-duration: var(--drone-animation-duration);
+  animation-timing-function: var(--drone-timing-function);
+  animation-fill-mode: var(--drone-fill-mode);
 }
 
 .app {
@@ -149,14 +159,29 @@
 .box-left {
   left: -50%;
   transform-origin: top right;
-  transform: rotate(20deg);
+  transform: rotate(var(--drone-box-rotation));
 
   animation-name: rotateAnimation-left;
 }
 .box-right {
   right: -50%;
   transform-origin: top left;
-  transform: rotate(-20deg);
+  transform: rotate(calc(-1 * var(--drone-box-rotation)));
 
   animation-name: rotateAnimation-right;
+}
+
+.text {
+  width: 244px;
+  height: 100px;
+  display: flex;
+  z-index: 0;
+  position: absolute;
+  bottom: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+
+  animation-name: text;
 }
