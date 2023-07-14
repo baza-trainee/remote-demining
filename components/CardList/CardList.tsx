@@ -1,15 +1,13 @@
-import { ReactNode } from "react";
-
 import styles from "./CardList.module.css";
 
 type CardListType = 2 | 3 | 4;
 
 interface CardListProps {
   perView?: CardListType;
-  items: Iterable<ReactNode>;
+  items: React.ReactNode;
 }
 
-export default function CardList({ perView, items }: CardListProps) {
+const CardList: React.FC<CardListProps> = ({ perView, items }) => {
   return (
     <div
       className={`${styles.cardList} ${
@@ -19,4 +17,6 @@ export default function CardList({ perView, items }: CardListProps) {
       {items}
     </div>
   );
-}
+};
+
+export default CardList;
