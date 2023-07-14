@@ -1,0 +1,35 @@
+/* drone */
+
+.drone {
+  z-index: 30;
+  width: 358px;
+  height: 120px;
+  position: relative;
+  bottom: -15px;
+}
+.drone-legs {
+  position: absolute;
+  bottom: 0;
+  left: 28%;
+  width: 157.489px;
+  height: 39.653px;
+  z-index: 30;
+}
+.drone-body {
+  position: absolute;
+  top: 0;
+  left: 29.5%;
+  z-index: 10;
+}
+.drone-left {
+  width: 157.531px;
+  height: 105.999px;
+  position: absolute;
+  left: 0;
+}
+.drone-right {
+  width: 157.531px;
+  height: 105.999px;
+  position: absolute;
+  right: 0;
+}
