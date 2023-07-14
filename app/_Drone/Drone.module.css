@@ -33,3 +33,49 @@
   position: absolute;
   right: 0;
 }
+
+.wraper {
+  position: relative;
+  width: 656px;
+  height: 328px;
+  overflow: hidden;
+  z-index: 20;
+}
+.scaner {
+  position: absolute;
+
+  box-sizing: border-box;
+  display: block;
+  background: radial-gradient(
+    50.99% 50.99% at 50% 49.01%,
+    #dab700 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  width: 656px;
+  height: 656px;
+  border-radius: 100%;
+  top: -328px;
+  animation-name: scale-scaner;
+}
+.box {
+  background: var(--bg-primary-color);
+  width: 656px;
+  height: 656px;
+  position: absolute;
+  z-index: 2;
+}
+.box-left {
+  left: -50%;
+  transform-origin: top right;
+  transform: rotate(20deg);
+
+  animation-name: rotateAnimation-left;
+}
+.box-right {
+  right: -50%;
+  transform-origin: top left;
+  transform: rotate(-20deg);
+
+  animation-name: rotateAnimation-right;
+}
