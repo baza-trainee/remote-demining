@@ -13,9 +13,9 @@
   --button-donate-bg-color: transparent;
   --button-donate-hover-color: transparent;
 
-  --button-slider-border-rad: 24px;
+  --button-slider-border-rad: 48px;
   --button-slider-color: #151515;
-  --button-slider-hover-color: #f5f5f5;
+  --button-slider-hover-color: linear-gradient(90deg, #baded3 0%, #abd1e7 100%);
 
   --button-form-border-rad: 12px;
   --button-form-color: #151515;
@@ -31,12 +31,20 @@
   --input-height: 64px;
 
   /* Card */
+  
   --card-primary-bg-color: #ebf2ff;
   --card-secondary-bg-color: #f5f5f5;
   --card-img-height: 240px;
   --card-border-rad: 24px;
 
   --card-list-gap: 16px;
+  
+  /* Section */
+  
+  --section-padding-main: 120px 40px;
+  --section-padding-bgImg: 40px 40px;
+  --section-title-color: #151515;
+
 }
 
 @media (prefers-color-scheme: dark) {
