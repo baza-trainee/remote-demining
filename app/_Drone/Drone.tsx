@@ -29,7 +29,7 @@ const Drone = () => {
         </div>
       </div>
 
-      <div className="wraper">
+      <div className={styles.wraper}>
         <div className={classNames(styles["animated"], styles["scaner"])}></div>
         <div
           className={classNames(
@@ -42,7 +42,7 @@ const Drone = () => {
           className={classNames(
             styles["animated"],
             styles["box"],
-            styles["box-left"]
+            styles["box-right"]
           )}
         ></div>
         <div className={classNames(styles["animated"], styles["text"])}>
