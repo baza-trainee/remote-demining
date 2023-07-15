@@ -1,0 +1,23 @@
+.card {
+  border-radius: var(--card-border-rad);
+  overflow: hidden;
+  color: var(--button-primary-color);
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: var(--card-img-height);
+}
+
+.body {
+  padding: 24px;
+}
+
+.primary {
+  background-color: var(--bg-primary-color);
+}
+
+.light-blue {
+  background-color: var(--bg-light-blue);
+}
