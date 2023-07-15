@@ -19,7 +19,7 @@
     align-items: center;
     border-radius: 8px;
     color: var(--button-slider-color);
-    background: linear-gradient(90deg, #BADED3 0%, #ABD1E7 100%);
+    background: var(--button-slider-color);
     transition: all 0.3s ease-out;
   }
   .custom_link::after {
@@ -28,6 +28,6 @@
   .custom_link:focus,
   .custom_link:hover {
     color: var(--button-form-hover-color);
-    background: var(--button-slider-color);
+    background: var( --button-slider-hover-color);
   }
 }

@@ -2,7 +2,7 @@
   font-weight: 600;
   cursor: pointer;
 }
-.link:focus,
+.link:focus:not(.link_btn),
 .link:hover:not(.link_btn) {
   border-bottom: 2px solid var(--button-primary-color);
 }
@@ -15,7 +15,6 @@
 }
 .link_btn:focus,
 .link_btn:hover {
-  border-bottom: none;
   outline: 3px solid var(--button-primary-color);
   color: var(--button-primary-color);
   background-color: var(--button-donate-bg-color);
