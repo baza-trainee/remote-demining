@@ -33,15 +33,20 @@
   --input-height: 64px;
 
   /* Card */
+  
   --card-primary-bg-color: #ebf2ff;
   --card-secondary-bg-color: #f5f5f5;
   --card-img-height: 240px;
+  --card-border-rad: 24px;
 
+  --card-list-gap: 16px;
+  
   /* Section */
-
+  
   --section-padding-main: 120px 40px;
   --section-padding-bgImg: 40px 40px;
   --section-title-color: #151515;
+
 }
 
 @media (prefers-color-scheme: dark) {
