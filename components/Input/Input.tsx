@@ -2,8 +2,8 @@ import { ComponentProps, forwardRef } from 'react';
 import styles from './Input.module.css';
 
 enum InputSize {
-  BASE = 'base',
-  FULL = 'full',
+  base = 'base',
+  full = 'full',
 }
 
 interface InputProps {
@@ -20,10 +20,10 @@ interface InputProps {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ size = InputSize.BASE, label, height, width, ...inputProps }, ref) => {
+  ({ size = InputSize.base, label, height, width, ...inputProps }, ref) => {
     const InputStyle = {
-      height: `${height}px`,
-      width: `${width}px`,
+      height: height ? `${height}px` : undefined,
+      width: width ? `${width}px` : undefined,
     };
 
     return (
