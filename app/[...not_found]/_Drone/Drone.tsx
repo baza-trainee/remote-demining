@@ -45,9 +45,11 @@ const Drone = () => {
             styles["box-right"]
           )}
         ></div>
-        <div className={classNames(styles["animated"], styles["text"])}>
-          <img src="/drone/404.svg" alt="alt" />
-        </div>
+        <img
+          className={classNames(styles["animated"], styles["text"])}
+          src="/drone/404.svg"
+          alt="alt"
+        />
       </div>
     </div>
   );

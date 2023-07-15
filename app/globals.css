@@ -43,7 +43,7 @@
 
   /* 404 animations */
   --drone-box-rotation: 30deg;
-  --drone-animation-duration: 5s;
+  --drone-animation-duration: 3s;
   --drone-timing-function: linear;
   --drone-fill-mode: forwards;
 }

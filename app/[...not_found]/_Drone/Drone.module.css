@@ -43,32 +43,20 @@
 @keyframes text {
   0% {
     opacity: 0;
-    bottom: 0;
-    position: absolute;
-    left: 50%;
-    transform: scale(0.95) translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
   25% {
     opacity: 0.5;
-    bottom: 0;
-    position: absolute;
-    left: 50%;
-    transform: scale(0.95) translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
   50% {
     opacity: 0.75;
-    bottom: 0;
-    position: absolute;
-    left: 50%;
-    transform: scale(0.95) translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
 
   100% {
     opacity: 1;
-    bottom: 0;
-    position: absolute;
-    left: 50%;
-    transform: scale(1) translate(-50%, 0);
+    transform: translate(-50%, 0);
   }
 }
 .animated {
@@ -181,7 +169,6 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  text-align: center;
 
   animation-name: text;
 }
