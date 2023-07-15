@@ -1,6 +1,7 @@
 .container {
     background-repeat: no-repeat;
     background-size: 100% auto;
+    margin: 0 auto;
 }
 
 .title {
@@ -35,6 +36,7 @@
 @media (min-width: 1440px) {
     .container {
         padding: var(--section-padding-main);
+        min-width: 1440 px;
     }
 
     .container.hasBgImg {
@@ -53,6 +55,7 @@
 @media (min-width: 768px) and (max-width: 1439px) {
     .container {
         padding: var(--section-padding-main-tablet);
+        min-width: 768px;
     }
 
     .container.hasBgImg {
@@ -73,6 +76,7 @@
 @media (min-width: 360px) and (max-width: 767px) {
     .container {
         padding: var(--section-padding-main-mobile);
+        min-width: 360px;
     }
 
     .container.hasBgImg {
