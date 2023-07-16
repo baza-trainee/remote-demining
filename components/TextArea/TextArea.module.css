@@ -1,0 +1,34 @@
+/* Sizes */
+
+.base {
+  width: var(--input-width);
+}
+
+.full {
+  width: 100%;
+}
+
+.label {
+  font-family: 'Open Sans';
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* General styles */
+
+.textarea {
+  border-color: var(--input-border-color);
+  border-radius: var(--input-border-rad);
+  background-color: var(--input-bg-color);
+  height: var(--input-height);
+  padding-left: 0.5rem;
+  height: var(--textarea-height);
+
+  /* @media (max-width: 767px) {
+    width: 300px;
+  } */
+}
