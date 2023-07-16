@@ -27,7 +27,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     };
 
     return (
-      <>
+      <div>
         {label && <label className={styles.label}>{label}</label>}
         <input
           ref={ref}
@@ -35,7 +35,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={`${styles[size]} ${styles.input}`}
           style={InputStyle}
         />
-      </>
+      </div>
     );
   }
 );
