@@ -1,0 +1,27 @@
+.link {
+  font-weight: 600;
+  cursor: pointer;
+}
+.link:focus:not(.link_btn),
+.link:hover:not(.link_btn) {
+  border-bottom: 2px solid var(--button-primary-color);
+}
+.link_btn {
+  border-radius: var( --button-slider-border-rad);
+  padding: var(--button-primary-padding);
+  background-color: var(--button-primary-color);
+  color: var(--bg-primary-color);
+  font-size: 1.125rem;
+}
+.link_btn:focus,
+.link_btn:hover {
+  outline: 3px solid var(--button-primary-color);
+  color: var(--button-primary-color);
+  background-color: var(--button-donate-bg-color);
+
+}
+.active:not(.link_btn) {
+  border-bottom: 2px solid var(--button-primary-color);
+}
+
+
