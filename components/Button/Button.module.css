@@ -31,8 +31,10 @@
 /* styles for donateBtn */
 .donateBtn {
   border-radius: var(--button-primary-border-rad);
+  transition: background-color var(--transition),
+    color var(--transition) outline var(--transition);
 
-  @media (min-width: 360px) and (max-width: 767px) {
+  @media (max-width: 767px) {
     padding: var(--button-primary-mobile-padding);
     font-size: 16px;
     font-weight: 400;
@@ -51,6 +53,7 @@
 .sliderBtn {
   font-size: 18px;
   border-radius: var(--button-slider-border-rad);
+  transition: background-color var(--transition), color var(--transition);
 }
 
 /* Hover and focus styles for sliderBtn */
@@ -63,6 +66,7 @@
 /* styles for formBtn */
 .formBtn {
   border-radius: var(--button-form-border-rad);
+  transition: background-color var(--transition), color var(--transition);
 }
 
 /* Hover and focus styles for formBtn */

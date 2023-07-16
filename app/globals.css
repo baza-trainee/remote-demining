@@ -51,6 +51,9 @@
 
   --section-padding-main-mobile: 80px 16px;
   --section-padding-bgImg-mobile: 32px 16px;
+
+  /* Transition*/
+  --transition: 300ms ease-out;
 }
 
 @media (prefers-color-scheme: dark) {
