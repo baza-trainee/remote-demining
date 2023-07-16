@@ -1,0 +1,76 @@
+
+.btn_lang_menu {
+  cursor: pointer;
+  padding: 26px 16px;
+  width: 83px;
+  height: 74px;
+  border: none;
+  outline: none;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+}
+@media screen and (max-width: 490px) {
+  .btn_lang_menu {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    width: 83px;
+    height: 74px;
+    background: var(--bg-primary-color);
+    margin-top: 120px;
+    overflow: auto;
+  }
+}
+.lang_select {
+  background-color: var(--bg-primary-color);
+  margin: 0 20px;
+  position: absolute;
+  top: 87px;
+  list-style-type: none;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+@media screen and (max-width: 490px) {
+  .lang_select {
+    justify-content: flex-end;
+    position: fixed;
+    left: 0;
+    top: 100px;
+    bottom: 94px;
+    overflow: auto;
+  }
+}
+.lang_option {
+  cursor: pointer;
+  width: 83px;
+  height: 74px;
+  text-align: center;
+  padding: 26px 16px;
+}
+.lang_option:focus,
+.lang_option:hover {
+  background-color: var(--bg-light-blue);
+}
+.selected {
+  background-color: var(--bg-light-blue);
+}
+.btn_lang_menu::after {
+  height: 1.25rem;
+  padding-left: 5px;
+  content: url("/image/icons/drop_black_arrow.svg");
+}
+@media screen and (max-width: 490px) {
+  .btn_lang_menu::after {
+    transform: rotate(180deg);
+    padding-right: 5px;
+  }
+}
+.show_menu {
+  display: flex;
+}

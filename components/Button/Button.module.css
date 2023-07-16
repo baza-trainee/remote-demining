@@ -38,7 +38,7 @@
 .donateBtn:focus:not(:disabled) {
   background-color: var(--button-donate-bg-color);
   color: var(--button-donate-color);
-  border: 3px solid var(--button-donate-color);
+  outline: 3px solid var(--button-donate-color); /* change border to outline */
 }
 
 /* styles for sliderBtn */

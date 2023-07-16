@@ -1,26 +1,30 @@
 import Link from "next/link";
-import React from "react";
-import styles from './HeaderMenu.module.css';
+import styles from "./HeaderMenu.module.css";
 
-const HeaderMenu = () => {
+interface HeaderMenuProps {
+  isOpenMenu: boolean
+}
+
+const HeaderMenu: React.FC<HeaderMenuProps> = ({ isOpenMenu }: HeaderMenuProps) => {
+  const menuWrapperStyle = `${styles.menu_wrapper} ${isOpenMenu ? styles.openMenu : ""} `
   return (
-    <nav className={styles.menu_wrapper}>
+    <nav className={menuWrapperStyle}>
       <ul className={styles.menu_list}>
-        <li>
+        <li className={styles.menu_item}>
           <Link href="#">Про нас</Link>
         </li>
-        <li>
+        <li className={styles.menu_item} >
           <Link href="#">Наукова діяльність</Link>
         </li>
-        <li >
+        <li className={styles.menu_item} >
           <Link href="#">Дистанційне розмінування</Link>
         </li>
-        <li >
+        <li className={styles.menu_item} >
           <Link href="#">Контакти</Link>
         </li>
       </ul>
     </nav>
   );
-}
+};
 
 export default HeaderMenu;

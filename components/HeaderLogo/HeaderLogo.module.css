@@ -1,6 +1,6 @@
 .logo {
   font-size: 1.25rem;
-  margin-left: 40px;
+  z-index: 5;
 }
 .sub_logo {
   font-size: 1rem;
@@ -8,7 +8,7 @@
   font-weight: 400;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1160px) {
   .logo::before {
     content: "Національна академія наук України";
   }
@@ -16,7 +16,7 @@
     content: "НДП НДЦ проблем надрокористування “Георесурс“";
   }
 }
-@media screen and (min-width: 361px) and (max-width: 768px) {
+@media screen and (min-width: 361px) and (max-width: 1160px) {
   .logo::before {
     content: "НАН України";
   }
