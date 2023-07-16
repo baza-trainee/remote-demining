@@ -31,6 +31,12 @@
 /* styles for donateBtn */
 .donateBtn {
   border-radius: var(--button-primary-border-rad);
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    padding: var(--button-primary-mobile-padding);
+    font-size: 16px;
+    font-weight: 400;
+  }
 }
 
 /* Hover and focus styles for donateBtn */
@@ -38,7 +44,7 @@
 .donateBtn:focus:not(:disabled) {
   background-color: var(--button-donate-bg-color);
   color: var(--button-donate-color);
-  border: 3px solid var(--button-donate-color);
+  outline: 3px solid var(--button-donate-color);
 }
 
 /* styles for sliderBtn */
