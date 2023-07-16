@@ -15,8 +15,8 @@
 
 
   --button-slider-border-rad: 48px;
-  --button-slider-color: #151515;
-  --button-slider-hover-color: linear-gradient(90deg, #baded3 0%, #abd1e7 100%);
+  --button-slider-color: linear-gradient(90deg, #baded3 0%, #abd1e7 100%);
+  --button-slider-hover-color: #151515;
 
 
   --button-form-border-rad: 12px;
