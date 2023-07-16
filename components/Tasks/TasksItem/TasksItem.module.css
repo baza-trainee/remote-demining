@@ -1,12 +1,12 @@
 .card_item {
-  flex-basis: var(--sm-card_item-width);
+  flex-basis: var(--card_item-width-mobile);
 
-  @media screen and (min-width: 768px) {
-    flex-basis: var(--md-card_item-width);
+  @media (min-width: 768px) {
+    flex-basis: var(--card_item-width-tablet);
   }
 
-  @media screen and (min-width: 1440px) {
-    flex-basis: var(--lg-card_item-width);
+  @media (min-width: 1440px) {
+    flex-basis: var(--card_item-width-desktop);
   }
 }
 
@@ -21,5 +21,6 @@
 }
 
 .text {
+  line-height: normal;
   color: var(--task-text-color);
 }

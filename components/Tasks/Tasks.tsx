@@ -6,7 +6,7 @@ const Tasks: React.FC = () => {
   return (
     <SectionContainer
       title="Основні завдання"
-      bgImg="/images/task-bg.jpg"
+      bgImg="/images/tasks/task-bg.jpg"
       titleColor="var(--task-text-color)"
       centerTitle
     >

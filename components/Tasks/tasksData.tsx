@@ -7,32 +7,32 @@ interface Task {
 const tasksData: Task[] = [
   {
     id: 1,
-    icon: "/icons/notes.svg",
+    icon: "/icons/tasks/notes.svg",
     text: "Принципово новий підхід, що дозволяє дистанційно з використанням БПЛА проводити дослідження по виявленню локації вибухонебезпечних предметів",
   },
   {
     id: 2,
-    icon: "/icons/security.svg",
+    icon: "/icons/tasks/security.svg",
     text: " Технологія заснована на методі сканування (ПЕМЗ) – зондування  теріторії разом із аналізом випромінювань аномалій  пошукових об'єктів",
   },
   {
     id: 3,
-    icon: "/icons/laptop.svg",
+    icon: "/icons/tasks/laptop.svg",
     text: "Проведені тестові польові роботи в реальних умовах",
   },
   {
     id: 4,
-    icon: "/icons/calendar.svg",
+    icon: "/icons/tasks/calendar.svg",
     text: " Ми також надаємо корисні поради щодо вибору дрона, використання його можливостей ",
   },
   {
     id: 5,
-    icon: "/icons/users.svg",
+    icon: "/icons/tasks/users.svg",
     text: "В Україні є необхідність скласти  карти забруднених територій та об’єктів країни",
   },
   {
     id: 6,
-    icon: "/icons/book.svg",
+    icon: "/icons/tasks/book.svg",
     text: "Ми також надаємо корисні поради щодо вибору дрона, використання його можливостей ",
   },
 ];
