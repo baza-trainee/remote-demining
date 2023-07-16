@@ -1,0 +1,67 @@
+/* Default button styles */
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: var(--button-primary-padding);
+  background-color: var(--button-primary-color);
+
+  color: var(--bg-primary-color);
+  font-size: 20px;
+  font-weight: 600;
+
+  border: none;
+
+  cursor: pointer;
+}
+
+/* Full width styles */
+.button.fullWidth {
+  width: 100%;
+}
+
+/* Styles for disabled button */
+.button:disabled {
+  border-radius: var(--button-primary-border-rad);
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* styles for donateBtn */
+.donateBtn {
+  border-radius: var(--button-primary-border-rad);
+}
+
+/* Hover and focus styles for donateBtn */
+.donateBtn:hover:not(:disabled),
+.donateBtn:focus:not(:disabled) {
+  background-color: var(--button-donate-bg-color);
+  color: var(--button-donate-color);
+  border: 3px solid var(--button-donate-color);
+}
+
+/* styles for sliderBtn */
+.sliderBtn {
+  font-size: 18px;
+  border-radius: var(--button-slider-border-rad);
+}
+
+/* Hover and focus styles for sliderBtn */
+.sliderBtn:hover:not(:disabled),
+.sliderBtn:focus:not(:disabled) {
+  background: var(--button-slider-hover-color);
+  color: var(--button-donate-color);
+}
+
+/* styles for formBtn */
+.formBtn {
+  border-radius: var(--button-form-border-rad);
+}
+
+/* Hover and focus styles for formBtn */
+.formBtn:hover:not(:disabled),
+.formBtn:focus:not(:disabled) {
+  background-color: var(--button-form-hover-color);
+  color: var(--button-donate-color);
+}
