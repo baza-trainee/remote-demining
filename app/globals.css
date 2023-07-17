@@ -13,11 +13,9 @@
   --button-donate-bg-color: transparent;
   --button-donate-hover-color: transparent;
 
-
   --button-slider-border-rad: 48px;
   --button-slider-color: #151515;
   --button-slider-hover-color: linear-gradient(90deg, #baded3 0%, #abd1e7 100%);
-
 
   --button-form-border-rad: 12px;
   --button-form-color: #151515;
@@ -42,6 +40,9 @@
   --section-padding-main: 120px 40px;
   --section-padding-bgImg: 40px 40px;
   --section-title-color: #151515;
+
+  /* Error list */
+  --error-color: #a0041e;
 }
 
 @media (prefers-color-scheme: dark) {
