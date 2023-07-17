@@ -5,28 +5,7 @@ const Drone = () => {
   return (
     <div className={styles.app}>
       <div className={styles["drone-wraper"]}>
-        <div className={styles.drone}>
-          <img
-            className={styles["drone-legs"]}
-            src="/drone/droneLegs.svg"
-            alt="alt"
-          />
-          <img
-            className={styles["drone-body"]}
-            src="/drone/droneBody.svg"
-            alt="alt"
-          />
-          <img
-            className={styles["drone-right"]}
-            src="/drone/droneRight.svg"
-            alt="alt"
-          />
-          <img
-            className={styles["drone-left"]}
-            src="/drone/droneLeft.svg"
-            alt="alt"
-          />
-        </div>
+        <img className={styles.drone} src="/drone/Drone.svg" alt="alt" />
       </div>
 
       <div className={styles.wraper}>

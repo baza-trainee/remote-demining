@@ -74,42 +74,23 @@
   align-items: center;
 
   position: relative;
+  overflow: hidden;
 }
 
 /* drone */
 
 .drone {
   z-index: 30;
-  width: 358px;
-  height: 120px;
   position: relative;
+  width: 250px;
+  height: 84px;
   bottom: -15px;
-}
-.drone-legs {
-  position: absolute;
-  bottom: 0;
-  left: 28%;
-  width: 157.489px;
-  height: 39.653px;
-  z-index: 30;
-}
-.drone-body {
-  position: absolute;
-  top: 0;
-  left: 29.5%;
-  z-index: 10;
-}
-.drone-left {
-  width: 157.531px;
-  height: 105.999px;
-  position: absolute;
-  left: 0;
-}
-.drone-right {
-  width: 157.531px;
-  height: 105.999px;
-  position: absolute;
-  right: 0;
+  @media (min-width: 360px) {
+  }
+  @media (min-width: 768px) {
+    width: 358px;
+    height: 120px;
+  }
 }
 
 /* Scaner */
@@ -118,7 +99,7 @@
   width: 656px;
   height: 328px;
   overflow: hidden;
-  z-index: 20;
+  z-index: 30;
 }
 .scaner {
   position: absolute;
@@ -135,6 +116,7 @@
   height: 656px;
   border-radius: 100%;
   top: -328px;
+  z-index: 10;
   animation-name: scale-scaner;
 }
 .box {
@@ -142,10 +124,11 @@
   width: 656px;
   height: 656px;
   position: absolute;
-  z-index: 2;
+  z-index: 10;
 }
 .box-left {
   left: -50%;
+  top: -1px;
   transform-origin: top right;
   transform: rotate(var(--drone-box-rotation));
 
@@ -153,6 +136,7 @@
 }
 .box-right {
   right: -50%;
+  top: -1px;
   transform-origin: top left;
   transform: rotate(calc(-1 * var(--drone-box-rotation)));
 
@@ -160,15 +144,23 @@
 }
 
 .text {
-  width: 244px;
-  height: 100px;
-  display: flex;
+  width: 176px;
+  height: 72px;
+
   z-index: 0;
   position: absolute;
   bottom: 0;
-  position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
 
   animation-name: text;
+
+  @media (min-width: 320px) {
+    width: 176px;
+    height: 72px;
+  }
+  @media (min-width: 768px) {
+    width: 244px;
+    height: 100px;
+  }
 }
