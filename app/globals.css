@@ -43,6 +43,9 @@
   --section-padding-main: 120px 40px;
   --section-padding-bgImg: 40px 40px;
   --section-title-color: #151515;
+
+  /* Error list */
+  --error-color: #ef4444;
 }
 
 @media (prefers-color-scheme: dark) {
