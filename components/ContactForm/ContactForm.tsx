@@ -9,7 +9,6 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import emailjs from '@emailjs/browser';
-import { ErrorsList } from '../ErrorList/ErrorList';
 
 interface ContactFormValues {
   email: string;
@@ -64,11 +63,12 @@ const ContactForm: FC<ContactFormProps> = ({}) => {
       onSubmit={handleSubmit(sendEmail)}
       noValidate
     >
-      <ErrorsList errors={errors} />
       <Input
         size="full"
         type="email"
         label={`Ваш е-mail`}
+        error={errors.email}
+        errorMessage="Введіть e-mai"
         {...register('email')}
       />
       <Input
@@ -77,7 +77,14 @@ const ContactForm: FC<ContactFormProps> = ({}) => {
         label="Ваш номер телефону"
         {...register('tel')}
       />
-      <Input size="full" type="name" label="Ваше ім’я" {...register('name')} />
+      <Input
+        {...register('name')}
+        size="full"
+        type="name"
+        error={errors.name}
+        errorMessage="Введіть ім’я"
+        label="Ваше ім’я"
+      />
       <TextArea {...register('message')} label="Повідомлення" />
       <Button type="submit" disabled={isSubmitting} formBtn isFullWidth>
         Надіслати
