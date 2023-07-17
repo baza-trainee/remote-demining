@@ -1,16 +1,7 @@
 .container {
-    padding: var(--section-padding-main);
-
     background-repeat: no-repeat;
     background-size: 100% auto;
-
-    @media screen and (max-width: 767px) {}
-
-    @media screen and (min-width: 768px) and (max-width: 1023px) {}
-}
-
-.container.hasBgImg {
-    padding: var(--section-padding-bgImg);
+    margin: 0 auto;
 }
 
 .title {
@@ -26,11 +17,7 @@
 
 .descLine {
     display: inline-block;
-    width: 1px;
-    height: 66px;
     background: var(--section-title-color);
-    margin-right: 32px;
-    margin-left: 32px;
 }
 
 .containerHeaderWrapper {
@@ -43,4 +30,68 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* Desktop styles (1440px and above) */
+@media (min-width: 1440px) {
+    .container {
+        padding: var(--section-padding-main);
+        min-width: 1440 px;
+    }
+
+    .container.hasBgImg {
+        padding: var(--section-padding-bgImg);
+    }
+
+    .descLine {
+        width: 1px;
+        height: 66px;
+        margin-right: 32px;
+        margin-left: 32px;
+    }
+}
+
+/* Tablet styles (768px to 1439px) */
+@media (min-width: 768px) and (max-width: 1439px) {
+    .container {
+        padding: var(--section-padding-main-tablet);
+        min-width: 768px;
+    }
+
+    .container.hasBgImg {
+        padding: var(--section-padding-bgImg-tablet);
+    }
+
+    .descLine {
+        display: inline-block;
+        width: 1px;
+        height: 66px;
+        background: var(--section-title-color);
+        margin-right: 32px;
+        margin-left: 32px;
+    }
+}
+
+/* Mobile styles (360px to 767px) */
+@media (min-width: 360px) and (max-width: 767px) {
+    .container {
+        padding: var(--section-padding-main-mobile);
+        min-width: 360px;
+    }
+
+    .container.hasBgImg {
+        padding: var(--section-padding-bgImg-mobile);
+    }
+
+    .descLine {
+        width: 100%;
+        height: 1px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .containerHeaderWrapper {
+        flex-direction: column;
+        justify-content: center;
+    }
 }
