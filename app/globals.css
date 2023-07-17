@@ -63,6 +63,12 @@
 
   /* Transition*/
   --transition: 300ms ease-out;
+
+  /* Slider */
+
+  --slider-dots-primary: #f5f5f5;
+  --slider-dot-size: 14px;
+  --slider-dots-spacing: 8px;
 }
 
 @media (prefers-color-scheme: dark) {

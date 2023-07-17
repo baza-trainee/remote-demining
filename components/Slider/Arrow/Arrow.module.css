@@ -1,0 +1,30 @@
+.arrow-next,
+.arrow-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background-color: rgba(80, 80, 80, 0.4);
+  border: none;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.arrow-next:disabled,
+.arrow-prev:disabled {
+  display: none;
+}
+
+.arrow-prev {
+  left: 25px;
+}
+
+.arrow-next {
+  right: 25px;
+}
