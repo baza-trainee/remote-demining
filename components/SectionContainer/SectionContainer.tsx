@@ -9,7 +9,7 @@ interface ContainerProps {
   children?: React.ReactNode;
   description?: string;
   centerTitle?: boolean;
-  className?: ComponentProps<'textarea'>['className']; 
+  className?: string; 
 }
 
 const SectionContainer: React.FC<ContainerProps> = ({
