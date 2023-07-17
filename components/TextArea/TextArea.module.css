@@ -25,10 +25,6 @@
   border-radius: var(--input-border-rad);
   background-color: var(--input-bg-color);
   height: var(--input-height);
-  padding-left: 0.5rem;
   height: var(--textarea-height);
-
-  /* @media (max-width: 767px) {
-    width: 300px;
-  } */
+  padding: 1rem 0.5rem;
 }
