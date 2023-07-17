@@ -45,6 +45,22 @@
   --section-padding-main: 120px 40px;
   --section-padding-bgImg: 40px 40px;
   --section-title-color: #151515;
+  --section-padding-main-tablet: 80px 32px;
+  --section-padding-bgImg-tablet: 40px 32px;
+  --section-padding-main-mobile: 80px 16px;
+  --section-padding-bgImg-mobile: 32px 16px;
+
+  /*Tasks section*/
+  --card_item-width-mobile: 328px;
+  --card_item-width-tablet: 340px;
+  --card_item-width-desktop: 437px;
+  --card_item-gap: 16px;
+  --task-text-color: #f5f5f5;
+  --task-card-colum-gap: 24px;
+  --task-card-row-gap: 40px;
+
+  /* Transition*/
+  --transition: 300ms ease-out;
 
   /* Error  */
   --error-color: #a0041e;
