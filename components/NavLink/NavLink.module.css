@@ -5,6 +5,7 @@
 .link:focus:not(.link_btn),
 .link:hover:not(.link_btn) {
   border-bottom: 2px solid var(--button-primary-color);
+  font-size: 1.125em;
 }
 .link_btn {
   border-radius: var( --button-slider-border-rad);

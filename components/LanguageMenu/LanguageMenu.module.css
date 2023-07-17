@@ -1,7 +1,6 @@
 
 .btn_lang_menu {
   cursor: pointer;
-  padding: 26px 16px;
   width: 83px;
   height: 74px;
   border: none;
@@ -10,8 +9,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 10px;
 }
+
 @media screen and (max-width: 490px) {
   .btn_lang_menu {
     display: none;
@@ -27,7 +27,7 @@
 }
 .lang_select {
   background-color: var(--bg-primary-color);
-  margin: 0 20px;
+  margin: 0 10px;
   position: absolute;
   top: 87px;
   list-style-type: none;
@@ -36,6 +36,7 @@
   align-items: center;
   flex-direction: column;
 }
+
 @media screen and (max-width: 490px) {
   .lang_select {
     justify-content: flex-end;
@@ -55,10 +56,10 @@
 }
 .lang_option:focus,
 .lang_option:hover {
-  background-color: var(--bg-light-blue);
+  background-color: var(--input-border-color);
 }
 .selected {
-  background-color: var(--bg-light-blue);
+  background-color: var(--bg-primary-color);
 }
 .btn_lang_menu::after {
   height: 1.25rem;

@@ -4,7 +4,8 @@
   font-family: inherit;
   background-color: var(--bg-primary-color);
 }
-@media screen and (max-width: 980px) {
+
+@media screen and (max-width: 990px) {
   .header::before {
     content: "";
     position: fixed;
@@ -16,57 +17,40 @@
     background-color: var(--bg-primary-color) ;
   }
 }
-.container {
+
+.box {
+  z-index: 5;
   top: 0;
   display: flex;
   height: 100px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 32px;
 }
 
 .btn_container {
-  z-index: 5;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
 }
-@media screen and (max-width: 768px) {
-  .container {
-    padding: 0 32px;
-  }
-}
-@media screen and (max-width: 490px) {
-  .container {
-    padding: 0 16px;
-  }
-}
 
 .btn_menu {
-  cursor: pointer;
   display: none;
+  cursor: pointer;
   margin-left: 15px;
   padding: 20px;
   outline: none;
   border: none;
   background-color: transparent;
 }
+
 @media screen and (max-width: 360px) {
   .btn_menu {
-    padding-left: 21px;
-  }
-  /* Temp util the btn style is updated */
-  .btn_container button {
-    padding: 14px 16px;
-    font-weight: 400;
+    margin-left: 10px;
   }
 }
-.btn_menu span {
-  background-color: var(--button-primary-color);
-}
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 990px) {
   .btn_menu {
     display: block;
   }
@@ -80,6 +64,4 @@
     width: 100%;
     background-color: var(--bg-primary-color) ;
   }
-}
-.burger_icon {
 }

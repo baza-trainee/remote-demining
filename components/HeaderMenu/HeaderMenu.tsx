@@ -1,5 +1,5 @@
-import Link from "next/link";
 import styles from "./HeaderMenu.module.css";
+import NavLink from "../NavLink/NavLink";
 
 interface HeaderMenuProps {
   isOpenMenu: boolean
@@ -11,16 +11,16 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({ isOpenMenu }: HeaderMenuProps) 
     <nav className={menuWrapperStyle}>
       <ul className={styles.menu_list}>
         <li className={styles.menu_item}>
-          <Link href="#">Про нас</Link>
+          <NavLink href="#">Про нас</NavLink>
         </li>
         <li className={styles.menu_item} >
-          <Link href="#">Наукова діяльність</Link>
+          <NavLink href="#">Наукова діяльність</NavLink>
         </li>
         <li className={styles.menu_item} >
-          <Link href="#">Дистанційне розмінування</Link>
+          <NavLink href="#">Дистанційне розмінування</NavLink>
         </li>
         <li className={styles.menu_item} >
-          <Link href="#">Контакти</Link>
+          <NavLink href="#">Контакти</NavLink>
         </li>
       </ul>
     </nav>
