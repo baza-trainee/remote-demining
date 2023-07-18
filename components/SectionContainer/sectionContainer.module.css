@@ -48,6 +48,14 @@
     padding: var(--section-padding-bgImg);
   }
 
+  .containerHeaderWrapper {
+    width: 85%;
+  }
+
+  .title {
+    white-space: nowrap;
+  }
+
   .descLine {
     width: 1px;
     height: 66px;
