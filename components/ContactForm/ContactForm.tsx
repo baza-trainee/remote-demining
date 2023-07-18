@@ -1,16 +1,14 @@
 'use client';
 
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import emailjs from '@emailjs/browser';
-
 import { FC } from 'react';
-
 import Input from '@/components/Input/Input';
 import Button from '../Button/Button';
 import styles from './ContactForm.module.css';
 import TextArea from '../TextArea/TextArea';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import emailjs from '@emailjs/browser';
 
 interface ContactFormValues {
   email: string;
@@ -26,7 +24,9 @@ const validationScheme = yup.object({
   message: yup.string().min(3),
 });
 
-const ContactForm: FC = ({}) => {
+interface ContactFormProps {}
+
+const ContactForm: FC<ContactFormProps> = ({}) => {
   const {
     register,
     handleSubmit,
@@ -45,10 +45,10 @@ const ContactForm: FC = ({}) => {
   const sendEmail = () => {
     try {
       emailjs.sendForm(
-        process.env.SERVICE_ID!,
-        process.env.TEMPLATE_ID!,
+        'service_7ll2pvb',
+        'template_2j1mjx4',
         '#contact-form',
-        process.env.PUBLIC_KEY!
+        'vpKbRCkkOvFZKJUoA'
       );
       reset();
     } catch (error) {
@@ -66,7 +66,7 @@ const ContactForm: FC = ({}) => {
       <Input
         size="full"
         type="email"
-        label="Ваш е-mail"
+        label={`Ваш е-mail`}
         error={errors.email}
         errorMessage="Введіть e-mai"
         {...register('email')}
