@@ -4,6 +4,7 @@ import styles from "./LanguageMenu.module.css";
 
 interface LanguageMenuProps {
   isOpenMenu?: boolean;
+  isMobile?: boolean;
 }
 
 const languageItems = [
@@ -31,6 +32,7 @@ const languageItems = [
 
 const LanguageMenu: React.FC<LanguageMenuProps> = ({
   isOpenMenu,
+  isMobile,
 }: LanguageMenuProps) => {
   const [isOpenLangMenu, setOpenLangMenu] = useState(false);
   const toggleLangMenu = () => {
@@ -42,9 +44,13 @@ const LanguageMenu: React.FC<LanguageMenuProps> = ({
   const btnLangMenu = `${styles.btn_lang_menu} ${
     isOpenMenu ? styles.show_menu : ""
   }`;
+  const langMenuContainer = `${styles.lang_menu_container} ${
+    isMobile ? styles.mobile : ""
+  }`;
+  
 
   return (
-    <div className={styles.lang_menu_container}>
+    <div className={langMenuContainer}>
       <button className={btnLangMenu} onClick={toggleLangMenu}>
         {languageItems[0].title}
       </button>

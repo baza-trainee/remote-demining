@@ -13,19 +13,20 @@ const Header = () => {
   const toggleMenu = () => {
     setIsOpenMenu(!isOpenMenu);
   };
+  const contentBox = `${styles.box} ${isOpenMenu ? styles.bottom_border : ""}`
   return (
     <header className={styles.header}>
       <Container>
-        <div className={styles.box}>
+        <div className={contentBox}>
           <HeaderLogo />
-          <HeaderMenu isOpenMenu={isOpenMenu} />
+          <HeaderMenu />
           <div className={styles.box}>
-            <LanguageMenu isOpenMenu={isOpenMenu} />
+            <LanguageMenu />
             <Button donateBtn={true}>Підтримати</Button>
             <button className={styles.btn_menu} onClick={toggleMenu}>
               <Image
                 className={styles.burger_icon}
-                src={"/image/icons/burger_menu.svg"}
+                src={isOpenMenu ? "/images/icons/btn_close_burger.svg" : "/images/icons/burger_menu.svg"}
                 alt="burger_icon"
                 width={27}
                 height={30}
@@ -33,6 +34,8 @@ const Header = () => {
             </button>
           </div>
         </div>
+        <HeaderMenu isOpenMenu={isOpenMenu} isMobile={true} />
+        <LanguageMenu isOpenMenu={isOpenMenu} isMobile={true} />
       </Container>
     </header>
   );

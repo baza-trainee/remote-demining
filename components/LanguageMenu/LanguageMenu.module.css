@@ -1,4 +1,3 @@
-
 .btn_lang_menu {
   cursor: pointer;
   width: 83px;
@@ -11,20 +10,23 @@
   align-items: center;
   margin: 0 10px;
 }
+.mobile {
+  display: none;
+}
 
 @media screen and (max-width: 490px) {
   .btn_lang_menu {
     display: none;
-    position: fixed;
-    bottom: 20px;
-    left: 0;
-    width: 83px;
-    height: 74px;
-    background: var(--bg-primary-color);
-    margin-top: 120px;
-    overflow: auto;
+  }
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
   }
 }
+
 .lang_select {
   background-color: var(--bg-primary-color);
   margin: 0 10px;
@@ -35,42 +37,47 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border-radius: 8px;
 }
 
 @media screen and (max-width: 490px) {
   .lang_select {
-    justify-content: flex-end;
-    position: fixed;
-    left: 0;
-    top: 100px;
-    bottom: 94px;
-    overflow: auto;
+    position: relative;
+    margin: 0 0 20px 0;
+    top: 0;
+    border: 1px solid #e3e3e3;
   }
 }
 .lang_option {
   cursor: pointer;
   width: 83px;
-  height: 74px;
-  text-align: center;
-  padding: 26px 16px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lang_option:first-child {
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.lang_option:not(:first-child) {
+  border-top: 1px solid #e3e3e3;
+}
+.lang_option:last-child {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 .lang_option:focus,
 .lang_option:hover {
-  background-color: var(--input-border-color);
+  background-color: #e3e3e3;
 }
 .selected {
-  background-color: var(--bg-primary-color);
+  background-color: #e3e3e3;
 }
 .btn_lang_menu::after {
   height: 1.25rem;
   padding-left: 5px;
-  content: url("/image/icons/drop_black_arrow.svg");
-}
-@media screen and (max-width: 490px) {
-  .btn_lang_menu::after {
-    transform: rotate(180deg);
-    padding-right: 5px;
-  }
+  content: url("/images/icons/drop_black_arrow.svg");
 }
 .show_menu {
   display: flex;

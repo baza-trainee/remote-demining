@@ -4,22 +4,7 @@
   font-family: inherit;
   background-color: var(--bg-primary-color);
 }
-
-@media screen and (max-width: 990px) {
-  .header::before {
-    content: "";
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 100%;
-    background-color: var(--bg-primary-color) ;
-  }
-}
-
 .box {
-  z-index: 5;
   top: 0;
   display: flex;
   height: 100px;
@@ -27,7 +12,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .btn_container {
   display: flex;
   flex-direction: row;
@@ -53,15 +37,5 @@
 @media screen and (max-width: 990px) {
   .btn_menu {
     display: block;
-  }
-  .header::before {
-    content: "";
-    position: fixed;
-    z-index: 5;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 100%;
-    background-color: var(--bg-primary-color) ;
   }
 }
