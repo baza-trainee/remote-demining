@@ -32,7 +32,6 @@
   width: 100%;
   justify-content: flex-start;
   flex-direction: column;
-  font-size: 20px;
   padding: 40px 0 0 0;
 }
 .menu_wrapper.openMenu .menu_item {
