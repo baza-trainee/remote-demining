@@ -34,6 +34,11 @@
   flex-direction: column;
   padding: 40px 0 0 0;
 }
+@media screen and (max-width: 490px) {
+  .menu_wrapper.openMenu .menu_list{
+    padding: 32px 0 0 0;
+  }
+}
 .menu_wrapper.openMenu .menu_item {
   height: 54px;
   margin-bottom: 8px;
