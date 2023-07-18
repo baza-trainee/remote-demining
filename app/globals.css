@@ -44,6 +44,11 @@
 
   --section-padding-main: 120px 40px;
   --section-padding-bgImg: 40px 40px;
+  --section-padding-main-tablet: 80px 32px;
+  --section-padding-bgImg-tablet: 40px 32px;
+
+  --section-padding-main-mobile: 80px 16px;
+  --section-padding-bgImg-mobile: 32px 16px;
   --section-title-color: #151515;
 
   /* 404 animations */
@@ -51,12 +56,6 @@
   --drone-animation-duration: 3s;
   --drone-timing-function: linear;
   --drone-fill-mode: forwards;
-  /* Sections */
-  --section-padding-main-tablet: 80px 32px;
-  --section-padding-bgImg-tablet: 40px 32px;
-
-  --section-padding-main-mobile: 80px 16px;
-  --section-padding-bgImg-mobile: 32px 16px;
 
   /*Tasks section*/
   --card_item-width-mobile: 328px;

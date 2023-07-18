@@ -1,12 +1,16 @@
-import Link from "next/link";
+import NavLink from "@/components/NavLink/NavLink";
 import Drone from "./[...not_found]/_Drone/Drone";
+import styles from "./not-found.module.css";
 
 export default function NotFound() {
   return (
-    <div style={{ overflow: "hidden" }}>
+    <div className={styles.wraper}>
       <Drone />
-      <div>
-        <Link href="/">Go back to Home</Link>
+      <div className={styles.content}>
+        <p>Вибачте! Сторінка загубилася</p>
+        <NavLink isButton href="/">
+          Повернутися на Головну
+        </NavLink>
       </div>
     </div>
   );
