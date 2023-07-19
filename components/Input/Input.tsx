@@ -1,4 +1,5 @@
 import { ComponentProps, forwardRef } from 'react';
+import { FieldError } from 'react-hook-form/dist/types';
 import styles from './Input.module.css';
 
 enum InputSize {
@@ -17,13 +18,27 @@ interface InputProps {
   label?: string;
   height?: number;
   width?: number;
+  error?: FieldError | undefined;
+  errorMessage?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ size = InputSize.base, label, height, width, ...inputProps }, ref) => {
+  (
+    {
+      size = InputSize.base,
+      label,
+      height,
+      width,
+      error,
+      errorMessage,
+      ...inputProps
+    },
+    ref
+  ) => {
     const InputStyle = {
       height: height ? `${height}px` : undefined,
       width: width ? `${width}px` : undefined,
+      borderColor: error ? 'var(--error-color)' : undefined,
     };
 
     return (
@@ -35,6 +50,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={`${styles[size]} ${styles.input}`}
           style={InputStyle}
         />
+        {error && <p className={styles.error}>{errorMessage}</p>}
       </div>
     );
   }
