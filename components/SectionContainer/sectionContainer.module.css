@@ -49,6 +49,14 @@
     padding: var(--section-padding-bgImg);
   }
 
+  .containerHeaderWrapper {
+    width: 85%;
+  }
+
+  .title {
+    white-space: nowrap;
+  }
+
   .descLine {
     width: 1px;
     height: 66px;
@@ -97,8 +105,12 @@
   }
 
   .containerHeaderWrapper {
-    margin-bottom: 24px;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+  }
+
+  .centered {
+    margin-bottom: 24px;
   }
 }
