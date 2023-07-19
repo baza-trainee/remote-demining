@@ -21,15 +21,6 @@ const Projects = () => {
           </li>
         ))}
       </ul>
-      {/* <CardList
-        perView={3}
-        items={projectsData.map((item) => (
-          <Card key={item.id} img={item.img} background="light-blue">
-            <h3 className={styles.title}>{item.title}</h3>
-            <p className={styles.text}>{item.text}</p>
-          </Card>
-        ))}
-      /> */}
     </SectionContainer>
   );
 };
