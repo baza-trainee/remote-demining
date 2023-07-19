@@ -9,7 +9,7 @@
   border-radius: 8px;
   color: var(--button-slider-color);
   background: var(--button-slider-color);
-  transition: var(--transition);
+  transition: background var(--transition);
 }
 
 .custom_link:focus,
