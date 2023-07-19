@@ -39,6 +39,7 @@
   --card-img-height: 240px;
   --card-border-rad: 24px;
 
+  --card-list-gap-mobile: 40px;
   --card-list-gap: 16px;
 
   /* Section */
@@ -62,6 +63,9 @@
   --task-card-colum-gap: 24px;
   --task-card-row-gap: 40px;
 
+  /* Projects */
+  --card-list-gap-desktop: 32px;
+  --card-list-padding-tablet: 16px;
   /* Transition*/
   --transition: 300ms ease-out;
 }
