@@ -6,6 +6,7 @@
 .link:focus:not(.link_btn),
 .link:hover:not(.link_btn) {
   border-bottom: 2px solid var(--button-primary-color);
+  font-size: 1.125em;
 }
 .link_btn {
   border-radius: var(--button-slider-border-rad);
@@ -16,9 +17,8 @@
 }
 .link_btn:focus,
 .link_btn:hover {
-  outline: 3px solid var(--button-primary-color);
   color: var(--button-primary-color);
-  background-color: var(--button-donate-bg-color);
+  background: var(--button-slider-color);
 }
 .active:not(.link_btn) {
   border-bottom: 2px solid var(--button-primary-color);
