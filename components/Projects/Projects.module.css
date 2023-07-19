@@ -1,3 +1,26 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.card {
+  overflow: hidden;
+}
+
+.image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: var(--card-img-height-mobile);
+  border-radius: var(--card-border-rad) var(--card-border-rad) 0 0;
+}
+
+.body {
+  background-color: var(--bg-light-blue);
+  padding: 24px;
+}
+
 .title {
   margin-bottom: 16px;
   font-size: 20px;

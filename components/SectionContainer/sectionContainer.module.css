@@ -104,8 +104,12 @@
   }
 
   .containerHeaderWrapper {
-    margin-bottom: 24px;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+  }
+
+  .centered {
+    margin-bottom: 24px;
   }
 }
