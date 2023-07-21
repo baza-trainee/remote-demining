@@ -1,10 +1,10 @@
+import Image from "next/image";
+
 import SectionContainer from "../SectionContainer/SectionContainer";
+
 import projectsData from "./projectsData";
-import CardList from "../CardList/CardList";
-import Card from "../Card/Card";
 
 import styles from "./Projects.module.css";
-import Image from "next/image";
 
 const Projects = () => {
   return (

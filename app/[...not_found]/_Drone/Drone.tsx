@@ -1,8 +1,9 @@
-import styles from "./Drone.module.css";
 import classNames from "classnames";
 
-import drone from "@/public/drone/Drone.svg";
 import text404Image from "@/public/drone/404.svg";
+import drone from "@/public/drone/Drone.svg";
+
+import styles from "./Drone.module.css";
 
 const Drone = () => {
   return (

@@ -1,8 +1,9 @@
-import tasksData from "./tasksData";
-import SectionContainer from "../SectionContainer/SectionContainer";
-import TasksList from "./TasksList/TasksList";
-
 import bg from "@/public/images/tasks/task-bg.jpg";
+
+import SectionContainer from "../SectionContainer/SectionContainer";
+
+import TasksList from "./TasksList/TasksList";
+import tasksData from "./tasksData";
 
 const Tasks: React.FC = () => {
   return (

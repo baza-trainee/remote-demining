@@ -1,9 +1,9 @@
+import book from "@/public/images/icons/tasks/book.svg";
+import calendar from "@/public/images/icons/tasks/calendar.svg";
+import laptop from "@/public/images/icons/tasks/laptop.svg";
 import notes from "@/public/images/icons/tasks/notes.svg";
 import security from "@/public/images/icons/tasks/security.svg";
-import laptop from "@/public/images/icons/tasks/laptop.svg";
-import calendar from "@/public/images/icons/tasks/calendar.svg";
 import users from "@/public/images/icons/tasks/users.svg";
-import book from "@/public/images/icons/tasks/book.svg";
 
 interface Task {
   id: number;
