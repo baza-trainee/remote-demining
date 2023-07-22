@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 2.5rem 0;
+  background: url('../../public/images/contact/bg.jpg') center / cover no-repeat;
+}
+
+.inner {
+  display: flex;
+  justify-content: center;
+  column-gap: 1.2rem;
+  row-gap: 2.5rem;
+  @media (max-width: 540px) {
+    flex-wrap: wrap;
+  }
+}
+
+.title {
+  width: 47rem;
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: normal;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: 360px) {
+    font-size: 1.25rem;
+  }
+}

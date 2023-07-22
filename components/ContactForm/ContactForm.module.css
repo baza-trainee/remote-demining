@@ -1,5 +1,5 @@
 .wrapper {
-  max-width: 678px;
+  width: 37rem;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -15,4 +15,5 @@
   background: var(--input-bg-color);
   width: 42rem;
   height: 18.75rem;
+  
 }

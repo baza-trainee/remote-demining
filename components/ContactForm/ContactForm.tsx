@@ -85,7 +85,7 @@ const ContactForm: FC<ContactFormProps> = ({}) => {
         errorMessage="Введіть ім’я"
         label="Ваше ім’я"
       />
-      <TextArea {...register('message')} label="Повідомлення" />
+      <TextArea {...register('message')} label="Повідомлення" size="full" />
       <Button type="submit" disabled={isSubmitting} formBtn isFullWidth>
         Надіслати
       </Button>
