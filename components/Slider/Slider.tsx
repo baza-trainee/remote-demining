@@ -1,6 +1,6 @@
 "use client";
 
-import SlickSlider, { Settings } from "react-slick";
+import SlickSlider, { ResponsiveObject, Settings } from "react-slick";
 import Arrow from "./Arrow/Arrow";
 import styles from "./Slider.module.css";
 
@@ -10,6 +10,7 @@ interface SliderProps {
   infinite?: boolean;
   dots?: boolean;
   dotsPlacement?: "inner" | "outer";
+  responsive?: ResponsiveObject[];
 }
 
 const Slider: React.FC<SliderProps> = ({
@@ -18,6 +19,7 @@ const Slider: React.FC<SliderProps> = ({
   infinite,
   dots,
   dotsPlacement = "inner",
+  responsive,
 }) => {
   const sliderSettings: Settings = {
     slidesToShow: slidesPerPage < slides.length ? slidesPerPage : slides.length,
@@ -45,6 +47,7 @@ const Slider: React.FC<SliderProps> = ({
     dotsClass: styles["dots"],
     infinite,
     dots,
+    responsive,
   };
 
   return (
