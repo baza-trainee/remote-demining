@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 import SectionContainer from "../SectionContainer/SectionContainer";
+
 import projectsData from "./projectsData";
-import CardList from "../CardList/CardList";
-import Card from "../Card/Card";
+
 import styles from "./Projects.module.css";
 
 const Projects = () => {
@@ -13,7 +15,7 @@ const Projects = () => {
       <ul className={styles.list}>
         {projectsData.map(({ id, img, title, text }) => (
           <li key={id} className={styles.card}>
-            <img src={img} className={styles.image} />
+            <Image src={img} className={styles.image} alt={title} />
             <div className={styles.body}>
               <h3 className={styles.title}>{title}</h3>
               <p className={styles.text}>{text}</p>
