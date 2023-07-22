@@ -49,8 +49,8 @@
     padding: var(--section-padding-bgImg);
   }
 
-  .containerHeaderWrapper {
-    width: 85%;
+  .desc {
+    width: 760px;
   }
 
   .title {
