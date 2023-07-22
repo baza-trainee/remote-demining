@@ -1,4 +1,9 @@
-
+import whoWeAre2S from "@/public/images/about/who-we-are-small-2.jpg";
+import whoWeAre2M from "@/public/images/about/who-we-are-medium-2.jpg";
+import whoWeAre2L from "@/public/images/about/who-we-are-large-2.jpg";
+import whoWeAre1S from "@/public/images/about/who-we-are-small-2.jpg";
+import whoWeAre1M from "@/public/images/about/who-we-are-medium-2.jpg";
+import whoWeAre1L from "@/public/images/about/who-we-are-large-2.jpg";
 interface About {
   id: number;
   img: {
@@ -13,20 +18,20 @@ const aboutData: About[] = [
   {
     id: 1,
     img: {
-      small: '/images/about/who-we-are-small-2.jpg',
-      medium: '/images/about/who-we-are-medium-2.jpg',
-      large: '/images/about/who-we-are-large-2.jpg',
+      small: whoWeAre2S.src,
+      medium: whoWeAre2M.src,
+      large: whoWeAre2L.src,
     },
-    text: 'Колектив Державного підприємства «Науково-дослідний центр проблем надрокористування «Георесурс»» НАН України проводить тестування існуючої розробки та обладнання сучасної методики визначення місць знаходження вибухонебезпечних предметів методом пульсуючого електромагнітного зондування (ПЕМЗ)',
+    text: "Колектив Державного підприємства «Науково-дослідний центр проблем надрокористування «Георесурс»» НАН України проводить тестування існуючої розробки та обладнання сучасної методики визначення місць знаходження вибухонебезпечних предметів методом пульсуючого електромагнітного зондування (ПЕМЗ)",
   },
   {
     id: 2,
     img: {
-      small: '/images/about/who-we-are-small-1.jpg',
-      medium: '/images/about/who-we-are-medium-1.jpg',
-      large: '/images/about/who-we-are-large-1.jpg',
+      small: whoWeAre1S.src,
+      medium: whoWeAre1M.src,
+      large: whoWeAre1L.src,
     },
-    text: 'У рамках проекту Державного підприємства «Науково-дослідний центр проблем надрокористування «Георесурс» НАН України, спільно з спеціалістами Національної академії внутрішніх справ, ДСНС, Держспецтрансслужби, Сил підтримки Збройних Сил України проводить тестування розробки методики визначення територій знаходження вибухонебезпечних предметів методом пульсуючого електромагнітного зондування.',
+    text: "У рамках проекту Державного підприємства «Науково-дослідний центр проблем надрокористування «Георесурс» НАН України, спільно з спеціалістами Національної академії внутрішніх справ, ДСНС, Держспецтрансслужби, Сил підтримки Збройних Сил України проводить тестування розробки методики визначення територій знаходження вибухонебезпечних предметів методом пульсуючого електромагнітного зондування.",
   },
 ];
 
