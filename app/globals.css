@@ -74,8 +74,14 @@
   /* Projects */
   --card-list-gap-desktop: 32px;
   --card-list-padding-tablet: 16px;
+
+  /* About */
+  --about-section-text-color: #151515;
+  
   /* Transition*/
   --transition: 300ms ease-out;
+
+
 
   /* Error list */
   --error-color: #ef4444;
@@ -84,6 +90,7 @@
   --slider-dots-primary: #f5f5f5;
   --slider-dot-size: 14px;
   --slider-dots-spacing: 8px;
+
 }
 
 @media (prefers-color-scheme: dark) {

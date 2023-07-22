@@ -1,5 +1,7 @@
 import NavLink from "@/components/NavLink/NavLink";
+
 import Drone from "./[...not_found]/_Drone/Drone";
+
 import styles from "./not-found.module.css";
 
 export default function NotFound() {

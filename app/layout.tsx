@@ -1,9 +1,10 @@
+import type { Metadata } from "next";
+import { Open_Sans } from "next/font/google";
+
 import "./globals.css";
 import "./normalize.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
 
 const open_sans = Open_Sans({ subsets: ["latin"] });
 
