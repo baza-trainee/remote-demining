@@ -1,4 +1,5 @@
 import { CustomArrowProps } from "react-slick";
+
 import styles from "./Arrow.module.css";
 
 interface ArrowProps extends CustomArrowProps {
