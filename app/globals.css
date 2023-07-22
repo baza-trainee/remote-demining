@@ -74,6 +74,10 @@
   /* Projects */
   --card-list-gap-desktop: 32px;
   --card-list-padding-tablet: 16px;
+
+  /* About */
+  --about-section-text-color: #151515;
+  
   /* Transition*/
   --transition: 300ms ease-out;
 
