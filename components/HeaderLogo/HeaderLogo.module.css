@@ -15,18 +15,15 @@
 }
 
 /* Logo text */
+.logo::before {
+  content: "НАН України";
+}
 @media screen and (min-width: 1200px) {
-  .logo::before {
-    content: "НАН України";
-  }
   .sub_logo::before {
     content: "НДП НДЦ проблем надрокористування “Георесурс“";
   }
 }
 @media screen and (min-width: 361px) and (max-width: 1199px) {
-  .logo::before {
-    content: "НАН України";
-  }
   .sub_logo::before {
     content: "ДП НДЦ “Георесурс“";
   }
