@@ -7,17 +7,16 @@
   --button-primary-color: #151515;
   --button-primary-border-rad: 24px;
   --button-primary-padding: 14px 24px;
+  --button-primary-mobile-padding: 14px 16px;
 
   --button-donate-color: #151515;
   --button-donate-border-rad: 24px;
   --button-donate-bg-color: transparent;
   --button-donate-hover-color: transparent;
 
-
   --button-slider-border-rad: 48px;
   --button-slider-color: linear-gradient(90deg, #baded3 0%, #abd1e7 100%);
   --button-slider-hover-color: #151515;
-
 
   --button-form-border-rad: 12px;
   --button-form-color: #151515;
@@ -32,26 +31,63 @@
   --input-width: 672px;
   --input-height: 64px;
 
+  /* Textarea */
+  --textarea-height: 18.75rem;
+
   /* Card */
-  
+
   --card-primary-bg-color: #ebf2ff;
   --card-secondary-bg-color: #f5f5f5;
+  --card-img-height-mobile: 180px;
   --card-img-height: 240px;
   --card-border-rad: 24px;
 
+  --card-list-gap-mobile: 40px;
   --card-list-gap: 16px;
-  
+
   /* Section */
-  
+
   --section-padding-main: 120px 40px;
   --section-padding-bgImg: 40px 40px;
   --section-title-color: #151515;
-
   --section-padding-main-tablet: 80px 32px;
   --section-padding-bgImg-tablet: 40px 32px;
-
   --section-padding-main-mobile: 80px 16px;
   --section-padding-bgImg-mobile: 32px 16px;
+  --section-title-color: #151515;
+
+  /* 404 animations */
+  --drone-box-rotation: 30deg;
+  --drone-animation-duration: 3s;
+  --drone-timing-function: linear;
+  --drone-fill-mode: forwards;
+
+  /*Tasks section*/
+  --card_item-width-mobile: 328px;
+  --card_item-width-tablet: 340px;
+  --card_item-width-desktop: 437px;
+  --card_item-gap: 16px;
+  --task-text-color: #f5f5f5;
+  --task-card-colum-gap: 24px;
+  --task-card-row-gap: 40px;
+
+  /* Projects */
+  --card-list-gap-desktop: 32px;
+  --card-list-padding-tablet: 16px;
+
+  /* About */
+  --about-section-text-color: #151515;
+
+  /* Transition*/
+  --transition: 300ms ease-out;
+
+  /* Error list */
+  --error-color: #ef4444;
+  /* Slider */
+
+  --slider-dots-primary: #f5f5f5;
+  --slider-dot-size: 14px;
+  --slider-dots-spacing: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -67,6 +103,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  background: var(--bg-primary-color);
+}
+
+ul {
+  list-style: none;
 }
 
 a {
@@ -75,7 +116,4 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }

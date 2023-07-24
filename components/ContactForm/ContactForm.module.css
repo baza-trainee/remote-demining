@@ -1,0 +1,18 @@
+.wrapper {
+  max-width: 678px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rounded {
+  border-radius: 12px;
+}
+
+.textarea {
+  border-radius: 0.75rem;
+  border: 1px solid var(--input-border-color);
+  background: var(--input-bg-color);
+  width: 42rem;
+  height: 18.75rem;
+}

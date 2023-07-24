@@ -31,6 +31,14 @@
 /* styles for donateBtn */
 .donateBtn {
   border-radius: var(--button-primary-border-rad);
+  transition: background-color var(--transition),
+    color var(--transition) outline var(--transition);
+
+  @media (max-width: 767px) {
+    padding: var(--button-primary-mobile-padding);
+    font-size: 16px;
+    font-weight: 400;
+  }
 }
 
 /* Hover and focus styles for donateBtn */
@@ -38,13 +46,14 @@
 .donateBtn:focus:not(:disabled) {
   background-color: var(--button-donate-bg-color);
   color: var(--button-donate-color);
-  outline: 3px solid var(--button-donate-color); /* change border to outline */
+  outline: 3px solid var(--button-donate-color);
 }
 
 /* styles for sliderBtn */
 .sliderBtn {
   font-size: 18px;
   border-radius: var(--button-slider-border-rad);
+  transition: background-color var(--transition), color var(--transition);
 }
 
 /* Hover and focus styles for sliderBtn */
@@ -57,6 +66,7 @@
 /* styles for formBtn */
 .formBtn {
   border-radius: var(--button-form-border-rad);
+  transition: background-color var(--transition), color var(--transition);
 }
 
 /* Hover and focus styles for formBtn */
