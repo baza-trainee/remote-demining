@@ -1,3 +1,5 @@
+import Team from "@/components/Team/Team";
+
 export default function Home() {
-  return <main></main>;
+  return <main><Team /></main>;
 }

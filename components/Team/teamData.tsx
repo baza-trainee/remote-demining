@@ -45,5 +45,5 @@ export const teamData: Team[] = [
     projectPosition: 'Президент, засновник',
     phone: '+380000000000',
     email: 'example@example.com'
-  },
+  }
 ]
