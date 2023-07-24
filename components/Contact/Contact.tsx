@@ -10,15 +10,13 @@ interface ContactProps {}
 const Contact: FC<ContactProps> = ({}) => {
   return (
     <SectionContainer bgImg={bgContainer.src} className={styles.wrapper}>
-      <Container>
-        <div className={styles.inner}>
-          <h2 className={styles.title}>
-            Якщо у вас є питання, зауваження або пропозиції , просимо заповнити
-            форму зворотнього зв`язку
-          </h2>
-          <ContactForm />
-        </div>
-      </Container>
+      <div className={styles.inner}>
+        <h2 className={styles.title}>
+          Якщо у вас є питання, зауваження або пропозиції , просимо заповнити
+          форму зворотнього зв`язку
+        </h2>
+        <ContactForm />
+      </div>
     </SectionContainer>
   );
 };
