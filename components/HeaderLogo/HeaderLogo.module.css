@@ -11,32 +11,13 @@
   flex-wrap: wrap;
   z-index: 5;
   cursor: pointer;
+  max-width: 325px;
 }
-/* media query for prevent the logo form jumping */
-@media screen and (min-width: 1330px) and (max-width: 1350px) {
-  .logo_container {
-    max-width: 390px;
-  }
-}
-@media screen and (min-width: 1280px) and (max-width: 1330px) {
-  .logo_container {
-    max-width: 380px;
-  }
-}
-@media screen and (min-width: 1200px) and (max-width: 1250px) {
-  .logo_container {
-    max-width: 285px;
-  }
-}
-@media screen and (min-width: 991px) and (max-width: 1099px) {
-  .logo_container {
-    max-width: min-content;
-  }
-}
+
 /* Logo text */
 @media screen and (min-width: 1200px) {
   .logo::before {
-    content: "Національна академія наук України";
+    content: "НАН України";
   }
   .sub_logo::before {
     content: "НДП НДЦ проблем надрокористування “Георесурс“";
