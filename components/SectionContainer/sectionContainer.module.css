@@ -2,6 +2,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 100%;
+  background-color: transparent;
   margin: 0 auto;
 }
 
@@ -46,6 +47,14 @@
 
   .container.hasBgImg {
     padding: var(--section-padding-bgImg);
+  }
+
+  .desc {
+    width: 760px;
+  }
+
+  .title {
+    white-space: nowrap;
   }
 
   .descLine {
@@ -96,8 +105,12 @@
   }
 
   .containerHeaderWrapper {
-    margin-bottom: 24px;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+  }
+
+  .centered {
+    margin-bottom: 24px;
   }
 }

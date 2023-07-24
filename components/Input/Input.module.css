@@ -26,4 +26,15 @@
   line-height: normal;
   margin-bottom: 0.5rem;
   display: block;
+
+}
+
+.error {
+  padding-top: 0.88rem;
+  color: var(--error-color);
+}
+
+.error {
+  padding-top: 0.88rem;
+  color: var(--error-color);
 }

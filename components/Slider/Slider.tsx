@@ -1,7 +1,9 @@
 "use client";
 
 import SlickSlider, { ResponsiveObject, Settings } from "react-slick";
+
 import Arrow from "./Arrow/Arrow";
+
 import styles from "./Slider.module.css";
 
 interface SliderProps {
