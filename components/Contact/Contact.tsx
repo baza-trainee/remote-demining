@@ -2,12 +2,14 @@ import { FC } from 'react';
 import Container from '../Container/Container';
 import ContactForm from '../ContactForm/ContactForm';
 import styles from './Contact.module.css';
+import SectionContainer from '../SectionContainer/SectionContainer';
+import bgContainer from '@/public/images/contact/bg.jpg';
 
 interface ContactProps {}
 
 const Contact: FC<ContactProps> = ({}) => {
   return (
-    <section className={styles.wrapper}>
+    <SectionContainer bgImg={bgContainer.src} className={styles.wrapper}>
       <Container>
         <div className={styles.inner}>
           <h2 className={styles.title}>
@@ -17,7 +19,7 @@ const Contact: FC<ContactProps> = ({}) => {
           <ContactForm />
         </div>
       </Container>
-    </section>
+    </SectionContainer>
   );
 };
 
