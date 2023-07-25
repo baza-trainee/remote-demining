@@ -4,24 +4,25 @@
   --bg-light-blue: #ebf2ff;
 
   /* Buttons */
-  --button-primary-color: #151515;
-  --button-primary-border-rad: 24px;
+  --button-primary-color: #f5f5f5;
+  --button-primary-bg-color: #4285f4;
+  --button-primary-border-rad: 5px;
   --button-primary-padding: 14px 24px;
-  --button-primary-mobile-padding: 14px 16px;
 
-  --button-donate-color: #151515;
-  --button-donate-border-rad: 24px;
-  --button-donate-bg-color: transparent;
-  --button-donate-hover-color: transparent;
+  --button-donate-color: #f5f5f5;
+  --button-donate-bg-color: #4285f4;
+  --button-donate-hover-color: #c6dafc;
 
   --button-slider-border-rad: 48px;
-  --button-slider-color: linear-gradient(90deg, #baded3 0%, #abd1e7 100%);
-  --button-slider-hover-color: #151515;
+  --button-slider-color: #f5f5f5;
+  --button-slider-bg-color: #4285f4;
+  --button-slider-hover-color: #c6dafc;
 
   --button-form-border-rad: 12px;
-  --button-form-color: #151515;
-  --button-form-hover-color: #f5f5f5;
-  --button-form-width: 672px;
+  --button-form-color: #f5f5f5;
+  --button-form-bg-color: #4285f4;
+  --button-form-hover-color: #c6dafc;
+  --button-form-width: 592px;
   --button-form-height: 75px;
   /* Inputs */
 
