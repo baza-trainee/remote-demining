@@ -5,7 +5,7 @@ import styles from "./Card.module.css";
 type BackgroundColors = "primary" | "light-blue";
 
 interface CardProps {
-  img: string;
+  img?: string;
   background?: BackgroundColors;
   children?: React.ReactNode;
 }
@@ -17,7 +17,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div className={`${styles.card} ${styles[background]}`}>
-      <img className={styles.image} src={img} />
+      {img ? <img className={styles.image} src={img} /> : ''}
       <div className={styles.body}>{children}</div>
     </div>
   );
