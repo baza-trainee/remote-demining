@@ -1,4 +1,4 @@
-import NavLink from "../NavLink/NavLink";
+import NavLink from "../../NavLink/NavLink";
 import styles from "./HeaderMenu.module.css";
 
 interface HeaderMenuProps {

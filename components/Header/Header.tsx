@@ -2,9 +2,9 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import HeaderMenu from "../HeaderMenu/HeaderMenu";
-import HeaderLogo from "../HeaderLogo/HeaderLogo";
-import LanguageMenu from "../LanguageMenu/LanguageMenu";
+import HeaderMenu from "./HeaderMenu/HeaderMenu";
+import HeaderLogo from "./HeaderLogo/HeaderLogo";
+import LanguageMenu from "./LanguageMenu/LanguageMenu";
 import Button from "../Button/Button";
 import Container from "../Container/Container";
 

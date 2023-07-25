@@ -1,34 +1,12 @@
 "use client";
 import { useState } from "react";
 import styles from "./LanguageMenu.module.css";
+import { languageItems } from "./languageItems";
 
 interface LanguageMenuProps {
   isOpenMenu?: boolean;
   isMobile?: boolean;
 }
-
-const languageItems = [
-  {
-    id: 0,
-    title: "UA",
-    value: "ua",
-  },
-  {
-    id: 1,
-    title: "EN",
-    value: "en",
-  },
-  {
-    id: 2,
-    title: "FR",
-    value: "fr",
-  },
-  {
-    id: 3,
-    title: "DE",
-    value: "de",
-  },
-];
 
 const LanguageMenu: React.FC<LanguageMenuProps> = ({
   isOpenMenu,
