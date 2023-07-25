@@ -22,10 +22,6 @@
     "next": "13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.45.1",
-    "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1",
-    "typescript": "5.1.6",
-    "yup": "^1.2.0"
+    "typescript": "5.1.6"
   }
 }

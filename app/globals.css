@@ -80,7 +80,8 @@
 
   /* Transition*/
   --transition: 300ms ease-out;
-
+  /* Language Menu */
+  --lang-menu-bg-color: #e3e3e3;
   /* Error list */
   --error-color: #ef4444;
   /* Slider */

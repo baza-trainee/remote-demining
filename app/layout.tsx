@@ -1,3 +1,6 @@
+import Header from "@/components/Header/Header";
+import "./globals.css";
+import "./normalize.css";
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 
@@ -20,7 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={open_sans.className}>{children}</body>
+      <body className={open_sans.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
