@@ -5,15 +5,26 @@
   align-items: center;
 
   padding: var(--button-primary-padding);
-  background-color: var(--button-primary-color);
+  background-color: var(--button-primary-bg-color);
+  border-radius: var(--button-primary-border-rad);
 
-  color: var(--bg-primary-color);
+  color: var(--button-primary-color);
   font-size: 20px;
   font-weight: 600;
 
   border: none;
 
   cursor: pointer;
+
+  transition: background-color var(--transition),
+    color var(--transition) outline var(--transition);
+}
+
+.button:hover,
+.button:focus {
+  background-color: var(--button-primary-hover-color);
+  color: var(--button-primary-bg-color);
+  outline: 2px solid var(--button-primary-bg-color);
 }
 
 /* Full width styles */
@@ -30,14 +41,13 @@
 
 /* styles for donateBtn */
 .donateBtn {
-  border-radius: var(--button-primary-border-rad);
   transition: background-color var(--transition),
     color var(--transition) outline var(--transition);
 
   @media (max-width: 767px) {
     padding: var(--button-primary-mobile-padding);
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 600;
   }
 }
 

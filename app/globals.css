@@ -6,6 +6,7 @@
   /* Buttons */
   --button-primary-color: #f5f5f5;
   --button-primary-bg-color: #4285f4;
+  --button-primary-hover-color: #c6dafc;
   --button-primary-border-rad: 5px;
   --button-primary-padding: 14px 24px;
 
@@ -13,7 +14,6 @@
   --button-donate-bg-color: #4285f4;
   --button-donate-hover-color: #c6dafc;
 
-  --button-slider-border-rad: 48px;
   --button-slider-color: #f5f5f5;
   --button-slider-bg-color: #4285f4;
   --button-slider-hover-color: #c6dafc;
