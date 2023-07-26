@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
+import { Open_Sans } from "next/font/google";
+
 import "./globals.css";
 import "./normalize.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const open_sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "",
@@ -17,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={open_sans.className}>{children}</body>
     </html>
   );
 }

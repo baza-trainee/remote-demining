@@ -1,0 +1,38 @@
+.slider :global .slick-slide {
+  padding-left: calc(var(--card-list-gap) / 2);
+  padding-right: calc(var(--card-list-gap) / 2);
+}
+
+.dots {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  column-gap: var(--slider-dots-spacing);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.dots > li {
+  width: var(--slider-dot-size);
+  height: var(--slider-dot-size);
+  border-radius: 50%;
+  border: 2px var(--slider-dots-primary) solid;
+  position: relative;
+}
+
+.dots > li:global(.slick-active) {
+  background-color: var(--slider-dots-primary);
+}
+
+.dots button {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}

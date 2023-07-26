@@ -1,0 +1,26 @@
+.card_item {
+  flex-basis: var(--card_item-width-mobile);
+
+  @media (min-width: 768px) {
+    flex-basis: var(--card_item-width-tablet);
+  }
+
+  @media (min-width: 1440px) {
+    flex-basis: var(--card_item-width-desktop);
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--card_item-gap);
+
+  @media screen and (min-width: 768px) {
+    align-items: flex-start;
+  }
+}
+
+.text {
+  line-height: normal;
+  color: var(--task-text-color);
+}

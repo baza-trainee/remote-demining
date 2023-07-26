@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--task-card-colum-gap);
+
+  @media (min-width: 768px) {
+    row-gap: var(--task-card-row-gap);
+  }
+}
