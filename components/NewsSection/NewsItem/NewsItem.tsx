@@ -23,7 +23,6 @@ const NewsItem: React.FC<NewsItem> = ({ id, img, text, title }) => {
               Детальніше
             </CustomLink>
             <div className={styles.date}>
-              <span className={styles.decor}></span>
               <p>06 липня 2023</p>
             </div>
           </div>

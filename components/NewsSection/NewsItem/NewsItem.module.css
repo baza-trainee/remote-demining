@@ -1,6 +1,5 @@
 .content {
-  max-height: 335px;
-  min-height: 335px;
+  height: 335px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -34,7 +33,9 @@
 
   margin-top: 16px;
 }
-.decor {
+
+.date::before {
+  content: "";
   display: block;
   background: #ababab;
   width: 100%;
