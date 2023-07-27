@@ -15,7 +15,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <div className={`${styles.card} ${styles[background]}`}>
-      <img className={styles.image} src={img} />
+      <img className={styles.image} src={img} /> 
       <div className={styles.body}>{children}</div>
     </div>
   );
