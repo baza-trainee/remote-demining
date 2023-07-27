@@ -1,5 +1,6 @@
 import AboutSection from "@/components/AboutSection/AboutSection";
-import Partnership from "@/components/Partnership/Partnership";
+import Contact from "@/components/Contact/Contact";
+import NewsSection from "@/components/NewsSection/NewsSection";
 import Projects from "@/components/Projects/Projects";
 import Tasks from "@/components/Tasks/Tasks";
 
@@ -9,7 +10,8 @@ export default function Home() {
       <AboutSection />
       <Tasks />
       <Projects />
-      <Partnership />
+      <NewsSection />
+      <Contact />
     </main>
   );
 }

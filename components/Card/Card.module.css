@@ -8,10 +8,16 @@
   object-fit: cover;
   width: 100%;
   height: var(--card-img-height);
+  @media screen and (max-width: 400px) {
+    height: var(--card-img-height-mobile);
+  }
 }
 
 .body {
   padding: 24px;
+  @media screen and (max-width: 400px) {
+    padding: 16px;
+  }
 }
 
 .primary {
