@@ -1,7 +1,9 @@
-import styles from "./cardsData.module.css";
-import { teamData } from "./teamData";
 import Card from "../Card/Card";
 import NavLink from "../NavLink/NavLink";
+
+import { teamData } from "./teamData";
+
+import styles from "./cardsData.module.css";
 
 export const cardsData = teamData.map(
   ({ id, img, projectPosition, phone, email, name }) => {
