@@ -5,7 +5,7 @@
     flex-basis: var(--card_item-width-tablet);
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     flex-basis: var(--card_item-width-desktop);
   }
 }
