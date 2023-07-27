@@ -117,3 +117,9 @@ a {
 
 @media (prefers-color-scheme: dark) {
 }
+
+/* hide the badge of recaptcha */
+
+.grecaptcha-badge {
+  visibility: hidden;
+}

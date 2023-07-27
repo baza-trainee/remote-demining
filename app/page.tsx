@@ -1,3 +1,4 @@
+import Contact from "@/components/Contact/Contact";
 import AboutSection from "@/components/AboutSection/AboutSection";
 import NewsSection from "@/components/NewsSection/NewsSection";
 import Projects from "@/components/Projects/Projects";
@@ -10,6 +11,7 @@ export default function Home() {
       <Tasks />
       <Projects />
       <NewsSection />
+      <Contact/>
     </main>
   );
 }
