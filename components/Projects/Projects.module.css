@@ -7,7 +7,7 @@
     gap: var(--card-list-gap);
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     flex-direction: row;
     gap: var(--card-list-gap-desktop);
   }
@@ -18,7 +18,7 @@
   background-color: var(--bg-light-blue);
   border-radius: var(--card-border-rad) var(--card-border-rad) 0 0;
 
-  @media (min-width: 768px) and (max-width: 1439px) {
+  @media (min-width: 768px) and (max-width: 1280px) {
     display: flex;
     border-radius: var(--card-border-rad);
   }
