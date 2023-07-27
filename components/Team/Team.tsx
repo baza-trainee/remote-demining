@@ -1,8 +1,10 @@
 "use client";
+import teamBg from "@/public/images/team/teamBackground.png";
+
 import SectionContainer from "../SectionContainer/SectionContainer";
 import Slider from "../Slider/Slider";
+
 import { cardsData } from "./cardsData";
-import teamBg from "@/public/images/team/teamBackground.png";
 import useGetResponsiveObj from "./useGetResponsiveObj";
 
 const Team: React.FC = () => {
