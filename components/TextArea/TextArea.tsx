@@ -1,4 +1,4 @@
-import { ComponentProps, FC, forwardRef } from "react";
+import { ComponentProps, forwardRef } from "react";
 
 import styles from "./TextArea.module.css";
 
