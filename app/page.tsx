@@ -1,6 +1,7 @@
 import AboutSection from "@/components/AboutSection/AboutSection";
+import Contact from "@/components/Contact/Contact";
+import NewsSection from "@/components/NewsSection/NewsSection";
 import Projects from "@/components/Projects/Projects";
-import SocratChallenges from "@/components/SocratChallenges/SocratChallenges";
 import Tasks from "@/components/Tasks/Tasks";
 
 export default function Home() {
@@ -9,7 +10,8 @@ export default function Home() {
       <AboutSection />
       <Tasks />
       <Projects />
-      <SocratChallenges />
+      <NewsSection />
+      <Contact />
     </main>
   );
 }
