@@ -1,0 +1,44 @@
+.content {
+  height: 335px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  overflow: hidden;
+}
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.text {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  overflow-y: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  white-space: pre-wrap;
+}
+.date {
+  color: var(--grey, #ababab);
+  font-family: Open Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-top: 16px;
+}
+
+.date::before {
+  content: "";
+  display: block;
+  background: #ababab;
+  width: 100%;
+  min-width: 280px;
+  height: 1px;
+}
