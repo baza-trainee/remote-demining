@@ -1,9 +1,9 @@
-import whoWeAre2S from "@/public/images/about/who-we-are-small-2.jpg";
-import whoWeAre2M from "@/public/images/about/who-we-are-medium-2.jpg";
 import whoWeAre2L from "@/public/images/about/who-we-are-large-2.jpg";
-import whoWeAre1S from "@/public/images/about/who-we-are-small-2.jpg";
-import whoWeAre1M from "@/public/images/about/who-we-are-medium-2.jpg";
 import whoWeAre1L from "@/public/images/about/who-we-are-large-2.jpg";
+import whoWeAre2M from "@/public/images/about/who-we-are-medium-2.jpg";
+import whoWeAre1M from "@/public/images/about/who-we-are-medium-2.jpg";
+import whoWeAre2S from "@/public/images/about/who-we-are-small-2.jpg";
+import whoWeAre1S from "@/public/images/about/who-we-are-small-2.jpg";
 interface About {
   id: number;
   img: {

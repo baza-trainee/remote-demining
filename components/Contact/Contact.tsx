@@ -1,9 +1,11 @@
-import { FC } from 'react';
-import Container from '../Container/Container';
-import ContactForm from '../ContactForm/ContactForm';
-import styles from './Contact.module.css';
-import SectionContainer from '../SectionContainer/SectionContainer';
-import bgContainer from '@/public/images/contact/bg.jpg';
+import { FC } from "react";
+
+import bgContainer from "@/public/images/contact/bg.jpg";
+
+import ContactForm from "../ContactForm/ContactForm";
+import SectionContainer from "../SectionContainer/SectionContainer";
+
+import styles from "./Contact.module.css";
 
 interface ContactProps {}
 

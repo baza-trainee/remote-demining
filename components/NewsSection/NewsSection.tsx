@@ -1,8 +1,11 @@
 "use client";
-import { useMyMedia } from "@/hooks/useMedia";
 import { useEffect, useState } from "react";
+
+import { useMyMedia } from "@/hooks/useMedia";
+
 import SectionContainer from "../SectionContainer/SectionContainer";
 import Slider from "../Slider/Slider";
+
 import NewsItem from "./NewsItem/NewsItem";
 import newsData, { News } from "./newsData";
 
@@ -23,7 +26,7 @@ const NewsSection: React.FC = () => {
       <Slider
         slidesPerPage={perPage}
         slides={newsData.map((elem: News) => (
-          <NewsItem {...elem} />
+          <NewsItem key={elem.id} {...elem} />
         ))}
         dots
         infinite
