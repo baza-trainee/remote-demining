@@ -1,3 +1,4 @@
+// eslint-disable-next-line simple-import-sort/imports
 import Card from "@/components/Card/Card";
 import CustomLink from "@/components/CustomLink/CustomLink";
 import styles from "./NewsItem.module.css";
