@@ -1,6 +1,7 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -28,6 +29,15 @@ const validationScheme = yup.object({
 });
 
 const ContactForm: FC = ({}) => {
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (captchaValue) {
+      handleSubmit(sendEmail)();
+    }
+  }, [captchaValue]);
+
   const {
     register,
     handleSubmit,
@@ -43,20 +53,32 @@ const ContactForm: FC = ({}) => {
     resolver: yupResolver(validationScheme),
   });
 
-  const sendEmail = () => {
-    try {
-      emailjs.sendForm(
-        'service_7ll2pvb',
-        'template_2j1mjx4',
-        '#contact-form',
-        'vpKbRCkkOvFZKJUoA'
-      );
-      reset();
-    } catch (error) {
-      console.log(error);
-    }
+  const handleCaptchaChange = (value: string | null) => {
+    setCaptchaValue(value);
   };
 
+  const sendEmail = async (formData: ContactFormValues) => {
+    if (captchaValue) {
+      const params = {
+        ...formData,
+        'g-recaptcha-response': captchaValue,
+      };
+
+      try {
+        await emailjs.send(
+          process.env.SERVICE_ID!,
+          process.env.TEMPLATE_ID!,
+          params,
+          process.env.PUBLIC_KEY!
+        );
+        reset();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      console.log('ReCAPTCHA validation failed.');
+    }
+  };
   return (
     <form
       id="contact-form"
@@ -87,7 +109,19 @@ const ContactForm: FC = ({}) => {
         label="Ваше ім’я"
       />
       <TextArea {...register('message')} label="Повідомлення" size="full" />
-      <Button type="submit" disabled={isSubmitting} formBtn isFullWidth>
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={`${process.env.RECAPTCHA_SITE}`}
+        size="invisible"
+        onChange={handleCaptchaChange}
+      />
+      <Button
+        onClick={() => recaptchaRef.current?.execute()}
+        type="submit"
+        disabled={isSubmitting}
+        formBtn
+        isFullWidth
+      >
         Надіслати
       </Button>
     </form>
