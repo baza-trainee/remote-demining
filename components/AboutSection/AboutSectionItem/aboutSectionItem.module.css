@@ -20,8 +20,16 @@
     letter-spacing: 0em;
     color: var(--about-section-text-color); 
 }
+.image {
+    border-radius: var(--card-border-rad);
+}
+@media (max-width: 340px) {
+    .image {
+        width: 100%;
+    }
+}
 
-@media (min-width: 360px) and (max-width: 767px) {
+@media (max-width: 767px) {
     .contentWrapper {
         flex-direction: column;
         gap: 40px;
