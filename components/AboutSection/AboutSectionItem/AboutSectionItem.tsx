@@ -17,7 +17,7 @@ const AboutSectionItem: React.FC<AboutSectionItemProps> = ({ img, text }) => {
       <div className={css.contentWrapper}>
         <picture>
           <source media="(max-width: 767px)" srcSet={img.small} />
-          <source media="(max-width: 1439px)" srcSet={img.medium} />
+          <source media="(max-width: 1279px)" srcSet={img.medium} />
           <img src={img.large} alt="About Us" className={css.image} />
         </picture>
         <div className={css.imgDescription}>
