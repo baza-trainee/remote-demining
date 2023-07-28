@@ -87,11 +87,10 @@
 }
 
 /* Mobile styles (360px to 767px) */
-@media (min-width: 360px) and (max-width: 767px) {
+@media (max-width: 767px) {
   .container {
     padding: var(--section-padding-main-mobile);
-    min-width: 360px;
-    max-width: 480px;
+    min-width: 320px;
   }
 
   .container.hasBgImg {
