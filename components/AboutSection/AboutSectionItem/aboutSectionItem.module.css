@@ -23,7 +23,7 @@
 .image {
     border-radius: var(--card-border-rad);
 }
-@media (max-width: 340px) {
+@media (max-width: 375px) {
     .image {
         width: 100%;
     }
