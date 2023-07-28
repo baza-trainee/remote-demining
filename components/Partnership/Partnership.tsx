@@ -26,13 +26,9 @@ const Partnership = () => {
       <Slider
         slidesPerPage={perPage}
         slides={partnersData.map((el: Partner) => (
-          <Image
-            key={el.id}
-            src={el.img}
-            alt="partner"
-            width={213}
-            height={140}
-          />
+          <div key={el.id}>
+            <Image src={el.img} alt="partner" width={213} height={140} />
+          </div>
         ))}
         infinite
       />
