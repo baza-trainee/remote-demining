@@ -29,7 +29,7 @@ const TextCard: React.FC<TextCardProps> = ({
 
   return (
     <div className={styles.body} style={bodyStyle}>
-      {title ? <h3 className={styles.title}>{title}</h3> : ""}
+      {title && <h3 className={styles.title}>{title}</h3>}
       <p className={styles.text}>{text}</p>
     </div>
   );
