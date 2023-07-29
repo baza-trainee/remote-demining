@@ -45,7 +45,7 @@
     position: relative;
     margin: 0 0 20px 0;
     top: 0;
-    border: 1px solid var(--lang-menu-bg-color);
+    border: 1px solid var(--lang-menu-border-color);
   }
 }
 .lang_option {
@@ -55,6 +55,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--lang-menu-bg-color);
   transition: background var(--transition);
 }
 .lang_option:first-child {
@@ -62,7 +63,7 @@
   border-top-left-radius: 8px;
 }
 .lang_option:not(:first-child) {
-  border-top: 1px solid var(--lang-menu-bg-color);
+  border-top: 1px solid var(--lang-menu-border-color);
 }
 .lang_option:last-child {
   border-bottom-left-radius: 8px;
@@ -70,10 +71,10 @@
 }
 .lang_option:focus,
 .lang_option:hover {
-  background-color: var(--lang-menu-bg-color);
+  background-color: var(--lang-menu-hover-color);
 }
 .selected {
-  background-color: var(--lang-menu-bg-color);
+  background-color: var(--lang-menu-hover-color);
 }
 .btn_lang_menu::after {
   height: 1.25rem;
