@@ -4,7 +4,7 @@ import TextCard from "../TextCard/TextCard";
 import {
   SocratChallengesData,
   socratChallengesData,
-} from "./SocratChallengesData";
+} from "./socratChallengesData";
 
 import styles from "./SocratChallenges.module.css";
 
