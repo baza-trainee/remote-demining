@@ -8,9 +8,9 @@
     min-height: 251px;
     max-width: 522px;
   }
-  @media screen and (max-width: 400px) {  
+  @media screen and (max-width: 425px) {  
     min-height: 231px;
-    min-width: 328px;
+    padding: 0;
   }
 }
 .title {
@@ -18,7 +18,13 @@
   font-size: 36px;
   font-weight: 700;
   padding-top: 24px;
+  @media screen and (max-width: 425px) { 
+    font-size: 32px;
+  }
 }
 .text {
   padding: 24px;
+  @media screen and (max-width: 425px) {  
+    padding: 24px 22px;
+  }
 }
