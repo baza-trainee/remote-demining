@@ -1,0 +1,25 @@
+.sectionWrapper {
+  background-color: var(--bg-primary-color);
+  padding-top: 72px;
+  padding-bottom: 72px;
+
+  @media (min-width: 768px) {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  @media (min-width: 1280px) {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 1280px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
