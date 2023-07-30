@@ -30,7 +30,7 @@ const Partnership = () => {
             <Image src={el.img} alt="partner" width={213} height={140} />
           </div>
         ))}
-        infinite
+        infinite={false}
       />
     </SectionContainer>
   );

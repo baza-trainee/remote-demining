@@ -1,4 +1,4 @@
-import partner from "@/public/images/partnership/img.jpg";
+import partner from "@/public/images/partnership/img2.jpg";
 
 export interface Partner {
   id: number;
@@ -28,6 +28,18 @@ const partnersData: Partner[] = [
   },
   {
     id: 6,
+    img: partner.src,
+  },
+  {
+    id: 7,
+    img: partner.src,
+  },
+  {
+    id: 8,
+    img: partner.src,
+  },
+  {
+    id: 9,
     img: partner.src,
   },
 ];
