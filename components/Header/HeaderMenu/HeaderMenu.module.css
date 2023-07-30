@@ -8,7 +8,6 @@
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  list-style-type: none;
   gap: 10px;
   padding-left: 20px;
   width: max-content;
@@ -36,16 +35,13 @@
 
 .menu_wrapper.openMenu .menu_item {
   width: 100%;
-  height: 66px;
+  padding: 22px 0 22px;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 490px) {
-    height: 65px;
-  }
-  border-bottom: 1px solid #E7E6F2;
+  border-bottom: 1px solid var(--burger-menu-border-color);
 }
 .menu_wrapper.openMenu .menu_item:hover,
 .menu_wrapper.openMenu .menu_item:focus {
-  background-color: #C6DAFC;
+  background-color: var(--burger-menu-hover-color);
 }

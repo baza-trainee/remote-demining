@@ -4,11 +4,11 @@
   justify-content: space-between;
   align-items: center;
   right: 0;
-  z-index: 5;
+  z-index: 100;
   position: absolute;
   width: 360px;
   min-height: 489px;
-  background-color: #fff;
+  background-color: var(--bg-white-color);
   @media screen and (max-width: 360px) {
     width: 100%;
   }
