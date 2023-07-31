@@ -3,6 +3,9 @@ import { Open_Sans } from "next/font/google";
 
 import Header from "@/components/Header/Header";
 
+import Footer from "@/components/Footer/Footer";
+
+
 import "./globals.css";
 import "./normalize.css";
 import "slick-carousel/slick/slick.css";
@@ -25,6 +28,7 @@ export default function RootLayout({
       <body className={open_sans.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
