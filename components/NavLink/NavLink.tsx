@@ -19,11 +19,9 @@ const NavLink: React.FC<NavLinkPropsType> = ({
   isFullWidth,
   isMoreInfo,
 }: NavLinkPropsType) => {
-  const styledLink = `${styles.link} ${isActive ? styles.active : ""} ${
-    isButton ? styles.link_btn : ""
-  } ${isFullWidth ? styles.fullWidth : ""} ${
-    isMoreInfo ? styles.moreInfo_btn : ""
-  }`;
+  const styledLink = `${styles.link} ${isActive && styles.active} ${
+    isButton && styles.link_btn
+  } ${isFullWidth && styles.fullWidth} ${isMoreInfo && styles.moreInfo_btn}`;
 
   return (
     <Link className={styledLink} href={href}>

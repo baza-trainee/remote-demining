@@ -24,8 +24,8 @@
   }
 }
 
-.button:hover,
-.button:focus {
+.button:not(:disabled):hover,
+.button:not(:disabled):focus {
   background-color: var(--button-primary-hover-color);
   color: var(--button-primary-bg-color);
   outline: 2px solid var(--button-primary-bg-color);
@@ -38,7 +38,6 @@
 
 /* Styles for disabled button */
 .button:disabled {
-  border-radius: var(--button-primary-border-rad);
-  background-color: #ccc;
+  background-color: var(--button-disabled-bg-color);
   cursor: not-allowed;
 }
