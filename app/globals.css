@@ -2,6 +2,7 @@
   /* BG */
   --bg-primary-color: #f5f5f5;
   --bg-light-blue: #ebf2ff;
+  --bg-white-color: #fff;
 
   /* Buttons */
   --button-primary-color: #f5f5f5;
@@ -41,6 +42,7 @@
   --card-secondary-bg-color: #f5f5f5;
   --card-img-height-mobile: 180px;
   --card-img-height: 240px;
+  --card-img-height-mobile: 180px;
   --card-border-rad: 24px;
 
   --card-list-gap-mobile: 40px;
@@ -96,6 +98,14 @@
   --link-primary-hover-color: #c6dafc;
   --link-primary-padding: 12px 10px;
   --link-primary-border-rad: 5px;
+  /* LangMenu */
+  --lang-menu-bg-color: #fff;
+  --lang-menu-border-color: #e3e3e3;
+  --lang-menu-hover-color: #e3e3e3;
+
+  /* Burger Menu */
+  --burger-menu-border-color: #e7e6f2;
+  --burger-menu-hover-color: #c6dafc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -124,4 +134,10 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
+}
+
+/* hide the badge of recaptcha */
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

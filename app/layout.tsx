@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
 
+import Header from "@/components/Header/Header";
+
+import Footer from "@/components/Footer/Footer";
+
+
 import "./globals.css";
 import "./normalize.css";
 import "slick-carousel/slick/slick.css";
@@ -20,7 +25,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={open_sans.className}>{children}</body>
+      <body className={open_sans.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
