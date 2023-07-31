@@ -1,0 +1,25 @@
+.burger_menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  right: 0;
+  z-index: 100;
+  position: absolute;
+  width: 360px;
+  min-height: 489px;
+  background-color: var(--bg-white-color);
+  @media screen and (max-width: 360px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 990px) {
+    display: none;
+  }
+}
+.sub_menu {
+  width: 100%;
+}
+.burger_btn_container {
+  width: 100%;
+  padding: 75px 16px 32px 16px;
+}

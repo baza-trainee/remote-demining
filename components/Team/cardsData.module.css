@@ -8,7 +8,8 @@
   gap: 48px;
 }
 
-.card_contacts a {
+.card_contacts span {
+  display: block;
   font-weight: 400;
 }
 .card_contacts > *:last-child{

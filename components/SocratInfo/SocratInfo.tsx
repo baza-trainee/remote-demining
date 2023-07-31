@@ -6,9 +6,9 @@ import {
   socratChallengesData,
 } from "./socratInfoData";
 
-import styles from "./SocratChallenges.module.css";
+import styles from "./SocratInfo.module.css";
 
-const SocratChallenges: React.FC = () => {
+const SocratInfo: React.FC = () => {
   return (
     <SectionContainer>
       <div className={styles.container}>
@@ -20,4 +20,4 @@ const SocratChallenges: React.FC = () => {
   );
 };
 
-export default SocratChallenges;
+export default SocratInfo;

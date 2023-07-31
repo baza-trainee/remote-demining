@@ -2,6 +2,7 @@
   /* BG */
   --bg-primary-color: #f5f5f5;
   --bg-light-blue: #ebf2ff;
+  --bg-white-color: #fff;
 
   /* Buttons */
   --button-primary-color: #151515;
@@ -35,7 +36,7 @@
   --textarea-height: 18.75rem;
 
   /* Card */
-
+  
   --card-primary-bg-color: #ebf2ff;
   --card-secondary-bg-color: #f5f5f5;
   --card-img-height-mobile: 180px;
@@ -89,6 +90,15 @@
   --slider-dots-primary: #f5f5f5;
   --slider-dot-size: 14px;
   --slider-dots-spacing: 8px;
+
+  /* LangMenu */
+  --lang-menu-bg-color: #fff;
+  --lang-menu-border-color: #E3E3E3;
+  --lang-menu-hover-color: #E3E3E3;
+
+  /* Burger Menu */
+  --burger-menu-border-color: #E7E6F2;
+  --burger-menu-hover-color: #C6DAFC;
 }
 
 @media (prefers-color-scheme: dark) {
