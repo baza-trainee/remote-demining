@@ -11,8 +11,8 @@ interface HeaderMenuProps {
 }
 
 const HeaderMenu: React.FC<HeaderMenuProps> = ({
-  isOpenMenu,
-  isMobile,
+  isOpenMenu = false,
+  isMobile = false,
   toggleMenu,
 }: HeaderMenuProps) => {
   const menuWrapperStyle = `${styles.menu_wrapper} ${
@@ -20,7 +20,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
   } ${isMobile ? styles.mobile : ""}`;
  
 
-  const mobileLink: MouseEventHandler<HTMLLIElement> = (): void => {
+  const handleMenuItemClick: MouseEventHandler<HTMLLIElement> = (): void => {
     if (isMobile) {
       toggleMenu && toggleMenu();
     }
@@ -29,16 +29,16 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
   return (
     <nav className={menuWrapperStyle}>
       <ul className={styles.menu_list}>
-        <li className={styles.menu_item} onClick={mobileLink}>
+        <li className={styles.menu_item} onClick={handleMenuItemClick}>
           <NavLink href="/about">Про нас</NavLink>
         </li>
-        <li className={styles.menu_item} onClick={mobileLink}>
+        <li className={styles.menu_item} onClick={handleMenuItemClick}>
           <NavLink href="#">Наукова діяльність</NavLink>
         </li>
-        <li className={styles.menu_item} onClick={mobileLink}>
+        <li className={styles.menu_item} onClick={handleMenuItemClick}>
           <NavLink href="/socrat">Дистанційне розмінування</NavLink>
         </li>
-        <li className={styles.menu_item} onClick={mobileLink}>
+        <li className={styles.menu_item} onClick={handleMenuItemClick}>
           <NavLink href="/contacts">Контакти</NavLink>
         </li>
       </ul>

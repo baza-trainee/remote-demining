@@ -22,21 +22,19 @@
 .logo::before {
   content: "НАН України";
 }
+.sub_logo::before {
+  content: "ДП НДЦ “Георесурс“";
+}
+
 @media screen and (min-width: 1200px) {
   .sub_logo::before {
     content: "НДП НДЦ проблем надрокористування “Георесурс“";
   }
 }
-@media screen and (min-width: 361px) and (max-width: 1199px) {
-  .sub_logo::before {
-    content: "ДП НДЦ “Георесурс“";
-  }
-}
+
 @media screen and (max-width: 360px)  {
   .logo::before {
     content: "НAHУ";
   }
-  .sub_logo::before {
-    content: "ДП НДЦ “Георесурс“";
-  }
+
 }

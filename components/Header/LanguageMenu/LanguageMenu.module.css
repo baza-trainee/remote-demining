@@ -49,6 +49,7 @@
   }
 }
 .lang_option {
+  z-index: 150;
   cursor: pointer;
   width: 83px;
   height: 44px;
