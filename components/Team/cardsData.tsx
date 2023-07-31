@@ -1,5 +1,4 @@
 import Card from "../Card/Card";
-import NavLink from "../NavLink/NavLink";
 
 import { teamData } from "./teamData";
 
@@ -17,8 +16,8 @@ export const cardsData = teamData.map(
                 <p>{projectPosition}</p>
               </div>
               <div className={styles.card_contacts}>
-                <NavLink href={`tel: ${phone}`}>{`Телефон: ${phone}`}</NavLink>
-                <NavLink href={`mailto: ${email}`}>{`Пошта: ${email}`}</NavLink>
+                <span>{`Телефон: ${phone}`}</span>
+                <span>{`Пошта: ${email}`}</span>
               </div>
             </div>
           }
