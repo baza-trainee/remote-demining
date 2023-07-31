@@ -1,0 +1,31 @@
+.body {
+  border-radius: 16px;
+  background-color: #fff;
+  padding: 0 12px;
+  min-width: 361px;
+  min-height: 251px;
+  @media screen and (max-width: 1100px) {
+    min-height: 251px;
+    max-width: 522px;
+  }
+  @media screen and (max-width: 425px) {
+    min-width: 100%;  
+    min-height: 231px;
+    padding: 0;
+  }
+}
+.title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  padding-top: 24px;
+  @media screen and (max-width: 425px) { 
+    font-size: 32px;
+  }
+}
+.text {
+  padding: 24px;
+  @media screen and (max-width: 425px) {  
+    padding: 24px 22px;
+  }
+}
