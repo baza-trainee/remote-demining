@@ -7,6 +7,8 @@ enum InputSize {
   full = "full",
 }
 
+type BackgroundColors = "primary" | "secondary";
+
 interface InputProps {
   placeholder?: ComponentProps<"textarea">["placeholder"];
   name?: ComponentProps<"textarea">["name"];
@@ -19,10 +21,21 @@ interface InputProps {
   label?: string;
   height?: number;
   width?: number;
+  backgroundCl?: BackgroundColors;
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
-  ({ size = InputSize.base, label, width, height, ...InputProps }, ref) => {
+  (
+    {
+      size = InputSize.full,
+      label,
+      width,
+      height,
+      backgroundCl = "primary",
+      ...InputProps
+    },
+    ref
+  ) => {
     const InputStyle = {
       height: height ? `${height}px` : undefined,
       width: width ? `${width}px` : undefined,

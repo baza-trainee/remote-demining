@@ -1,3 +1,15 @@
+.wrapper {
+  width: 100%;
+
+  @media (min-width: 1280px) {
+    max-width: 593px;
+  }
+
+  @media (min-width: 1439px) {
+    max-width: 653px;
+  }
+}
+
 .heading {
   text-align: center;
   font-size: 24px;
@@ -13,12 +25,20 @@
 .text {
   text-align: center;
   line-height: 1.5;
+  margin-bottom: 48px;
 }
 
 .form {
-  padding: 16px 16px 16px 0;
+  padding: 16px 16px 2px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   @media (min-width: 768px) {
-    padding: 40px 40px 40px 0;
+    padding: 40px 66px 2px 66px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 40px 40px 2px 40px;
   }
 }

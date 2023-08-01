@@ -1,9 +1,8 @@
 /* General styles */
 
 .input {
-  border-color: var(--input-border-color);
+  border: none;
   border-radius: var(--input-border-rad);
-  background-color: var(--input-bg-color);
   height: var(--input-height);
   padding-left: 0.5rem;
 }
@@ -18,20 +17,20 @@
   width: 100%;
 }
 
+.primary {
+  background-color: var(--input-primary-bg-color);
+}
+
+.secondary {
+  background-color: var(--input-secondary-bg-color);
+}
+
 .label {
-  font-family: 'Open Sans';
   font-size: 1.25rem;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin-bottom: 0.5rem;
   display: block;
-
-}
-
-.error {
-  padding-top: 0.88rem;
-  color: var(--error-color);
 }
 
 .error {

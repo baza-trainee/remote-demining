@@ -10,7 +10,6 @@
 
 .label {
   font-size: 1.25rem;
-  font-style: normal;
   font-weight: 600;
   line-height: normal;
   margin-bottom: 0.5rem;
@@ -20,10 +19,17 @@
 /* General styles */
 
 .textarea {
-  border-color: var(--input-border-color);
+  border: none;
   border-radius: var(--input-border-rad);
-  background-color: var(--input-bg-color);
-  height: var(--input-height);
-  height: var(--textarea-height);
+  height: var(--textarea-primary-height);
   padding: 1rem 0.5rem;
+  resize: none;
+}
+
+.primary {
+  background-color: var(--input-primary-bg-color);
+}
+
+.secondary {
+  background-color: var(--input-secondary-bg-color);
 }

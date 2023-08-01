@@ -25,14 +25,15 @@
 
   /* Inputs */
 
-  --input-border-color: #ababab;
   --input-border-rad: 5px;
-  --input-bg-color: #fefefe;
-  --input-width: 592px;
+  --input-primary-bg-color: #f5f5f5;
+  --input-secondary-bg-color: #fff;
+  --input-width: 274px;
   --input-height: 64px;
 
   /* Textarea */
-  --textarea-height: 18.75rem;
+  --textarea-primary-height: 18.75rem;
+  --textarea-secondary-height: 9.125rem;
 
   /* Card */
 
@@ -83,7 +84,7 @@
   --transition: 300ms ease-out;
 
   /* Error list */
-  --error-color: #ef4444;
+  --error-color: #dc0c31;
   /* Slider */
 
   --slider-dots-primary: #f5f5f5;
