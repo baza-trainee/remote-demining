@@ -8,3 +8,4 @@ export default function Home() {
     push("/client");
   }, []);
   return <p></p>;
+}
