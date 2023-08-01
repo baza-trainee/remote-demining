@@ -1,4 +1,4 @@
-import Button from "@/components/Button/Button";
+import NavLink from "@/components/NavLink/NavLink";
 
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import LanguageMenu from "../LanguageMenu/LanguageMenu";
@@ -18,7 +18,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpenMenu, toggleMenu }) => {
         <LanguageMenu isOpenMenu={isOpenMenu} isMobile />
       </div>
       <div className={styles.burger_btn_container}>
-        <Button isFullWidth>Підтримати</Button>
+        <NavLink href={'#'} isMoreInfo isFullWidth>Підтримати</NavLink>
       </div>
     </div>
   );
