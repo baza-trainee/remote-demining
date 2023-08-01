@@ -1,3 +1,4 @@
+import HeroSection from "@/components/HeroSection/HeroSection";
 import AboutSection from "@/components/AboutSection/AboutSection";
 import Contact from "@/components/Contact/Contact";
 import NewsSection from "@/components/NewsSection/NewsSection";
@@ -9,6 +10,7 @@ import Team from "@/components/Team/Team";
 export default function Home() {
   return (
     <main>
+      <HeroSection />
       <AboutSection />
       <Tasks />
       <Projects />
