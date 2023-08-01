@@ -1,7 +1,6 @@
 .card {
   border-radius: var(--card-border-rad);
   overflow: hidden;
-  color: var(--button-primary-color);
 }
 
 .image {

@@ -29,7 +29,7 @@ const Header = () => {
           <HeaderMenu />
           <div className={styles.box}>
             <LanguageMenu />
-            <Button donateBtn>Підтримати</Button>
+            <Button>Підтримати</Button>
             <button className={styles.btn_menu} onClick={toggleMenu}>
               <Image
                 className={styles.burger_icon}
