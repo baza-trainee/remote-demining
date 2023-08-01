@@ -1,8 +1,8 @@
 .wrapper {
   width: 100%;
 
-  @media (min-width: 1280px) {
-    max-width: 593px;
+  @media (min-width: 768px) and (max-width: 1280px) {
+    max-width: 704px;
   }
 
   @media (min-width: 1439px) {
@@ -41,4 +41,9 @@
   @media (min-width: 1280px) {
     padding: 40px 40px 2px 40px;
   }
+}
+
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
 }
