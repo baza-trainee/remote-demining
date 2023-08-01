@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--activity-list-item-gap-mobile);
+  margin-top: var(--activity-list-top-margin);
+}
+
+@media screen and (min-width: 361px) {
+  .list {
+    row-gap: var(--activity-list-item-gap-mobile);
+  }
+
+  .list li:nth-child(2n) div:first-child {
+    grid-column: 2;
+  }
+
+  .list li:nth-child(2n) div:nth-child(2) {
+    grid-row: 1;
+  }
+}

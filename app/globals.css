@@ -90,6 +90,15 @@
   --slider-dot-size: 14px;
   --slider-dots-spacing: 8px;
 
+  /* Activity */
+  --activity-list-top-margin: 80px;
+  --activity-list-item-gap: 24px;
+  --activity-list-item-gap-mobile: 40px;
+  --activity-list-image-height: 560px;
+  --activity-list-image-height-tablet: 289px;
+  --activity-list-image-height-mobile: 270px;
+  --activity-list-image-border-rad: 24px;
+
   /* LangMenu */
   --lang-menu-bg-color: #fff;
   --lang-menu-border-color: #e3e3e3;
