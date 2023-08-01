@@ -1,5 +1,10 @@
-// import { redirect } from "next/navigation";
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default function Home() {
-  // redirect("/client");
-  return <main>main</main>;
-}
+  const { push } = useRouter();
+
+  useEffect(() => {
+    push("/client");
+  }, []);
+  return <p></p>;
