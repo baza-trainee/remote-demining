@@ -1,7 +1,8 @@
+import SectionContainer from "@/components/SectionContainer/SectionContainer"
 
 const page = () => {
   return (
-    <h1>Admin Panel</h1>
+    <SectionContainer title="Admin Panel" />
   )
 }
 
