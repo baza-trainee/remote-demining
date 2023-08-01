@@ -1,0 +1,34 @@
+.header {
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: inherit;
+  background-color: var(--bg-white-color);
+}
+.box {
+  display: flex;
+  height: 100px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn_menu {
+  display: none;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 20px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 360px) {
+  .btn_menu {
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 990px) {
+  .btn_menu {
+    display: block;
+  }
+}

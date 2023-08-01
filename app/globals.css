@@ -2,31 +2,32 @@
   /* BG */
   --bg-primary-color: #f5f5f5;
   --bg-light-blue: #ebf2ff;
+  --bg-white-color: #fff;
+
+  /* Text color*/
+
+  --main-text-color: #151515;
 
   /* Buttons */
-  --button-primary-color: #151515;
-  --button-primary-border-rad: 24px;
+  --button-primary-color: #f5f5f5;
+  --button-primary-bg-color: #4285f4;
+  --button-primary-hover-color: #c6dafc;
+  --button-disabled-bg-color: #e3e3e3;
+  --button-primary-border-rad: 5px;
   --button-primary-padding: 14px 24px;
-  --button-primary-mobile-padding: 14px 16px;
 
-  --button-donate-color: #151515;
-  --button-donate-border-rad: 24px;
-  --button-donate-bg-color: transparent;
-  --button-donate-hover-color: transparent;
-
-  --button-slider-border-rad: 48px;
-  --button-slider-color: linear-gradient(90deg, #baded3 0%, #abd1e7 100%);
-  --button-slider-hover-color: #151515;
+  /* Links */
+  --link-primary-color: #fff;
+  --link-primary-bg-color: #4285f4;
+  --link-primary-hover-color: #c6dafc;
+  --link-primary-padding: 12px 10px;
+  --link-primary-border-rad: 5px;
 
   --button-form-border-rad: 12px;
   --button-form-color: #151515;
   --button-form-hover-color: #f5f5f5;
   --button-form-width: 672px;
   --button-form-height: 75px;
-
-  --button-support-border-rad: 5px;
-  --button-support-bg-color: #4285f4;
-  --button-support-hover-color: #c6dafc;
   /* Inputs */
 
   --input-border-color: #ababab;
@@ -44,6 +45,7 @@
   --card-secondary-bg-color: #f5f5f5;
   --card-img-height-mobile: 180px;
   --card-img-height: 240px;
+  --card-img-height-mobile: 180px;
   --card-border-rad: 24px;
 
   --card-list-gap-mobile: 40px;
@@ -99,6 +101,15 @@
   --hero-height-mobile: 640px;
   --hero-horizontal-padding: clamp(16px, 12vw, 180px);
   --hero-text-color: #f5f5f5;
+
+  /* LangMenu */
+  --lang-menu-bg-color: #fff;
+  --lang-menu-border-color: #e3e3e3;
+  --lang-menu-hover-color: #e3e3e3;
+
+  /* Burger Menu */
+  --burger-menu-border-color: #e7e6f2;
+  --burger-menu-hover-color: #c6dafc;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -115,6 +126,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   background: var(--bg-primary-color);
+  color: var(--main-text-color);
 }
 
 ul {
@@ -127,4 +139,10 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
+}
+
+/* hide the badge of recaptcha */
+
+.grecaptcha-badge {
+  visibility: hidden;
 }

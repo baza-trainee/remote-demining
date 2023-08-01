@@ -7,6 +7,8 @@ interface NavLinkPropsType {
   href: string;
   isActive?: boolean;
   isButton?: boolean;
+  isFullWidth?: boolean;
+  isMoreInfo?: boolean;
 }
 
 const NavLink: React.FC<NavLinkPropsType> = ({
@@ -14,10 +16,12 @@ const NavLink: React.FC<NavLinkPropsType> = ({
   children,
   isActive,
   isButton,
+  isFullWidth,
+  isMoreInfo,
 }: NavLinkPropsType) => {
-  const styledLink = `${styles.link} ${isActive ? styles.active : ""} ${
-    isButton ? styles.link_btn : ""
-  }`;
+  const styledLink = `${styles.link} ${isActive && styles.active} ${
+    isButton && styles.link_btn
+  } ${isFullWidth && styles.fullWidth} ${isMoreInfo && styles.moreInfo_btn}`;
 
   return (
     <Link className={styledLink} href={href}>

@@ -7,10 +7,6 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
   width?: string;
   height?: string;
-  donateBtn?: boolean;
-  sliderBtn?: boolean;
-  formBtn?: boolean;
-  supportBtn?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -21,22 +17,9 @@ const Button: React.FC<Props> = ({
   onClick,
   width,
   height,
-  donateBtn,
-  sliderBtn,
-  formBtn,
-  supportBtn,
-  className,
   ...rest
 }) => {
-  const buttonClassName = classNames(
-    styles.button,
-    isFullWidth ? styles.fullWidth : null,
-    donateBtn ? styles.donateBtn : null,
-    sliderBtn ? styles.sliderBtn : null,
-    formBtn ? styles.formBtn : null,
-    supportBtn ? styles.supportBtn : null,
-    className
-  );
+  const buttonClassName = `${styles.button} ${isFullWidth && styles.fullWidth}`;
 
   return (
     <button
