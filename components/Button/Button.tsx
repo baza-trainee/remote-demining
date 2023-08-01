@@ -17,9 +17,15 @@ const Button: React.FC<Props> = ({
   onClick,
   width,
   height,
+  className,
   ...rest
 }) => {
-  const buttonClassName = `${styles.button} ${isFullWidth && styles.fullWidth}`;
+  // const buttonClassName = `${styles.button} ${isFullWidth && styles.fullWidth}`;
+  const buttonClassName = classNames(
+    styles.button,
+    isFullWidth && styles.fullWidth,
+    className
+  );
 
   return (
     <button

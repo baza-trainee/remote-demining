@@ -1,4 +1,3 @@
-import SectionContainer from "../SectionContainer/SectionContainer";
 import { heroData } from "./heroData";
 import Slider from "../Slider/Slider";
 import HeroSlide from "./HeroSlide/HeroSlide";

@@ -1,10 +1,15 @@
+"use client";
+
 import styles from "./HeroSlide.module.css";
 import { FC } from "react";
 import { HeroData } from "../heroData";
 import Image from "next/image";
 import Button from "@/components/Button/Button";
+import { useMyMedia } from "@/hooks/useMedia";
 
 const HeroSlide: FC<{ item: HeroData }> = ({ item }) => {
+  const { isMobile } = useMyMedia();
+
   return (
     <div>
       <div
@@ -15,12 +20,7 @@ const HeroSlide: FC<{ item: HeroData }> = ({ item }) => {
       >
         <h2 className={styles["title"]}>{item.title}</h2>
         <p className={styles["caption"]}>{item.caption}</p>
-        <Button
-          supportBtn
-          id="slideBtn"
-          className={styles.slideBtn}
-          isFullWidth
-        >
+        <Button className={styles.slideBtn} isFullWidth={!isMobile}>
           Підтримати
         </Button>
         {item.contentImage && (
