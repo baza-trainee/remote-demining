@@ -23,6 +23,11 @@
   --link-primary-padding: 12px 10px;
   --link-primary-border-rad: 5px;
 
+  --button-form-border-rad: 12px;
+  --button-form-color: #151515;
+  --button-form-hover-color: #f5f5f5;
+  --button-form-width: 672px;
+  --button-form-height: 75px;
   /* Inputs */
 
   --input-border-color: #ababab;
@@ -90,6 +95,13 @@
   --slider-dot-size: 14px;
   --slider-dots-spacing: 8px;
 
+  /* Hero */
+  --hero-height-desktop: 640px;
+  --hero-height-tablet: 450px;
+  --hero-height-mobile: 640px;
+  --hero-horizontal-padding: clamp(16px, 12vw, 180px);
+  --hero-text-color: #f5f5f5;
+  
   /* Activity */
   --activity-list-top-margin: 80px;
   --activity-list-item-gap: 24px;
