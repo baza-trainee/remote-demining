@@ -1,21 +1,12 @@
-import AboutSection from '@/components/AboutSection/AboutSection';
-import Contact from '@/components/Contact/Contact';
-import NewsSection from '@/components/NewsSection/NewsSection';
-import Partnership from '@/components/Partnership/Partnership';
-import Projects from '@/components/Projects/Projects';
-import Tasks from '@/components/Tasks/Tasks';
-import Team from '@/components/Team/Team';
+"use client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
-  return (
-    <main>
-      <AboutSection />
-      <Tasks />
-      <Projects />
-      <Team />
-      <NewsSection />
-      <Partnership />
-      <Contact />
-    </main>
-  );
+  const { push } = useRouter();
+
+  useEffect(() => {
+    push("/client");
+  }, []);
+  return <p></p>;
 }

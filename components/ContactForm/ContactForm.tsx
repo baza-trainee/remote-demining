@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import { FC, useEffect, useRef, useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { FC, useEffect, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-import Input from '@/components/Input/Input';
+import Input from "@/components/Input/Input";
 
-import Button from '../Button/Button';
-import TextArea from '../TextArea/TextArea';
+import Button from "../Button/Button";
+import TextArea from "../TextArea/TextArea";
 
-import styles from './ContactForm.module.css';
+import styles from "./ContactForm.module.css";
 
 interface ContactFormValues {
   email: string;
@@ -45,10 +45,10 @@ const ContactForm: FC = ({}) => {
     reset,
   } = useForm<ContactFormValues>({
     defaultValues: {
-      email: '',
-      name: '',
-      tel: '',
-      message: '',
+      email: "",
+      name: "",
+      tel: "",
+      message: "",
     },
     resolver: yupResolver(validationScheme),
   });
@@ -61,7 +61,7 @@ const ContactForm: FC = ({}) => {
     if (captchaValue) {
       const params = {
         ...formData,
-        'g-recaptcha-response': captchaValue,
+        "g-recaptcha-response": captchaValue,
       };
 
       try {
@@ -76,7 +76,7 @@ const ContactForm: FC = ({}) => {
         console.log(error);
       }
     } else {
-      console.log('ReCAPTCHA validation failed.');
+      console.log("ReCAPTCHA validation failed.");
     }
   };
   return (
@@ -92,23 +92,23 @@ const ContactForm: FC = ({}) => {
         label={`Ваш е-mail`}
         error={errors.email}
         errorMessage="Введіть e-mai"
-        {...register('email')}
+        {...register("email")}
       />
       <Input
         size="full"
         type="tel"
         label="Ваш номер телефону"
-        {...register('tel')}
+        {...register("tel")}
       />
       <Input
-        {...register('name')}
+        {...register("name")}
         size="full"
         type="name"
         error={errors.name}
         errorMessage="Введіть ім’я"
         label="Ваше ім’я"
       />
-      <TextArea {...register('message')} label="Повідомлення" size="full" />
+      <TextArea {...register("message")} label="Повідомлення" size="full" />
       <ReCAPTCHA
         ref={recaptchaRef}
         sitekey={`${process.env.RECAPTCHA_SITE}`}
@@ -119,7 +119,6 @@ const ContactForm: FC = ({}) => {
         onClick={() => recaptchaRef.current?.execute()}
         type="submit"
         disabled={isSubmitting}
-        formBtn
         isFullWidth
       >
         Надіслати

@@ -9,7 +9,7 @@ import './normalize.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const open_sans = Open_Sans({ subsets: ['latin'] });
+const open_sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: '',
@@ -23,11 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={open_sans.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body className={open_sans.className}>{children}</body>
     </html>
   );
 }

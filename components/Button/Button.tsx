@@ -1,4 +1,5 @@
 import styles from "./Button.module.css";
+import classNames from "classnames";
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isFullWidth?: boolean;
@@ -6,9 +7,7 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
   width?: string;
   height?: string;
-  donateBtn?: boolean;
-  sliderBtn?: boolean;
-  formBtn?: boolean;
+  outlined?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -19,16 +18,17 @@ const Button: React.FC<Props> = ({
   onClick,
   width,
   height,
-  donateBtn,
-  sliderBtn,
-  formBtn,
+  className,
+  outlined,
   ...rest
 }) => {
-  const buttonClassName = `${styles.button} ${
-    isFullWidth ? styles.fullWidth : ""
-  } ${donateBtn ? styles.donateBtn : ""} ${sliderBtn ? styles.sliderBtn : ""} ${
-    formBtn ? styles.formBtn : ""
-  }`;
+  // const buttonClassName = `${styles.button} ${isFullWidth && styles.fullWidth}`;
+  const buttonClassName = classNames(
+    styles.button,
+    isFullWidth && styles.fullWidth,
+    outlined && styles.outlined,
+    className
+  );
 
   return (
     <button

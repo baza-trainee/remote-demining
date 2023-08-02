@@ -1,4 +1,4 @@
-import CustomLink from "@/components/CustomLink/CustomLink";
+import NavLink from "@/components/NavLink/NavLink";
 
 import css from "./aboutSectionItem.module.css";
 
@@ -22,9 +22,9 @@ const AboutSectionItem: React.FC<AboutSectionItemProps> = ({ img, text }) => {
         </picture>
         <div className={css.imgDescription}>
           <p className={css.text}>{text}</p>
-          <CustomLink href="#" isFullWidth>
+          <NavLink href="#" isFullWidth isMoreInfo>
             Детальніше
-          </CustomLink>
+          </NavLink>
         </div>
       </div>
     </li>

@@ -1,6 +1,6 @@
 // eslint-disable-next-line simple-import-sort/imports
 import Card from "@/components/Card/Card";
-import CustomLink from "@/components/CustomLink/CustomLink";
+import NavLink from "@/components/NavLink/NavLink";
 import styles from "./NewsItem.module.css";
 
 interface NewsItem {
@@ -19,10 +19,10 @@ const NewsItem: React.FC<NewsItem> = ({ id, img, text, title }) => {
             <p className={styles.title}>{title}</p>
             <p className={styles.text}>{text}</p>
           </div>
-          <div>
-            <CustomLink href="/" isFullWidth>
+          <div className={styles.buttonWrapper}>
+            <NavLink href="/" isFullWidth isMoreInfo>
               Детальніше
-            </CustomLink>
+            </NavLink>
             <div className={styles.date}>
               <p>06 липня 2023</p>
             </div>

@@ -10,6 +10,10 @@
   align-items: center;
   margin: 0 10px;
 }
+.btn_lang_menu:focus,
+.btn_lang_menu:hover {
+  background-color: var(--button-form-hover-color);
+}
 .mobile {
   display: none;
 }
@@ -77,11 +81,15 @@
 .selected {
   background-color: var(--lang-menu-hover-color);
 }
-.btn_lang_menu::after {
-  height: 1.25rem;
-  padding-left: 5px;
-  content: url("/images/icons/header/drop_black_arrow.svg");
+.arrow {
+  width: 13px;
+  height: 8px;
+  margin-left: 5px;
 }
+.rotate {
+  transform: rotate(-180deg);
+  padding: 0 5px 2px 0;
+} 
 .show_menu {
   display: flex;
 }
