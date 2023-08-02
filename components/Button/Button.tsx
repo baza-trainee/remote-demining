@@ -7,6 +7,7 @@ export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
   width?: string;
   height?: string;
+  outlined?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -18,12 +19,14 @@ const Button: React.FC<Props> = ({
   width,
   height,
   className,
+  outlined,
   ...rest
 }) => {
   // const buttonClassName = `${styles.button} ${isFullWidth && styles.fullWidth}`;
   const buttonClassName = classNames(
     styles.button,
     isFullWidth && styles.fullWidth,
+    outlined && styles.outlined,
     className
   );
 
