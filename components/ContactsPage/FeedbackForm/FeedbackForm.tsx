@@ -6,7 +6,16 @@ import Button from "@/components/Button/Button";
 import Input from "@/components/Input/Input";
 import TextArea from "@/components/TextArea/TextArea";
 
+import validationSchema from "./validationSchema";
+
 import styles from "./FeedbackForm.module.css";
+
+interface FeedbackFormValues {
+  name: string;
+  phone: string;
+  email: string;
+  comment: string;
+}
 
 const FeedbackForm = () => {
   const { width } = useWindowSize();
