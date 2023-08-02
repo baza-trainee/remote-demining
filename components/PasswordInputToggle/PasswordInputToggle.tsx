@@ -25,10 +25,11 @@ const PasswordInputToggle = () => {
     <div
       className={styles.input__container}
     >
-      <label id="psw" className={styles.label__psw} htmlFor="psw">
+      <label className={styles.label__psw} htmlFor="psw">
         Пароль
       </label>
       <input
+        id="psw"
         className={styles.input}
         type={type}
         name="psw"

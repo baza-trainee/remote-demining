@@ -23,3 +23,7 @@
   bottom: 10px;
   right: 24px;
 }
+.error {
+  padding-top: 0.88rem;
+  color: var(--error-color);
+}
