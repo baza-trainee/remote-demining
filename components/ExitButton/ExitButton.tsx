@@ -11,10 +11,9 @@ const ExitButton: React.FC = () => {
       <IconButton
         icon={ExitIcon}
         label="Вихід"
-        width="120px"
-        height="48px"
+        padding="8px 12px"
         gap="16px"
-        color="#356CC6"
+        color= var(--exit-button-text-color)
       />
     </>
   );
