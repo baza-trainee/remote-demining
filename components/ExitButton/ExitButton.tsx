@@ -13,7 +13,7 @@ const ExitButton: React.FC = () => {
         label="Вихід"
         padding="8px 12px"
         gap="16px"
-        color= var(--exit-button-text-color)
+        color= 'var(--exit-button-text-color)'
       />
     </>
   );
