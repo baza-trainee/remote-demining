@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import btn_close_burger from "@/public/images/icons/header/btn_close_burger.svg";
 import burger_menu from "@/public/images/icons/header/burger_menu.svg";
 
-import Button from "../Button/Button";
 import Container from "../Container/Container";
+import NavLink from "../NavLink/NavLink";
 
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import HeaderMenu from "./HeaderMenu/HeaderMenu";
@@ -20,28 +21,31 @@ const Header = () => {
   const toggleMenu = () => {
     setIsOpenMenu(!isOpenMenu);
   };
+  const pathname = usePathname();
   const contentBox = `${styles.box} ${isOpenMenu ? styles.bottom_border : ""}`;
   return (
     <header className={styles.header}>
       <Container>
         <div className={contentBox}>
           <HeaderLogo />
-          <HeaderMenu />
+          {pathname !== "/admin" && <HeaderMenu />}
           <div className={styles.box}>
             <LanguageMenu />
-            <Button>Підтримати</Button>
-            <button className={styles.btn_menu} onClick={toggleMenu}>
-              <Image
-                className={styles.burger_icon}
-                src={isOpenMenu ? btn_close_burger : burger_menu}
-                alt="burger_icon"
-                width={27}
-                height={30}
-              ></Image>
-            </button>
+            <NavLink href={"#"} isButton>Підтримати</NavLink>
+            {pathname !== "/admin" && (
+              <button className={styles.btn_menu} onClick={toggleMenu}>
+                <Image
+                  className={styles.burger_icon}
+                  src={isOpenMenu ? btn_close_burger : burger_menu}
+                  alt="burger_icon"
+                  width={27}
+                  height={30}
+                ></Image>
+              </button>
+            )}
           </div>
         </div>
-        {isOpenMenu && (
+        {isOpenMenu && pathname !== "/admin" && (
           <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
         )}
       </Container>

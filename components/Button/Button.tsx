@@ -1,4 +1,5 @@
 import styles from "./Button.module.css";
+import classNames from "classnames";
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isFullWidth?: boolean;
@@ -16,9 +17,15 @@ const Button: React.FC<Props> = ({
   onClick,
   width,
   height,
+  className,
   ...rest
 }) => {
-  const buttonClassName = `${styles.button} ${isFullWidth && styles.fullWidth}`;
+  // const buttonClassName = `${styles.button} ${isFullWidth && styles.fullWidth}`;
+  const buttonClassName = classNames(
+    styles.button,
+    isFullWidth && styles.fullWidth,
+    className
+  );
 
   return (
     <button
