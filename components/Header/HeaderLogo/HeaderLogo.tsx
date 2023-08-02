@@ -1,11 +1,11 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import styles from "./HeaderLogo.module.css";
+import styles from './HeaderLogo.module.css';
 
 const HeaderLogo = () => {
   return (
     <div className={styles.logo_container}>
-      <Link href={"/"}>
+      <Link href={'/client'}>
         <h3 className={styles.logo}>
           <span className={styles.sub_logo}></span>
         </h3>

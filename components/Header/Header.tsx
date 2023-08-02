@@ -26,28 +26,30 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <Container>
-        <div className={contentBox}>
-          <HeaderLogo />
-          {pathname !== "/admin" && <HeaderMenu />}
-          <div className={styles.box}>
-            <LanguageMenu />
-            <NavLink href={"#"} isButton>Підтримати</NavLink>
-            {pathname !== "/admin" && (
-              <button className={styles.btn_menu} onClick={toggleMenu}>
-                <Image
-                  className={styles.burger_icon}
-                  src={isOpenMenu ? btn_close_burger : burger_menu}
-                  alt="burger_icon"
-                  width={27}
-                  height={30}
-                ></Image>
-              </button>
-            )}
+        <div className={styles.inner}>
+          <div className={contentBox}>
+            <HeaderLogo />
+            {pathname !== "/admin" && <HeaderMenu />}
+            <div className={styles.box}>
+              <LanguageMenu />
+              <NavLink href={"#"} isButton>Підтримати</NavLink>
+              {pathname !== "/admin" && (
+                <button className={styles.btn_menu} onClick={toggleMenu}>
+                  <Image
+                    className={styles.burger_icon}
+                    src={isOpenMenu ? btn_close_burger : burger_menu}
+                    alt="burger_icon"
+                    width={27}
+                    height={30}
+                  ></Image>
+                </button>
+              )}
+            </div>
           </div>
+          {isOpenMenu && pathname !== "/admin" && (
+            <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
+          )}
         </div>
-        {isOpenMenu && pathname !== "/admin" && (
-          <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
-        )}
       </Container>
     </header>
   );

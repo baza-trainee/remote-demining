@@ -1,6 +1,9 @@
-import { heroData } from "./heroData";
-import Slider from "../Slider/Slider";
-import HeroSlide from "./HeroSlide/HeroSlide";
+import Slider from '../Slider/Slider';
+
+import HeroSlide from './HeroSlide/HeroSlide';
+import { heroData } from './heroData';
+
+import styles from './HeroSection.module.css';
 
 const HeroSection = () => {
   const slides = heroData.map((item) => (
@@ -8,7 +11,7 @@ const HeroSection = () => {
   ));
 
   return (
-    <section id="hero">
+    <section id="hero" className={styles.hero}>
       <Slider slidesPerPage={1} slides={slides} dots />
     </section>
   );
