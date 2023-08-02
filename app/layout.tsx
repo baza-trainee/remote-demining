@@ -1,21 +1,19 @@
-import type { Metadata } from "next";
-import { Open_Sans } from "next/font/google";
+import type { Metadata } from 'next';
+import { Open_Sans } from 'next/font/google';
 
-import Header from "@/components/Header/Header";
+import Footer from '@/components/Footer/Footer';
+import Header from '@/components/Header/Header';
 
-import Footer from "@/components/Footer/Footer";
+import './globals.css';
+import './normalize.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-
-import "./globals.css";
-import "./normalize.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-const open_sans = Open_Sans({ subsets: ["latin"] });
+const open_sans = Open_Sans({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "",
-  description: "",
+  title: '',
+  description: '',
 };
 
 export default function RootLayout({
