@@ -18,7 +18,6 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
   const menuWrapperStyle = `${styles.menu_wrapper} ${
     isOpenMenu ? styles.openMenu : ""
   } ${isMobile ? styles.mobile : ""}`;
- 
 
   const handleMenuItemClick: MouseEventHandler<HTMLLIElement> = (): void => {
     if (isMobile) {
@@ -33,7 +32,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
           <NavLink href="/about">Про нас</NavLink>
         </li>
         <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="#">Наукова діяльність</NavLink>
+          <NavLink href="/activity">Наукова діяльність</NavLink>
         </li>
         <li className={styles.menu_item} onClick={handleMenuItemClick}>
           <NavLink href="/client/socrat">Дистанційне розмінування</NavLink>
