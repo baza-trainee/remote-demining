@@ -38,7 +38,7 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
           <NavLink href="/client/socrat">Дистанційне розмінування</NavLink>
         </li>
         <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="/contacts">Контакти</NavLink>
+          <NavLink href="/client/contacts">Контакти</NavLink>
         </li>
       </ul>
     </nav>
