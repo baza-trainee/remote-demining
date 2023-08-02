@@ -11,9 +11,8 @@ const AddButton: React.FC = () => {
       <IconButton
         icon={AddIcon} 
         label="Додати пункт"
-        width="197px"
-        height="48px"
-        color='#4285F4'
+        padding="10px 28px"
+        color=var(--add-button-text-color)
         border="1px solid #4285F4"
         gap="9px"
       />
