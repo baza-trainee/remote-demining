@@ -7,10 +7,10 @@
 }
 
 .text {
-  flex: 1 0 0;
   display: flex;
   flex-direction: column;
   row-gap: 16px;
+  padding: 24px;
 }
 
 .title {
@@ -19,12 +19,7 @@
   font-weight: 600;
 }
 
-.text {
-  padding: 24px;
-}
-
 .image {
-  flex: 1 0 0;
   border-radius: var(--activity-list-image-border-rad);
   overflow: hidden;
 }

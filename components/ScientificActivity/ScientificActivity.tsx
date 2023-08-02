@@ -1,13 +1,14 @@
 import styles from "./ScientificActivity.module.css";
 import ActivityListItem from "./ActivityListItem/ActivityListItem";
 import activityData from "./activityData";
+import { it } from "node:test";
 
 const ScientificActivity = () => {
   return (
     <ul className={styles.list}>
-      {activityData.map((item, index) => {
-        return <ActivityListItem data={item} key={index} />;
-      })}
+      {activityData.map((item) => (
+        <ActivityListItem data={item} key={item.id} />
+      ))}
     </ul>
   );
 };

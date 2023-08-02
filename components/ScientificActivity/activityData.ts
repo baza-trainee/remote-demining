@@ -6,6 +6,7 @@ import activity5 from "@/public/images/activity/activity-5.jpg";
 import { StaticImageData } from "next/image";
 
 export interface ActivityListItemData {
+  id: string;
   title: string;
   description: string;
   image: StaticImageData;
@@ -42,6 +43,9 @@ const activityData: ActivityListItemData[] = [
       "Колектив ДП НДЦПН«Георесурс»» НАН України разом з спеціалістами Національної академії внутрішніх справ, ДСНС, Держспецтрансслужби, Сил підтримки Збройних Сил України проводить тестування новітнього методу дистанційного розмінування територій.",
     image: activity5,
   },
-];
+].map((item) => ({
+  id: crypto.randomUUID(),
+  ...item,
+}));
 
 export default activityData;
