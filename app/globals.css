@@ -108,8 +108,9 @@
   --activity-list-item-gap-tablet: 40px;
   --activity-list-image-height: 560px;
   --activity-list-image-height-tablet: 289px;
-  --activity-list-image-height-mobile: 270px;
+  --activity-list-image-height-mobile: 279px;
   --activity-list-image-border-rad: 24px;
+  --activity-list-image-border-rad-mobile: 12px;
 
   /* LangMenu */
   --lang-menu-bg-color: #fff;
