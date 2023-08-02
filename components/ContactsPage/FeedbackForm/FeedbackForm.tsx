@@ -68,6 +68,7 @@ const FeedbackForm: FC = () => {
         {width >= 320 && width < 768 ? (
           <div>
             <Input
+              className={styles.fullPhoneInput}
               size="full"
               type="tel"
               label="Телефон*"

@@ -47,3 +47,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.fullPhoneInput {
+  margin-bottom: 24px;
+}

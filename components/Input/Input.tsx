@@ -24,6 +24,7 @@ interface InputProps {
   error?: FieldError | undefined;
   errorMessage?: string;
   backgroundCl?: BackgroundColors;
+  className?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -36,6 +37,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       error,
       errorMessage,
       backgroundCl = "primary",
+      className,
       ...inputProps
     },
     ref
@@ -52,7 +54,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           {...inputProps}
-          className={`${styles[size]} ${styles.input}`}
+          className={`${styles[size]} ${styles.input} ${className || ""}`}
           style={InputStyle}
         />
         {error && <p className={styles.error}>{errorMessage}</p>}
