@@ -114,6 +114,8 @@
   /* Icon Buttons */
   --icon-button-bg-color: #FFFFFF;
   --icon-button-border-rad: 5px;
+  --exit-button-text-color:#356CC6;
+  --add-button-text-color: #4285F4;
 }
 
 @media (prefers-color-scheme: dark) {
