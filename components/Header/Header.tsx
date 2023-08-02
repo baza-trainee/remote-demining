@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useToggle } from "usehooks-ts";
 
 import btn_close_burger from "@/public/images/icons/header/btn_close_burger.svg";
 import burger_menu from "@/public/images/icons/header/burger_menu.svg";
@@ -17,10 +17,11 @@ import MobileMenu from "./MobileMenu/MobileMenu";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const toggleMenu = () => {
-    setIsOpenMenu(!isOpenMenu);
-  };
+  const [isOpenMenu, toggleMenu] = useToggle(false);
+  const [isModalOpen, toggleModal] = useToggle(false);
+
+  console.log(isModalOpen);
+
   const pathname = usePathname();
 
   const contentBox = `${styles.box} ${isOpenMenu ? styles.bottom_border : ""}`;
@@ -32,7 +33,7 @@ const Header = () => {
           {!pathname.includes("admin") && <HeaderMenu />}
           <div className={styles.box}>
             <LanguageMenu />
-            <Button>Підтримати</Button>
+            <Button onClick={toggleModal}>Підтримати</Button>
             {!pathname.includes("admin") && (
               <button className={styles.btn_menu} onClick={toggleMenu}>
                 <Image
