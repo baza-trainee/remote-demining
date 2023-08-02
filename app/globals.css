@@ -120,6 +120,12 @@
   /* Burger Menu */
   --burger-menu-border-color: #e7e6f2;
   --burger-menu-hover-color: #c6dafc;
+
+  /* Icon Buttons */
+  --icon-button-bg-color: #FFFFFF;
+  --icon-button-border-rad: 5px;
+  --exit-button-text-color:#356CC6;
+  --add-button-text-color: #4285F4;
 }
 
 @media (prefers-color-scheme: dark) {
