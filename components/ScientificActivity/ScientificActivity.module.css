@@ -1,13 +1,18 @@
 .list {
   display: flex;
   flex-direction: column;
-  row-gap: var(--activity-list-item-gap-mobile);
-  margin-top: var(--activity-list-top-margin);
+  row-gap: var(--activity-list-item-gap-tablet);
+  margin-top: calc(var(--activity-list-top-margin) / 2);
+
+  @media screen and (min-width: 1280px) {
+    margin-top: var(--activity-list-top-margin);
+    row-gap: var(--activity-list-item-gap-tablet);
+  }
 }
 
-@media screen and (min-width: 361px) {
+@media screen and (min-width: 768px) {
   .list {
-    row-gap: var(--activity-list-item-gap-mobile);
+    row-gap: var(--activity-list-item-gap-tablet);
   }
 
   .list li:nth-child(2n) div:first-child {
