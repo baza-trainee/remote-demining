@@ -11,16 +11,14 @@
 }
 .content {
   position: relative;
-  width: 1360px;
-  height: 684px;
-  border-radius: var(--modal-border-radius);
+  margin: 20px;
+  border-radius: var(--modal-small-border-radius);
   background-color: var(--modal-bg-color);
+  outline: 1px solid #1b3969;
 }
-.btn_close {
-  position: absolute;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  top: 45px;
-  right: 45px;
+
+.big_modal {
+  width: 100%;
+  outline: none;
+  border-radius: var(--modal-big-border-radius);
 }

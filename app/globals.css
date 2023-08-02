@@ -101,7 +101,10 @@
 
   /* Modal */
   --modal-bg-color: #f5f5f5;
-  --modal-border-radius: 24px;
+  --modal-white-color: #fff;
+  --modal-big-border-radius: 24px;
+  --modal-small-border-radius: 5px;
+
 }
 
 @media (prefers-color-scheme: dark) {
