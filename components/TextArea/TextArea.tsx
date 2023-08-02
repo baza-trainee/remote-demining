@@ -1,4 +1,5 @@
 import { ComponentProps, forwardRef } from "react";
+import { FieldError } from "react-hook-form/dist/types";
 
 import styles from "./TextArea.module.css";
 
@@ -22,6 +23,8 @@ interface InputProps {
   height?: number;
   width?: number;
   backgroundCl?: BackgroundColors;
+  error?: FieldError | undefined;
+  errorMessage?: string;
 }
 
 const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
@@ -32,6 +35,8 @@ const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
       width,
       height,
       backgroundCl = "primary",
+      error,
+      errorMessage,
       ...InputProps
     },
     ref
@@ -50,6 +55,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
           {...InputProps}
           style={InputStyle}
         />
+        {error && <p className={styles.error}>{errorMessage}</p>}
       </div>
     );
   }

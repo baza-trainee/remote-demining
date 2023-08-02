@@ -33,3 +33,8 @@
 .secondary {
   background-color: var(--input-secondary-bg-color);
 }
+
+.error {
+  padding-top: 0.88rem;
+  color: var(--error-color);
+}

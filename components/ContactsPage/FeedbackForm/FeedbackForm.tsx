@@ -114,6 +114,8 @@ const FeedbackForm: FC = () => {
           size="full"
           backgroundCl="secondary"
           height={146}
+          error={errors.comment}
+          errorMessage={errors.comment?.message}
           {...register("comment")}
         />
         <Button type="submit" isFullWidth disabled={isSubmitting}>
