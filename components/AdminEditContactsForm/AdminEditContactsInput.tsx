@@ -12,7 +12,7 @@ interface AdminEditContactsInputProps {
   name?: string;
   type?: string;
   placeholder?: string;
-  onChange?: (value: string) => void;
+  onClick?: React.MouseEventHandler<HTMLImageElement> | undefined;
   editable?: boolean;
   error?: FieldError | undefined;
   errorMessage?: string;
@@ -23,7 +23,7 @@ const AdminEditContactsInput: React.FC<AdminEditContactsInputProps> = ({
   name,
   type,
   placeholder,
-  onChange,
+  onClick,
   editable = false,
   error,
   errorMessage,
@@ -43,13 +43,7 @@ const AdminEditContactsInput: React.FC<AdminEditContactsInputProps> = ({
       />
       <span className={styles.pen}>
         {editable && (
-          <Image
-            width={36}
-            height={36}
-            src={pen}
-            alt="pen"
-            onClick={() => onChange(value)}
-          />
+          <Image width={36} height={36} src={pen} alt="pen" onClick={onClick} />
         )}
       </span>
       {error && <p className={styles.error}>{errorMessage}</p>}
