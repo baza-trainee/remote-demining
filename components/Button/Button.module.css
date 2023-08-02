@@ -24,8 +24,7 @@
   }
 }
 
-.button:not(:disabled):hover,
-.button:not(:disabled):focus {
+.button:not(:disabled):hover {
   background-color: var(--button-primary-hover-color);
   color: var(--button-primary-bg-color);
   outline: 2px solid var(--button-primary-bg-color);
