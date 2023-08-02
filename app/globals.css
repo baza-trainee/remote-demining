@@ -98,6 +98,10 @@
   /* Burger Menu */
   --burger-menu-border-color: #e7e6f2;
   --burger-menu-hover-color: #c6dafc;
+
+  /* Modal */
+  --modal-bg-color: #f5f5f5;
+  --modal-border-radius: 24px;
 }
 
 @media (prefers-color-scheme: dark) {
