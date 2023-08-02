@@ -20,7 +20,7 @@
 }
 
 .image {
-  border-radius: var(--activity-list-image-border-rad);
+  border-radius: var(--activity-list-image-border-rad-mobile);
   overflow: hidden;
 }
 
@@ -31,6 +31,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .image {
+    border-radius: var(--activity-list-image-border-rad);
+  }
+
   .image img {
     height: var(--activity-list-image-height-tablet);
   }
