@@ -1,5 +1,8 @@
 "use client";
 
+import { FC } from "react";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useWindowSize } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
@@ -17,8 +20,28 @@ interface FeedbackFormValues {
   comment: string;
 }
 
-const FeedbackForm = () => {
+const FeedbackForm: FC = () => {
   const { width } = useWindowSize();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FeedbackFormValues>({
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      comment: "",
+    },
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = (data: FeedbackFormValues) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -27,13 +50,20 @@ const FeedbackForm = () => {
         Ваш відгук чи пропозиція буде корисною для нас. <br /> Дякуємо що ви з
         нами.
       </p>
-      <form id="feedback-form" className={styles.form}>
+      <form
+        id="feedback-form"
+        className={styles.form}
+        onSubmit={handleSubmit(onSubmit)}
+        noValidate
+      >
         <Input
           size="full"
           type="text"
           label="Ім’я*"
           backgroundCl="secondary"
-          errorMessage="Ім'я є обов'язковим полем"
+          errorMessage={errors.name?.message}
+          error={errors.name}
+          {...register("name")}
         />
         {width >= 320 && width < 768 ? (
           <div>
@@ -42,14 +72,18 @@ const FeedbackForm = () => {
               type="tel"
               label="Телефон*"
               backgroundCl="secondary"
-              errorMessage="Телефон є обов'язковим полем"
+              error={errors.phone}
+              errorMessage={errors.phone?.message}
+              {...register("phone")}
             />
             <Input
               size="full"
               type="email"
               label="Email*"
               backgroundCl="secondary"
-              errorMessage="Email є обов'язковим полем"
+              errorMessage={errors.email?.message}
+              error={errors.email}
+              {...register("email")}
             />
           </div>
         ) : (
@@ -59,14 +93,18 @@ const FeedbackForm = () => {
               type="tel"
               label="Телефон*"
               backgroundCl="secondary"
-              errorMessage="Телефон є обов'язковим полем"
+              error={errors.phone}
+              errorMessage={errors.phone?.message}
+              {...register("phone")}
             />
             <Input
               size="small"
               type="email"
               label="Email*"
               backgroundCl="secondary"
-              errorMessage="Email є обов'язковим полем"
+              errorMessage={errors.email?.message}
+              error={errors.email}
+              {...register("email")}
             />
           </div>
         )}
@@ -75,8 +113,9 @@ const FeedbackForm = () => {
           size="full"
           backgroundCl="secondary"
           height={146}
+          {...register("comment")}
         />
-        <Button type="submit" isFullWidth>
+        <Button type="submit" isFullWidth disabled={isSubmitting}>
           Надіслати
         </Button>
       </form>
