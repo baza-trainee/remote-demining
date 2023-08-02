@@ -48,6 +48,8 @@
   justify-content: space-between;
 }
 
-.fullPhoneInput {
-  margin-bottom: 24px;
+.fullInputsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
