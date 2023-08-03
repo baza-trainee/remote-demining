@@ -35,7 +35,7 @@ const Header = () => {
             <LanguageMenu />
             <Button onClick={toggleModal}>Підтримати</Button>
             {isModalOpen && (
-              <Modal>
+              <Modal isBigModal>
                 <Donate toggleModal={toggleModal} />
               </Modal>
             )}
