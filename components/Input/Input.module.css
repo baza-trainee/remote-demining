@@ -7,6 +7,10 @@
   padding-left: 0.5rem;
 }
 
+.input:focus {
+  outline: 1px solid var(--button-primary-bg-color);
+}
+
 /* Sizes */
 
 .small {

@@ -26,6 +26,10 @@
   resize: none;
 }
 
+.textarea:focus {
+  outline: 1px solid var(--button-primary-bg-color);
+}
+
 .primary {
   background-color: var(--input-primary-bg-color);
 }
