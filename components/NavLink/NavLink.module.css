@@ -1,13 +1,26 @@
 .link {
-  display: inline-block;
   font-weight: 600;
   cursor: pointer;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  position: relative;
 }
 
-.link:not(.link_btn):not(.moreInfo_btn):focus,
-.link:not(.link_btn):not(.moreInfo_btn):hover {
-  border-bottom: 2px solid var(--main-text-color);
-  font-size: 1.125em;
+.link:not(.link_btn):not(.moreInfo_btn):after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: var(--button-underscore-clr);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.link:hover:not(.link_btn):not(.moreInfo_btn):after {
+  width: 100%;
+  left: 0;
 }
 
 .active:not(.link_btn) {
@@ -20,7 +33,6 @@
   background-color: var(--button-primary-bg-color);
   color: var(--button-primary-color);
   font-size: 1.25rem;
-
   transition: color var(--transition) background-color var(--transition);
 }
 
