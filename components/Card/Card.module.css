@@ -14,6 +14,7 @@
 
 .body {
   padding: 24px;
+  background-color: var(--bg-white-color);
   @media screen and (max-width: 400px) {
     padding: 16px;
   }
