@@ -28,24 +28,33 @@ const Modal: React.FC<ModalProps> = ({
 
   const closeModal = () => {
     document.querySelector("html")?.classList.remove(styles.overflowHidden);
-    window.removeEventListener('keydown', HandleEscBtn);
+    window.removeEventListener("keydown", HandleEscBtn);
     toggleModal();
   };
 
   const HandleEscBtn = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') closeModal();
-  }
+    if (e.key === "Escape") closeModal();
+  };
+
+  const onBackdropClose: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    if (event.target === event.currentTarget) {
+      closeModal();
+    }
+  };
 
   useEffect(() => {
     if (isModalOpen) {
       document.querySelector("html")?.classList.add(styles.overflowHidden);
     }
-    window.addEventListener('keydown', HandleEscBtn);
+    window.addEventListener("keydown", HandleEscBtn);
+
+    return () => {
+      window.removeEventListener("keydown", HandleEscBtn);
+    };
   }, [isModalOpen]);
 
-
   return (
-    <div className={styles.container} >
+    <div className={styles.container} onClick={onBackdropClose}>
       <div className={contentStyle}>
         {children}
         <button className={btnClose} onClick={closeModal}>

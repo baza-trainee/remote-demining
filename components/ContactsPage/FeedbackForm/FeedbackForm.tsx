@@ -29,7 +29,7 @@ const FeedbackForm: FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitted },
+    formState: { errors, isValid, isSubmitted },
     reset,
   } = useForm<FeedbackFormValues>({
     defaultValues: {
@@ -44,10 +44,15 @@ const FeedbackForm: FC = () => {
   const onSubmit = (data: FeedbackFormValues) => {
     try {
       console.log(data);
+      toggleModal();
       reset();
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const closeModal = () => {
+    toggleModal();
   };
 
   return (
@@ -124,15 +129,12 @@ const FeedbackForm: FC = () => {
           errorMessage={errors.comment?.message}
           {...register("comment")}
         />
-        <Button type="submit" isFullWidth onClick={toggleModal}>
+        <Button type="submit" isFullWidth>
           Надіслати
         </Button>
-        {isModalOpen && isSubmitted && (
-          <Modal>
-            <ConfirmationModal
-              message="Повідомлення успішно відправлено"
-              toggleModal={toggleModal}
-            />
+        {isModalOpen && (
+          <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+            <ConfirmationModal message="Повідомлення успішно відправлено" />
           </Modal>
         )}
       </form>
