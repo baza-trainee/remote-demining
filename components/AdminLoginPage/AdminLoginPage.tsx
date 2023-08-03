@@ -1,12 +1,12 @@
+import Link from "next/link";
 import { FC } from "react";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import AutorizationInput from "../AutorizationInput/AutorizationInput";
+import Button from "../Button/Button";
 import PasswordInputToggle from "../PasswordInputToggle/PasswordInputToggle";
 
 import styles from "./AdminLoginPage.module.css";
-import Link from "next/link";
-import Button from "../Button/Button";
 
 const AdminLoginPage: FC = () => {
   return (
