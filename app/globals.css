@@ -15,7 +15,7 @@
   --button-disabled-bg-color: #e3e3e3;
   --button-primary-border-rad: 5px;
   --button-primary-padding: 14px 24px;
-  --button-underscore-clr:#151515;
+  --button-underscore-clr: #151515;
 
   /* Links */
   --link-primary-color: #fff;
@@ -102,7 +102,7 @@
   --hero-height-mobile: 640px;
   --hero-horizontal-padding: clamp(16px, 12vw, 180px);
   --hero-text-color: #f5f5f5;
-  
+
   /* Activity */
   --activity-list-top-margin: 80px;
   --activity-list-item-gap: 24px;
@@ -122,11 +122,17 @@
   --burger-menu-border-color: #e7e6f2;
   --burger-menu-hover-color: #c6dafc;
 
+  /* Modal */
+  --modal-bg-color: #f5f5f5;
+  --modal-white-color: #fff;
+  --modal-big-border-radius: 24px;
+  --modal-small-border-radius: 5px;
+
   /* Icon Buttons */
-  --icon-button-bg-color: #FFFFFF;
+  --icon-button-bg-color: #ffffff;
   --icon-button-border-rad: 5px;
-  --exit-button-text-color:#356CC6;
-  --add-button-text-color: #4285F4;
+  --exit-button-text-color: #356cc6;
+  --add-button-text-color: #4285f4;
 }
 
 @media (prefers-color-scheme: dark) {
