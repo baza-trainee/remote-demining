@@ -1,0 +1,72 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 557px;
+
+  height: 100%;
+  min-height: 768px;
+  max-height: 993px;
+
+  padding: 48px 16px;
+}
+
+.img {
+  object-fit: cover;
+  object-position: 34%;
+  border-radius: 24px;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  max-width: 280px;
+
+  @media (min-width: 768px) {
+    max-width: 440px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 372px;
+  }
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.subheading {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: 13px;
+
+  @media (min-width: 1280px) {
+    font-size: 18px;
+  }
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.infoText {
+  font-size: 20px;
+  white-space: break-spaces;
+}
+
+.emailText {
+  text-decoration: underline;
+}

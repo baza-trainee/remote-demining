@@ -8,6 +8,8 @@ import burger_menu from "@/public/images/icons/header/burger_menu.svg";
 
 import Button from "../Button/Button";
 import Container from "../Container/Container";
+import Donate from "../Donate/Donate";
+import Modal from "../Modal/Modal";
 
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import HeaderMenu from "./HeaderMenu/HeaderMenu";
@@ -15,8 +17,6 @@ import LanguageMenu from "./LanguageMenu/LanguageMenu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
 import styles from "./Header.module.css";
-import Modal from "../Modal/Modal";
-import Donate from "../Donate/Donate";
 
 const Header = () => {
   const [isOpenMenu, toggleMenu] = useToggle(false);
