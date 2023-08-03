@@ -1,12 +1,14 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useWindowSize } from "usehooks-ts";
+import { useToggle, useWindowSize } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
+import ConfirmationModal from "@/components/confirmationModal/ConfirmationModal";
 import Input from "@/components/Input/Input";
+import Modal from "@/components/Modal/Modal";
 import TextArea from "@/components/TextArea/TextArea";
 
 import validationSchema from "./validationSchema";
@@ -22,6 +24,8 @@ interface FeedbackFormValues {
 
 const FeedbackForm: FC = () => {
   const { width } = useWindowSize();
+  const [isModalOpen, toggleModal] = useToggle(false);
+  const [isFormSubmitted, setFormSubmitted] = useState(false);
 
   const {
     register,
@@ -39,8 +43,13 @@ const FeedbackForm: FC = () => {
   });
 
   const onSubmit = (data: FeedbackFormValues) => {
-    console.log(data);
-    reset();
+    try {
+      console.log(data);
+      setFormSubmitted(true);
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -117,9 +126,22 @@ const FeedbackForm: FC = () => {
           errorMessage={errors.comment?.message}
           {...register("comment")}
         />
-        <Button type="submit" isFullWidth disabled={isSubmitting}>
+        <Button
+          type="submit"
+          isFullWidth
+          disabled={isSubmitting}
+          onClick={toggleModal}
+        >
           Надіслати
         </Button>
+        {isModalOpen && isFormSubmitted && (
+          <Modal>
+            <ConfirmationModal
+              message="Повідомлення успішно відправлено"
+              toggleModal={toggleModal}
+            />
+          </Modal>
+        )}
       </form>
     </div>
   );
