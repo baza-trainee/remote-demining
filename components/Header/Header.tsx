@@ -15,6 +15,8 @@ import LanguageMenu from "./LanguageMenu/LanguageMenu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
 import styles from "./Header.module.css";
+import Modal from "../Modal/Modal";
+import Donate from "../Donate/Donate";
 
 const Header = () => {
   const [isOpenMenu, toggleMenu] = useToggle(false);
@@ -32,6 +34,11 @@ const Header = () => {
           <div className={styles.box}>
             <LanguageMenu />
             <Button onClick={toggleModal}>Підтримати</Button>
+            {isModalOpen && (
+              <Modal>
+                <Donate toggleModal={toggleModal} />
+              </Modal>
+            )}
             {!pathname.includes("admin") && (
               <button className={styles.btn_menu} onClick={toggleMenu}>
                 <Image
