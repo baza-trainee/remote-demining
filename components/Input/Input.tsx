@@ -4,9 +4,11 @@ import { FieldError } from "react-hook-form/dist/types";
 import styles from "./Input.module.css";
 
 enum InputSize {
-  base = "base",
+  small = "small",
   full = "full",
 }
+
+type BackgroundColors = "primary" | "secondary";
 
 interface InputProps {
   placeholder?: ComponentProps<"input">["placeholder"];
@@ -21,17 +23,21 @@ interface InputProps {
   width?: number;
   error?: FieldError | undefined;
   errorMessage?: string;
+  backgroundCl?: BackgroundColors;
+  className?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
-      size = InputSize.base,
+      size = InputSize.full,
       label,
       height,
       width,
       error,
       errorMessage,
+      backgroundCl = "primary",
+      className,
       ...inputProps
     },
     ref
@@ -48,7 +54,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           {...inputProps}
-          className={`${styles[size]} ${styles.input}`}
+          className={`${styles[size]} ${styles.input} ${className || ""}`}
           style={InputStyle}
         />
         {error && <p className={styles.error}>{errorMessage}</p>}
