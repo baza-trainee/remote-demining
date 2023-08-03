@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle, useWindowSize } from "usehooks-ts";
@@ -25,12 +25,11 @@ interface FeedbackFormValues {
 const FeedbackForm: FC = () => {
   const { width } = useWindowSize();
   const [isModalOpen, toggleModal] = useToggle(false);
-  const [isFormSubmitted, setFormSubmitted] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitted },
     reset,
   } = useForm<FeedbackFormValues>({
     defaultValues: {
@@ -45,7 +44,6 @@ const FeedbackForm: FC = () => {
   const onSubmit = (data: FeedbackFormValues) => {
     try {
       console.log(data);
-      setFormSubmitted(true);
       reset();
     } catch (error) {
       console.log(error);
@@ -126,15 +124,10 @@ const FeedbackForm: FC = () => {
           errorMessage={errors.comment?.message}
           {...register("comment")}
         />
-        <Button
-          type="submit"
-          isFullWidth
-          disabled={isSubmitting}
-          onClick={toggleModal}
-        >
+        <Button type="submit" isFullWidth onClick={toggleModal}>
           Надіслати
         </Button>
-        {isModalOpen && isFormSubmitted && (
+        {isModalOpen && isSubmitted && (
           <Modal>
             <ConfirmationModal
               message="Повідомлення успішно відправлено"

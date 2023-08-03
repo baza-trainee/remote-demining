@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { FC } from "react";
 
 import BG from "@/public/images/contact/bg.jpg";
 
@@ -6,7 +7,7 @@ import data from "./data";
 
 import styles from "./ContactInfo.module.css";
 
-const ContactInfo = () => {
+const ContactInfo: FC = () => {
   return (
     <div className={styles.wrapper}>
       <Image

@@ -1,3 +1,5 @@
+import { FC } from "react";
+
 import Container from "../Container/Container";
 
 import ContactInfo from "./ContactInfo/ContactInfo";
@@ -5,7 +7,7 @@ import FeedbackForm from "./FeedbackForm/FeedbackForm";
 
 import styles from "./ContactsPage.module.css";
 
-const ContactsPage = () => {
+const ContactsPage: FC = () => {
   return (
     <section className={styles.sectionWrapper}>
       <Container>
