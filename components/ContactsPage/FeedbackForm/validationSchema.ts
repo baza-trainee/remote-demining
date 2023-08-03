@@ -17,7 +17,7 @@ const validationSchema = object().shape({
       "is-valid-domain",
       "Email з доменом .ru не підтримується",
       (value) => {
-        if (value && value.length >= 3) {
+        if (value && value.includes("@")) {
           const domain = value.split("@")[1];
           return !domain.endsWith(".ru");
         }
