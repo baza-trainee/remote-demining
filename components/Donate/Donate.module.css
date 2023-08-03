@@ -25,6 +25,7 @@
   padding-bottom: 52px;
 }
 .item {
+  cursor: pointer;
   grid-row: 1;
   background-color: var(--bg-white-color);
   border: none;
@@ -61,6 +62,7 @@
   outline: 2px solid #151515;
 }
 .item_way {
+  cursor: pointer;
   background-color: var(--bg-white-color);
   border: none;
   border-radius: 5px;
@@ -109,13 +111,4 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 70px;
   gap: 20px;
-}
-
-.btn_close {
-  position: absolute;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  top: 45px;
-  right: 45px;
 }

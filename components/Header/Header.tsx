@@ -35,8 +35,8 @@ const Header = () => {
             <LanguageMenu />
             <Button onClick={toggleModal}>Підтримати</Button>
             {isModalOpen && (
-              <Modal isBigModal>
-                <Donate toggleModal={toggleModal} />
+              <Modal isBigModal toggleModal={toggleModal} isModalOpen={isModalOpen}  >
+                <Donate/>
               </Modal>
             )}
             {!pathname.includes("admin") && (

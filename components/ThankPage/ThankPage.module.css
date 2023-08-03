@@ -21,11 +21,3 @@
   font-size: 40px;
   font-weight: 600;
 }
-.btn_close {
-  position: absolute;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  top: 45px;
-  right: 45px;
-}

@@ -1,24 +1,23 @@
-"use client";
-import Image from "next/image";
+
 import { useState } from "react";
 
 import apple_icon from "@/public/images/icons/donate/apple.svg";
 import google_icon from "@/public/images/icons/donate/google.png";
 import uiw_icon from "@/public/images/icons/donate/uiw_pay.svg";
-import close_modal from "@/public/images/icons/header/btn_close_burger.svg";
 
 import Button from "../Button/Button";
 
 import styles from "./Donate.module.css";
 
 interface DonateProps {
-  toggleModal: () => void;
 }
 
 const paymentAmountData = ["100", "200", "500", "1000"];
 
-const Donate: React.FC<DonateProps> = ({ toggleModal }) => {
+const Donate: React.FC<DonateProps> = () => {
+  
   const [paymentAmount, setPaymentAmount] = useState("");
+
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>Оберіть Платіж</h2>
@@ -70,18 +69,9 @@ const Donate: React.FC<DonateProps> = ({ toggleModal }) => {
         </div>
         <div className={styles.btn_container}>
           <Button>Оплатити</Button>
-          <Button>Відмінити</Button>
+          <Button outlined >Відмінити</Button>
         </div>
       </div>
-      <button className={styles.btn_close} onClick={toggleModal}>
-        <Image
-          className={styles.close_icon}
-          src={close_modal}
-          alt="close modal"
-          width={25.852943420410156}
-          height={30}
-        ></Image>
-      </button>
     </div>
   );
 };
