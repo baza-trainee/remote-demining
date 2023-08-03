@@ -110,12 +110,3 @@
   grid-template-rows: 70px;
   gap: 20px;
 }
-
-.btn_close {
-  position: absolute;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  top: 45px;
-  right: 45px;
-}
