@@ -7,6 +7,8 @@ import Projects from "@/components/Projects/Projects";
 import Tasks from "@/components/Tasks/Tasks";
 import Team from "@/components/Team/Team";
 
+import bgContactsMainPage from "@/public/images/contact/bg.jpg";
+
 export default function Home() {
   return (
     <main>
@@ -17,7 +19,7 @@ export default function Home() {
       <Team />
       <NewsSection />
       <Partnership />
-      <Contact />
+      <Contact backgroundImage={bgContactsMainPage.src} />
     </main>
   );
 }

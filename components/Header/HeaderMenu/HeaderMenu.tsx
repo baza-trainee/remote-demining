@@ -1,8 +1,8 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler } from 'react';
 
-import NavLink from "../../NavLink/NavLink";
+import NavLink from '../../NavLink/NavLink';
 
-import styles from "./HeaderMenu.module.css";
+import styles from './HeaderMenu.module.css';
 
 interface HeaderMenuProps {
   isOpenMenu?: boolean;
@@ -16,8 +16,8 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
   toggleMenu,
 }: HeaderMenuProps) => {
   const menuWrapperStyle = `${styles.menu_wrapper} ${
-    isOpenMenu ? styles.openMenu : ""
-  } ${isMobile ? styles.mobile : ""}`;
+    isOpenMenu ? styles.openMenu : ''
+  } ${isMobile ? styles.mobile : ''}`;
 
   const handleMenuItemClick: MouseEventHandler<HTMLLIElement> = (): void => {
     if (isMobile) {
@@ -29,10 +29,10 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
     <nav className={menuWrapperStyle}>
       <ul className={styles.menu_list}>
         <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="/about">Про нас</NavLink>
+          <NavLink href="/">Про нас</NavLink>
         </li>
         <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="/activity">Наукова діяльність</NavLink>
+          <NavLink href="/client/activity">Наукова діяльність</NavLink>
         </li>
         <li className={styles.menu_item} onClick={handleMenuItemClick}>
           <NavLink href="/client/socrat">Дистанційне розмінування</NavLink>

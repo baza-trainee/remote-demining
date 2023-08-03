@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useToggle } from "usehooks-ts";
 
 import btn_close_burger from "@/public/images/icons/header/btn_close_burger.svg";
 import burger_menu from "@/public/images/icons/header/burger_menu.svg";
 
+import Button from "../Button/Button";
 import Container from "../Container/Container";
-import NavLink from "../NavLink/NavLink";
 
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import HeaderMenu from "./HeaderMenu/HeaderMenu";
@@ -15,24 +15,31 @@ import LanguageMenu from "./LanguageMenu/LanguageMenu";
 import MobileMenu from "./MobileMenu/MobileMenu";
 
 import styles from "./Header.module.css";
+import Modal from "../Modal/Modal";
+import Donate from "../Donate/Donate";
 
 const Header = () => {
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const toggleMenu = () => {
-    setIsOpenMenu(!isOpenMenu);
-  };
+  const [isOpenMenu, toggleMenu] = useToggle(false);
+  const [isModalOpen, toggleModal] = useToggle(false);
+
   const pathname = usePathname();
+
   const contentBox = `${styles.box} ${isOpenMenu ? styles.bottom_border : ""}`;
   return (
     <header className={styles.header}>
       <Container>
         <div className={contentBox}>
           <HeaderLogo />
-          {pathname !== "/admin" && <HeaderMenu />}
+          {!pathname.includes("admin") && <HeaderMenu />}
           <div className={styles.box}>
             <LanguageMenu />
-            <NavLink href={"#"} isButton>Підтримати</NavLink>
-            {pathname !== "/admin" && (
+            <Button onClick={toggleModal}>Підтримати</Button>
+            {isModalOpen && (
+              <Modal isBigModal>
+                <Donate toggleModal={toggleModal} />
+              </Modal>
+            )}
+            {!pathname.includes("admin") && (
               <button className={styles.btn_menu} onClick={toggleMenu}>
                 <Image
                   className={styles.burger_icon}
@@ -45,7 +52,7 @@ const Header = () => {
             )}
           </div>
         </div>
-        {isOpenMenu && pathname !== "/admin" && (
+        {isOpenMenu && !pathname.includes("admin") && (
           <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
         )}
       </Container>
