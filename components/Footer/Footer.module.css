@@ -7,11 +7,6 @@
   background-color: white;
 }
 
-.inner {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
 .wrapper {
   width: 100%;
   display: flex;

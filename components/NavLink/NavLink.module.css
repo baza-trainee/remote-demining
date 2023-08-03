@@ -14,7 +14,7 @@
   height: 2px;
   left: 50%;
   position: absolute;
-  background: #000000;
+  background: var(--button-underscore-clr);
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -33,7 +33,6 @@
   background-color: var(--button-primary-bg-color);
   color: var(--button-primary-color);
   font-size: 1.25rem;
-
   transition: color var(--transition) background-color var(--transition);
 }
 
