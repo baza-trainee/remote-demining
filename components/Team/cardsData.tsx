@@ -16,7 +16,7 @@ export const cardsData = teamData.map(
                 <p>{projectPosition}</p>
               </div>
               <div className={styles.card_contacts}>
-                <span>Телефон:</span><a href={`tel:${phone}`}>{phone}</a>
+                <div><span>Телефон:</span><a href={`tel:${phone}`}>{phone}</a></div>
                 <span>Пошта:</span><a href={`mailto:${email}`}>{email}</a>
               </div>
             </div>

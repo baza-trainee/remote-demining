@@ -1,6 +1,7 @@
 import styles from "./AdminWrapper.module.css";
 
 type WrapperSize = "bigWrapper" | "smallWrapper";
+
 interface WrapperProps {
   children: React.ReactNode;
   size: WrapperSize;

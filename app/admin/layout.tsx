@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import AdminNavBar from "@/components/AdminNavBar/AdminNavBar";
+import Container from "@/components/Container/Container";
+import styles from "./layout.module.css";
 
 import Header from "@/components/Header/Header";
 
@@ -18,7 +21,12 @@ export default function RootLayout({
   return (
     <body className={open_sans.className}>
       <Header />
-      {children}
+      <Container>
+        <div className={styles.pageWrapper}>
+          <AdminNavBar />
+          {children}
+        </div>
+      </Container>
     </body>
   );
 }
