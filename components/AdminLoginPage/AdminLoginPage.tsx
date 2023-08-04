@@ -32,8 +32,6 @@ const AdminLoginPage: FC = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  console.log(errors);
-
   const onSubmit = (data: LoginFormValues) => {
     try {
       console.log(data);
@@ -53,26 +51,28 @@ const AdminLoginPage: FC = () => {
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
-          <AutorizationInput
-            label="Логін"
-            type="text"
-            placeholder="Введіть логін"
-            errorMessage={errors.login?.message}
-            error={errors.login}
-            {...register("login")}
-          />
-          <PasswordInputToggle
-            errorMessage={errors.password?.message}
-            error={errors.password}
-            {...register("password")}
-          />
+          <div className={styles.inputWrapper}>
+            <AutorizationInput
+              label="Логін"
+              type="text"
+              placeholder="Введіть логін"
+              errorMessage={errors.login?.message}
+              error={errors.login}
+              {...register("login")}
+            />
+            <PasswordInputToggle
+              errorMessage={errors.password?.message}
+              error={errors.password}
+              {...register("password")}
+            />
+          </div>
+          <Link href={"#"} className={styles.link}>
+            Забули пароль?
+          </Link>
+          <Button isFullWidth type="submit">
+            Вхід
+          </Button>
         </form>
-        <Link href={"#"} className={styles.link}>
-          Забули пароль?
-        </Link>
-        <Button isFullWidth type="submit" disabled={!isValid}>
-          Вхід
-        </Button>
       </AdminWrapper>
     </section>
   );

@@ -14,10 +14,10 @@
   margin-bottom: 32px;
 }
 
-.form {
+.inputWrapper {
   display: flex;
   flex-direction: column;
-  gap: 33px;
+  gap: 20px;
 }
 
 .link {
