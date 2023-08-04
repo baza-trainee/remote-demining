@@ -33,17 +33,24 @@ const PasswordInputToggle = forwardRef<HTMLInputElement, PasswordInputProps>(
         <label className={styles.label__psw} htmlFor="psw">
           Пароль
         </label>
-        <input
-          id="psw"
-          className={styles.input}
-          type={type}
-          placeholder="Введіть пароль"
-          ref={ref}
-          {...inputProps}
-        />
-        <span className={styles.eye} onClick={handleToggle}>
-          <Image width={30} height={18} src={icon} alt="eye" />
-        </span>
+        <div className={styles.input_icon_container}>
+          <input
+            id="psw"
+            className={styles.input}
+            type={type}
+            placeholder="Введіть пароль"
+            ref={ref}
+            {...inputProps}
+          />
+          <Image
+            className={styles.eye}
+            onClick={handleToggle}
+            width={30}
+            height={18}
+            src={icon}
+            alt="eye"
+          />
+        </div>
         {error && <p className={styles.error}>{errorMessage}</p>}
       </div>
     );
