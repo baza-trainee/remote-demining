@@ -1,5 +1,5 @@
-import PasswordRecover from "@/components/PasswordRecover/PasswordRecover";
+import AdminLoginPage from "@/components/AdminLoginPage/AdminLoginPage";
 
 export default function Admin() {
-  return <main><PasswordRecover /></main>;
+  return <main>Admin</main>;
 }

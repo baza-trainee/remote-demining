@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 291px;;
+  width: 291px;
 }
 .input {
   width: 100%;
@@ -14,11 +14,23 @@
   padding: 13px 16px;
   border: none;
 }
+
+.input:focus {
+  outline: 1px solid var(--button-primary-bg-color);
+}
+
+.input::placeholder {
+  color: var(--input-placeholder-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
 .input__container label {
   font-weight: 600;
   margin-bottom: 6px;
 }
 .error {
-  padding-top: 0.88rem;
+  padding-top: 3px;
   color: var(--error-color);
 }
