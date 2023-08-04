@@ -16,7 +16,12 @@ const AutorizationInput = forwardRef<HTMLInputElement, AutorizationInputsProps>(
     return (
       <div className={styles.input__container}>
         {label && <label>{label}</label>}
-        <input className={styles.input} ref={ref} {...inputProps} />
+        <input
+          className={styles.input}
+          ref={ref}
+          placeholder={placeholder}
+          {...inputProps}
+        />
         {error && <p className={styles.error}>{errorMessage}</p>}
       </div>
     );

@@ -31,6 +31,6 @@
   margin-bottom: 6px;
 }
 .error {
-  padding-top: 0.88rem;
+  padding-top: 3px;
   color: var(--error-color);
 }
