@@ -14,3 +14,8 @@
   padding-top: 32px;
   gap: 12px;
 }
+.message {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}

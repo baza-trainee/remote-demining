@@ -23,7 +23,7 @@ export default function RootLayout({
       <Header />
       <Container>
         <div className={styles.pageWrapper}>
-          <AdminNavBar />
+          {/* <AdminNavBar /> */}
           {children}
         </div>
       </Container>
