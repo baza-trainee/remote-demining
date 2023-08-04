@@ -1,0 +1,23 @@
+@keyframes hover {
+  100% {
+    filter: invert(64%) sepia(55%) saturate(447%) hue-rotate(187deg)
+      brightness(101%) contrast(95%);
+  }
+}
+
+.link {
+  display: flex;
+  column-gap: 12px;
+  align-items: center;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(152deg)
+    brightness(103%) contrast(103%);
+}
+
+.link:hover,
+.link.active {
+  animation: hover 0.1s ease-out forwards;
+}
+
+.label {
+  font-size: 20px;
+}

@@ -1,4 +1,4 @@
-.card_body {  
+.card_body {
   max-width: 328px;
 }
 .card_text {
@@ -9,14 +9,31 @@
 }
 
 .card_contacts span {
-  display: block;
+  display: inline-block;
   font-weight: 400;
+
+  @media (max-width: 1279px) {
+  }
 }
-.card_contacts > *:last-child{
-  padding-top: 16px;
+.card_contacts a {
+  display: inline-block;
+  font-weight: 400;
+  color: var(--button-primary-bg-color);
+  text-decoration: underline;
+
+  @media (max-width: 1279px) {
+    display: block;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
 }
-.card_head > *:first-child{
-  padding-bottom: 16px;
+@media (min-width: 1280px) {
+  .card_contacts > *:last-child {
+    padding-top: 16px;
+  }
+  .card_head > *:first-child {
+    padding-bottom: 16px;
+  }
 }
 
 @media screen and (max-width: 768px) {
