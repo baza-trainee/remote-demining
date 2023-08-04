@@ -1,3 +1,5 @@
+import PasswordRecover from "@/components/PasswordRecover/PasswordRecover";
+
 export default function Admin() {
-  return <main>Admin</main>;
+  return <main><PasswordRecover /></main>;
 }

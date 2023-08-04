@@ -25,11 +25,7 @@ const AutorizationInput: React.FC<AutorizationInputsProps> = ({
     <div className={styles.input__container}>
       {label && <label htmlFor={name}>{label}</label>}
       <input
-        id={name}
         className={styles.input}
-        type={type}
-        name={name}
-        value={value}
         placeholder={placeholder}
         {...inputProps}
       />
