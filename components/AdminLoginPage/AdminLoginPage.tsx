@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -32,7 +33,7 @@ interface AxiosError extends Error {
 const AdminLoginPage: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [backendErrors, setBackendErrors] = useState<string | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -54,7 +55,7 @@ const AdminLoginPage: FC = () => {
         setBackendErrors(null);
         await loginUser(login, password);
         setIsLoading(false);
-        setIsLoggedIn(true);
+        router.push("/admin/news");
       } catch (error) {
         setIsLoading(false);
         console.log(error);
