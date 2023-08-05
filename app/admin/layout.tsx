@@ -22,13 +22,7 @@ export default function RootLayout({
   return (
     <body className={open_sans.className}>
       <Header />
-      <Container>
-        {children}
-        {/* <div className={styles.pageWrapper}>
-          <AdminNavBar />
-          {children}
-        </div> */}
-      </Container>
+      <Container>{children}</Container>
     </body>
   );
 }
