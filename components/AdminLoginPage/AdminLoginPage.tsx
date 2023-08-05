@@ -1,8 +1,12 @@
 "use client";
 import Link from "next/link";
-import { FC } from "react";
+import { useRouter } from "next/navigation";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
+
+import loginUser from "@/lib/auth";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import AutorizationInput from "../AutorizationInput/AutorizationInput";
@@ -19,11 +23,15 @@ interface LoginFormValues {
 }
 
 const AdminLoginPage: FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitted },
-    reset,
+    formState: { errors, isValid },
+    setError,
+    setValue,
   } = useForm<LoginFormValues>({
     defaultValues: {
       login: "",
@@ -32,12 +40,33 @@ const AdminLoginPage: FC = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data: LoginFormValues) => {
-    try {
-      console.log(data);
-      reset();
-    } catch (error) {
-      console.log(error);
+  const onSubmit = async ({ login, password }: LoginFormValues) => {
+    if (isValid) {
+      try {
+        setIsLoading(true);
+        await loginUser(login, password);
+        setIsLoading(false);
+        router.push("/admin/news");
+      } catch (error) {
+        setIsLoading(false);
+        if (axios.isAxiosError(error)) {
+          if (error.request?.status === 500) {
+            setError("login", {
+              type: "custom",
+              message: "Помилка валідації ",
+            });
+            password = "";
+          }
+          if (error.request?.status === 500) {
+            setError("password", {
+              type: "custom",
+              message: "Помилка валідації ",
+            });
+          }
+          setValue("login", "");
+          setValue("password", "");
+        }
+      }
     }
   };
 
@@ -69,8 +98,8 @@ const AdminLoginPage: FC = () => {
           <Link href={"#"} className={styles.link}>
             Забули пароль?
           </Link>
-          <Button isFullWidth type="submit">
-            Вхід
+          <Button isFullWidth type="submit" disabled={isLoading}>
+            {isLoading ? "Завантажується…" : "Вхід"}
           </Button>
         </form>
       </AdminWrapper>
