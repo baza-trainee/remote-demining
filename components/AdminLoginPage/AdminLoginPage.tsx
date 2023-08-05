@@ -41,7 +41,8 @@ const AdminLoginPage: FC = () => {
     handleSubmit,
     formState: { errors, isValid },
     reset,
-    setError
+    setError,
+    setValue,
   } = useForm<LoginFormValues>({
     defaultValues: {
       login: "",
@@ -63,11 +64,20 @@ const AdminLoginPage: FC = () => {
         // console.log(error);
         if (axios.isAxiosError(error)) {
           if (error.request?.status === 409) {
-              setError("login", { type: "custom", message: "Пошта або пароль не існують"});
+            setError("login", {
+              type: "custom",
+              message: "Пошта або пароль не існують",
+            });
+            password = "";
           }
           if (error.request?.status === 500) {
-              setError("login", { type: "custom", message: "Упс... щось пішло не так"});
+            setError("login", {
+              type: "custom",
+              message: "Упс... щось пішло не так",
+            });
           }
+          setValue("login", "");
+          setValue("password", "");
         }
         // if (
         //   (error as AxiosError).response?.data.message ===
