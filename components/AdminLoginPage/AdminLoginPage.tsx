@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 
 import loginUser from "@/lib/auth";
 
@@ -15,32 +16,20 @@ import PasswordInputToggle from "../PasswordInputToggle/PasswordInputToggle";
 import validationSchema from "./validationSchema";
 
 import styles from "./AdminLoginPage.module.css";
-import axios from "axios";
 
 interface LoginFormValues {
   login: string;
   password: string;
 }
 
-// a custom interface for the error object
-interface AxiosError extends Error {
-  response: {
-    data: {
-      message: string;
-    };
-  };
-}
-
 const AdminLoginPage: FC = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [backendErrors, setBackendErrors] = useState<string | null>(null);
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset,
     setError,
     setValue,
   } = useForm<LoginFormValues>({
@@ -55,39 +44,28 @@ const AdminLoginPage: FC = () => {
     if (isValid) {
       try {
         setIsLoading(true);
-        setBackendErrors(null);
         await loginUser(login, password);
         setIsLoading(false);
         router.push("/admin/news");
       } catch (error) {
         setIsLoading(false);
-        // console.log(error);
         if (axios.isAxiosError(error)) {
-          if (error.request?.status === 409) {
+          if (error.request?.status === 500) {
             setError("login", {
               type: "custom",
-              message: "Пошта або пароль не існують",
+              message: "Помилка валідації ",
             });
             password = "";
           }
           if (error.request?.status === 500) {
-            setError("login", {
+            setError("password", {
               type: "custom",
-              message: "Упс... щось пішло не так",
+              message: "Помилка валідації ",
             });
           }
           setValue("login", "");
           setValue("password", "");
         }
-        // if (
-        //   (error as AxiosError).response?.data.message ===
-        //     "HttpException: Unvalid user data" ||
-        //   (error as AxiosError).response?.data.message ===
-        //     "TypeError: Cannot read properties of null (reading 'password')"
-        // ) {
-        //   setBackendErrors("Помилка валідації");
-        // }
-        // reset();
       }
     }
   };
@@ -103,29 +81,19 @@ const AdminLoginPage: FC = () => {
           noValidate
         >
           <div className={styles.inputWrapper}>
-            <div>
-              <AutorizationInput
-                label="Логін"
-                type="text"
-                placeholder="Введіть логін"
-                errorMessage={errors.login?.message}
-                error={errors.login}
-                {...register("login")}
-              />
-              {/* {backendErrors && (
-                <p className={styles.backendError}>{backendErrors}</p>
-              )} */}
-            </div>
-            <div>
-              <PasswordInputToggle
-                errorMessage={errors.password?.message}
-                error={errors.password}
-                {...register("password")}
-              />
-              {/* {backendErrors && (
-                <span className={styles.backendError}>{backendErrors}</span>
-              )} */}
-            </div>
+            <AutorizationInput
+              label="Логін"
+              type="text"
+              placeholder="Введіть логін"
+              errorMessage={errors.login?.message}
+              error={errors.login}
+              {...register("login")}
+            />
+            <PasswordInputToggle
+              errorMessage={errors.password?.message}
+              error={errors.password}
+              {...register("password")}
+            />
           </div>
           <Link href={"#"} className={styles.link}>
             Забули пароль?
