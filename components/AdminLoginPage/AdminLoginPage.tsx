@@ -15,6 +15,7 @@ import PasswordInputToggle from "../PasswordInputToggle/PasswordInputToggle";
 import validationSchema from "./validationSchema";
 
 import styles from "./AdminLoginPage.module.css";
+import axios from "axios";
 
 interface LoginFormValues {
   login: string;
@@ -40,6 +41,7 @@ const AdminLoginPage: FC = () => {
     handleSubmit,
     formState: { errors, isValid },
     reset,
+    setError
   } = useForm<LoginFormValues>({
     defaultValues: {
       login: "",
@@ -58,16 +60,24 @@ const AdminLoginPage: FC = () => {
         router.push("/admin/news");
       } catch (error) {
         setIsLoading(false);
-        console.log(error);
-        if (
-          (error as AxiosError).response?.data.message ===
-            "HttpException: Unvalid user data" ||
-          (error as AxiosError).response?.data.message ===
-            "TypeError: Cannot read properties of null (reading 'password')"
-        ) {
-          setBackendErrors("Помилка валідації");
+        // console.log(error);
+        if (axios.isAxiosError(error)) {
+          if (error.request?.status === 409) {
+              setError("login", { type: "custom", message: "Пошта або пароль не існують"});
+          }
+          if (error.request?.status === 500) {
+              setError("login", { type: "custom", message: "Упс... щось пішло не так"});
+          }
         }
-        reset();
+        // if (
+        //   (error as AxiosError).response?.data.message ===
+        //     "HttpException: Unvalid user data" ||
+        //   (error as AxiosError).response?.data.message ===
+        //     "TypeError: Cannot read properties of null (reading 'password')"
+        // ) {
+        //   setBackendErrors("Помилка валідації");
+        // }
+        // reset();
       }
     }
   };
@@ -92,9 +102,9 @@ const AdminLoginPage: FC = () => {
                 error={errors.login}
                 {...register("login")}
               />
-              {backendErrors && (
+              {/* {backendErrors && (
                 <p className={styles.backendError}>{backendErrors}</p>
-              )}
+              )} */}
             </div>
             <div>
               <PasswordInputToggle
@@ -102,9 +112,9 @@ const AdminLoginPage: FC = () => {
                 error={errors.password}
                 {...register("password")}
               />
-              {backendErrors && (
+              {/* {backendErrors && (
                 <span className={styles.backendError}>{backendErrors}</span>
-              )}
+              )} */}
             </div>
           </div>
           <Link href={"#"} className={styles.link}>
