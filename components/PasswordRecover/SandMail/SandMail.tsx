@@ -31,6 +31,7 @@ const SandMail = () => {
     formState: { errors, dirtyFields },
     reset,
     setError,
+    setValue,
   } = useForm<SandMailValues>({
     defaultValues: {
       email: "",
@@ -49,11 +50,15 @@ const SandMail = () => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response?.status === 404) {
-          setError("email", { type: "custom", message: "Помилка валідації"});
+          setError("email", { type: "custom", message: "Помилка валідації" });
         }
         if (error.response?.status === 500) {
-          setError("email", { type: "custom", message: "Упс... щось пішло не так"});
+          setError("email", {
+            type: "custom",
+            message: "Упс... щось пішло не так",
+          });
         }
+        setValue("email", "");
       }
       console.log(error);
     }
