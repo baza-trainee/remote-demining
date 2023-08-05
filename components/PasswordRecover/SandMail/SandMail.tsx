@@ -1,7 +1,9 @@
+"use client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
 import * as yup from "yup";
+import axios from "axios";
 
 import AutorizationInput from "@/components/AutorizationInput/AutorizationInput";
 import Button from "@/components/Button/Button";
@@ -26,8 +28,9 @@ const SandMail = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitted, dirtyFields },
+    formState: { errors, dirtyFields },
     reset,
+    setError,
   } = useForm<SandMailValues>({
     defaultValues: {
       email: "",
@@ -35,12 +38,23 @@ const SandMail = () => {
     resolver: yupResolver(validationScheme),
   });
 
-  const sendEmail: SubmitHandler<SandMailValues> = (data) => {
+  const sendEmail: SubmitHandler<SandMailValues> = async (data) => {
     try {
-      console.log(data);
+      await axios.post(
+        "https://remote-demining.onrender.com/auth/forgot-password",
+        { email: data.email }
+      );
       toggleModal();
       reset();
     } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          setError("email", { type: "custom", message: "Помилка валідації"});
+        }
+        if (error.response?.status === 500) {
+          setError("email", { type: "custom", message: "Упс... щось пішло не так"});
+        }
+      }
       console.log(error);
     }
   };

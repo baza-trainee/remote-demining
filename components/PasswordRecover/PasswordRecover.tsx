@@ -1,21 +1,19 @@
-"use client";
+import { ReactNode } from "react";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 
-import PasswordReset from "./PasswordReset/PasswordReset";
-import SandMail from "./SandMail/SandMail";
-
 import styles from "./PasswordRecover.module.css";
 
+interface PasswordRecoverProps {
+  children: ReactNode;
+}
 
-const PasswordRecover = () => {
-
+const PasswordRecover: React.FC<PasswordRecoverProps> = ({ children }) => {
   return (
-    <div className={styles.wrapper}>
-      <AdminWrapper size="smallWrapper">
-      <h2 className={styles.title}>Відновити пароль</h2>
-      <SandMail />
-      {/* <PasswordReset /> */}
+    <div className={styles.container}>
+      <AdminWrapper size="smallWrapper" classname={styles.wrapper}>
+        <h2 className={styles.title}>Відновити пароль</h2>
+        {children}
       </AdminWrapper>
     </div>
   );
