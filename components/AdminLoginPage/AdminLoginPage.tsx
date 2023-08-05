@@ -1,8 +1,10 @@
 "use client";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import loginUser from "@/lib/auth";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import AutorizationInput from "../AutorizationInput/AutorizationInput";
@@ -18,11 +20,24 @@ interface LoginFormValues {
   password: string;
 }
 
+// a custom interface for the error object
+interface AxiosError extends Error {
+  response: {
+    data: {
+      message: string;
+    };
+  };
+}
+
 const AdminLoginPage: FC = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [backendErrors, setBackendErrors] = useState<string | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitted },
+    formState: { errors, isValid },
     reset,
   } = useForm<LoginFormValues>({
     defaultValues: {
@@ -32,12 +47,27 @@ const AdminLoginPage: FC = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data: LoginFormValues) => {
-    try {
-      console.log(data);
-      reset();
-    } catch (error) {
-      console.log(error);
+  const onSubmit = async ({ login, password }: LoginFormValues) => {
+    if (isValid) {
+      try {
+        setIsLoading(true);
+        setBackendErrors(null);
+        await loginUser(login, password);
+        setIsLoading(false);
+        setIsLoggedIn(true);
+      } catch (error) {
+        setIsLoading(false);
+        console.log(error);
+        if (
+          (error as AxiosError).response?.data.message ===
+            "HttpException: Unvalid user data" ||
+          (error as AxiosError).response?.data.message ===
+            "TypeError: Cannot read properties of null (reading 'password')"
+        ) {
+          setBackendErrors("Помилка валідації");
+        }
+        reset();
+      }
     }
   };
 
@@ -52,25 +82,35 @@ const AdminLoginPage: FC = () => {
           noValidate
         >
           <div className={styles.inputWrapper}>
-            <AutorizationInput
-              label="Логін"
-              type="text"
-              placeholder="Введіть логін"
-              errorMessage={errors.login?.message}
-              error={errors.login}
-              {...register("login")}
-            />
-            <PasswordInputToggle
-              errorMessage={errors.password?.message}
-              error={errors.password}
-              {...register("password")}
-            />
+            <div>
+              <AutorizationInput
+                label="Логін"
+                type="text"
+                placeholder="Введіть логін"
+                errorMessage={errors.login?.message}
+                error={errors.login}
+                {...register("login")}
+              />
+              {backendErrors && (
+                <p className={styles.backendError}>{backendErrors}</p>
+              )}
+            </div>
+            <div>
+              <PasswordInputToggle
+                errorMessage={errors.password?.message}
+                error={errors.password}
+                {...register("password")}
+              />
+              {backendErrors && (
+                <span className={styles.backendError}>{backendErrors}</span>
+              )}
+            </div>
           </div>
           <Link href={"#"} className={styles.link}>
             Забули пароль?
           </Link>
-          <Button isFullWidth type="submit">
-            Вхід
+          <Button isFullWidth type="submit" disabled={isLoading}>
+            {isLoading ? "Завантажується…" : "Вхід"}
           </Button>
         </form>
       </AdminWrapper>

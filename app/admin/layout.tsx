@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+
 import AdminNavBar from "@/components/AdminNavBar/AdminNavBar";
 import Container from "@/components/Container/Container";
-import styles from "./layout.module.css";
-
 import Header from "@/components/Header/Header";
+
+import styles from "./layout.module.css";
 
 export const metadata: Metadata = {
   title: "",
@@ -22,10 +23,11 @@ export default function RootLayout({
     <body className={open_sans.className}>
       <Header />
       <Container>
-        <div className={styles.pageWrapper}>
+        {children}
+        {/* <div className={styles.pageWrapper}>
           <AdminNavBar />
           {children}
-        </div>
+        </div> */}
       </Container>
     </body>
   );
