@@ -28,13 +28,12 @@
 
 @media screen and (min-width: 1200px) {
   .sub_logo::before {
-    content: "НДП НДЦ проблем надрокористування “Георесурс“";
+    content: "ДП НДЦ проблем надрокористування “Георесурс“";
   }
 }
 
-@media screen and (max-width: 360px)  {
+@media screen and (max-width: 360px) {
   .logo::before {
     content: "НAHУ";
   }
-
 }
