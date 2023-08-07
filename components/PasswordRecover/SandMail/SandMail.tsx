@@ -28,7 +28,7 @@ const SandMail = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, dirtyFields },
+    formState: { errors },
     reset,
     setError,
     setValue,
@@ -84,7 +84,7 @@ const SandMail = () => {
             error={errors.email}
           ></AutorizationInput>
         </div>
-        <Button isFullWidth type="submit" disabled={!dirtyFields.email}>
+        <Button isFullWidth type="submit">
           Надіслати
         </Button>
       </form>

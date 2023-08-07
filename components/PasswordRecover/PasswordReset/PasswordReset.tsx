@@ -1,16 +1,21 @@
-"use client"
+"use client";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
 import * as yup from "yup";
+import axios from "axios";
 
-import AutorizationInput from "@/components/AutorizationInput/AutorizationInput";
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
+import PasswordInputToggle from "@/components/PasswordInputToggle/PasswordInputToggle";
 
 import styles from "./PasswordReset.module.css";
 
+interface PasswordResetProps {
+  id: string;
+  token: string;
+}
 interface PasswordResetValues {
   password: string;
   confirmPassword: string;
@@ -26,17 +31,18 @@ const validationScheme = yup.object({
     .string()
     .min(8, "Пароль має містити мінімум 8 символів")
     .max(14, "Пароль має містити максимум 14 символів")
-    .oneOf([yup.ref("password")], "Паролі не співпадають")
+    .oneOf([yup.ref("password")], "Помилка валідації")
     .required("Це поле не повинно бути пустим"),
 });
 
-const PasswordReset = () => {
+const PasswordReset: React.FC<PasswordResetProps> = ({ id, token }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitted, dirtyFields },
+    formState: { errors },
     reset,
+    setError,
   } = useForm<PasswordResetValues>({
     defaultValues: {
       password: "",
@@ -45,12 +51,29 @@ const PasswordReset = () => {
     resolver: yupResolver(validationScheme),
   });
 
-  const sendPassword: SubmitHandler<PasswordResetValues> = (data) => {
+  const sendPassword: SubmitHandler<PasswordResetValues> = async (data) => {
     try {
-      console.log(data);
+      await axios.post(
+        `https://remote-demining.onrender.com/auth/forgot-password/${id}/${token}`,
+        { password: data.password, confirmPassword: data.confirmPassword }
+      );
       toggleModal();
       reset();
     } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 404) {
+          setError("password", {
+            type: "custom",
+            message: "Помилка валідації",
+          });
+        }
+        if (error.response?.status === 500) {
+          setError("password", {
+            type: "custom",
+            message: "Упс... щось пішло не так",
+          });
+        }
+      }
       console.log(error);
     }
   };
@@ -62,25 +85,24 @@ const PasswordReset = () => {
         onSubmit={handleSubmit(sendPassword)}
       >
         <div className={styles.input_container}>
-          <AutorizationInput
+          <PasswordInputToggle
             {...register("password")}
-            type="password"
             label="Введіть новий пароль*"
             errorMessage={errors.password?.message}
             error={errors.password}
-          ></AutorizationInput>
-          <AutorizationInput
+            isNoPlaceholder
+          ></PasswordInputToggle>
+          <PasswordInputToggle
             {...register("confirmPassword")}
-            type="password"
             label="Підтвердіть новий пароль*"
-            errorMessage={errors.password?.message}
-            error={errors.password}
-          ></AutorizationInput>
+            errorMessage={errors.confirmPassword?.message}
+            error={errors.confirmPassword}
+            isNoPlaceholder
+          ></PasswordInputToggle>
         </div>
         <Button
           isFullWidth
           type="submit"
-          disabled={!dirtyFields.password && !dirtyFields.confirmPassword}
         >
           Підтвердити
         </Button>
@@ -93,5 +115,4 @@ const PasswordReset = () => {
     </>
   );
 };
-
 export default PasswordReset;
