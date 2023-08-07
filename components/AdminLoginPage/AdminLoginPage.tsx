@@ -95,7 +95,7 @@ const AdminLoginPage: FC = () => {
               {...register("password")}
             />
           </div>
-          <Link href={"#"} className={styles.link}>
+          <Link href={"/admin/recover-password"} className={styles.link}>
             Забули пароль?
           </Link>
           <Button isFullWidth type="submit" disabled={isLoading}>

@@ -11,10 +11,21 @@ import styles from "./PasswordInputToggle.module.css";
 interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: FieldError | undefined;
   errorMessage?: string;
+  label?: string;
+  isNoPlaceholder?: boolean;
 }
 
 const PasswordInputToggle = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ error, errorMessage, ...inputProps }, ref) => {
+  (
+    {
+      error,
+      errorMessage,
+      label,
+      isNoPlaceholder: isPlaceholder,
+      ...inputProps
+    },
+    ref
+  ) => {
     const [type, setType] = useState("password");
     const [icon, setIcon] = useState(eyeOff);
 
@@ -31,14 +42,14 @@ const PasswordInputToggle = forwardRef<HTMLInputElement, PasswordInputProps>(
     return (
       <div className={styles.input__container}>
         <label className={styles.label__psw} htmlFor="psw">
-          Пароль
+          {label ? label : "Пароль"}
         </label>
         <div className={styles.input_icon_container}>
           <input
             id="psw"
             className={styles.input}
             type={type}
-            placeholder="Введіть пароль"
+            placeholder={isPlaceholder ? "" : "Введіть пароль"}
             ref={ref}
             {...inputProps}
           />
