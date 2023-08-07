@@ -1,6 +1,6 @@
 import PasswordRecover from "@/components/PasswordRecover/PasswordRecover";
-import SandMail from "@/components/PasswordRecover/SandMail/SandMail";
+import SendMail from "@/components/PasswordRecover/SendMail/SendMail";
 
 export default function recoverPass() {
-  return <main><PasswordRecover><SandMail/></PasswordRecover> </main>;
+  return <main><PasswordRecover><SendMail/></PasswordRecover> </main>;
 }

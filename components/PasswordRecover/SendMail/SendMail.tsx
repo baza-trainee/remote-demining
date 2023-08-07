@@ -10,7 +10,7 @@ import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
 
-import styles from "./SandMail.module.css";
+import styles from "./SendMail.module.css";
 
 interface SandMailValues {
   email: string;
