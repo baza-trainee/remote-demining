@@ -1,9 +1,10 @@
-import { forwardRef } from "react";
+import { forwardRef, InputHTMLAttributes } from "react";
 import { FieldError } from "react-hook-form/dist/types";
 
 import styles from "./AutorizationInput.module.css";
 
-interface AutorizationInputsProps {
+interface AutorizationInputsProps
+  extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   name?: string;
   type?: string;
