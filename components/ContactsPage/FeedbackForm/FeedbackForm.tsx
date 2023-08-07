@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle, useWindowSize } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
-import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
+import ConfirmationModal from "@/components/Temp/ConfirmationModal";
 import Input from "@/components/Input/Input";
 import Modal from "@/components/Modal/Modal";
 import TextArea from "@/components/TextArea/TextArea";

@@ -6,7 +6,7 @@ import * as yup from "yup";
 import axios from "axios";
 
 import Button from "@/components/Button/Button";
-import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
+import ConfirmationModal from "@/components/Temp/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
 import PasswordInputToggle from "@/components/PasswordInputToggle/PasswordInputToggle";
 

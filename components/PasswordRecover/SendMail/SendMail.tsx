@@ -7,7 +7,7 @@ import axios from "axios";
 
 import AutorizationInput from "@/components/AutorizationInput/AutorizationInput";
 import Button from "@/components/Button/Button";
-import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
+import ConfirmationModal from "@/components/Temp/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
 
 import styles from "./SendMail.module.css";
