@@ -17,7 +17,7 @@ const FAQItem: FC<FAQItemProps> = ({ faq }) => {
   const [clicked, setClicked] = useState(false);
   const contentEl = useRef<HTMLDivElement | null>(null);
 
-  const { question, answer } = faq;
+  const { question, answer, answerList } = faq;
 
   const handleToggle = () => {
     setClicked((prev) => !prev);
@@ -44,6 +44,13 @@ const FAQItem: FC<FAQItemProps> = ({ faq }) => {
           }
         >
           <div className={styles.answer}>{answer}</div>
+          {answerList && (
+            <ul className={styles.answer_list}>
+              {answerList.map((answer, i) => (
+                <li key={i}>{answer}</li>
+              ))}
+            </ul>
+          )}
         </div>
       </button>
     </li>

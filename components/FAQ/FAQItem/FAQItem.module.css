@@ -48,6 +48,26 @@
   transition: height ease 0.2s;
 }
 
+.answer_list {
+  font-weight: 400;
+  list-style-type: disc;
+  padding-left: 30px;
+  font-size: 1.125rem;
+  line-height: 1.875rem;
+  @media (min-width: 1310px) {
+    width: 1360px;
+  }
+  @media (max-width: 1300px) {
+    width: auto;
+  }
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+}
+.answer_list li {
+  padding-bottom: 30px;
+  width: 100%;
+}
 .icon_wrapper {
   position: relative;
   width: 100%;
@@ -67,7 +87,7 @@
 }
 
 .question {
-  @media (max-width: 768px) {
+  @media (max-width: 1270px) {
     width: 300px;
   }
   @media (max-width: 485px) {
