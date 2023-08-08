@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom 404</title>
+  <script>
+
+    const path = window.location.pathname;
+    const arr = path
+    .trim()
+    .split("/")
+    .filter((el) => el.match(/^(?!.*\b(admin|forgot-password)\b).+$/));
+
+    sessionStorage.setItem("user_id", arr[0])
+    sessionStorage.setItem("fg_token", arr[1])
+
+    if (path.startsWith("/admin/forgot-password/")) {
+      window.location.replace("/admin/forgot-password/")
+    }
+
+  </script>
+</head>
+<body>
+  
+</body>
+</html>
