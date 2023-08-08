@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import router, { useRouter } from "next/router"; 
+import router, { useRouter } from "next/router";
 import { FC } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,37 +14,48 @@ import AutorizationInput from "../AutorizationInput/AutorizationInput";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 
-import validationSchema from './validation';
+import validationSchema from "./validation";
 
-import styles from './AdminPasswordChangePage.module.css';
+import styles from "./AdminPasswordChangePage.module.css";
 
 interface PasswordChangeFormValues {
-  oldPassword: string; 
+  oldPassword: string;
   newPassword: string;
   confirmPassword: string;
 }
 
 const AdminPasswordChangePage: FC = () => {
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
-   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+    setError,
+  } = useForm<PasswordChangeFormValues>({
+    defaultValues: {
+      oldPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    },
+    resolver: yupResolver(validationSchema),
+  });
 
-  const { register, handleSubmit, formState: { errors, isValid }, reset, setError } = useForm<PasswordChangeFormValues>({
-  defaultValues: {
-    oldPassword: "", 
-    newPassword: "",
-    confirmPassword: "",
-  },
-  resolver: yupResolver(validationSchema),
-});
-
-  const onSubmit = async ({ oldPassword, newPassword, confirmPassword }: PasswordChangeFormValues) => {
+  const onSubmit = async ({
+    oldPassword,
+    newPassword,
+    confirmPassword,
+  }: PasswordChangeFormValues) => {
     if (isValid) {
       try {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_)(.,])[A-Za-z0-9!-_)(.,]{14,}$/;
+        const passwordRegex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_)(.,])[A-Za-z0-9!-_)(.,]{14,}$/;
         if (!passwordRegex.test(newPassword)) {
           setError("newPassword", {
             type: "manual",
-            message: "Новий пароль може використовувати великі і маленькі літери латинського алфавіту, спеціальні знаки типу !-_)(., та цифри від 0 до 9",
+            message:
+              "Новий пароль може використовувати великі і маленькі літери латинського алфавіту, спеціальні знаки типу !-_)(., та цифри від 0 до 9",
           });
           return;
         }
@@ -53,22 +64,22 @@ const AdminPasswordChangePage: FC = () => {
         router.push("/admin/");
         setIsSuccessModalOpen(true);
       } catch (error) {
-      if (axios.isAxiosError(error)) {
-        if (error.request?.status === 500) {
-          setError("oldPassword", {
-            type: "custom",
-            message: "Помилка валідації",
-          });
-          setError("newPassword", {
-            type: "custom", 
-            message: "Помилка валідації",
-          });
-          setError("confirmPassword", {
-            type: "custom",
-            message: "Помилка валідації",
-          });
+        if (axios.isAxiosError(error)) {
+          if (error.request?.status === 500) {
+            setError("oldPassword", {
+              type: "custom",
+              message: "Помилка валідації",
+            });
+            setError("newPassword", {
+              type: "custom",
+              message: "Помилка валідації",
+            });
+            setError("confirmPassword", {
+              type: "custom",
+              message: "Помилка валідації",
+            });
+          }
         }
-      }
       }
     }
   };
@@ -99,7 +110,7 @@ const AdminPasswordChangePage: FC = () => {
               {...register("newPassword")}
             />
             <AutorizationInput
-              label="ПідтвердІть новий пароль*"
+              label="Підтвердіть новий пароль*"
               type="password"
               errorMessage={errors.confirmPassword?.message}
               error={errors.confirmPassword}
@@ -112,7 +123,10 @@ const AdminPasswordChangePage: FC = () => {
         </form>
       </AdminWrapper>
       {isSuccessModalOpen && (
-        <Modal toggleModal={() => setIsSuccessModalOpen(false)} isModalOpen={isSuccessModalOpen}>
+        <Modal
+          toggleModal={() => setIsSuccessModalOpen(false)}
+          isModalOpen={isSuccessModalOpen}
+        >
           <p>Пароль успішно змінено.</p>
         </Modal>
       )}
