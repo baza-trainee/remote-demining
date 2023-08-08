@@ -8,7 +8,7 @@ const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
 const validationSchema = object().shape({
   email: string()
     .required("Введіть email")
-    .matches(emailRegex, "Введіть дійсний email")
+    .matches(emailRegex, "Невалідний формат пошти")
     .test(
       "is-valid-domain",
       "Email з доменом .ru не підтримується",
@@ -21,7 +21,7 @@ const validationSchema = object().shape({
     ),
   phone: string()
     .required("Телефон є обов'язковим полем")
-    .matches(phoneRegex, "Введіть дійсний номер телефону"),
+    .matches(phoneRegex, "Невалідний формат"),
 });
 
 export default validationSchema;
