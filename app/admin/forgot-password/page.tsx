@@ -1,21 +1,15 @@
 "use client";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import PasswordRecover from "@/components/PasswordRecover/PasswordRecover";
 import PasswordReset from "@/components/PasswordRecover/PasswordReset/PasswordReset";
 
-const ForgotPasswordPage = () => {
-  const pathname = usePathname();
+const ForgotPasswordTest = () => {
   const [user_data, setUserData] = useState({ id: "", token: "" });
 
   useEffect(() => {
-    const arr = pathname
-      .trim()
-      .split("/")
-      .filter((el) => el.match(/^(?!.*\b(admin|forgot-password)\b).+$/));
-    setUserData({ id: arr[0], token: arr[1] });
-  }, [pathname]);
+    setUserData({id: sessionStorage.getItem("user_id") || "", token: sessionStorage.getItem("fg_token") || ""})
+  }, []);
 
   return (
     <div>
@@ -25,4 +19,4 @@ const ForgotPasswordPage = () => {
     </div>
   );
 };
-export default ForgotPasswordPage;
+export default ForgotPasswordTest;
