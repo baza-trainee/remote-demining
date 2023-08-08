@@ -8,9 +8,8 @@ const validationSchema = object().shape({
     .min(14, "Пароль має містити мінімум 14 символів")
     .required("Введіть новий пароль"),
   confirmPassword: string()
-    .oneOf([ref("newPassword"), null], "Паролі не співпадають")
+    .oneOf([ref("newPassword")], "Паролі не співпадають")
     .required("Підтвердіть новий пароль"),
 });
-
 
 export default validationSchema;

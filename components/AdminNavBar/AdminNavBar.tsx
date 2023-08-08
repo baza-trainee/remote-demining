@@ -24,7 +24,7 @@ const AdminNavBar = () => {
       <AdminNavLink label="Контакти" href="/admin/contacts" src={contacts} />
       <AdminNavLink
         label="Змінити пароль"
-        href="/changePassword"
+        href="/admin/change-password"
         src={password}
         style={{
           marginTop: "calc(120px - var(--admin-navbar-row-gap))",
