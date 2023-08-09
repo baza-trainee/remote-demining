@@ -1,19 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 
 import getContacts from "@/lib/admin/content";
 
-import AdminEditContactsInput from "../AdminEditContactsForm/AdminEditContactsInput";
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
-import Button from "../Button/Button";
 
-import validationSchema from "./validationSchema";
+import AdminDisplayContacts from "./AdminDisplayContacts/AdminDisplayContacts";
+import AdminEditContacts from "./AdminEditContacts/AdminEditContacts";
 
 import styles from "./AdminContactsPage.module.css";
 
-interface ContactsFormValues {
+export interface ContactsFormValues {
   email: string;
   phone: string;
 }
@@ -25,10 +22,8 @@ const AdminContactsPage: React.FC = () => {
   );
 
   useEffect(() => {
-    if (!isEditing) {
-      fetchContactData();
-    }
-  }, [isEditing]);
+    fetchContactData();
+  }, []);
 
   const fetchContactData = async () => {
     try {
@@ -47,24 +42,6 @@ const AdminContactsPage: React.FC = () => {
     setIsEditing(false);
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isValid },
-    setError,
-    setValue,
-  } = useForm<ContactsFormValues>({
-    defaultValues: {
-      email: "",
-      phone: "",
-    },
-    resolver: yupResolver(validationSchema),
-  });
-
-  const onSubmit = ({ email, phone }: ContactsFormValues) => {
-    console.log({ email, phone });
-  };
-
   return (
     <div>
       <h1 className={styles.heading}>
@@ -75,59 +52,14 @@ const AdminContactsPage: React.FC = () => {
         {isEditing && <span className={styles.edit}>Редагувати</span>}
       </h1>
       <AdminWrapper size="bigWrapper">
-        <form
-          className={styles.form}
-          id="contacts-form"
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate
-        >
-          <div className={styles.inputWrapper}>
-            <AdminEditContactsInput
-              label="Телефони"
-              type="tel"
-              editable={isEditing}
-              value={isEditing ? undefined : contactData?.phone || ""}
-              defaultValue={isEditing ? contactData?.phone || "" : undefined}
-              readOnly={!isEditing}
-              errorMessage={errors.phone?.message}
-              error={errors.phone}
-              {...register("phone")}
-            />
-
-            <AdminEditContactsInput
-              label="Електронна пошта"
-              type="email"
-              editable={isEditing}
-              value={isEditing ? undefined : contactData?.email || ""}
-              defaultValue={isEditing ? contactData?.email || "" : undefined}
-              readOnly={!isEditing}
-              errorMessage={errors.email?.message}
-              error={errors.email}
-              {...register("email")}
-            />
-          </div>
-
-          <div className={styles.buttonWrapper}>
-            {isEditing ? (
-              <Button
-                width="291"
-                height="64"
-                onClick={handleSave}
-                type="submit"
-              >
-                Надіслати
-              </Button>
-            ) : (
-              <Button
-                onClick={() => setIsEditing(true)}
-                width="291"
-                height="64"
-              >
-                Редагувати
-              </Button>
-            )}
-          </div>
-        </form>
+        {isEditing ? (
+          <AdminEditContacts contactData={contactData} onSave={handleSave} />
+        ) : (
+          <AdminDisplayContacts
+            contactData={contactData}
+            onEdit={() => setIsEditing(true)}
+          />
+        )}
       </AdminWrapper>
     </div>
   );
