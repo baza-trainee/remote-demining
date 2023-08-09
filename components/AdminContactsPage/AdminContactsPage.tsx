@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-import getContacts from "@/lib/admin/content";
+import { getContacts } from "@/lib/admin/content";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 
@@ -23,15 +23,17 @@ const AdminContactsPage: React.FC = () => {
   });
 
   useEffect(() => {
-    fetchContactData();
-  }, []);
+    if (!isEditing) {
+      fetchContactData();
+    }
+  }, [isEditing]);
 
   const fetchContactData = async () => {
     try {
       const data = await getContacts();
       setContactData(data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching contacts:", error);
     }
   };
 

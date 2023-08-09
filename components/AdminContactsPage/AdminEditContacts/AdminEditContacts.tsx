@@ -1,16 +1,19 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
+import axios from "axios";
 
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
 import Button from "@/components/Button/Button";
+import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
+import Modal from "@/components/Modal/Modal";
+import { updateContacts } from "@/lib/admin/content";
 
 import { ContactsFormValues } from "../AdminContactsPage";
 import validationSchema from "../validationSchema";
 
 import styles from "../AdminContactsPage.module.css";
-import Modal from "@/components/Modal/Modal";
-import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 
 interface EditableContactsFormProps {
   contactData: ContactsFormValues;
@@ -22,11 +25,14 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
   onSave,
 }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
+    setValue,
   } = useForm<ContactsFormValues>({
     defaultValues: {
       email: contactData.email,
@@ -35,18 +41,45 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = (data: ContactsFormValues) => {
+  const onSubmit = async (data: ContactsFormValues) => {
     try {
-      console.log(data);
+      setIsLoading(true);
+      await updateContacts(data);
+      setIsLoading(false);
       toggleModal();
-      onSave();
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
+      if (axios.isAxiosError(error)) {
+        if (error.response?.status === 400) {
+          setError("phone", {
+            type: "custom",
+            message: "Невалідний формат",
+          });
+          setError("email", {
+            type: "custom",
+            message: "Невалідний формат пошти",
+          });
+        }
+        if (error.response?.status === 500) {
+          setError("phone", {
+            type: "custom",
+            message: "Упс..., щось пішло не так",
+          });
+          setError("email", {
+            type: "custom",
+            message: "Упс..., щось пішло не так",
+          });
+        }
+        setValue("phone", "");
+        setValue("email", "");
+      }
     }
   };
 
   const closeModal = () => {
     toggleModal();
+    onSave();
   };
 
   return (
@@ -72,8 +105,8 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
       </div>
 
       <div className={styles.buttonWrapper}>
-        <Button width="291" height="64" type="submit">
-          Надіслати
+        <Button width="291" height="64" type="submit" disabled={isLoading}>
+          {isLoading ? "Завантажується…" : "Надіслати"}
         </Button>
       </div>
       {isModalOpen && (
