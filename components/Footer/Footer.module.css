@@ -15,7 +15,7 @@
 }
 .logo img {
   width: auto;
-  padding-right: 207px;
+  padding-right: 80px;
 }
 .category {
   display: flex;
@@ -31,7 +31,7 @@
   margin-bottom: 12px;
 }
 .menu a {
-  font-weight: 600;
+  font-weight: 400;
 }
 .web__rights a {
   text-decoration-line: underline;
@@ -48,7 +48,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .footer {
-    max-width: 768px;
+    max-width: 1280px;
   }
   .wrapper {
     gap: 24px;
@@ -63,6 +63,7 @@
   }
   .web__rights a {
     text-underline-offset: 5px;
+    line-height: 22px;
   }
 }
 
@@ -74,6 +75,7 @@
     flex-wrap: wrap;
     align-items: center;
     column-gap: 0px;
+    padding-left: 10px;
   }
   .logo {
     width: 100%;
@@ -104,7 +106,8 @@
     padding-left: 16px;
   }
   .web__rights a {
-    text-underline-offset: 5px;
+    text-underline-offset: 6px;
+    line-height: 22px;
   }
   .contacts {
     flex-basis: 100%;
@@ -112,5 +115,6 @@
   }
   .baza {
     font-size: 12px;
+    padding-left: 10px;
   }
 }
