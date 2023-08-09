@@ -50,17 +50,24 @@ const AdminLoginPage: FC = () => {
       } catch (error) {
         setIsLoading(false);
         if (axios.isAxiosError(error)) {
-          if (error.request?.status === 500) {
+          if (error.response?.status === 409) {
             setError("login", {
               type: "custom",
-              message: "Помилка валідації ",
+              message: "Пошта або пароль не існують",
             });
-            password = "";
-          }
-          if (error.request?.status === 500) {
             setError("password", {
               type: "custom",
-              message: "Помилка валідації ",
+              message: "Пошта або пароль не існують",
+            });
+          }
+          if (error.response?.status === 500) {
+            setError("login", {
+              type: "custom",
+              message: "Упс... щось пішло не так",
+            });
+            setError("password", {
+              type: "custom",
+              message: "Упс..., щось пішло не так",
             });
           }
           setValue("login", "");
