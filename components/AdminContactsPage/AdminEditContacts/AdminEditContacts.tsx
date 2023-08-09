@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useToggle } from "usehooks-ts";
 
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
 import Button from "@/components/Button/Button";
@@ -8,6 +9,8 @@ import { ContactsFormValues } from "../AdminContactsPage";
 import validationSchema from "../validationSchema";
 
 import styles from "../AdminContactsPage.module.css";
+import Modal from "@/components/Modal/Modal";
+import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 
 interface EditableContactsFormProps {
   contactData: ContactsFormValues;
@@ -18,6 +21,8 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
   contactData,
   onSave,
 }) => {
+  const [isModalOpen, toggleModal] = useToggle(false);
+
   const {
     register,
     handleSubmit,
@@ -30,9 +35,18 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = ({ email, phone }: ContactsFormValues) => {
-    console.log({ email, phone });
-    onSave();
+  const onSubmit = (data: ContactsFormValues) => {
+    try {
+      console.log(data);
+      toggleModal();
+      onSave();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const closeModal = () => {
+    toggleModal();
   };
 
   return (
@@ -42,6 +56,7 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
           label="Телефони"
           type="tel"
           editable={true}
+          error={errors.phone}
           errorMessage={errors.phone?.message}
           {...register("phone")}
         />
@@ -50,6 +65,7 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
           label="Електронна пошта"
           type="email"
           editable={true}
+          error={errors.email}
           errorMessage={errors.email?.message}
           {...register("email")}
         />
@@ -60,6 +76,11 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
           Надіслати
         </Button>
       </div>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+          <ConfirmationModal message="Контакти були успішно відредаговані!" />
+        </Modal>
+      )}
     </form>
   );
 };

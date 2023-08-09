@@ -17,9 +17,10 @@ export interface ContactsFormValues {
 
 const AdminContactsPage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [contactData, setContactData] = useState<ContactsFormValues | null>(
-    null
-  );
+  const [contactData, setContactData] = useState<ContactsFormValues>({
+    email: "",
+    phone: "",
+  });
 
   useEffect(() => {
     fetchContactData();
@@ -36,9 +37,6 @@ const AdminContactsPage: React.FC = () => {
 
   // Function to handle Save button click
   const handleSave = () => {
-    // Perform data validation and save logic here
-    // Update the state or make API requests
-    // Display modal with success message
     setIsEditing(false);
   };
 
