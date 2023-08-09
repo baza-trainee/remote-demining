@@ -38,16 +38,18 @@ const AdminEditContactsInput = forwardRef<
     return (
       <div className={styles.input__container}>
         {label && <label>{label}</label>}
-        <input
-          ref={ref}
-          className={`${styles.input} ${
+        <div
+          className={`${styles.input_icon_container} ${
             !editable ? styles.nonEditableInput : undefined
           }`}
-          type={type}
-          placeholder={placeholder}
-          {...inputProps}
-        />
-        <span className={styles.pen}>
+        >
+          <input
+            ref={ref}
+            className={styles.input}
+            type={type}
+            placeholder={placeholder}
+            {...inputProps}
+          />
           {editable && (
             <Image
               width={36}
@@ -55,9 +57,10 @@ const AdminEditContactsInput = forwardRef<
               src={pen}
               alt="pen"
               onClick={onClick}
+              className={styles.pen}
             />
           )}
-        </span>
+        </div>
         {error && <p className={styles.error}>{errorMessage}</p>}
       </div>
     );

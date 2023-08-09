@@ -4,7 +4,9 @@
   width: 966px;
   position: relative;
 }
-.input {
+
+.input_icon_container {
+  position: relative;
   width: 100%;
   height: 57px;
   background-color: var(--bg-primary-color);
@@ -12,11 +14,17 @@
   line-height: 150%;
   border-radius: 5px;
   padding: 10px 24px;
-  border: none;
-  outline: none;
 }
 
-.input:not(.nonEditableInput):focus {
+.input {
+  width: 95%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.input__container:focus-within .input_icon_container:not(.nonEditableInput) {
   outline: 1px solid var(--button-primary-bg-color);
 }
 
