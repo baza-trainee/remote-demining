@@ -13,7 +13,20 @@
   border-radius: 5px;
   padding: 10px 24px;
   border: none;
+  outline: none;
 }
+
+.input:not(.nonEditableInput):focus {
+  outline: 1px solid var(--button-primary-bg-color);
+}
+
+.input::placeholder {
+  color: var(--input-placeholder-color);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
 .input__container label {
   font-weight: 600;
   margin-bottom: 16px;

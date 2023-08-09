@@ -14,10 +14,6 @@
   color: var(--admin-breadcrumb-color);
 }
 
-/* .edit {
-  color: var(--admin-edit-color);
-} */
-
 .inputWrapper {
   display: flex;
   flex-direction: column;

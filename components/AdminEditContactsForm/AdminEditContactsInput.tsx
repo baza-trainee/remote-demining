@@ -40,7 +40,9 @@ const AdminEditContactsInput = forwardRef<
         {label && <label>{label}</label>}
         <input
           ref={ref}
-          className={styles.input}
+          className={`${styles.input} ${
+            !editable ? styles.nonEditableInput : undefined
+          }`}
           type={type}
           placeholder={placeholder}
           {...inputProps}
