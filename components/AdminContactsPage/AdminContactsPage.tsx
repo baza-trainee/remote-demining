@@ -1,7 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+
+import getContacts from "@/lib/admin/content";
 
 import AdminEditContactsInput from "../AdminEditContactsForm/AdminEditContactsInput";
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
@@ -18,6 +20,24 @@ interface ContactsFormValues {
 
 const AdminContactsPage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
+  const [contactData, setContactData] = useState<ContactsFormValues | null>(
+    null
+  );
+
+  useEffect(() => {
+    if (!isEditing) {
+      fetchContactData();
+    }
+  }, [isEditing]);
+
+  const fetchContactData = async () => {
+    try {
+      const data = await getContacts();
+      setContactData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // Function to handle Save button click
   const handleSave = () => {
@@ -48,7 +68,11 @@ const AdminContactsPage: React.FC = () => {
   return (
     <div>
       <h1 className={styles.heading}>
-        {isEditing ? "Контакти > Edit" : "Контакти"}
+        <span className={isEditing ? styles.breadcrumb : undefined}>
+          Контакти
+        </span>{" "}
+        {isEditing && <span className={styles.breadcrumb}>&gt;</span>}
+        {isEditing && <span className={styles.edit}>Редагувати</span>}
       </h1>
       <AdminWrapper size="bigWrapper">
         <form
@@ -62,6 +86,9 @@ const AdminContactsPage: React.FC = () => {
               label="Телефони"
               type="tel"
               editable={isEditing}
+              value={isEditing ? undefined : contactData?.phone || ""}
+              defaultValue={isEditing ? contactData?.phone || "" : undefined}
+              readOnly={!isEditing}
               errorMessage={errors.phone?.message}
               error={errors.phone}
               {...register("phone")}
@@ -71,6 +98,9 @@ const AdminContactsPage: React.FC = () => {
               label="Електронна пошта"
               type="email"
               editable={isEditing}
+              value={isEditing ? undefined : contactData?.email || ""}
+              defaultValue={isEditing ? contactData?.email || "" : undefined}
+              readOnly={!isEditing}
               errorMessage={errors.email?.message}
               error={errors.email}
               {...register("email")}
