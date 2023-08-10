@@ -20,7 +20,6 @@ const Footer = () => {
             <Image height={149} width={117} src={logo} alt="logo" />
           </Link>
           <ul className={`${styles.menu} ${styles.category}`}>
-            {/* <li className={styles.category__name}>Меню</li> */}
             <li>
               <NavLink href="/">Про нас</NavLink>
             </li>
@@ -35,7 +34,6 @@ const Footer = () => {
             </li>
           </ul>
           <ul className={`${styles.web__rights} ${styles.category}`}>
-            {/* <li className={styles.category__name}>Правила</li> */}
             <li>
               <Link href="">Політика конфіденційності</Link>
             </li>
@@ -47,7 +45,6 @@ const Footer = () => {
             </li>
           </ul>
           <ul className={`${styles.contacts} ${styles.category}`}>
-            {/* <li className={styles.category__name}>Контакти</li> */}
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={tel} alt="tel" />{' '}
               <span>+38 (044) 209 5302</span>
@@ -63,7 +60,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className={styles.baza}>
-          Розробка Baza Trainee Ukraine 2023 Всі права захищені
+          Розробка Baza Trainee Ukraine <br className={styles.br}/> 2023 Всі права захищені
         </div>
       </Container>
     </footer>
