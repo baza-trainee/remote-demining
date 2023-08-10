@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 
-import passwordChange from "@/lib/passwordChange";
+import passwordChange from "@/lib/admin/passwordChange";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import AutorizationInput from "../AutorizationInput/AutorizationInput";
@@ -33,6 +33,7 @@ const AdminPasswordChangePage: FC = () => {
     formState: { errors, isValid },
     reset,
     setError,
+    setValue,
   } = useForm<PasswordChangeFormValues>({
     defaultValues: {
       oldPassword: "",
@@ -50,7 +51,7 @@ const AdminPasswordChangePage: FC = () => {
     if (isValid) {
       try {
         const passwordRegex =
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_)(.,])[A-Za-z0-9!-_)(.,]{14,}$/;
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_)(.,])[A-Za-z0-9!-_)(.,]{8,}$/;
         if (!passwordRegex.test(newPassword)) {
           setError("newPassword", {
             type: "manual",
@@ -65,7 +66,10 @@ const AdminPasswordChangePage: FC = () => {
         setIsSuccessModalOpen(true);
       } catch (error) {
         if (axios.isAxiosError(error)) {
-          if (error.request?.status === 500) {
+          if (
+            error.response?.status === 404 ||
+            error.response?.status === 401
+          ) {
             setError("oldPassword", {
               type: "custom",
               message: "Помилка валідації",
@@ -79,6 +83,23 @@ const AdminPasswordChangePage: FC = () => {
               message: "Помилка валідації",
             });
           }
+          if (error.response?.status === 500) {
+            setError("oldPassword", {
+              type: "custom",
+              message: "Упс... щось пішло не так",
+            });
+            setError("newPassword", {
+              type: "custom",
+              message: "Упс... щось пішло не так",
+            });
+            setError("confirmPassword", {
+              type: "custom",
+              message: "Упс... щось пішло не так",
+            });
+          }
+          setValue("oldPassword", "");
+          setValue("newPassword", "");
+          setValue("confirmPassword", "");
         }
       }
     }
