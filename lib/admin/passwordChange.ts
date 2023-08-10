@@ -22,14 +22,16 @@ const passwordChange = async (
     });
     return data;
   } catch (error) {
+    console.error(error);
+    throw error;
     // if (error.response) {
     //   const { status } = error.response;
     //   if (status === 404) {
     //     throw new Error("User not found");
     //   }
     // }
-    console.log(error);
-    throw new Error("Oh, something went wrong");
+    // console.log(error);
+    // throw new Error("Oh, something went wrong");
   }
 };
 
