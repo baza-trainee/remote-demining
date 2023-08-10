@@ -22,6 +22,7 @@ const passwordChange = async (
     });
     return data;
   } catch (error) {
+    console.error(error);
     throw error;
     // if (error.response) {
     //   const { status } = error.response;
