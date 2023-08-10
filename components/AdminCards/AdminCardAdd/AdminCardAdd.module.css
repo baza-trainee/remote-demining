@@ -1,3 +1,5 @@
+.container {
+}
 .input_container {
   display: flex;
   flex-direction: column;
@@ -14,4 +16,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.btn_send_container > * {
+  width: 291px;
+  height: 64px;
 }

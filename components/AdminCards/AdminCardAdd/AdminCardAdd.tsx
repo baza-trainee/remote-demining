@@ -18,7 +18,7 @@ const AdminCardAdd = () => {
         <AddButton />
       </div>
       <div className={styles.btn_send_container}>
-        <Button width={"291px"} height={"64px"} type="submit">
+        <Button type="submit">
           Надіслати
         </Button>
       </div>
