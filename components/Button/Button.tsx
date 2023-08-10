@@ -35,7 +35,7 @@ const Button: React.FC<Props> = ({
       onClick={onClick}
       className={buttonClassName}
       disabled={disabled}
-      style={{ width: width, height: height }}
+      style={{ width: `${width}px`, height: `${height}px` }}
       {...rest}
     >
       {children}

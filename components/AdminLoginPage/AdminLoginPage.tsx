@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 
-import loginUser from "@/lib/auth";
+import loginUser from "@/lib/admin/auth";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import AutorizationInput from "../AutorizationInput/AutorizationInput";
