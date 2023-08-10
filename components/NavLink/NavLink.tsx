@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import styles from "./NavLink.module.css";
 
 interface NavLinkPropsType {
@@ -24,9 +22,14 @@ const NavLink: React.FC<NavLinkPropsType> = ({
   } ${isFullWidth && styles.fullWidth} ${isMoreInfo && styles.moreInfo_btn}`;
 
   return (
-    <Link className={styledLink} href={href}>
+    <a
+      className={styledLink}
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
       {children}
-    </Link>
+    </a>
   );
 };
 
