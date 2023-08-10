@@ -60,7 +60,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className={styles.baza}>
-          Розробка Baza Trainee Ukraine <br className={styles.br}/> 2023 Всі права захищені
+          Розробка Baza Trainee Ukraine 2023 <br className={styles.br}/> Всі права захищені
         </div>
       </Container>
     </footer>
