@@ -14,7 +14,7 @@
 }
 
 /* Tablet styles (768px to 1439px) */
-@media (min-width: 768px) and (max-width: 1439px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .container {
     max-width: 768px;
     padding-left: 32px;

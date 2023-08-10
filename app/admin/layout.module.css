@@ -1,11 +1,9 @@
 .pageWrapper {
+  display: flex;
   column-gap: var(--admin-layout-gap);
-  height: 100vh;
-  width: min-content;
-  position: absolute;
-  padding-top: 100px;
+  height: 100%;
 }
 
 .pageWrapper > :nth-child(2) {
-  padding: 32px 24px;
+  padding: 32px 0;
 }

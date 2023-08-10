@@ -11,6 +11,7 @@ import Modal from "@/components/Modal/Modal";
 import PasswordInputToggle from "@/components/PasswordInputToggle/PasswordInputToggle";
 
 import styles from "./PasswordReset.module.css";
+import { useRouter } from "next/navigation";
 
 interface PasswordResetProps {
   id: string;
@@ -37,6 +38,7 @@ const validationScheme = yup.object({
 
 const PasswordReset: React.FC<PasswordResetProps> = ({ id, token }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -59,6 +61,7 @@ const PasswordReset: React.FC<PasswordResetProps> = ({ id, token }) => {
       );
       toggleModal();
       reset();
+      router.push('/admin');
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response?.status === 404) {
