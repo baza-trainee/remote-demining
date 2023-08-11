@@ -6,11 +6,11 @@ const phoneRegex = /^\+38 \(\d{3}\) \d{3} \d{4}$/;
 
 const validationSchema = object().shape({
   email: string()
-    .required("Введіть email")
+    .required("Введіть e-mail")
     .matches(emailRegex, "Невалідний формат пошти")
     .test(
       "is-valid-domain",
-      "Email з доменом .ru не підтримується",
+      "E-mail з доменом .ru не підтримується",
       (value) => {
         if (value && value.includes("@")) {
           const domain = value.split("@")[1];
@@ -20,7 +20,7 @@ const validationSchema = object().shape({
     ),
   phone: string()
     .required("Телефон є обов'язковим полем")
-    .matches(phoneRegex, "Невалідний формат"),
+    .matches(phoneRegex, "Введіть номер телефону у форматі +38 (067) 333 444"),
 });
 
 export default validationSchema;

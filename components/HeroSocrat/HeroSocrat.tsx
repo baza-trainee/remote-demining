@@ -10,7 +10,7 @@ const HeroSocrat = () => {
   return (
     <Container>
       <div className={styles.container}>
-        <h2 className={styles.title}>Проект SOCRAT</h2>
+        <h2 className={styles.title}>Проєкт SOCRAT</h2>
         <h3 className={styles.sub_title}>
           Дистанційне знаходження вибухонебезпечних предметів
         </h3>

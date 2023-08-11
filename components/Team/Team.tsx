@@ -12,7 +12,7 @@ const Team: React.FC = () => {
 
   return (
     <SectionContainer
-      title="Наукова рада проекту"
+      title="Наукова рада проєкту"
       titleColor="var(--task-text-color)"
       bgImg={teamBg.src}
     >

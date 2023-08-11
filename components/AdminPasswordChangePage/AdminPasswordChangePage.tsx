@@ -1,8 +1,7 @@
 "use client";
 
-import router, { useRouter } from "next/router";
-import { FC } from "react";
-import { useState } from "react";
+import { FC, useState } from "react";
+import { useRouter } from "next/navigation"; 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
@@ -24,30 +23,29 @@ interface PasswordChangeFormValues {
   confirmPassword: string;
 }
 
-const AdminPasswordChangePage: FC = () => {
+interface AdminPasswordChangePageProps {
+  token: string; 
+}
+
+const AdminPasswordChangePage: FC<AdminPasswordChangePageProps> = ({ token }) => {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset,
     setError,
     setValue,
   } = useForm<PasswordChangeFormValues>({
     defaultValues: {
-      oldPassword: "",
       newPassword: "",
       confirmPassword: "",
     },
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async ({
-    oldPassword,
-    newPassword,
-    confirmPassword,
-  }: PasswordChangeFormValues) => {
+   const onSubmit = async ({ newPassword, confirmPassword }: PasswordChangeFormValues) => {
     if (isValid) {
       try {
         const passwordRegex =
@@ -61,7 +59,7 @@ const AdminPasswordChangePage: FC = () => {
           return;
         }
 
-        await passwordChange(oldPassword, newPassword, confirmPassword);
+        await passwordChange(newPassword, confirmPassword, token);
         router.push("/admin/");
         setIsSuccessModalOpen(true);
       } catch (error) {
@@ -101,7 +99,7 @@ const AdminPasswordChangePage: FC = () => {
           setValue("newPassword", "");
           setValue("confirmPassword", "");
         }
-      }
+      } 
     }
   };
 
@@ -144,12 +142,15 @@ const AdminPasswordChangePage: FC = () => {
         </form>
       </AdminWrapper>
       {isSuccessModalOpen && (
-        <Modal
+        <div className={styles.modal}>
+          <Modal
           toggleModal={() => setIsSuccessModalOpen(false)}
           isModalOpen={isSuccessModalOpen}
+          isBigModal={true}
         >
           <p>Пароль успішно змінено.</p>
         </Modal>
+        </div>
       )}
     </section>
   );
