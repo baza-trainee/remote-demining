@@ -7,7 +7,6 @@
 /* Mobile styles (360px to 767px) */
 @media (min-width: 320px) {
   .container {
-    /* max-width: 360px; */
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -16,7 +15,6 @@
 /* Tablet styles (768px to 1439px) */
 @media (min-width: 768px) {
   .container {
-    /* max-width: 768px; */
     padding-left: 32px;
     padding-right: 32px;
   }

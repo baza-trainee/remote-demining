@@ -2,17 +2,17 @@
 
 import Image from 'next/image';
 import { FC } from 'react';
+import { useWindowSize } from 'usehooks-ts';
 
 import Button from '@/components/Button/Button';
-import { useMyMedia } from '@/hooks/useMedia';
 
 import { HeroData } from '../heroData';
 
 import styles from './HeroSlide.module.css';
 
 const HeroSlide: FC<{ item: HeroData }> = ({ item }) => {
-  const { isTablet } = useMyMedia();
 
+  const { width } = useWindowSize();
   return (
     <div>
       <div
@@ -23,7 +23,7 @@ const HeroSlide: FC<{ item: HeroData }> = ({ item }) => {
       >
         <h2 className={styles['title']}>{item.title}</h2>
         <p className={styles['caption']}>{item.caption}</p>
-        <Button className={styles.slideBtn} isFullWidth={isTablet}>
+        <Button className={styles.slideBtn} isFullWidth={ width < 768 }>
           Підтримати
         </Button>
         {item.contentImage && (
