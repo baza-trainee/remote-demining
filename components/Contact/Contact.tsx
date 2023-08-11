@@ -11,13 +11,13 @@ interface ContactProps {
   backgroundImage: string;
 }
 
-const Contact: FC<ContactProps> = ({backgroundImage}) => {
+const Contact: FC<ContactProps> = ({ backgroundImage }) => {
   return (
     <SectionContainer bgImg={backgroundImage} className={styles.wrapper}>
       <div className={styles.inner}>
         <h2 className={styles.title}>
-          Якщо у вас є питання, зауваження або пропозиції , просимо заповнити
-          форму зворотнього зв`язку
+          Якщо у вас є питання, зауваження або пропозиції, просимо заповнити
+          форму зворотного зв&apos;язку
         </h2>
         <ContactForm />
       </div>
