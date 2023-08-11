@@ -20,7 +20,7 @@ const validationSchema = object().shape({
     ),
   phone: string()
     .required("Телефон є обов'язковим полем")
-    .matches(phoneRegex, "Невалідний формат"),
+    .matches(phoneRegex, "Введіть номер телефону у форматі +38 (067) 333 444"),
 });
 
 export default validationSchema;
