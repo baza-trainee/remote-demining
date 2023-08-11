@@ -7,7 +7,8 @@ import add_icon from "@/public/images/icons/buttons/add.svg";
 
 import styles from "./AdminCardsList.module.css";
 
-const AdminCardsContainer = () => {
+
+const AdminCardsList = () => {
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
@@ -26,7 +27,7 @@ const AdminCardsContainer = () => {
           </li>
         ))}
         <li className={styles.add_card}>
-          <div className={styles.add_btn}>
+          <div className={styles.add_btn} >
             <Image src={add_icon} width={50} height={51} alt={"add icon"} />
             <span>Додати</span>
           </div>
@@ -38,4 +39,4 @@ const AdminCardsContainer = () => {
   );
 };
 
-export default AdminCardsContainer;
+export default AdminCardsList;

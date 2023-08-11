@@ -8,7 +8,7 @@ import pen from "@/public/images/adminInputs/pen.svg";
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 
 import AdminCardAdd from "./AdminCardAdd/AdminCardAdd";
-import AdminCardsContainer from "./AdminCardsList/AdminCardsList";
+import AdminCardsList from "./AdminCardsList/AdminCardsList";
 
 import styles from "./AdminCards.module.css";
 
@@ -29,8 +29,8 @@ const AdminCards = () => {
         </div>
       </div>
       <AdminWrapper size="bigWrapper">
-        <AdminCardsContainer />
-        {/* <AdminCardAdd /> */}
+        {/* <AdminCardsContainer /> */}
+        <AdminCardAdd />
       </AdminWrapper>
     </div>
   );
