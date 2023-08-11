@@ -1,3 +1,4 @@
+"use client"
 import { useRouter } from "next/router";
 
 import AdminPasswordChangePage from "@/components/AdminPasswordChangePage/AdminPasswordChangePage";
