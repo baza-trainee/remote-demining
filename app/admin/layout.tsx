@@ -4,7 +4,6 @@ import { Open_Sans } from "next/font/google";
 import Container from "@/components/Container/Container";
 import Header from "@/components/Header/Header";
 
-
 export const metadata: Metadata = {
   title: "",
   description: "",
