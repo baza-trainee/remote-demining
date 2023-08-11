@@ -57,7 +57,7 @@ const FeedbackForm: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.heading}>Зворотній зв&apos;язок</h2>
+      <h2 className={styles.heading}>Зворотний зв&apos;язок</h2>
       <p className={styles.text}>
         Ваш відгук чи пропозиція буде корисною для нас
       </p>
