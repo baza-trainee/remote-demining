@@ -18,6 +18,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 1280px) {
+    height: 120px;
+  }
 }
 
 .btn_menu {
