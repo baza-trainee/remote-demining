@@ -1,5 +1,7 @@
 import React, { ComponentProps } from "react";
 
+import Container from "../Container/Container";
+
 import styles from "./sectionContainer.module.css";
 
 interface ContainerProps {
@@ -42,20 +44,22 @@ const SectionContainer: React.FC<ContainerProps> = ({
 
   return (
     <section className={containerClassName} style={containerStyle}>
-      <div className={containerHeaderWrapperClassName}>
-        {title && (
-          <h2 className={styles.title} style={titleStyle}>
-            {title}
-          </h2>
-        )}
-        {description && (
-          <>
-            <span className={styles.descLine}></span>
-            <p className={styles.desc}>{description}</p>
-          </>
-        )}
-      </div>
-      {children}
+      <Container>
+        <div className={containerHeaderWrapperClassName}>
+          {title && (
+            <h2 className={styles.title} style={titleStyle}>
+              {title}
+            </h2>
+          )}
+          {description && (
+            <>
+              <span className={styles.descLine}></span>
+              <p className={styles.desc}>{description}</p>
+            </>
+          )}
+        </div>
+        {children}
+      </Container>
     </section>
   );
 };
