@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 
 import AdminPasswordChangePage from "@/components/AdminPasswordChangePage/AdminPasswordChangePage";

@@ -37,60 +37,10 @@
   text-align: center;
 }
 
-/* Desktop styles (1280px and above) */
-@media (min-width: 1280px) {
-  .container {
-    background-position: 50% 30%;
-    padding: var(--section-padding-main);
-    max-width: 1440px;
-  }
-
-  .container.hasBgImg {
-    padding: var(--section-padding-bgImg);
-  }
-
-  .desc {
-    width: 760px;
-  }
-
-  .title {
-    white-space: nowrap;
-  }
-
-  .descLine {
-    width: 1px;
-    height: 66px;
-    margin-right: 32px;
-    margin-left: 32px;
-  }
-}
-
-/* Tablet styles (768px to 1439px) */
-@media (min-width: 768px) and (max-width: 1279px) {
-  .container {
-    padding: var(--section-padding-main-tablet);
-    max-width: 768px;
-  }
-
-  .container.hasBgImg {
-    padding: var(--section-padding-bgImg-tablet);
-  }
-
-  .descLine {
-    display: inline-block;
-    width: 1px;
-    height: 66px;
-    background: var(--section-title-color);
-    margin-right: 32px;
-    margin-left: 32px;
-  }
-}
-
-/* Mobile styles (360px to 767px) */
-@media (max-width: 767px) {
+/* Mobile styles (320px to 767px) */
+@media (min-width: 320px) {
   .container {
     padding: var(--section-padding-main-mobile);
-    min-width: 320px;
   }
 
   .container.hasBgImg {
@@ -116,5 +66,56 @@
 
   .desc {
     text-align: left;
+  }
+}
+
+/* Tablet styles (768px to 1439px) */
+@media (min-width: 768px) {
+  .container {
+    padding: var(--section-padding-main-tablet);
+  }
+
+  .container.hasBgImg {
+    padding: var(--section-padding-bgImg-tablet);
+  }
+
+  .containerHeaderWrapper {
+    flex-direction: row;
+  }
+
+  .descLine {
+    display: inline-block;
+    width: 1px;
+    height: 66px;
+    background: var(--section-title-color);
+    margin-right: 32px;
+    margin-left: 32px;
+  }
+}
+
+/* Desktop styles (1280px and above) */
+@media (min-width: 1280px) {
+  .container {
+    background-position: 50% 30%;
+    padding: var(--section-padding-main);
+  }
+
+  .container.hasBgImg {
+    padding: var(--section-padding-bgImg);
+  }
+
+  .desc {
+    width: 760px;
+  }
+
+  .title {
+    white-space: nowrap;
+  }
+
+  .descLine {
+    width: 1px;
+    height: 66px;
+    margin-right: 32px;
+    margin-left: 32px;
   }
 }
