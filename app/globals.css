@@ -1,154 +1,76 @@
 :root {
-  /* BG */
-  --bg-primary-color: #f5f5f5;
-  --bg-light-blue: #ebf2ff;
-  --bg-white-color: #fff;
+  --max-width: 1100px;
+  --border-radius: 12px;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-  /* Text color*/
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 
-  --main-text-color: #151515;
-  --admin-heading-text-color: #1b3969;
-  --admin-breadcrumb-color: #adabc3;
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
 
-  /* Buttons */
-  --button-primary-color: #f5f5f5;
-  --button-primary-bg-color: #4285f4;
-  --button-primary-hover-color: #c6dafc;
-  --button-disabled-bg-color: #e3e3e3;
-  --button-primary-border-rad: 5px;
-  --button-primary-padding: 14px 24px;
-  --button-underscore-clr: #151515;
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(
+    #00000080,
+    #00000040,
+    #00000030,
+    #00000020,
+    #00000010,
+    #00000010,
+    #00000080
+  );
 
-  /* Links */
-  --link-primary-color: #fff;
-  --link-primary-bg-color: #4285f4;
-  --link-primary-hover-color: #c6dafc;
-  --link-primary-padding: 12px 10px;
-  --link-primary-border-rad: 5px;
-
-  --button-form-border-rad: 12px;
-  --button-form-color: #151515;
-  --button-form-hover-color: #f5f5f5;
-  --button-form-width: 672px;
-  --button-form-height: 75px;
-  /* Inputs */
-
-  --input-border-rad: 5px;
-  --input-primary-bg-color: #f5f5f5;
-  --input-secondary-bg-color: #fff;
-  --input-placeholder-color: #adabc3;
-  --input-width: 274px;
-  --input-height: 64px;
-
-  /* Textarea */
-  --textarea-primary-height: 18.75rem;
-  --textarea-secondary-height: 9.125rem;
-
-  /* Card */
-
-  --card-primary-bg-color: #ebf2ff;
-  --card-secondary-bg-color: #f5f5f5;
-  --card-img-height-mobile: 180px;
-  --card-img-height: 240px;
-  --card-img-height-mobile: 180px;
-  --card-border-rad: 24px;
-
-  --card-list-gap-mobile: 40px;
-  --card-list-gap: 16px;
-
-  /* Section */
-
-  --section-padding-main: 120px 40px;
-  --section-padding-bgImg: 40px 40px;
-  --section-title-color: #151515;
-  --section-padding-main-tablet: 80px 32px;
-  --section-padding-bgImg-tablet: 40px 32px;
-  --section-padding-main-mobile: 80px 16px;
-  --section-padding-bgImg-mobile: 32px 16px;
-  --section-title-color: #151515;
-
-  /* 404 animations */
-  --drone-box-rotation: 30deg;
-  --drone-animation-duration: 3s;
-  --drone-timing-function: linear;
-  --drone-fill-mode: forwards;
-
-  /*Tasks section*/
-  --card_item-width-mobile: 328px;
-  --card_item-width-tablet: 340px;
-  --card_item-width-desktop: 437px;
-  --card_item-gap: 16px;
-  --task-text-color: #f5f5f5;
-  --task-card-colum-gap: 24px;
-  --task-card-row-gap: 40px;
-
-  /* Projects */
-  --card-list-gap-desktop: 32px;
-  --card-list-padding-tablet: 16px;
-
-  /* About */
-  --about-section-text-color: #151515;
-
-  /* Transition*/
-  --transition: 300ms ease-out;
-
-  /* Error list */
-  --error-color: #dc0c31;
-  /* Slider */
-
-  --slider-dots-primary: #f5f5f5;
-  --slider-dot-size: 14px;
-  --slider-dots-spacing: 8px;
-
-  /* Hero */
-  --hero-height-desktop: 640px;
-  --hero-height-tablet: 450px;
-  --hero-height-mobile: 640px;
-  --hero-horizontal-padding: clamp(16px, 12vw, 180px);
-  --hero-text-color: #f5f5f5;
-
-  /* Activity */
-  --activity-list-top-margin: 80px;
-  --activity-list-item-gap: 24px;
-  --activity-list-item-gap-tablet: 40px;
-  --activity-list-image-height: 560px;
-  --activity-list-image-height-tablet: 289px;
-  --activity-list-image-height-mobile: 279px;
-  --activity-list-image-border-rad: 24px;
-  --activity-list-image-border-rad-mobile: 12px;
-
-  /* LangMenu */
-  --lang-menu-bg-color: #fff;
-  --lang-menu-border-color: #e3e3e3;
-  --lang-menu-hover-color: #e3e3e3;
-
-  /* Burger Menu */
-  --burger-menu-border-color: #e7e6f2;
-  --burger-menu-hover-color: #c6dafc;
-
-  /* Modal */
-  --modal-bg-color: #f5f5f5;
-  --modal-white-color: #fff;
-  --modal-big-border-radius: 24px;
-  --modal-small-border-radius: 5px;
-
-  /* Icon Buttons */
-  --icon-button-bg-color: #ffffff;
-  --icon-button-border-rad: 5px;
-  --exit-button-text-color: #356cc6;
-  --add-button-text-color: #4285f4;
-
-  /* Admin layout */
-  --admin-layout-gap: 24px;
-
-  /* Admin NavBar */
-  --admin-navbar-width: 322px;
-  --admin-navbar-bg-color: #285298;
-  --admin-navbar-row-gap: 20px;
-  --admin-navbar-top-padding: 120px;
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
 }
 
 @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(
+      to bottom right,
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0),
+      rgba(1, 65, 255, 0.3)
+    );
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(
+      #ffffff80,
+      #ffffff40,
+      #ffffff30,
+      #ffffff20,
+      #ffffff10,
+      #ffffff10,
+      #ffffff80
+    );
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
 }
 
 * {
@@ -173,6 +95,16 @@ body {
 
 ul {
   list-style: none;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
 }
 
 a {
