@@ -10,7 +10,7 @@ const validationSchema = object().shape({
     .min(2, "Ім’я повинно бути не менше 2 знаків")
     .max(50, "Ім’я повинно бути не більше 50 знаків"),
   email: string()
-    .required("Введіть email")
+    .required("Введіть e-mail")
     .matches(emailRegex, "Введіть дійсний email")
     .test(
       "is-valid-domain",
