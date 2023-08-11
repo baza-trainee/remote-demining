@@ -57,10 +57,9 @@ const FeedbackForm: FC = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.heading}>Зворотній зв`язок</h2>
+      <h2 className={styles.heading}>Зворотній зв&apos;язок</h2>
       <p className={styles.text}>
-        Ваш відгук чи пропозиція буде корисною для нас. <br /> Дякуємо що ви з
-        нами.
+        Ваш відгук чи пропозиція буде корисною для нас
       </p>
       <form
         id="feedback-form"
@@ -91,7 +90,7 @@ const FeedbackForm: FC = () => {
             <Input
               size="full"
               type="email"
-              label="Email*"
+              label="E-mail*"
               backgroundCl="secondary"
               errorMessage={errors.email?.message}
               error={errors.email}
@@ -112,7 +111,7 @@ const FeedbackForm: FC = () => {
             <Input
               size="small"
               type="email"
-              label="Email*"
+              label="E-mail*"
               backgroundCl="secondary"
               errorMessage={errors.email?.message}
               error={errors.email}
