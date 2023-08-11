@@ -5,11 +5,7 @@ import css from "./aboutSectionList.module.css";
 interface AboutSectionListProps {
   items: {
     id: number;
-    img: {
-      small: string;
-      medium: string;
-      large: string;
-    };
+    img: string;
     text: string;
   }[];
 }

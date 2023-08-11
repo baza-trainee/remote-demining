@@ -15,7 +15,7 @@ const NewsItem: React.FC<NewsItem> = ({ id, img, text, title }) => {
     <div key={id} className={styles.item}>
       <Card img={img}>
         <div className={styles.content}>
-          <div>
+          <div className={styles.text_content} >
             <p className={styles.title}>{title}</p>
             <p className={styles.text}>{text}</p>
           </div>
