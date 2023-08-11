@@ -1,36 +1,37 @@
 .content {
-  height: 270px;
+  height: 367px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
-  @media (max-width) {
+  @media (min-width: 768px) {
     height: 338px;
+  }
+  @media (min-width: 1280px) {
+    height: 270px;
   }
 }
 .text_content {
-  overflow-y: hidden;
+  overflow: hidden;
 }
 .title {
-  /* max-height: 92px; */
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
-  overflow-y: hidden;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
 }
 .text {
-  /* max-height: 55px; */
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 16px;
-  overflow-y: hidden;
+  overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
   white-space: pre-wrap;
-  /* @media (max-width) {
-    max-height: 123px;
-  } */
+
 }
 
 .buttonWrapper {
