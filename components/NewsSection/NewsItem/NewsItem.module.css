@@ -4,13 +4,22 @@
   justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
+  @media (max-width) {
+    height: 338px;
+  }
+}
+.text_content {
+  overflow-y: hidden;
 }
 .title {
+  /* max-height: 92px; */
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 16px;
+  overflow-y: hidden;
 }
 .text {
+  /* max-height: 55px; */
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 16px;
@@ -19,6 +28,9 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
   white-space: pre-wrap;
+  /* @media (max-width) {
+    max-height: 123px;
+  } */
 }
 
 .buttonWrapper {
