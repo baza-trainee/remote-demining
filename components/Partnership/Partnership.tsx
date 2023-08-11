@@ -9,6 +9,8 @@ import Slider from "../Slider/Slider";
 
 import partnersData, { Partner } from "./partnersData";
 
+import styles from "./Parnership.module.css";
+
 const Partnership = () => {
   const [perPage, setPerPage] = useState<number>(1);
   const { isMobile, isTablet, isDesktop } = useMyMedia();
@@ -22,6 +24,7 @@ const Partnership = () => {
     <SectionContainer
       title="Партнерські організації"
       description="Організації, з якими ми постійно співпрацюємо"
+      className={styles.section}
     >
       <Slider
         slidesPerPage={perPage}

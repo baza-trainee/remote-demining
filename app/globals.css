@@ -58,13 +58,13 @@
 
   /* Section */
 
-  --section-padding-main: 120px 40px;
-  --section-padding-bgImg: 40px 40px;
+  --section-padding-main: 120px;
+  --section-padding-bgImg: 40px;
   --section-title-color: #151515;
-  --section-padding-main-tablet: 80px 32px;
-  --section-padding-bgImg-tablet: 40px 32px;
-  --section-padding-main-mobile: 80px 16px;
-  --section-padding-bgImg-mobile: 32px 16px;
+  --section-padding-main-tablet: 80px;
+  --section-padding-bgImg-tablet: 40px;
+  --section-padding-main-mobile: 80px;
+  --section-padding-bgImg-mobile: 32px;
   --section-title-color: #151515;
 
   /* 404 animations */
