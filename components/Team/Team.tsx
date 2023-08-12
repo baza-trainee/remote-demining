@@ -17,12 +17,7 @@ const Team: React.FC = () => {
       bgImg={teamBg.src}
       centerTitle
     >
-      <Slider
-        slides={cardsData}
-        slidesPerPage={4}
-        infinite={true}
-        responsive={responsive}
-      />
+      <Slider slides={cardsData} slidesPerPage={4} responsive={responsive} />
     </SectionContainer>
   );
 };
