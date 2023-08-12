@@ -4,32 +4,17 @@ import styles from "./Arrow.module.css";
 
 interface ArrowProps extends CustomArrowProps {
   arrowType: "next" | "prev";
-  infinite?: boolean;
-  slidesPerPage: number;
 }
 
-const Arrow: React.FC<ArrowProps> = ({
-  arrowType,
-  className,
-  style,
-  currentSlide,
-  slideCount,
-  infinite,
-  slidesPerPage,
-  ...props
-}) => {
-  const isDisabled =
-    !infinite &&
-    (arrowType === "next"
-      ? currentSlide === (slideCount as number) - slidesPerPage
-      : currentSlide === 0);
+const Arrow: React.FC<ArrowProps> = ({ arrowType, onClick }) => {
+  const isDisabled = !onClick;
   return (
     <button
       className={styles[arrowType === "next" ? "arrow-next" : "arrow-prev"]}
       disabled={isDisabled}
       aria-disabled={isDisabled}
       type="button"
-      {...props}
+      onClick={onClick}
     >
       {arrowType === "next" ? (
         <svg
