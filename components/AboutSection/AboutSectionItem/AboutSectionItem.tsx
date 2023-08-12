@@ -13,7 +13,7 @@ const AboutSectionItem: React.FC<AboutSectionItemProps> = ({ img, text }) => {
     <li className={styles.aboutItem}>
       <div className={styles.contentWrapper}>
         <div className={styles.img_container}>
-          <Image className={styles.img} src={img} alt="About us" fill/>
+          <Image className={styles.image} src={img} alt="About us" fill objectFit="cover"/>
         </div>
         <div className={styles.imgDescription}>
           <p className={styles.text}>{text}</p>
