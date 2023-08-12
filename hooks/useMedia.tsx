@@ -16,6 +16,9 @@ export const useMyMedia = () => {
   const isMobileLandscape = useMediaQuery({
     query: "(min-width: 596px)",
   });
+  const isLMobile = useMediaQuery({
+    query: "(min-width: 500px)",
+  });
   const isMMobile = useMediaQuery({
     query: "(min-width: 400px)",
   });
@@ -29,6 +32,7 @@ export const useMyMedia = () => {
     isMobile,
     isSMobile,
     isMMobile,
+    isLMobile,
     isMobileLandscape,
     isTablet,
     isMTablet,
