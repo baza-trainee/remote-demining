@@ -219,12 +219,16 @@
   grid-column: 1 / 7;
   padding-left: 20px;
   font-size: 16px;
+  outline: none;
   @media (min-width: 660px) {
-    font-size: 18px;
+    font-size: 18px; 
   }
   @media (min-width: 1024px) {
     font-size: 24px;
   }
+}
+.input:focus {
+  outline: 3px solid #4285f4;
 }
 .btn_container {
   display: grid;
