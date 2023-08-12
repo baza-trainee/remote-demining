@@ -26,8 +26,8 @@ const Partnership = () => {
   } = useMyMedia();
   useEffect(() => {
     isSMobile && setPerPage(1.2);
-    isMobile && setPerPage(1.5);
-    isMMobile && setPerPage(1.7);
+    isMobile && setPerPage(1.4);
+    isMMobile && setPerPage(1.6);
     isLMobile && setPerPage(2);
     isMobileLandscape && setPerPage(2.5);
     isTablet && setPerPage(3);
