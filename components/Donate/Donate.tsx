@@ -16,6 +16,10 @@ const paymentAmountData = ["100", "200", "500"];
 
 const Donate: React.FC<DonateProps> = () => {
   const [paymentAmount, setPaymentAmount] = useState("");
+  const handleInputValue = (value: string) => {
+    const sum = value.replace(/\D/g, "");
+    setPaymentAmount(sum);
+  }
 
   return (
     <div className={styles.container}>
@@ -41,6 +45,7 @@ const Donate: React.FC<DonateProps> = () => {
             className={styles.input}
             placeholder="Інша сума:"
             value={paymentAmount}
+            onChange={(e) => {handleInputValue(e.target.value)}}
           ></input>
         </div>
         <h2 className={styles.title_pay_ways}>Оберіть спосіб оплати</h2>
