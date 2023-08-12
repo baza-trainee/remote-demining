@@ -10,7 +10,7 @@ interface PasswordChangeData {
 
 
 const passwordChange = async (
-  newPassword: string,
+  password: string,
   confirmPassword: string
 ): Promise<PasswordChangeData> => {
   try {
@@ -26,7 +26,7 @@ const passwordChange = async (
 
     const { data } = await axios.post(
       "/auth/change-password",
-      { newPassword, confirmPassword },
+      { password, confirmPassword },
       { headers }
     );
 
