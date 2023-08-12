@@ -9,9 +9,6 @@
   font-size: 40px;
   font-weight: 600;
   line-height: normal;
-  @media (min-width: 769px) {
-    min-width: 376px;
-  }
 }
 
 .desc {
@@ -85,13 +82,22 @@
     padding-bottom: var(--section-padding-bgImg-tablet);
   }
 
+  .containerHeaderWrapper:not(.centered) {
+    justify-content: flex-start;
+  }
+
   .containerHeaderWrapper {
     flex-direction: row;
     /* justify-content: flex-start; */
   }
 
-  .containerHeaderWrapper:not(.centered) {
-    justify-content: flex-start;
+  .title {
+    text-align: left;
+    min-width: 260px;
+  }
+
+  .hasTitleWidth {
+    width: 260px;
   }
 
   .descLine {
@@ -121,9 +127,13 @@
     width: 760px;
   }
 
-  .title {
-    text-align: left;
-    white-space: nowrap;
+  .title:not(.centered) {
+    min-width: 376px;
+    max-width: 395px;
+  }
+
+  .title.excludeMaxWidthTitle {
+    max-width: none;
   }
 
   .descLine {

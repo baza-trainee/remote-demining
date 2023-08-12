@@ -15,14 +15,9 @@ const Team: React.FC = () => {
       title="Наукова рада проєкту"
       titleColor="var(--task-text-color)"
       bgImg={teamBg.src}
-      centerTitle
+      excludeMaxWidthTitle={true}
     >
-      <Slider
-        slides={cardsData}
-        slidesPerPage={4}
-        infinite={true}
-        responsive={responsive}
-      />
+      <Slider slides={cardsData} slidesPerPage={4} responsive={responsive} />
     </SectionContainer>
   );
 };
