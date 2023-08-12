@@ -8,22 +8,24 @@ interface ContainerProps {
   title?: string;
   bgImg?: string;
   titleColor?: string;
-  titleWidth?: string;
   children?: React.ReactNode;
   description?: string;
   centerTitle?: boolean;
   className?: string;
+  excludeMaxWidthTitle?: boolean;
+  hasTitleWidth?: boolean;
 }
 
 const SectionContainer: React.FC<ContainerProps> = ({
   title,
   bgImg,
   titleColor = "#151515",
-  titleWidth,
   children,
   description,
   centerTitle = false,
+  excludeMaxWidthTitle,
   className,
+  hasTitleWidth = false,
 }) => {
   const containerStyle = {
     backgroundImage: bgImg ? `url(${bgImg})` : "none",
@@ -31,7 +33,6 @@ const SectionContainer: React.FC<ContainerProps> = ({
 
   const titleStyle = {
     color: titleColor,
-    width: titleWidth,
   };
 
   const containerClassName = `${styles.container} ${
@@ -47,7 +48,12 @@ const SectionContainer: React.FC<ContainerProps> = ({
       <Container>
         <div className={title && containerHeaderWrapperClassName}>
           {title && (
-            <h2 className={styles.title} style={titleStyle}>
+            <h2
+              className={`${styles.title} ${
+                excludeMaxWidthTitle && styles.excludeMaxWidthTitle
+              } ${hasTitleWidth && styles.hasTitleWidth}`}
+              style={titleStyle}
+            >
               {title}
             </h2>
           )}
