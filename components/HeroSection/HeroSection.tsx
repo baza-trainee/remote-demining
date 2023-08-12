@@ -4,7 +4,6 @@ import HeroSlide from './HeroSlide/HeroSlide';
 import { heroData } from './heroData';
 
 import styles from './HeroSection.module.css';
-import Container from '../Container/Container';
 
 const HeroSection = () => {
   const slides = heroData.map((item) => (
@@ -12,10 +11,8 @@ const HeroSection = () => {
   ));
 
   return (
-    <section id="hero">
-      <Container>
+    <section id="hero" className={styles.container}>
         <Slider slidesPerPage={1} slides={slides} dots />
-      </Container>
     </section>
   );
 };

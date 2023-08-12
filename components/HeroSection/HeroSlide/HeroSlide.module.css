@@ -31,6 +31,9 @@
   grid-column: 2 / 3;
   align-self: center;
 }
+.slideBtn {
+  padding: 14px 40px;
+}
 
 @media screen and (max-width: 767px) {
   .slide {
