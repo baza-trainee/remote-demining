@@ -3,7 +3,6 @@
   background-size: cover;
   background-position: 50% 100%;
   background-color: transparent;
-  margin: 0 auto;
 }
 
 .title {
@@ -40,11 +39,13 @@
 /* Mobile styles (320px to 767px) */
 @media (min-width: 320px) {
   .container {
-    padding: var(--section-padding-main-mobile);
+    padding-top: var(--section-padding-main-mobile);
+    padding-bottom: var(--section-padding-main-mobile);
   }
 
   .container.hasBgImg {
-    padding: var(--section-padding-bgImg-mobile);
+    padding-top: var(--section-padding-bgImg-mobile);
+    padding-bottom: var(--section-padding-bgImg-mobile);
   }
 
   .descLine {
@@ -72,16 +73,22 @@
 /* Tablet styles (768px to 1439px) */
 @media (min-width: 768px) {
   .container {
-    padding: var(--section-padding-main-tablet);
+    padding-top: var(--section-padding-main-tablet);
+    padding-bottom: var(--section-padding-main-tablet);
   }
 
   .container.hasBgImg {
-    padding: var(--section-padding-bgImg-tablet);
+    padding-top: var(--section-padding-bgImg-tablet);
+    padding-bottom: var(--section-padding-bgImg-tablet);
   }
 
   .containerHeaderWrapper {
     flex-direction: row;
     /* justify-content: flex-start; */
+  }
+
+  .containerHeaderWrapper:not(.centered) {
+    justify-content: flex-start;
   }
 
   .descLine {
@@ -98,11 +105,13 @@
 @media (min-width: 1280px) {
   .container {
     background-position: 50% 30%;
-    padding: var(--section-padding-main);
+    padding-top: var(--section-padding-main);
+    padding-bottom: var(--section-padding-main);
   }
 
   .container.hasBgImg {
-    padding: var(--section-padding-bgImg);
+    padding-top: var(--section-padding-bgImg);
+    padding-bottom: var(--section-padding-bgImg);
   }
 
   .desc {
