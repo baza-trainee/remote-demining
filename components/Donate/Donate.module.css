@@ -85,7 +85,8 @@
     font-size: 28px;
   }
 }
-.item:focus {
+.item:focus,
+.item:hover {
   outline: 3px solid #4285f4;
 }
 .item:first-of-type {
@@ -108,7 +109,8 @@
     gap: 24px;
   }
 }
-.item_way:focus {
+.item_way:focus,
+.item_way:hover {
   outline: 3px solid #4285f4;
 }
 .item_way {
