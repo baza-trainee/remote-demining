@@ -1,23 +1,12 @@
-"use client"
-
-import { useEffect, useState } from "react";
-
 import AdminPasswordChangePage from "@/components/AdminPasswordChangePage/AdminPasswordChangePage";
 
-const Page = () => {
-  const [user_data, setUserData] = useState({  token: "" });
-
-  useEffect(() => {
-    setUserData({
-      token: sessionStorage.getItem("cp_token") || "",
-    });
-  }, []);
-
+const ChangePasswordPage = () => {
+  
   return (
-    <>
-      <AdminPasswordChangePage token={user_data.token} />
-    </>
+    <div>
+    <AdminPasswordChangePage />
+    </div>
   );
 };
 
-export default Page;
+export default ChangePasswordPage;
