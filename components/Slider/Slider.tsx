@@ -27,8 +27,20 @@ const Slider: React.FC<SliderProps> = ({
     slidesToShow: slidesPerPage < slides.length ? slidesPerPage : slides.length,
     autoplay: false,
     focusOnSelect: false,
-    nextArrow: <Arrow arrowType="next" />,
-    prevArrow: <Arrow arrowType="prev" />,
+    nextArrow: (
+      <Arrow
+        arrowType="next"
+        slidesPerPage={slidesPerPage}
+        infinite={infinite}
+      />
+    ),
+    prevArrow: (
+      <Arrow
+        arrowType="prev"
+        slidesPerPage={slidesPerPage}
+        infinite={infinite}
+      />
+    ),
     arrows: true,
     appendDots: (dots) => (
       <ul style={{ bottom: dotsPlacement === "outer" ? -16 : 16 }}>{dots}</ul>
