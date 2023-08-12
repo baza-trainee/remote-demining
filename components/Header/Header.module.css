@@ -29,6 +29,10 @@
   align-items: center;
 }
 .btn_support {
+  @media (max-width: 490px) {
+    font-size: 16px !important;
+    margin-left: 10px;
+  }
 }
 .btn_menu {
   display: none;
@@ -42,7 +46,7 @@
 
 @media screen and (max-width: 360px) {
   .btn_menu {
-    margin-left: 10px;
+    margin-left: 0;
   }
 }
 @media screen and (max-width: 990px) {
