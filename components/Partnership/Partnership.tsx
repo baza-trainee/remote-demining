@@ -12,13 +12,36 @@ import partnersData, { Partner } from "./partnersData";
 import styles from "./Parnership.module.css";
 
 const Partnership = () => {
-  const [perPage, setPerPage] = useState<number>(1);
-  const { isMobile, isTablet, isDesktop } = useMyMedia();
+  const [perPage, setPerPage] = useState<number>(0);
+  const {
+    isSMobile,
+    isMobile,
+    isMMobile,
+    isMobileLandscape,
+    isTablet,
+    isMTablet,
+    isSDesktop,
+    isDesktop,
+  } = useMyMedia();
   useEffect(() => {
+    isSMobile && setPerPage(1.2);
     isMobile && setPerPage(1.5);
+    isMMobile && setPerPage(1.7);
+    isMobileLandscape && setPerPage(2.5);
     isTablet && setPerPage(3);
+    isMTablet && setPerPage(3.3);
+    isSDesktop && setPerPage(4);
     isDesktop && setPerPage(5.5);
-  }, [isMobile, isTablet, isDesktop]);
+  }, [
+    isSMobile,
+    isMobile,
+    isMMobile,
+    isMobileLandscape,
+    isTablet,
+    isMTablet,
+    isSDesktop,
+    isDesktop,
+  ]);
 
   return (
     <SectionContainer
