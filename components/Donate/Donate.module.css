@@ -86,7 +86,7 @@
   }
 }
 .item:focus {
-  outline: 3px solid #4285F4;
+  outline: 3px solid #4285f4;
 }
 .item:first-of-type {
   grid-column: span 2;
@@ -109,7 +109,7 @@
   }
 }
 .item_way:focus {
-  outline: 3px solid #4285F4;
+  outline: 3px solid #4285f4;
 }
 .item_way {
   cursor: pointer;
@@ -136,11 +136,15 @@
   height: 18px;
   width: 18px;
   margin-bottom: 4px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .apple_icon {
     height: 26px;
     width: 26px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .apple_icon {
     height: 32px;
     width: 32px;
     margin-bottom: 8px;
@@ -152,11 +156,15 @@
   height: 18px;
   width: 18px;
   margin-right: 5px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .google_icon {
     height: 26px;
     width: 26px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .google_icon {
     height: 32px;
     width: 32px;
     margin-right: 10px;
@@ -168,11 +176,15 @@
   height: 10px;
   width: 31px;
   margin-right: 5px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .visa {
     height: 16.8px;
     width: 52px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .visa {
     height: 24px;
     width: 75px;
     margin-right: 10px;
@@ -183,13 +195,17 @@
   display: inline-block;
   height: 10px;
   width: 16px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .mastercard {
     height: 16.8px;
     width: 26px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .mastercard {
     height: 38px;
-    width: 24px;
+    width: 38px;
   }
 }
 
