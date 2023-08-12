@@ -1,13 +1,14 @@
-
-import modal_bg from "@/public/images/modal/thanksDes.png";
+import modal_bg from "@/public/images/modal/thanksDes2.png";
 
 import NavLink from "../NavLink/NavLink";
 
 import styles from "./ThankPage.module.css";
 
-interface ThankPageProps {}
+interface ThankPageProps {
+  toggleModal: () => void
+}
 
-const ThankPage: React.FC<ThankPageProps> = ({}) => {
+const ThankPage: React.FC<ThankPageProps> = ({toggleModal}) => {
   return (
     <div
       className={styles.container}
@@ -17,9 +18,11 @@ const ThankPage: React.FC<ThankPageProps> = ({}) => {
         <h2 className={styles.title}>ДЯКУЄМО</h2>
         <p className={styles.text}>за вашу підтримку!</p>
       </div>
-      <NavLink href={"#"} isButton>
-        ПОВЕРНУТИСЬ НА ГОЛОВНУ СТОРІНКУ
-      </NavLink>
+      <div className={styles.btn_container} onClick={toggleModal}>
+        <NavLink href="/client" isButton isFullWidth>
+        Повернутися на головну сторінку
+        </NavLink>
+      </div>
     </div>
   );
 };
