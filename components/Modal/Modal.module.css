@@ -19,7 +19,6 @@
 }
 
 .big_modal {
-  width: 100%;
   outline: none;
   border-radius: var(--modal-big-border-radius);
 }
@@ -30,10 +29,26 @@
   background-color: transparent;
   top: 16px;
   right: 16px;
+  width: 18px;
+  height: 18px;
 }
 .btn_close_bm {
-  top: 45px;
-  right: 45px;
+  width: 18px;
+  height: 18px;
+  top: 16px;
+  right: 16px;
+  @media (min-width: 660px) {
+    width: 24px;
+    height: 24px;
+    top: 24px;
+    right: 24px;
+  }
+  @media (min-width: 1024px) {
+    width: 32px;
+    height: 32px;
+    top: 32px;
+    right: 32px;
+  }
 }
 
 .overflowHidden {
