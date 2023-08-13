@@ -1,7 +1,3 @@
-import AdminNavBar from "@/components/AdminNavBar/AdminNavBar";
-
-import styles from "../layout.module.css";
-
 const Page = () => {
   return (
     <>
