@@ -45,14 +45,11 @@
 .baza {
   margin-top: 24px;
 }
-.br{
+.br {
   display: none;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
-  .footer {
-    max-width: 1280px;
-  }
   .wrapper {
     gap: 24px;
   }
@@ -71,9 +68,6 @@
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  .footer {
-    max-width: 480px;
-  }
   .wrapper {
     flex-wrap: wrap;
     align-items: center;
@@ -120,7 +114,7 @@
     font-size: 12px;
     padding-left: 10px;
   }
-  .br{
+  .br {
     display: block;
   }
 }
