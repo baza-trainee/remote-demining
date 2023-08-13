@@ -45,6 +45,9 @@
 .baza {
   margin-top: 24px;
 }
+.br{
+  display: none;
+}
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
   .footer {
@@ -116,5 +119,8 @@
   .baza {
     font-size: 12px;
     padding-left: 10px;
+  }
+  .br{
+    display: block;
   }
 }

@@ -91,7 +91,7 @@ const ContactForm: FC = ({}) => {
         type="email"
         label={`Ваш е-mail`}
         error={errors.email}
-        errorMessage="Введіть e-mai"
+        errorMessage="Введіть e-mail"
         {...register("email")}
       />
       <Input

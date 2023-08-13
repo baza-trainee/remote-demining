@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
@@ -11,7 +12,6 @@ import Modal from "@/components/Modal/Modal";
 import PasswordInputToggle from "@/components/PasswordInputToggle/PasswordInputToggle";
 
 import styles from "./PasswordReset.module.css";
-import { useRouter } from "next/navigation";
 
 interface PasswordResetProps {
   id: string;
@@ -61,7 +61,7 @@ const PasswordReset: React.FC<PasswordResetProps> = ({ id, token }) => {
       );
       toggleModal();
       reset();
-      router.push('/admin');
+      router.push("/admin");
     } catch (error) {
       if (axios.isAxiosError(error)) {
         if (error.response?.status === 404) {
@@ -103,10 +103,7 @@ const PasswordReset: React.FC<PasswordResetProps> = ({ id, token }) => {
             isNoPlaceholder
           ></PasswordInputToggle>
         </div>
-        <Button
-          isFullWidth
-          type="submit"
-        >
+        <Button isFullWidth type="submit">
           Підтвердити
         </Button>
       </form>

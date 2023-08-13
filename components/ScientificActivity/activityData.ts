@@ -1,9 +1,10 @@
+import { StaticImageData } from "next/image";
+
 import activity1 from "@/public/images/activity/activity-1.jpg";
 import activity2 from "@/public/images/activity/activity-2.jpg";
 import activity3 from "@/public/images/activity/activity-3.jpg";
 import activity4 from "@/public/images/activity/activity-4.jpg";
 import activity5 from "@/public/images/activity/activity-5.jpg";
-import { StaticImageData } from "next/image";
 
 export interface ActivityListItemData {
   id: string;

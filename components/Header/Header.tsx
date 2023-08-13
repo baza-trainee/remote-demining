@@ -31,9 +31,9 @@ const Header = () => {
         <div className={contentBox}>
           <HeaderLogo />
           {!pathname.includes("admin") && <HeaderMenu />}
-          <div className={styles.box}>
+          <div className={styles.box_btn}>
             <LanguageMenu />
-            <Button onClick={toggleModal}>Підтримати</Button>
+            <Button onClick={toggleModal} className={styles.btn_support} >Підтримати</Button>
             {isModalOpen && (
               <Modal isBigModal toggleModal={toggleModal} isModalOpen={isModalOpen}  >
                 <Donate/>

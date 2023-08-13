@@ -4,6 +4,10 @@
   padding: 0 12px;
   min-width: 361px;
   min-height: 251px;
+
+  @media screen and (max-width: 1150px) {
+    min-width: 330px;
+  }
   @media screen and (max-width: 1100px) {
     min-height: 251px;
     max-width: 522px;
