@@ -70,7 +70,7 @@ const FeedbackForm: FC = () => {
         <Input
           size="full"
           type="text"
-          label="Ім’я*"
+          label="Ім'я*"
           backgroundCl="secondary"
           errorMessage={errors.name?.message}
           error={errors.name}
