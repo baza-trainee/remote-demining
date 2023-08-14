@@ -7,8 +7,11 @@ import add_icon from "@/public/images/icons/buttons/add.svg";
 
 import styles from "./AdminCardsList.module.css";
 
+interface AdminCardsListProps {
+  onSave: () => void;
+}
 
-const AdminCardsList = () => {
+const AdminCardsList: React.FC<AdminCardsListProps> = ({ onSave }) => {
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
@@ -27,13 +30,17 @@ const AdminCardsList = () => {
           </li>
         ))}
         <li className={styles.add_card}>
-          <div className={styles.add_btn} >
+          <div
+            className={styles.add_btn}
+            onClick={() => {
+              onSave();
+            }}
+          >
             <Image src={add_icon} width={50} height={51} alt={"add icon"} />
             <span>Додати</span>
           </div>
         </li>
-        <li className={styles.last_card}>
-        </li>
+        <li className={styles.last_card}></li>
       </ul>
     </div>
   );

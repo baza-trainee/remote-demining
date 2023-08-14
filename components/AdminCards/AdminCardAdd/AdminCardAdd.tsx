@@ -5,8 +5,11 @@ import AddImage from "@/components/Crop/AddImage";
 
 import styles from "./AdminCardAdd.module.css";
 
+interface AdminCardAddProps {
+  onSave: () => void;
+}
 
-const AdminCardAdd = () => {
+const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave }) => {
   return (
     <form className={styles.container}>
       <AddImage imgWidth={966} imgHeight={120} title={"Додати зображення"} />
@@ -15,11 +18,16 @@ const AdminCardAdd = () => {
         <AdminEditContactsInput placeholder={"Опис зображення"} editable />
         <AdminEditContactsInput placeholder={"Опис пункту"} editable />
       </div>
-      <div className={styles.btn_add_container}>
+      <div className={styles.btn_add_container} onClick={(e) => {e.preventDefault()}}>
         <AddButton />
       </div>
       <div className={styles.btn_send_container}>
-        <Button type="submit">
+        <Button
+          type="submit"
+          onClick={() => {
+            onSave();
+          }}
+        >
           Надіслати
         </Button>
       </div>
