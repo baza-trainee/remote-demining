@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import styles from "./NavLink.module.css";
 
 interface NavLinkPropsType {
@@ -27,7 +29,7 @@ const NavLink: React.FC<NavLinkPropsType> = ({
   return (
     <Link className={styledLink} href={href} {...rest}>
       {children}
-    </a>
+    </Link>
   );
 };
 
