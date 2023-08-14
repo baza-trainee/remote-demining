@@ -11,17 +11,16 @@
 .card_contacts span {
   display: inline-block;
   font-weight: 400;
-
-  @media (max-width: 1279px) {
-  }
 }
 .card_contacts a {
   display: inline-block;
   font-weight: 400;
   color: var(--button-primary-bg-color);
   text-decoration: underline;
+}
 
-  @media (max-width: 1279px) {
+@media (max-width: 1279px) {
+  .card_contacts a {
     display: block;
     margin-bottom: 16px;
     margin-top: 8px;
@@ -45,8 +44,6 @@
 @media screen and (max-width: 600px) {
   .card_body {
     min-width: 223px;
-    max-height: 369px;
-    min-height: 369px;
   }
 }
 
