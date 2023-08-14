@@ -44,5 +44,6 @@
   .box {
     flex-direction: row;
     justify-content: space-between;
+    gap: 150px;
   }
 }
