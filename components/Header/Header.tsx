@@ -26,7 +26,7 @@ const Header = () => {
 
   const contentBox = `${styles.box} ${isOpenMenu ? styles.bottom_border : ""}`;
   return (
-    <header className={styles.header}>
+    <header className={styles.header} id="top">
       <Container>
         <div className={contentBox}>
           <HeaderLogo />
