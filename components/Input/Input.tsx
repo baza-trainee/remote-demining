@@ -1,22 +1,22 @@
-import { ComponentProps, forwardRef } from "react";
-import { FieldError } from "react-hook-form/dist/types";
+import { ComponentProps, forwardRef } from 'react';
+import { FieldError } from 'react-hook-form/dist/types';
 
-import styles from "./Input.module.css";
+import styles from './Input.module.css';
 
 enum InputSize {
-  small = "small",
-  full = "full",
+  small = 'small',
+  full = 'full',
 }
 
-type BackgroundColors = "primary" | "secondary";
+type BackgroundColors = 'primary' | 'secondary';
 
 interface InputProps {
-  placeholder?: ComponentProps<"input">["placeholder"];
-  name?: ComponentProps<"input">["name"];
-  onChange?: ComponentProps<"input">["onChange"];
-  onBlur?: ComponentProps<"input">["onBlur"];
-  disabled?: ComponentProps<"input">["disabled"];
-  type?: ComponentProps<"input">["type"];
+  placeholder?: ComponentProps<'input'>['placeholder'];
+  name?: ComponentProps<'input'>['name'];
+  onChange?: ComponentProps<'input'>['onChange'];
+  onBlur?: ComponentProps<'input'>['onBlur'];
+  disabled?: ComponentProps<'input'>['disabled'];
+  type?: ComponentProps<'input'>['type'];
   size?: keyof typeof InputSize;
   label?: string;
   height?: number;
@@ -36,7 +36,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       width,
       error,
       errorMessage,
-      backgroundCl = "primary",
+      backgroundCl = 'primary',
       className,
       ...inputProps
     },
@@ -45,7 +45,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const InputStyle = {
       height: height ? `${height}px` : undefined,
       width: width ? `${width}px` : undefined,
-      borderColor: error ? "var(--error-color)" : undefined,
+      borderColor: error ? 'var(--error-color)' : undefined,
     };
 
     return (
@@ -54,7 +54,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           {...inputProps}
-          className={`${styles[size]} ${styles.input} ${className || ""}`}
+          className={`${styles[size]} ${styles.input} ${className || ''} ${
+            styles[backgroundCl]
+          }`}
           style={InputStyle}
         />
         {error && <p className={styles.error}>{errorMessage}</p>}
@@ -63,6 +65,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
   }
 );
 
-Input.displayName = "Input";
+Input.displayName = 'Input';
 
 export default Input;
