@@ -16,7 +16,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
-          <Link href={'#'} className={styles.logo}>
+          <Link href={'/#top'} className={styles.logo}>
             <Image height={149} width={117} src={logo} alt="logo" />
           </Link>
           <ul className={`${styles.menu} ${styles.category}`}>
