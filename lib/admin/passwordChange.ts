@@ -1,37 +1,45 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 axios.defaults.baseURL = "https://remote-demining.onrender.com";
 
 interface PasswordChangeData {
-  access_token: string;
-  user: {
-    email: string;
-  };
+  _id: string;
+  email: string;
+  __v: number;
 }
 
+
 const passwordChange = async (
-  oldPassword: string,
-  newPassword: string,
+  password: string,
   confirmPassword: string
 ): Promise<PasswordChangeData> => {
   try {
-    const { data } = await axios.post("/auth/change-password", {
-      oldPassword,
-      newPassword,
-      confirmPassword,
-    });
+    const token = JSON.parse(localStorage.getItem("token") || "");
+
+    if (!token) {
+      throw new Error("Internal error");
+    }
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+    };
+
+    const { data } = await axios.post(
+      "/auth/change-password",
+      { password, confirmPassword },
+      { headers }
+    );
+
     return data;
   } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const response = error.response as AxiosResponse;
+      if (response.status === 404) {
+        throw new Error("User not found");
+      }
+    }
     console.error(error);
-    throw error;
-    // if (error.response) {
-    //   const { status } = error.response;
-    //   if (status === 404) {
-    //     throw new Error("User not found");
-    //   }
-    // }
-    // console.log(error);
-    // throw new Error("Oh, something went wrong");
+    throw new Error("Oh, something went wrong");
   }
 };
 

@@ -1,11 +1,12 @@
 import AdminPasswordChangePage from "@/components/AdminPasswordChangePage/AdminPasswordChangePage";
 
-const Page = () => {
+const ChangePasswordPage = () => {
+  
   return (
-    <>
-      <AdminPasswordChangePage/>
-    </>
+    <div>
+    <AdminPasswordChangePage />
+    </div>
   );
 };
 
-export default Page;
+export default ChangePasswordPage;

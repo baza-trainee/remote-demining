@@ -36,7 +36,7 @@
   /* Inputs */
 
   --input-border-rad: 5px;
-  --input-primary-bg-color: #f5f5f5;
+  --input-primary-bg-color: rgba(245, 245, 245, 1);
   --input-secondary-bg-color: #fff;
   --input-placeholder-color: #adabc3;
   --input-width: 274px;
@@ -60,13 +60,13 @@
 
   /* Section */
 
-  --section-padding-main: 120px 40px;
-  --section-padding-bgImg: 40px 40px;
+  --section-padding-main: 120px;
+  --section-padding-bgImg: 40px;
   --section-title-color: #151515;
-  --section-padding-main-tablet: 80px 32px;
-  --section-padding-bgImg-tablet: 40px 32px;
-  --section-padding-main-mobile: 80px 16px;
-  --section-padding-bgImg-mobile: 32px 16px;
+  --section-padding-main-tablet: 80px;
+  --section-padding-bgImg-tablet: 40px;
+  --section-padding-main-mobile: 80px;
+  --section-padding-bgImg-mobile: 32px;
   --section-title-color: #151515;
 
   /* 404 animations */
@@ -85,7 +85,7 @@
   --task-card-row-gap: 40px;
 
   /* Projects */
-  --card-list-gap-desktop: 32px;
+  --card-list-gap-desktop: 24px;
   --card-list-padding-tablet: 16px;
 
   /* About */

@@ -5,38 +5,28 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useToggle } from "usehooks-ts";
 import * as yup from "yup";
 
 import Input from "@/components/Input/Input";
 
 import Button from "../Button/Button";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import validationSchema from "../ContactsPage/FeedbackForm/validationSchema";
+import Modal from "../Modal/Modal";
 import TextArea from "../TextArea/TextArea";
 
 import styles from "./ContactForm.module.css";
 
 interface ContactFormValues {
-  email: string;
   name: string;
-  tel: string | undefined;
-  message: string | undefined;
+  phone: string;
+  email: string;
+  comment: string;
 }
 
-const validationScheme = yup.object({
-  email: yup.string().email().required(),
-  name: yup.string().required(),
-  tel: yup.string(),
-  message: yup.string().min(3),
-});
-
 const ContactForm: FC = ({}) => {
-  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
-  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (captchaValue) {
-      handleSubmit(sendEmail)();
-    }
-  }, [captchaValue]);
+  const [isModalOpen, toggleModal] = useToggle(false);
 
   const {
     register,
@@ -45,85 +35,82 @@ const ContactForm: FC = ({}) => {
     reset,
   } = useForm<ContactFormValues>({
     defaultValues: {
-      email: "",
       name: "",
-      tel: "",
-      message: "",
+      phone: "",
+      email: "",
+      comment: "",
     },
-    resolver: yupResolver(validationScheme),
+    resolver: yupResolver(validationSchema),
   });
 
-  const handleCaptchaChange = (value: string | null) => {
-    setCaptchaValue(value);
-  };
-
-  const sendEmail = async (formData: ContactFormValues) => {
-    if (captchaValue) {
-      const params = {
-        ...formData,
-        "g-recaptcha-response": captchaValue,
-      };
-
-      try {
-        await emailjs.send(
-          process.env.SERVICE_ID!,
-          process.env.TEMPLATE_ID!,
-          params,
-          process.env.PUBLIC_KEY!
-        );
-        reset();
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log("ReCAPTCHA validation failed.");
+  const sendEmail = () => {
+    try {
+      emailjs.sendForm(
+        process.env.SERVICE_ID!,
+        process.env.TEMPLATE_ID!,
+        "#contact-form",
+        process.env.PUBLIC_KEY!
+      );
+      toggleModal();
+      reset();
+    } catch (error) {
+      console.log(error);
     }
   };
+
+  const closeModal = () => {
+    toggleModal();
+  };
+
   return (
-    <form
-      id="contact-form"
-      className={styles.wrapper}
-      onSubmit={handleSubmit(sendEmail)}
-      noValidate
-    >
-      <Input
-        size="full"
-        type="email"
-        label={`Ваш е-mail`}
-        error={errors.email}
-        errorMessage="Введіть e-mai"
-        {...register("email")}
-      />
-      <Input
-        size="full"
-        type="tel"
-        label="Ваш номер телефону"
-        {...register("tel")}
-      />
-      <Input
-        {...register("name")}
-        size="full"
-        type="name"
-        error={errors.name}
-        errorMessage="Введіть ім’я"
-        label="Ваше ім’я"
-      />
-      <TextArea {...register("message")} label="Повідомлення" size="full" />
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        sitekey={`${process.env.RECAPTCHA_SITE}`}
-        size="invisible"
-        onChange={handleCaptchaChange}
-      />
-      <Button
-        onClick={() => recaptchaRef.current?.execute()}
-        type="submit"
-        disabled={isSubmitting}
-        isFullWidth
+    <div className={styles.wrapper}>
+      <form
+        id="contact-form"
+        className={styles.form}
+        onSubmit={handleSubmit(sendEmail)}
+        noValidate
       >
-        Надіслати
-      </Button>
-    </form>
+        <Input
+          size="full"
+          type="name"
+          label="Ім'я"
+          errorMessage={errors.name?.message}
+          error={errors.name}
+          {...register("name")}
+        />
+        <Input
+          size="full"
+          type="tel"
+          label="Телефон"
+          errorMessage={errors.phone?.message}
+          error={errors.phone}
+          {...register("phone")}
+        />
+        <Input
+          {...register("email")}
+          size="full"
+          type="email"
+          error={errors.email}
+          errorMessage={errors.email?.message}
+          label="E-mail"
+        />
+        <TextArea
+          {...register("comment")}
+          label="Повідомлення"
+          size="full"
+          error={errors.comment}
+          errorMessage={errors.comment?.message}
+        />
+        <Button type="submit" disabled={isSubmitting} isFullWidth>
+          Надіслати
+        </Button>
+      </form>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+          <ConfirmationModal message="Повідомлення успішно відправлено" />
+        </Modal>
+      )}
+    </div>
   );
 };
 

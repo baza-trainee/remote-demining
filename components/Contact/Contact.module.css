@@ -7,7 +7,7 @@
   justify-content: center;
   column-gap: 1.2rem;
   row-gap: 2.5rem;
-  @media (max-width: 540px) {
+  @media (max-width: 1130px) {
     flex-wrap: wrap;
   }
 }

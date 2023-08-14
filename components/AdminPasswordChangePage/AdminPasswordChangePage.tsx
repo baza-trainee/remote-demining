@@ -1,8 +1,7 @@
 "use client";
 
-import router, { useRouter } from "next/router";
-import { FC } from "react";
-import { useState } from "react";
+import { FC, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
@@ -20,40 +19,35 @@ import styles from "./AdminPasswordChangePage.module.css";
 
 interface PasswordChangeFormValues {
   oldPassword: string;
-  newPassword: string;
+  password: string;
   confirmPassword: string;
 }
 
 const AdminPasswordChangePage: FC = () => {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-    reset,
     setError,
     setValue,
   } = useForm<PasswordChangeFormValues>({
     defaultValues: {
-      oldPassword: "",
-      newPassword: "",
+      password: "",
       confirmPassword: "",
     },
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async ({
-    oldPassword,
-    newPassword,
-    confirmPassword,
-  }: PasswordChangeFormValues) => {
+  const onSubmit = async ({ password, confirmPassword }: PasswordChangeFormValues) => {
     if (isValid) {
       try {
         const passwordRegex =
           /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!-_)(.,])[A-Za-z0-9!-_)(.,]{8,}$/;
-        if (!passwordRegex.test(newPassword)) {
-          setError("newPassword", {
+        if (!passwordRegex.test(password)) {
+          setError("password", {
             type: "manual",
             message:
               "Новий пароль може використовувати великі і маленькі літери латинського алфавіту, спеціальні знаки типу !-_)(., та цифри від 0 до 9",
@@ -61,7 +55,7 @@ const AdminPasswordChangePage: FC = () => {
           return;
         }
 
-        await passwordChange(oldPassword, newPassword, confirmPassword);
+        await passwordChange(password, confirmPassword);
         router.push("/admin/");
         setIsSuccessModalOpen(true);
       } catch (error) {
@@ -74,7 +68,7 @@ const AdminPasswordChangePage: FC = () => {
               type: "custom",
               message: "Помилка валідації",
             });
-            setError("newPassword", {
+            setError("password", {
               type: "custom",
               message: "Помилка валідації",
             });
@@ -88,7 +82,7 @@ const AdminPasswordChangePage: FC = () => {
               type: "custom",
               message: "Упс... щось пішло не так",
             });
-            setError("newPassword", {
+            setError("password", {
               type: "custom",
               message: "Упс... щось пішло не так",
             });
@@ -98,7 +92,7 @@ const AdminPasswordChangePage: FC = () => {
             });
           }
           setValue("oldPassword", "");
-          setValue("newPassword", "");
+          setValue("password", "");
           setValue("confirmPassword", "");
         }
       }
@@ -126,9 +120,9 @@ const AdminPasswordChangePage: FC = () => {
             <AutorizationInput
               label="Введіть новий пароль*"
               type="password"
-              errorMessage={errors.newPassword?.message}
-              error={errors.newPassword}
-              {...register("newPassword")}
+              errorMessage={errors.password?.message}
+              error={errors.password}
+              {...register("password")}
             />
             <AutorizationInput
               label="Підтвердіть новий пароль*"
@@ -144,12 +138,15 @@ const AdminPasswordChangePage: FC = () => {
         </form>
       </AdminWrapper>
       {isSuccessModalOpen && (
-        <Modal
-          toggleModal={() => setIsSuccessModalOpen(false)}
-          isModalOpen={isSuccessModalOpen}
-        >
-          <p>Пароль успішно змінено.</p>
-        </Modal>
+        <div className={styles.modal}>
+          <Modal
+            toggleModal={() => setIsSuccessModalOpen(false)}
+            isModalOpen={isSuccessModalOpen}
+            isBigModal={true}
+          >
+            <p>Пароль успішно змінено.</p>
+          </Modal>
+        </div>
       )}
     </section>
   );

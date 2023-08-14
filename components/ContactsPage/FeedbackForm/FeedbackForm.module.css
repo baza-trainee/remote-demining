@@ -25,7 +25,7 @@
 .text {
   text-align: center;
   line-height: 1.5;
-  margin-bottom: 48px;
+  margin-bottom: 41px;
 }
 
 .form {
@@ -46,6 +46,7 @@
 .inputWrapper {
   display: flex;
   justify-content: space-between;
+  gap: 25px;
 }
 
 .fullInputsWrapper {
