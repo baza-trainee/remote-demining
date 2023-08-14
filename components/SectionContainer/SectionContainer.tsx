@@ -14,6 +14,7 @@ interface ContainerProps {
   className?: string;
   excludeMaxWidthTitle?: boolean;
   hasTitleWidth?: boolean;
+  titleMargin?: boolean;
 }
 
 const SectionContainer: React.FC<ContainerProps> = ({
@@ -26,6 +27,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
   excludeMaxWidthTitle,
   className,
   hasTitleWidth = false,
+  titleMargin,
 }) => {
   const containerStyle = {
     backgroundImage: bgImg ? `url(${bgImg})` : "none",
@@ -39,9 +41,9 @@ const SectionContainer: React.FC<ContainerProps> = ({
     bgImg ? styles.hasBgImg : ""
   } ${className || ""}`;
 
-  const containerHeaderWrapperClassName = centerTitle
-    ? `${styles.containerHeaderWrapper} ${styles.centered}`
-    : styles.containerHeaderWrapper;
+  const containerHeaderWrapperClassName = `${styles.containerHeaderWrapper} ${
+    centerTitle ?  `${styles.containerHeaderWrapper} ${styles.centered}` : ""
+  } ${titleMargin ? styles.title_margin : ""}`;
 
   return (
     <section className={containerClassName} style={containerStyle}>

@@ -7,10 +7,14 @@
   justify-content: space-between;
   flex-direction: column;
   overflow: hidden;
+}
   @media (min-width: 768px) {
+    .content {
     height: 338px;
   }
+}
   @media (min-width: 1280px) {
+    .content {
     height: 270px;
   }
 }
