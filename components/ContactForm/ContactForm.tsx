@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { FC, useEffect, useRef, useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { useForm } from 'react-hook-form';
-import emailjs from '@emailjs/browser';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useToggle } from 'usehooks-ts';
-import * as yup from 'yup';
+import { FC, useEffect, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useToggle } from "usehooks-ts";
+import * as yup from "yup";
 
-import Input from '@/components/Input/Input';
+import Input from "@/components/Input/Input";
 
-import Button from '../Button/Button';
-import ConfirmationModal from '../ConfirmationModal/ConfirmationModal';
-import validationSchema from '../ContactsPage/FeedbackForm/validationSchema';
-import Modal from '../Modal/Modal';
-import TextArea from '../TextArea/TextArea';
+import Button from "../Button/Button";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import validationSchema from "../ContactsPage/FeedbackForm/validationSchema";
+import Modal from "../Modal/Modal";
+import TextArea from "../TextArea/TextArea";
 
-import styles from './ContactForm.module.css';
+import styles from "./ContactForm.module.css";
 
 interface ContactFormValues {
   name: string;
@@ -35,10 +35,10 @@ const ContactForm: FC = ({}) => {
     reset,
   } = useForm<ContactFormValues>({
     defaultValues: {
-      name: '',
-      phone: '',
-      email: '',
-      comment: '',
+      name: "",
+      phone: "",
+      email: "",
+      comment: "",
     },
     resolver: yupResolver(validationSchema),
   });
@@ -48,7 +48,7 @@ const ContactForm: FC = ({}) => {
       emailjs.sendForm(
         process.env.SERVICE_ID!,
         process.env.TEMPLATE_ID!,
-        '#contact-form',
+        "#contact-form",
         process.env.PUBLIC_KEY!
       );
       toggleModal();
@@ -73,10 +73,10 @@ const ContactForm: FC = ({}) => {
         <Input
           size="full"
           type="name"
-          label="Ім’я"
+          label="Ім'я"
           errorMessage={errors.name?.message}
           error={errors.name}
-          {...register('name')}
+          {...register("name")}
         />
         <Input
           size="full"
@@ -84,10 +84,10 @@ const ContactForm: FC = ({}) => {
           label="Телефон"
           errorMessage={errors.phone?.message}
           error={errors.phone}
-          {...register('phone')}
+          {...register("phone")}
         />
         <Input
-          {...register('email')}
+          {...register("email")}
           size="full"
           type="email"
           error={errors.email}
@@ -95,7 +95,7 @@ const ContactForm: FC = ({}) => {
           label="E-mail"
         />
         <TextArea
-          {...register('comment')}
+          {...register("comment")}
           label="Повідомлення"
           size="full"
           error={errors.comment}
