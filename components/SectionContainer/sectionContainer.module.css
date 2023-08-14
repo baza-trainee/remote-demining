@@ -106,7 +106,7 @@
 
   .descLine {
     display: inline-block;
-    width: 1px;
+    width: 3px;
     height: 66px;
     background: var(--section-title-color);
     margin-right: 32px;
