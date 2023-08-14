@@ -9,6 +9,7 @@
   font-size: 40px;
   font-weight: 600;
   line-height: normal;
+  padding-left: 8px;
 }
 
 .desc {
@@ -27,6 +28,9 @@
   margin-bottom: 40px;
   display: flex;
   align-items: center;
+}
+.title_margin {
+  margin-bottom: 40px;
 }
 
 .centered {
@@ -142,4 +146,8 @@
     margin-right: 32px;
     margin-left: 32px;
   }
+  .title_margin {
+    margin-bottom: 60px;
+  }
+  
 }
