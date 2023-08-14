@@ -86,11 +86,13 @@
   }
 }
 
-.question {
-  @media (max-width: 1270px) {
-    width: 300px;
+  @media (max-width: 1000px) {
+    .question {
+    max-width: 300px;
   }
+}
   @media (max-width: 485px) {
-    width: 200px;
+    .question {
+    max-width: 200px;
   }
 }

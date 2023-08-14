@@ -1,13 +1,13 @@
-'use client';
-import Image from 'next/image';
-import { FC, useRef, useState } from 'react';
+"use client";
+import Image from "next/image";
+import { FC, useRef, useState } from "react";
 
-import closedIcon from '@/public/images/socrat/Closed-Question.svg';
-import openIcon from '@/public/images/socrat/Open-Question.svg';
+import closedIcon from "@/public/images/socrat/Closed-Question.svg";
+import openIcon from "@/public/images/socrat/Open-Question.svg";
 
-import { IFaqs } from '../faqs';
+import { IFaqs } from "../faqs";
 
-import styles from './FAQItem.module.css';
+import styles from "./FAQItem.module.css";
 
 interface FAQItemProps {
   faq: IFaqs;
@@ -40,7 +40,7 @@ const FAQItem: FC<FAQItemProps> = ({ faq }) => {
           style={
             clicked
               ? { height: contentEl.current?.scrollHeight }
-              : { height: '0px' }
+              : { height: "0px" }
           }
         >
           <div className={styles.answer}>{answer}</div>
