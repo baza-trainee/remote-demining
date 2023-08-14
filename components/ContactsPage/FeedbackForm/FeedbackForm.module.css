@@ -1,13 +1,5 @@
 .wrapper {
   width: 100%;
-
-  @media (min-width: 768px) and (max-width: 1280px) {
-    max-width: 704px;
-  }
-
-  @media (min-width: 1439px) {
-    max-width: 653px;
-  }
 }
 
 .heading {
@@ -16,10 +8,6 @@
   font-weight: 700;
   line-height: 1.5;
   margin-bottom: 16px;
-
-  @media (min-width: 768px) {
-    margin-bottom: 24px;
-  }
 }
 
 .text {
@@ -33,14 +21,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-
-  @media (min-width: 768px) {
-    padding: 40px 66px 2px 66px;
-  }
-
-  @media (min-width: 1280px) {
-    padding: 40px 40px 2px 40px;
-  }
 }
 
 .inputWrapper {
@@ -53,4 +33,36 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+/* Only tablet styles (from 768px to 1279.95px) */
+@media (min-width: 768px) and (max-width: 1279.95px) {
+  .wrapper {
+    max-width: 704px;
+  }
+}
+
+/* Tablet styles (768px and above) */
+@media (min-width: 768px) {
+  .heading {
+    margin-bottom: 24px;
+  }
+
+  .form {
+    padding: 40px 66px 2px 66px;
+  }
+}
+
+/* Desktop styles (1280px and above) */
+@media (min-width: 1280px) {
+  .form {
+    padding: 40px 40px 2px 40px;
+  }
+}
+
+/* Desktop styles (1439px and above) */
+@media (min-width: 1439px) {
+  .wrapper {
+    max-width: 653px;
+  }
 }
