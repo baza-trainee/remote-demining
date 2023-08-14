@@ -59,18 +59,18 @@
   font-size: 1.125rem;
   line-height: 1.875rem;
 }
-  @media (min-width: 1310px) {
-    .answer_list {
+@media (min-width: 1310px) {
+  .answer_list {
     width: 1360px;
   }
 }
-  @media (max-width: 1300px) {
-    .answer_list {
+@media (max-width: 1300px) {
+  .answer_list {
     width: auto;
   }
 }
-  @media (max-width: 768px) {
-    .answer_list {
+@media (max-width: 768px) {
+  .answer_list {
     font-size: 0.9rem;
   }
 }
@@ -87,14 +87,14 @@
   aspect-ratio: 1/1;
   z-index: 1;
 }
-  @media (max-width: 768px) {
-    .icon_wrapper {
+@media (max-width: 768px) {
+  .icon_wrapper {
     max-width: 30px;
     max-height: 30px;
   }
 }
-  @media (max-width: 485px) {
-    .icon_wrapper {
+@media (max-width: 485px) {
+  .icon_wrapper {
     max-width: 24px;
     max-height: 24px;
   }

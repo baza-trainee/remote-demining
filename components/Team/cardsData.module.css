@@ -46,6 +46,7 @@
   .card_body {
     min-width: 223px;
     max-height: 369px;
+    min-height: 369px;
   }
 }
 
