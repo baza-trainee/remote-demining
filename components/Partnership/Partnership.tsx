@@ -9,19 +9,49 @@ import Slider from "../Slider/Slider";
 
 import partnersData, { Partner } from "./partnersData";
 
+import styles from "./Parnership.module.css";
+
 const Partnership = () => {
-  const [perPage, setPerPage] = useState<number>(1);
-  const { isMobile, isTablet, isDesktop } = useMyMedia();
+  const [perPage, setPerPage] = useState<number>(0);
+  const {
+    isSMobile,
+    isMobile,
+    isMMobile,
+    isLMobile,
+    isMobileLandscape,
+    isTablet,
+    isMTablet,
+    isSDesktop,
+    isDesktop,
+  } = useMyMedia();
   useEffect(() => {
-    isMobile && setPerPage(1.5);
+    isSMobile && setPerPage(1.2);
+    isMobile && setPerPage(1.4);
+    isMMobile && setPerPage(1.6);
+    isLMobile && setPerPage(2);
+    isMobileLandscape && setPerPage(2.5);
     isTablet && setPerPage(3);
+    isMTablet && setPerPage(3.3);
+    isSDesktop && setPerPage(4);
     isDesktop && setPerPage(5.5);
-  }, [isMobile, isTablet, isDesktop]);
+  }, [
+    isSMobile,
+    isMobile,
+    isMMobile,
+    isLMobile,
+    isMobileLandscape,
+    isTablet,
+    isMTablet,
+    isSDesktop,
+    isDesktop,
+  ]);
 
   return (
     <SectionContainer
       title="Партнерські організації"
       description="Організації, з якими ми постійно співпрацюємо"
+      className={styles.section}
+      hasTitleWidth
     >
       <Slider
         slidesPerPage={perPage}

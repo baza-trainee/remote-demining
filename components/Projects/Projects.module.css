@@ -10,6 +10,7 @@
   @media (min-width: 1280px) {
     padding-top: 20px;
     flex-direction: row;
+    justify-content: space-between;
     gap: var(--card-list-gap-desktop);
   }
 }
@@ -19,8 +20,12 @@
   background-color: var(--bg-white-color);
   border-radius: var(--card-border-rad);
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) and (max-width: 1279.95px) {
     display: flex;
+  }
+
+  @media (min-width: 1280px) {
+    width: 437px;
   }
 }
 
@@ -48,7 +53,7 @@
 .body {
   padding: 24px;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) and (max-width: 1279.99px) {
     padding: var(--card-list-padding-tablet);
   }
 }
@@ -58,9 +63,4 @@
   font-size: 20px;
   font-weight: 600;
   line-height: normal;
-  color: var(--section-title-color);
-}
-
-.text {
-  color: var(--section-title-color);
 }

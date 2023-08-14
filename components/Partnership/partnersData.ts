@@ -1,4 +1,4 @@
-import partner from "@/public/images/partnership/img2.jpg";
+import partner from "@/public/images/partnership/img.jpg";
 
 export interface Partner {
   id: number;

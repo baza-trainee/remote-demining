@@ -1,36 +1,44 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { FC } from 'react';
+import Image from "next/image";
+import { FC } from "react";
+import { useWindowSize } from "usehooks-ts";
 
-import Button from '@/components/Button/Button';
-import { useMyMedia } from '@/hooks/useMedia';
+import Button from "@/components/Button/Button";
 
-import { HeroData } from '../heroData';
+import { HeroData } from "../heroData";
 
-import styles from './HeroSlide.module.css';
+import styles from "./HeroSlide.module.css";
 
-const HeroSlide: FC<{ item: HeroData }> = ({ item }) => {
-  const { isTablet } = useMyMedia();
+interface HeroSlideProps {
+  item: HeroData,
+  toggleModal: () => void,
+}
 
+const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
+  const { width } = useWindowSize();
   return (
     <div>
       <div
-        className={styles['slide']}
+        className={styles["slide"]}
         style={{
           background: `lightgray url(${item.backgroundImage}) left / cover`,
         }}
       >
-        <h2 className={styles['title']}>{item.title}</h2>
-        <p className={styles['caption']}>{item.caption}</p>
-        <Button className={styles.slideBtn} isFullWidth={isTablet}>
+        <h2 className={styles["title"]}>{item.title}</h2>
+        <p className={styles["caption"]}>{item.caption}</p>
+        <Button
+          className={styles.slideBtn}
+          onClick={toggleModal}
+          isFullWidth={width < 768}
+        >
           Підтримати
         </Button>
         {item.contentImage && (
           <Image
             src={item.contentImage}
             alt={item.title}
-            className={styles['contentImage']}
+            className={styles["contentImage"]}
             width={0}
             height={0}
           />

@@ -1,5 +1,11 @@
 .wrapper {
+  border-radius: 1.5rem;
+  background: #fdfdfd;
   width: 37rem;
+  padding: 4.4%;
+}
+
+.form {
   display: flex;
   flex-direction: column;
   gap: 16px;

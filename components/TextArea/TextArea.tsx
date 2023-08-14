@@ -1,22 +1,22 @@
-import { ComponentProps, forwardRef } from "react";
-import { FieldError } from "react-hook-form/dist/types";
+import { ComponentProps, forwardRef } from 'react';
+import { FieldError } from 'react-hook-form/dist/types';
 
-import styles from "./TextArea.module.css";
+import styles from './TextArea.module.css';
 
 enum InputSize {
-  base = "base",
-  full = "full",
+  base = 'base',
+  full = 'full',
 }
 
-type BackgroundColors = "primary" | "secondary";
+type BackgroundColors = 'primary' | 'secondary';
 
 interface InputProps {
-  placeholder?: ComponentProps<"textarea">["placeholder"];
-  name?: ComponentProps<"textarea">["name"];
-  onChange?: ComponentProps<"textarea">["onChange"];
-  onBlur?: ComponentProps<"textarea">["onBlur"];
-  rows?: ComponentProps<"textarea">["rows"];
-  className?: ComponentProps<"textarea">["className"];
+  placeholder?: ComponentProps<'textarea'>['placeholder'];
+  name?: ComponentProps<'textarea'>['name'];
+  onChange?: ComponentProps<'textarea'>['onChange'];
+  onBlur?: ComponentProps<'textarea'>['onBlur'];
+  rows?: ComponentProps<'textarea'>['rows'];
+  className?: ComponentProps<'textarea'>['className'];
   noBorder?: boolean;
   size?: keyof typeof InputSize;
   label?: string;
@@ -34,7 +34,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
       label,
       width,
       height,
-      backgroundCl = "primary",
+      backgroundCl = 'primary',
       error,
       errorMessage,
       ...InputProps
@@ -50,7 +50,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
       <div>
         {label && <label className={styles.label}>{label}</label>}
         <textarea
-          className={`${styles[size]} ${styles.textarea}`}
+          className={`${styles[size]} ${styles.textarea} ${styles[backgroundCl]}`}
           ref={ref}
           {...InputProps}
           style={InputStyle}
@@ -61,6 +61,6 @@ const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
   }
 );
 
-TextArea.displayName = "TextArea";
+TextArea.displayName = 'TextArea';
 
 export default TextArea;

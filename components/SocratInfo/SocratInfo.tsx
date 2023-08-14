@@ -1,22 +1,22 @@
 import SectionContainer from "../SectionContainer/SectionContainer";
 import TextCard from "../TextCard/TextCard";
 
-import {
-  SocratChallengesData,
-  socratChallengesData,
-} from "./socratInfoData";
+import { SocratChallengesData, socratChallengesData } from "./socratInfoData";
 
 import styles from "./SocratInfo.module.css";
+import Container from "../Container/Container";
 
 const SocratInfo: React.FC = () => {
   return (
-    <SectionContainer>
+    <Container>
       <div className={styles.container}>
-        {socratChallengesData.map((el: SocratChallengesData) => {
-          return <TextCard key={el.id} title={el.title} text={el.text} />;
-        })}
+        <div className={styles.challenges_container}>
+          {socratChallengesData.map((el: SocratChallengesData) => {
+            return <TextCard key={el.id} title={el.title} text={el.text} />;
+          })}
+        </div>
       </div>
-    </SectionContainer>
+    </Container>
   );
 };
 
