@@ -18,14 +18,6 @@
   position: absolute;
   width: 100%;
   padding: 48px 16px;
-
-  @media (min-width: 768px) {
-    padding: 48px 40px;
-  }
-
-  @media (min-width: 1280px) {
-    padding: 40px;
-  }
 }
 
 .heading {
@@ -40,16 +32,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-
   max-width: 280px;
-
-  @media (min-width: 768px) {
-    max-width: 440px;
-  }
-
-  @media (min-width: 1280px) {
-    max-width: 372px;
-  }
 }
 
 .subheading {
@@ -58,10 +41,6 @@
   line-height: normal;
   text-transform: uppercase;
   margin-bottom: 12px;
-
-  @media (min-width: 1280px) {
-    font-size: 18px;
-  }
 }
 
 .infoItem {
@@ -77,4 +56,30 @@
 
 .emailText {
   text-decoration: underline;
+}
+
+/* Tablet styles (768px and above) */
+@media (min-width: 768px) {
+  .content {
+    padding: 48px 40px;
+  }
+
+  .infoWrapper {
+    max-width: 440px;
+  }
+}
+
+/* Desktop styles (1280px and above) */
+@media (min-width: 1280px) {
+  .content {
+    padding: 40px;
+  }
+
+  .infoWrapper {
+    max-width: 372px;
+  }
+
+  .subheading {
+    font-size: 18px;
+  }
 }

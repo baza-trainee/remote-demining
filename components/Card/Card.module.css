@@ -7,17 +7,11 @@
   object-fit: cover;
   width: 100%;
   height: var(--card-img-height);
-  @media screen and (max-width: 400px) {
-    height: var(--card-img-height-mobile);
-  }
 }
 
 .body {
   padding: 24px;
   background-color: var(--bg-white-color);
-  @media screen and (max-width: 400px) {
-    padding: 16px;
-  }
 }
 
 .primary {
@@ -26,4 +20,28 @@
 
 .light-blue {
   background-color: var(--bg-light-blue);
+}
+
+@media screen and (max-width: 400px) {
+  .image {
+    height: var(--card-img-height-mobile);
+  }
+}
+
+@media (min-width: 320px) {
+  .body {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .body {
+    padding: 12px 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .body {
+    padding: 16px 24px;
+  }
 }

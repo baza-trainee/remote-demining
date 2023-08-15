@@ -1,0 +1,10 @@
+.box {
+  position: relative;
+  padding-bottom: 100px;
+  width: 100%;
+}
+@media (min-width: 1280px) {
+  .box {
+    padding-bottom: 120px;
+  }
+}

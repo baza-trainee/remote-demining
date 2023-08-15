@@ -1,24 +1,24 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
-import logo from '@/public/images/footer/logo.svg';
-import mail from '@/public/images/footer/mail.svg';
-import map from '@/public/images/footer/map.svg';
-import tel from '@/public/images/footer/tel.svg';
+import logo from "@/public/images/footer/logo.svg";
+import mail from "@/public/images/footer/mail.svg";
+import map from "@/public/images/footer/map.svg";
+import tel from "@/public/images/footer/tel.svg";
 
-import Container from '../Container/Container';
-import NavLink from '../NavLink/NavLink';
+import Container from "../Container/Container";
+import NavLink from "../NavLink/NavLink";
 
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
-          <Link href={'#'} className={styles.logo}>
+          <a href={'#top'} className={styles.logo}>
             <Image height={149} width={117} src={logo} alt="logo" />
-          </Link>
+          </a>
           <ul className={`${styles.menu} ${styles.category}`}>
             <li>
               <NavLink href="/">Про нас</NavLink>
@@ -46,7 +46,7 @@ const Footer = () => {
           </ul>
           <ul className={`${styles.contacts} ${styles.category}`}>
             <li className={styles.contacts__item}>
-              <Image width={22} height={22} src={tel} alt="tel" />{' '}
+              <Image width={22} height={22} src={tel} alt="tel" />{" "}
               <span>+38 (044) 209 5302</span>
             </li>
             <li className={styles.contacts__item}>
@@ -55,12 +55,13 @@ const Footer = () => {
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={map} alt="map" />
-              <span>вул. Олеся Гончара 55 б, Київ, Україна 01601</span>
+              <span>вул. Олеся Гончара, 55-б, Київ, Україна 01601</span>
             </li>
           </ul>
         </div>
         <div className={styles.baza}>
-          Розробка Baza Trainee Ukraine 2023 <br className={styles.br}/> Всі права захищені
+          Розробка Baza Trainee Ukraine 2023 <br className={styles.br} /> Всі
+          права захищені
         </div>
       </Container>
     </footer>

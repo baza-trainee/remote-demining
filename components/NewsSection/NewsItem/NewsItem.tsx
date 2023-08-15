@@ -10,9 +10,10 @@ interface NewsItem {
   img: string;
   title: string;
   link: string;
+  date: string;
 }
 
-const NewsItem: React.FC<NewsItem> = ({ id, img, text, title, link }) => {
+const NewsItem: React.FC<NewsItem> = ({ id, img, text, title, link, date }) => {
   return (
     <div key={id} className={styles.item}>
       <Card img={img} alt={title}>
@@ -39,7 +40,7 @@ const NewsItem: React.FC<NewsItem> = ({ id, img, text, title, link }) => {
               Детальніше
             </NavLink>
             <div className={styles.date}>
-              <p>06 липня 2023</p>
+              <p>{date}</p>
             </div>
           </div>
         </div>
