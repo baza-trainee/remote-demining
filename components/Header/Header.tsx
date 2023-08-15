@@ -25,18 +25,25 @@ const Header = () => {
   const pathname = usePathname();
 
   const contentBox = `${styles.box} ${isOpenMenu ? styles.bottom_border : ""}`;
+  const headerStyle = `${styles.header} ${!pathname.includes("admin") ? styles.fixed : ""}`
   return (
-    <header className={styles.header} id="top">
+    <header className={headerStyle}>
       <Container>
         <div className={contentBox}>
           <HeaderLogo />
           {!pathname.includes("admin") && <HeaderMenu />}
           <div className={styles.box_btn}>
             <LanguageMenu />
-            <Button onClick={toggleModal} className={styles.btn_support} >Підтримати</Button>
+            <Button onClick={toggleModal} className={styles.btn_support}>
+              Підтримати
+            </Button>
             {isModalOpen && (
-              <Modal isBigModal toggleModal={toggleModal} isModalOpen={isModalOpen}  >
-                <Donate/>
+              <Modal
+                isBigModal
+                toggleModal={toggleModal}
+                isModalOpen={isModalOpen}
+              >
+                <Donate />
               </Modal>
             )}
             {!pathname.includes("admin") && (
