@@ -16,12 +16,12 @@ const Footer = () => {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
-          <a href={'#top'} className={styles.logo}>
+          <a href={"#top"} className={styles.logo}>
             <Image height={149} width={117} src={logo} alt="logo" />
           </a>
           <ul className={`${styles.menu} ${styles.category}`}>
             <li>
-              <NavLink href="/">Про нас</NavLink>
+              <NavLink href="/client">Про нас</NavLink>
             </li>
             <li>
               <NavLink href="/client/activity">Наукова діяльність</NavLink>
