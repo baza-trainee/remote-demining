@@ -9,7 +9,7 @@
 .link:not(.link_btn):not(.moreInfo_btn):after {
   background: none repeat scroll 0 0 transparent;
   bottom: 0;
-  content: '';
+  content: "";
   display: block;
   height: 2px;
   left: 50%;
@@ -47,6 +47,7 @@
   color: var(--link-primary-color);
   font-size: 1rem;
   text-align: center;
+  height: 46px;
 
   border-radius: var(--link-primary-border-rad);
   background-color: var(--link-primary-bg-color);

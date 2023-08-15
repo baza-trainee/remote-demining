@@ -59,7 +59,7 @@ const FeedbackForm: FC = () => {
     <div className={styles.wrapper}>
       <h2 className={styles.heading}>Зворотний зв&apos;язок</h2>
       <p className={styles.text}>
-        Ваші відгуки та пропозиції будуть корисними для нас
+        Ваші відгуки та пропозиції будуть корисними для нас.
       </p>
       <form
         id="feedback-form"
