@@ -1,9 +1,11 @@
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import ScientificActivity from "@/components/ScientificActivity/ScientificActivity";
+import ScrollUp from "@/components/ScrollUp/ScrollUp";
 
 const Activity = () => {
   return (
     <main>
+      <ScrollUp />
       <SectionContainer
         title="Наукова діяльність"
         alignTitle="left"
