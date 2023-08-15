@@ -134,6 +134,9 @@
   --modal-big-border-radius: 24px;
   --modal-small-border-radius: 5px;
 
+  /*ContactForm*/
+  --form-bg-color: #fdfdfd;
+
   /* Icon Buttons */
   --icon-button-bg-color: #ffffff;
   --icon-button-border-rad: 5px;

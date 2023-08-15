@@ -20,6 +20,7 @@ const NewsSection: React.FC = () => {
 
   return (
     <SectionContainer
+      titleMargin
       title="Наші новини"
       description="Науковці НАН України є постійними учасниками конференцій і форумів в сфері високотехнологічних розробок і найсучасніших методів галузі інженерії"
     >
@@ -28,9 +29,6 @@ const NewsSection: React.FC = () => {
         slides={newsData.map((elem: News) => (
           <NewsItem key={elem.id} {...elem} />
         ))}
-        dots
-        infinite
-        dotsPlacement="inner"
       />
     </SectionContainer>
   );

@@ -2,39 +2,38 @@
   padding: 0 2px 0 2px;
 }
 .content {
-  height: 367px;
+  height: 344px;
   display: flex;
   justify-content: space-between;
+  gap: 16px;
   flex-direction: column;
   overflow: hidden;
-  @media (min-width: 768px) {
-    height: 338px;
-  }
-  @media (min-width: 1280px) {
-    height: 270px;
-  }
 }
+
 .text_content {
   overflow: hidden;
 }
 .title {
+  display: block;
   font-size: 20px;
   font-weight: 600;
+  line-height: normal;
   margin-bottom: 16px;
   overflow: hidden;
+  text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
 }
 .text {
   font-size: 16px;
   font-weight: 400;
-  margin-bottom: 16px;
+  line-height: normal;
   overflow: hidden;
+  text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 8;
   white-space: pre-wrap;
-
 }
 
 .buttonWrapper {
@@ -62,4 +61,52 @@
   width: 100%;
   min-width: 280px;
   height: 1px;
+}
+
+@media (min-width: 400px) {
+  .content {
+    max-height: 308px;
+  }
+}
+
+@media (min-width: 500px) {
+  .content {
+    max-height: 259px;
+  }
+}
+
+@media (min-width: 600px) {
+  .content {
+    max-height: 231px;
+  }
+}
+
+@media (min-width: 768px) {
+  .content {
+    max-height: 343px;
+  }
+}
+
+@media (min-width: 900px) {
+  .content {
+    max-height: 307px;
+  }
+}
+
+@media (min-width: 1110px) {
+  .content {
+    max-height: 259px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .content {
+    max-height: 285px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .content {
+    max-height: 280px;
+  }
 }
