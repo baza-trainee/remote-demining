@@ -1,11 +1,20 @@
 'use client';
 import Image from 'next/image';
-import { FC, useCallback, useEffect, useState } from 'react';
+import {
+  Dispatch,
+  FC,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import Cropper from 'react-easy-crop';
 import { Area, Point } from 'react-easy-crop/types';
 
 import Button from '@/components/Button/Button';
 import addImg from '@/public/images/admin/add.svg';
+
+import api from '../../lib/api/baseQuery';
 
 import { getCroppedImg } from './utils/getCroppedImg';
 
@@ -15,19 +24,20 @@ interface AddImageProps {
   imgWidth: number;
   imgHeight: number;
   title: string;
+  setImage: Dispatch<SetStateAction<string | null>>;
 }
 
 const AddImage: FC<AddImageProps> = ({
   imgWidth = 432,
   imgHeight = 240,
   title = 'Додати зображення',
+  setImage,
 }) => {
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [imgSrc, setImgSrc] = useState('');
   const [isDragActive, setIsDragActive] = useState(false);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
-  const [croppedImage, setCroppedImage] = useState<string | null>(null);
 
   const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
     e.preventDefault();
@@ -76,10 +86,9 @@ const AddImage: FC<AddImageProps> = ({
     (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setImgSrc('');
-        setCroppedImage(null);
       }
     },
-    [setImgSrc, setCroppedImage]
+    [setImgSrc]
   );
 
   useEffect(() => {
@@ -91,13 +100,15 @@ const AddImage: FC<AddImageProps> = ({
 
   const showCroppedImage = useCallback(async () => {
     try {
-      const croppedImage = await getCroppedImg(imgSrc, croppedAreaPixels!);
-      setCroppedImage(croppedImage as string);
-      setImgSrc('');
+      if (imgSrc && croppedAreaPixels) {
+        const croppedImage = await getCroppedImg(imgSrc, croppedAreaPixels);
+        setImgSrc('');
+        setImage(croppedImage);
+      }
     } catch (e) {
       console.error(e);
     }
-  }, [imgSrc, croppedAreaPixels]);
+  }, [imgSrc, croppedAreaPixels, setImage]);
 
   return (
     <>
@@ -128,6 +139,7 @@ const AddImage: FC<AddImageProps> = ({
           <span className={styles.title}>{title}</span>
         </div>
       </label>
+
       {imgSrc && (
         <>
           <div className={styles.inner}>
@@ -144,6 +156,7 @@ const AddImage: FC<AddImageProps> = ({
           </div>
           <div className={styles.controls}>
             <span>Приблизити</span>
+
             <input
               value={zoom}
               type="range"
