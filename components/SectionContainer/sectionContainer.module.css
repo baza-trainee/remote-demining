@@ -112,6 +112,11 @@
     margin-right: 32px;
     margin-left: 32px;
   }
+  @-moz-document url-prefix() {
+    .descLine {
+      width: 3px;
+    }
+  }
 }
 
 /* Desktop styles (1280px and above) */
@@ -149,5 +154,4 @@
   .title_margin {
     margin-bottom: 60px;
   }
-  
 }
