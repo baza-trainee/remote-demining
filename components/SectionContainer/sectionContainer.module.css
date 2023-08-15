@@ -10,6 +10,7 @@
   font-weight: 600;
   line-height: normal;
   padding-left: 8px;
+  width: 100%;
 }
 
 .desc {
@@ -106,11 +107,16 @@
 
   .descLine {
     display: inline-block;
-    width: 3px;
+    width: 1px;
     height: 66px;
     background: var(--section-title-color);
     margin-right: 32px;
     margin-left: 32px;
+  }
+  @-moz-document url-prefix() {
+    .descLine {
+      width: 3px;
+    }
   }
 }
 
@@ -149,5 +155,4 @@
   .title_margin {
     margin-bottom: 60px;
   }
-  
 }

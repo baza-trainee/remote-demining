@@ -16,12 +16,12 @@ const Footer = () => {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
-          <Link href={"/#top"} className={styles.logo}>
+          <a href={"#top"} className={styles.logo}>
             <Image height={149} width={117} src={logo} alt="logo" />
-          </Link>
+          </a>
           <ul className={`${styles.menu} ${styles.category}`}>
             <li>
-              <NavLink href="/">Про нас</NavLink>
+              <NavLink href="/client">Про нас</NavLink>
             </li>
             <li>
               <NavLink href="/client/activity">Наукова діяльність</NavLink>
@@ -55,7 +55,7 @@ const Footer = () => {
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={map} alt="map" />
-              <span>вул. Олеся Гончара 55-б, Київ, Україна 01601</span>
+              <span>вул. Олеся Гончара, 55-б, Київ, Україна 01601</span>
             </li>
           </ul>
         </div>

@@ -8,7 +8,6 @@ import Slider from "../Slider/Slider";
 
 import NewsItem from "./NewsItem/NewsItem";
 import newsData, { News } from "./newsData";
-import styles from "./NewsSection.module.css";
 
 const NewsSection: React.FC = () => {
   const [perPage, setPerPage] = useState<number>(1);
@@ -30,9 +29,6 @@ const NewsSection: React.FC = () => {
         slides={newsData.map((elem: News) => (
           <NewsItem key={elem.id} {...elem} />
         ))}
-        dots
-        infinite
-        dotsPlacement="inner"
       />
     </SectionContainer>
   );
