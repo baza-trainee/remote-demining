@@ -13,14 +13,14 @@ import styles from "./AdminCardsList.module.css";
 
 interface AdminCardsListProps {
   cardsData?: AdminCardsData[];
-  handleEditCard: ({}:AdminCardsData) => void;
+  handleEditCard: ({}: AdminCardsData) => void;
   onSave: () => void;
 }
 
 const AdminCardsList: React.FC<AdminCardsListProps> = ({
   onSave,
   cardsData,
-  handleEditCard
+  handleEditCard,
 }) => {
   const [confDelModal, toggleDelModal] = useToggle(false);
   const [successModal, toggleSuccessModal] = useToggle(false);
@@ -32,11 +32,21 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
       <ul className={styles.list}>
         {cardsData &&
           cardsData.map(({ id, img, title, text, img_description }) => (
-            <li key={id} className={styles.card} onClick={() => {handleEditCard({id, img, title, text, img_description})}}>
-              <Image src={img} className={styles.image} alt={img_description || title} />
-              <div className={styles.body}>
-                <h3 className={styles.title}>{title}</h3>
-                <p className={styles.text}>{text}</p>
+            <li key={id} className={styles.card}>
+              <div
+                onClick={() => {
+                  handleEditCard({ id, img, title, text, img_description });
+                }}
+              >
+                <Image
+                  src={img}
+                  className={styles.image}
+                  alt={img_description || title}
+                />
+                <div className={styles.body}>
+                  <h3 className={styles.title}>{title}</h3>
+                  <p className={styles.text}>{text}</p>
+                </div>
               </div>
               <div
                 className={styles.btn_container}
@@ -52,7 +62,12 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
           <div
             className={styles.add_btn}
             onClick={() => {
-              onSave();
+              handleEditCard({
+                id: (cardsData && cardsData.length + 1) || 1,
+                img: "",
+                title: "",
+                text: "",
+              });
             }}
           >
             <Image src={add_icon} width={50} height={51} alt={"add icon"} />

@@ -27,7 +27,7 @@ const AdminCards = () => {
   const [isEditing, setIsEditing] = useToggle(false);
   const [cardData, setCardsData] = useState<AdminCardsData[]>();
   const [editedCard, setEditedCard] = useState<AdminCardsData>({
-    id: cardData && cardData.length + 1 || 1,
+    id: (cardData && cardData.length + 1) || 1,
     img: "",
     title: "",
     text: "",
@@ -39,7 +39,7 @@ const AdminCards = () => {
   const handleSave = () => {
     setIsEditing();
   };
-  const handleEditCard = (card:AdminCardsData) => {
+  const handleEditCard = (card: AdminCardsData) => {
     setEditedCard(card);
     setIsEditing();
   };
@@ -52,7 +52,7 @@ const AdminCards = () => {
     }
   };
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.heading_container}>
         <h1 className={styles.heading}>
           <span className={isEditing ? styles.breadcrumb : undefined}>
@@ -74,11 +74,7 @@ const AdminCards = () => {
           </span>
         )}
         {!isEditing && (
-          <div
-            onClick={() => {
-              setIsEditing();
-            }}
-          >
+          <div>
             <Image src={pen} alt="edit_img" width={27} height={27} />
           </div>
         )}
@@ -87,7 +83,11 @@ const AdminCards = () => {
         {isEditing ? (
           <AdminCardAdd onSave={handleSave} cardData={editedCard} />
         ) : (
-          <AdminCardsList onSave={handleSave} cardsData={cardData} handleEditCard={handleEditCard} />
+          <AdminCardsList
+            onSave={handleSave}
+            cardsData={cardData}
+            handleEditCard={handleEditCard}
+          />
         )}
       </AdminWrapper>
     </div>
