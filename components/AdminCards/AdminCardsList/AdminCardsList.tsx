@@ -67,6 +67,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                 img: "",
                 title: "",
                 text: "",
+                img_description: ""
               });
             }}
           >

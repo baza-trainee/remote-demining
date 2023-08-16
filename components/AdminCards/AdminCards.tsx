@@ -17,10 +17,10 @@ import styles from "./AdminCards.module.css";
 
 export interface AdminCardsData {
   id: number;
-  img: StaticImageData | string;
+  img: string;
   title: string;
   text: string;
-  img_description?: string;
+  img_description: string;
 }
 
 const AdminCards = () => {

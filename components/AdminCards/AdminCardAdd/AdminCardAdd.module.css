@@ -21,3 +21,11 @@
   width: 291px;
   height: 64px;
 }
+.error_message {
+  padding-top: 3px;
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-transform: lowercase;
+}
