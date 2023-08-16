@@ -21,7 +21,7 @@
 @media screen and (max-height: 575.98px) {
   .burger_menu {
     min-height: 0;
-    max-height: 260px;
+    max-height: 80vh;
     overflow: scroll;
   }
 }
