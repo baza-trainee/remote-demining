@@ -18,10 +18,10 @@
   padding: 75px 16px 32px 16px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-height: 575.98px) {
   .burger_menu {
     min-height: 0;
-    max-height: 247px;
+    max-height: 260px;
     overflow: scroll;
   }
 }
