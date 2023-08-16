@@ -51,7 +51,7 @@
   background-color: transparent;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 480px) {
   .btn_menu {
     margin-left: 0;
   }
