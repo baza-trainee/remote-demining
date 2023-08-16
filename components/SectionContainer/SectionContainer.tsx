@@ -15,6 +15,7 @@ interface ContainerProps {
   excludeMaxWidthTitle?: boolean;
   hasTitleWidth?: boolean;
   titleMargin?: boolean;
+  alignTitle?: "center" | "left";
 }
 
 const SectionContainer: React.FC<ContainerProps> = ({
@@ -28,6 +29,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
   className,
   hasTitleWidth = false,
   titleMargin,
+  alignTitle,
 }) => {
   const containerStyle = {
     backgroundImage: bgImg ? `url(${bgImg})` : "none",
@@ -35,6 +37,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
 
   const titleStyle = {
     color: titleColor,
+    textAlign: alignTitle,
   };
 
   const containerClassName = `${styles.container} ${
@@ -42,7 +45,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
   } ${className || ""}`;
 
   const containerHeaderWrapperClassName = `${styles.containerHeaderWrapper} ${
-    centerTitle ?  `${styles.containerHeaderWrapper} ${styles.centered}` : ""
+    centerTitle ? `${styles.containerHeaderWrapper} ${styles.centered}` : ""
   } ${titleMargin ? styles.title_margin : ""}`;
 
   return (

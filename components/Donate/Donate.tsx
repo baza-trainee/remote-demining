@@ -19,11 +19,11 @@ const Donate: React.FC<DonateProps> = () => {
   const handleInputValue = (value: string) => {
     const sum = value.replace(/\D/g, "");
     setPaymentAmount(sum);
-  }
+  };
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Оберіть Платіж</h2>
+      <h2 className={styles.title}>Оберіть суму внеску</h2>
       <div className={styles.content}>
         <div className={styles.donate_items}>
           {paymentAmountData.map((item, index) => {
@@ -45,7 +45,9 @@ const Donate: React.FC<DonateProps> = () => {
             className={styles.input}
             placeholder="Інша сума:"
             value={paymentAmount}
-            onChange={(e) => {handleInputValue(e.target.value)}}
+            onChange={(e) => {
+              handleInputValue(e.target.value);
+            }}
           ></input>
         </div>
         <h2 className={styles.title_pay_ways}>Оберіть спосіб оплати</h2>

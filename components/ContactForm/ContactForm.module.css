@@ -1,12 +1,31 @@
 .wrapper {
   border-radius: 1.5rem;
-  background: #fdfdfd;
-  width: 37rem;
-  padding: 4.4%;
+  background-color: var(--form-bg-color);
+  width: 20.5rem;
+  padding: 1.5rem 1rem 2rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+@media (min-width: 320px) and (max-width: 360px) {
+  .wrapper {
+    width: 18.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    width: 28.75rem;
+    padding: 3.75rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .wrapper {
+    width: 44.5rem;
+  }
 }
