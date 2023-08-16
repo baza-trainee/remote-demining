@@ -45,3 +45,15 @@
 .menu_wrapper.openMenu .menu_item:focus {
   background-color: var(--burger-menu-hover-color);
 }
+
+@media (min-width: 1280px) {
+  .menu_list {
+    gap: 25px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .menu_list {
+    gap: 32px;
+  }
+}
