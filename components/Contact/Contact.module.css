@@ -4,20 +4,26 @@
 
 .inner {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .title {
-  width: 47rem;
+  width: 20.5rem;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: normal;
 }
 
+@media (min-width: 320px) and (max-width: 360px) {
+  .title {
+    width: 18.5rem;
+  }
+}
+
 @media (max-width: 767.95px) {
   .inner {
-    flex-wrap: wrap;
     row-gap: 2.063rem;
+    align-items: center;
   }
 }
 
@@ -28,6 +34,8 @@
   }
 
   .inner {
+    flex-direction: row;
+    justify-content: space-between;
     column-gap: 1rem;
   }
 }
