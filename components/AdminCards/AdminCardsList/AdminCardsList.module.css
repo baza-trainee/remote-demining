@@ -29,6 +29,12 @@
   border-top-right-radius: var(--card-border-rad);
 }
 
+.img_container {
+  position: relative;
+  height: 100%;
+  width: 310px;
+  aspect-ratio: 310/170;
+}
 .body {
   padding: 24px;
   overflow: hidden;

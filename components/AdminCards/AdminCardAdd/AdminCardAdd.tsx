@@ -19,23 +19,19 @@ type AdminCard = Omit<AdminCardsData, "id">;
 
 interface AdminCardAddProps {
   cardData: AdminCardsData;
-  onSave: () => void;
+  onSave: ({}: AdminCardsData) => void;
 }
 
 const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
-  const [croppedImg, setCroppedImg] = useState();
-  const [imgValue, setImgValue] = useState(`${cardData.img}`);
+  const [croppedImg, setCroppedImg] = useState<string | null>(null);
   const closeModal = () => {
     toggleModal();
-    onSave();
   };
 
   useEffect(() => {
-    console.log(croppedImg);
-    if (croppedImg !== "") {
-      setImgValue(croppedImg);
-      console.log(imgValue);
+    if (croppedImg && croppedImg !== "") {
+      setValue("img", croppedImg);
     }
   }, [croppedImg]);
 
@@ -43,9 +39,10 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm({
     defaultValues: {
-      img: imgValue,
+      img: cardData.img,
       title: cardData.title,
       img_description: cardData.img_description,
       text: cardData.text,
@@ -55,8 +52,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
 
   const onSubmit: SubmitHandler<AdminCard> = async (data) => {
     await console.log(data);
-    console.log(croppedImg);
-    // onSave();
+    onSave({ id: cardData.id, ...data });
   };
 
   return (
@@ -64,7 +60,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
       <AddImage
         imgWidth={437}
         imgHeight={240}
-        setImage={() => setCroppedImg}
+        setImage={setCroppedImg}
         title={"Додати зображення"}
       />
       {errors.img?.message && (

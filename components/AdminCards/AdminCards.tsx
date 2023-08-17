@@ -1,9 +1,10 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useToggle } from "usehooks-ts";
 
+import { createCard, getCards } from "@/lib/admin/cards";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
@@ -36,7 +37,8 @@ const AdminCards = () => {
   useEffect(() => {
     fetchCardsData();
   }, []);
-  const handleSave = () => {
+  const handleSave = (data: AdminCardsData) => {
+    createCard(data);
     setIsEditing();
   };
   const handleEditCard = (card: AdminCardsData) => {
@@ -45,8 +47,18 @@ const AdminCards = () => {
   };
   const fetchCardsData = async () => {
     try {
-      const data = projectsData;
-      setCardsData(data);
+      const data = await getCards();
+      const cardsData = data?.map((card): AdminCardsData => {
+        console.log(card.images[0])
+        return {
+          id: card.data.id,
+          img: `https://remote-demining.onrender.com/images/${card.images[0]}`,
+          title: card.data.title,
+          text: card.data.text,
+          img_description: card.data.img_description,
+        };
+      });
+      setCardsData(cardsData);
     } catch (e) {
       console.log(e);
     }
@@ -84,7 +96,7 @@ const AdminCards = () => {
           <AdminCardAdd onSave={handleSave} cardData={editedCard} />
         ) : (
           <AdminCardsList
-            onSave={handleSave}
+            // onSave={handleSave}
             cardsData={cardData}
             handleEditCard={handleEditCard}
           />

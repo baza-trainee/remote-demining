@@ -14,11 +14,11 @@ import styles from "./AdminCardsList.module.css";
 interface AdminCardsListProps {
   cardsData?: AdminCardsData[];
   handleEditCard: ({}: AdminCardsData) => void;
-  onSave: () => void;
+  // onSave: () => void;
 }
 
 const AdminCardsList: React.FC<AdminCardsListProps> = ({
-  onSave,
+  // onSave,
   cardsData,
   handleEditCard,
 }) => {
@@ -38,11 +38,14 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                   handleEditCard({ id, img, title, text, img_description });
                 }}
               >
-                <Image
-                  src={img}
-                  className={styles.image}
-                  alt={img_description || title}
-                />
+                <div className={styles.img_container}>
+                  <Image
+                    src={img}
+                    className={styles.image}
+                    alt={img_description || title}
+                    fill
+                  />
+                </div>
                 <div className={styles.body}>
                   <h3 className={styles.title}>{title}</h3>
                   <p className={styles.text}>{text}</p>
@@ -67,7 +70,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                 img: "",
                 title: "",
                 text: "",
-                img_description: ""
+                img_description: "",
               });
             }}
           >
