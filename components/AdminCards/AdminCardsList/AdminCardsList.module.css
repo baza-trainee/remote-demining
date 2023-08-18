@@ -1,0 +1,119 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  row-gap: 54px;
+  column-gap: 16px;
+}
+
+.card {
+  background-color: var(--bg-white-color);
+  border-radius: var(--card-border-rad);
+  border: 1px solid #d9d9d9;
+  width: 311px;
+  height: 396px;
+  cursor: pointer;
+}
+
+.image {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: var(--card-img-height-mobile);
+  border-top-left-radius: var(--card-border-rad);
+  border-top-right-radius: var(--card-border-rad);
+}
+
+.img_container {
+  position: relative;
+  height: 100%;
+  width: 310px;
+  aspect-ratio: 310/170;
+}
+.body {
+  padding: 24px;
+  overflow: hidden;
+  height: 180px;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--section-title-color);
+}
+
+.text {
+  color: var(--section-title-color);
+  
+}
+.btn_container {
+  padding-top: 10px;
+  z-index: 5;
+  background-color: #fff;
+}
+
+
+.add_card {
+  width: 310px;
+  height: 345px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  background-image: repeating-linear-gradient(
+      -36deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      54deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      144deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      234deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    );
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+}
+.add_btn {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.last_card {
+  width: 310px;
+  height: 345px;
+  background-color: #d9d9d9;
+  border-radius: 20px;
+}

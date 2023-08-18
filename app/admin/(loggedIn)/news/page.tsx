@@ -1,9 +1,7 @@
+import AdminNewsPage from "@/components/AdminNewsPage/AdminNewsPage";
+
 const Page = () => {
-  return (
-    <>
-      <h1>News</h1>
-    </>
-  );
+  return <AdminNewsPage />;
 };
 
 export default Page;
