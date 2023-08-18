@@ -57,7 +57,7 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({ toggleEditing }) => {
                   Детальніше
                 </NavLink>
                 <div className={styles.date}>
-                  <p>06 липня 2023</p>
+                  <p>{date}</p>
                 </div>
               </div>
             </div>

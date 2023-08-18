@@ -1,5 +1,5 @@
-'use client';
-import Image from 'next/image';
+"use client";
+import Image from "next/image";
 import {
   Dispatch,
   FC,
@@ -7,18 +7,18 @@ import {
   useCallback,
   useEffect,
   useState,
-} from 'react';
-import Cropper from 'react-easy-crop';
-import { Area, Point } from 'react-easy-crop/types';
+} from "react";
+import Cropper from "react-easy-crop";
+import { Area, Point } from "react-easy-crop/types";
 
-import Button from '@/components/Button/Button';
-import addImg from '@/public/images/admin/add.svg';
+import Button from "@/components/Button/Button";
+import addImg from "@/public/images/admin/add.svg";
 
-import api from '../../lib/api/baseQuery';
+import api from "../../lib/api/baseQuery";
 
-import { getCroppedImg } from './utils/getCroppedImg';
+import { getCroppedImg } from "./utils/getCroppedImg";
 
-import styles from './AddImage.module.css';
+import styles from "./AddImage.module.css";
 
 interface AddImageProps {
   imgWidth: number;
@@ -30,12 +30,12 @@ interface AddImageProps {
 const AddImage: FC<AddImageProps> = ({
   imgWidth = 432,
   imgHeight = 240,
-  title = 'Додати зображення',
+  title = "Додати зображення",
   setImage,
 }) => {
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
-  const [imgSrc, setImgSrc] = useState('');
+  const [imgSrc, setImgSrc] = useState("");
   const [isDragActive, setIsDragActive] = useState(false);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
 
@@ -70,8 +70,8 @@ const AddImage: FC<AddImageProps> = ({
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       const reader = new FileReader();
-      reader.addEventListener('load', () =>
-        setImgSrc(reader.result?.toString() || '')
+      reader.addEventListener("load", () =>
+        setImgSrc(reader.result?.toString() || "")
       );
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -84,17 +84,17 @@ const AddImage: FC<AddImageProps> = ({
 
   const handleEscKey = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setImgSrc('');
+      if (event.key === "Escape") {
+        setImgSrc("");
       }
     },
     [setImgSrc]
   );
 
   useEffect(() => {
-    document.addEventListener('keydown', handleEscKey);
+    document.addEventListener("keydown", handleEscKey);
     return () => {
-      document.removeEventListener('keydown', handleEscKey);
+      document.removeEventListener("keydown", handleEscKey);
     };
   }, [handleEscKey]);
 
@@ -102,7 +102,7 @@ const AddImage: FC<AddImageProps> = ({
     try {
       if (imgSrc && croppedAreaPixels) {
         const croppedImage = await getCroppedImg(imgSrc, croppedAreaPixels);
-        setImgSrc('');
+        setImgSrc("");
         setImage(croppedImage);
       }
     } catch (e) {
@@ -113,7 +113,7 @@ const AddImage: FC<AddImageProps> = ({
   return (
     <>
       <label
-        className={`${styles.wrapper} ${isDragActive ? styles.dragActive : ''}`}
+        className={`${styles.wrapper} ${isDragActive ? styles.dragActive : ""}`}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
@@ -165,7 +165,9 @@ const AddImage: FC<AddImageProps> = ({
               step={0.1}
               onChange={handleZoomChange}
             />
-            <Button onClick={showCroppedImage}>Обрізати</Button>
+            <Button onClick={showCroppedImage} type="button">
+              Обрізати
+            </Button>
           </div>
         </>
       )}
