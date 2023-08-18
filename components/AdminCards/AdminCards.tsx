@@ -37,19 +37,22 @@ const AdminCards = () => {
   useEffect(() => {
     fetchCardsData();
   }, []);
+
   const handleSave = (data: AdminCardsData) => {
     createCard(data);
     setIsEditing();
   };
+
   const handleEditCard = (card: AdminCardsData) => {
     setEditedCard(card);
     setIsEditing();
   };
+
   const fetchCardsData = async () => {
     try {
       const data = await getCards();
       const cardsData = data?.map((card): AdminCardsData => {
-        console.log(card.images[0])
+        console.log(card.images[0]);
         return {
           id: card.data.id,
           img: `https://remote-demining.onrender.com/images/${card.images[0]}`,
