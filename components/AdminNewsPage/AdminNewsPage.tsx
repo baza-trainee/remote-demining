@@ -12,6 +12,15 @@ import AdminNewsList from "./AdminNewsList/AdminNewsList";
 
 import styles from "./AdminNewsPage.module.css";
 
+export interface AdminNewsValues {
+  id: number;
+  image: string | null;
+  title: string;
+  description: string;
+  link: string;
+  date: string;
+}
+
 const AdminNewsPage: React.FC = () => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
 

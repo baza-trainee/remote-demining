@@ -21,6 +21,7 @@ const validationSchema = object().shape({
     .max(300, "Заголовок має містити максимум 8 символів"),
   description: string(),
   link: string(),
+  date: string(),
 });
 
 export default validationSchema;

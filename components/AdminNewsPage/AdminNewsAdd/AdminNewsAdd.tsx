@@ -8,15 +8,11 @@ import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEdit
 import Button from "@/components/Button/Button";
 import AddImage from "@/components/Crop/AddImage";
 
+import { AdminNewsValues } from "../AdminNewsPage";
+
 import validationSchema from "./validationSchema";
 
 import styles from "./AdminNewsAdd.module.css";
-interface AdminNewsAddValues {
-  image: string | null;
-  title: string;
-  description: string;
-  link: string;
-}
 
 const AdminNewsAdd = () => {
   const [image, setImage] = useState<string | null>("");
@@ -33,7 +29,7 @@ const AdminNewsAdd = () => {
     formState: { errors, isValid },
     setError,
     setValue,
-  } = useForm<AdminNewsAddValues>({
+  } = useForm<AdminNewsValues>({
     defaultValues: {
       image: null,
       title: "",
@@ -43,7 +39,7 @@ const AdminNewsAdd = () => {
     resolver: yupResolver(validationSchema) as any,
   });
 
-  const onSubmit = (data: AdminNewsAddValues) => {
+  const onSubmit = (data: AdminNewsValues) => {
     console.log(data);
   };
 
@@ -83,6 +79,13 @@ const AdminNewsAdd = () => {
           {...register("link")}
           error={errors.link}
           errorMessage={errors.link?.message}
+        />
+        <AdminEditContactsInput
+          placeholder="Дата публікації"
+          editable
+          {...register("date")}
+          error={errors.date}
+          errorMessage={errors.date?.message}
         />
       </div>
       <div className={styles.btn_add_container}>
