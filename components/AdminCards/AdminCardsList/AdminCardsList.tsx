@@ -59,7 +59,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                 className={styles.btn_container}
                 onClick={() => {
                   setCardId(id);
-                  toggleDelModal()
+                  toggleDelModal();
                 }}
               >
                 <Button isFullWidth outlined>

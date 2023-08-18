@@ -100,7 +100,6 @@ const AdminCards = () => {
           <AdminCardAdd onSave={handleSave} cardData={editedCard} />
         ) : (
           <AdminCardsList
-            // onSave={handleSave}
             cardsData={cardData}
             handleEditCard={handleEditCard}
             handleDeleteCard={handleDeleteCard}
