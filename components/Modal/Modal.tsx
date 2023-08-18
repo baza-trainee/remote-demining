@@ -63,8 +63,6 @@ const Modal: React.FC<ModalProps> = ({
             src={close_modal}
             fill
             alt="close modal"
-            // width={isBigModal ? 32 : 24}
-            // height={isBigModal ? 32 : 24}
           ></Image>
         </button>
       </div>

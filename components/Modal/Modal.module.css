@@ -10,6 +10,16 @@
   align-items: center;
   background-color: rgba(43, 43, 43, 0.6);
 }
+@media (orientation: landscape) {
+  .container {
+    overflow: auto;
+  }
+}
+/* @media (min-height: 450px) {
+  .container {
+    overflow: auto;
+  }
+} */
 .content {
   position: relative;
   margin: 20px;
@@ -17,10 +27,15 @@
   background-color: var(--modal-bg-color);
   outline: 1px solid #1b3969;
 }
-
 .big_modal {
   outline: none;
   border-radius: var(--modal-big-border-radius);
+}
+@media (orientation: landscape)  {
+  .content {
+    position: absolute;
+    top: 0;
+  }
 }
 .btn_close {
   position: absolute;
@@ -37,13 +52,17 @@
   height: 18px;
   top: 16px;
   right: 16px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .btn_close_bm {
     width: 24px;
     height: 24px;
     top: 24px;
     right: 24px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .btn_close_bm {
     width: 32px;
     height: 32px;
     top: 32px;
