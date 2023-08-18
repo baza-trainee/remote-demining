@@ -47,7 +47,7 @@ const AdminContactsPage: React.FC = () => {
       <h1 className={styles.heading}>
         <span className={isEditing ? styles.breadcrumb : undefined}>
           Контакти
-        </span>{" "}
+        </span>
         {isEditing && <span className={styles.breadcrumb}>&gt;</span>}
         {isEditing && <span className={styles.edit}>Редагувати</span>}
       </h1>
