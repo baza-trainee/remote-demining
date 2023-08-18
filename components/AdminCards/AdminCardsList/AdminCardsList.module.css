@@ -55,9 +55,6 @@
 }
 .btn_container {
   padding-top: 10px;
-  /* position: absolute; */
-  /* bottom: 0; */
-  /* width: 311px; */
   z-index: 5;
   background-color: #fff;
 }
