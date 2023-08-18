@@ -36,6 +36,7 @@ const AdminCards = () => {
   useEffect(() => {
     fetchCardsData();
   }, [isEditing]);
+
   const handleSave = async (data: AdminCardsData) => {
     await createCard(data);
     await setIsEditing();
@@ -48,7 +49,7 @@ const AdminCards = () => {
   const handleDeleteCard = async (id: string) => {
     await deleteCard(id);
     await fetchCardsData();
-  }
+  };
   const fetchCardsData = async () => {
     try {
       const data = await getCards();

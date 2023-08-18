@@ -21,7 +21,7 @@ interface AdminCardsListProps {
 const AdminCardsList: React.FC<AdminCardsListProps> = ({
   cardsData,
   handleEditCard,
-  handleDeleteCard
+  handleDeleteCard,
 }) => {
   const [confDelModal, toggleDelModal] = useToggle(false);
   const [successModal, toggleSuccessModal] = useToggle(false);
@@ -50,6 +50,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                     fill
                   />
                 </div>
+
                 <div className={styles.body}>
                   <h3 className={styles.title}>{title}</h3>
                   <p className={styles.text}>{text}</p>

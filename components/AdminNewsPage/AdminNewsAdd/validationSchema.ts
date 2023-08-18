@@ -16,7 +16,7 @@ const validationSchema = object().shape({
       return fileSizeInBytes <= maxSizeInBytes;
     }),
   title: string()
-    .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄ\s'-]+$/, "Невалідні символи")
+    // .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄ\s'-]+$/, "Невалідні символи")
     .min(3, "Заголовок має містити мінімум 8 символів")
     .max(300, "Заголовок має містити максимум 8 символів"),
   description: string(),

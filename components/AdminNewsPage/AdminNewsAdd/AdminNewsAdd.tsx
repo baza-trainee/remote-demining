@@ -1,12 +1,15 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useToggle } from "usehooks-ts";
 
 import AddButton from "@/components/AddButton/AddButton";
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
 import Button from "@/components/Button/Button";
+import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import AddImage from "@/components/Crop/AddImage";
+import Modal from "@/components/Modal/Modal";
 
 import { AdminNewsValues } from "../AdminNewsPage";
 
@@ -14,7 +17,15 @@ import validationSchema from "./validationSchema";
 
 import styles from "./AdminNewsAdd.module.css";
 
-const AdminNewsAdd = () => {
+type AdminNews = Omit<AdminNewsValues, "id">;
+
+interface AdminNewsAddProps {
+  newsData: AdminNewsValues;
+  onSave: ({}: AdminNewsValues) => void;
+}
+
+const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
+  const [isModalOpen, toggleModal] = useToggle(false);
   const [image, setImage] = useState<string | null>("");
 
   useEffect(() => {
@@ -22,6 +33,10 @@ const AdminNewsAdd = () => {
       setValue("image", image);
     }
   }, [image]);
+
+  const closeModal = () => {
+    toggleModal();
+  };
 
   const {
     register,
@@ -39,8 +54,9 @@ const AdminNewsAdd = () => {
     resolver: yupResolver(validationSchema) as any,
   });
 
-  const onSubmit = (data: AdminNewsValues) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<AdminNews> = async (data) => {
+    await console.log(data);
+    onSave({ id: newsData.id, ...data });
   };
 
   return (
@@ -50,8 +66,8 @@ const AdminNewsAdd = () => {
       noValidate
     >
       <AddImage
-        imgWidth={310}
-        imgHeight={170}
+        imgWidth={437}
+        imgHeight={240}
         title="Додати зображення"
         setImage={setImage}
       />
@@ -94,6 +110,11 @@ const AdminNewsAdd = () => {
       <div className={styles.btn_send_container}>
         <Button type="submit">Надіслати</Button>
       </div>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+          <ConfirmationModal message="Контакти були успішно відредаговані!" />
+        </Modal>
+      )}
     </form>
   );
 };

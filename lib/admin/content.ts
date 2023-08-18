@@ -1,10 +1,6 @@
 import axios, { AxiosResponse } from "axios";
-import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
 
-/* To delete */
-import news1 from "../../public/images/news/news1.png";
-import news3 from "../../public/images/news/news2.png";
-import news2 from "../../public/images/news/news3.png";
+import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
 
 axios.defaults.baseURL = "https://remote-demining.onrender.com";
 
@@ -105,4 +101,12 @@ const createNews = async (news: AdminNewsValues): Promise<void> => {
   }
 };
 
-export { createNews, getContacts, getNews, updateContacts };
+const deleteNews = async (id: string): Promise<void> => {
+  try {
+    await axios.delete(`content/${id}`);
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { createNews, deleteNews, getContacts, getNews, updateContacts };
