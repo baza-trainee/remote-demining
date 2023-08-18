@@ -58,5 +58,13 @@ const createCard = async (card: AdminCardsData): Promise<void> => {
   }
 };
 
+const deleteCard = async (id: string): Promise<void> => {
+  try {
+    await api.delete(`content/${id}`);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-export { createCard,getCards };
+
+export { createCard,deleteCard,getCards };

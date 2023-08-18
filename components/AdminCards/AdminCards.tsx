@@ -4,12 +4,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useToggle } from "usehooks-ts";
 
-import { createCard, getCards } from "@/lib/admin/cards";
+import { createCard, deleteCard, getCards } from "@/lib/admin/cards";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import Button from "../Button/Button";
-import projectsData from "../Projects/projectsData";
 
 import AdminCardAdd from "./AdminCardAdd/AdminCardAdd";
 import AdminCardsList from "./AdminCardsList/AdminCardsList";
@@ -17,7 +16,7 @@ import AdminCardsList from "./AdminCardsList/AdminCardsList";
 import styles from "./AdminCards.module.css";
 
 export interface AdminCardsData {
-  id: number;
+  id: string;
   img: string;
   title: string;
   text: string;
@@ -28,7 +27,7 @@ const AdminCards = () => {
   const [isEditing, setIsEditing] = useToggle(false);
   const [cardData, setCardsData] = useState<AdminCardsData[]>();
   const [editedCard, setEditedCard] = useState<AdminCardsData>({
-    id: (cardData && cardData.length + 1) || 1,
+    id: "",
     img: "",
     title: "",
     text: "",
@@ -36,25 +35,27 @@ const AdminCards = () => {
   });
   useEffect(() => {
     fetchCardsData();
-  }, []);
-
-  const handleSave = (data: AdminCardsData) => {
-    createCard(data);
-    setIsEditing();
+  }, [isEditing]);
+  const handleSave = async (data: AdminCardsData) => {
+    await createCard(data);
+    await setIsEditing();
   };
 
   const handleEditCard = (card: AdminCardsData) => {
     setEditedCard(card);
     setIsEditing();
   };
-
+  const handleDeleteCard = async (id: string) => {
+    await deleteCard(id);
+    await fetchCardsData();
+  }
   const fetchCardsData = async () => {
     try {
       const data = await getCards();
       const cardsData = data?.map((card): AdminCardsData => {
         console.log(card.images[0]);
         return {
-          id: card.data.id,
+          id: card._id,
           img: `https://remote-demining.onrender.com/images/${card.images[0]}`,
           title: card.data.title,
           text: card.data.text,
@@ -99,9 +100,9 @@ const AdminCards = () => {
           <AdminCardAdd onSave={handleSave} cardData={editedCard} />
         ) : (
           <AdminCardsList
-            // onSave={handleSave}
             cardsData={cardData}
             handleEditCard={handleEditCard}
+            handleDeleteCard={handleDeleteCard}
           />
         )}
       </AdminWrapper>

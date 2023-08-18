@@ -89,12 +89,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
           errorMessage={errors.text?.message}
         />
       </div>
-      <div
-        className={styles.btn_add_container}
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
+      <div className={styles.btn_add_container}>
         <AddButton />
       </div>
       <div className={styles.btn_send_container}>
