@@ -40,6 +40,7 @@ const AdminCards = () => {
     await createCard(data);
     await setIsEditing();
   };
+
   const handleEditCard = (card: AdminCardsData) => {
     setEditedCard(card);
     setIsEditing();
@@ -52,7 +53,7 @@ const AdminCards = () => {
     try {
       const data = await getCards();
       const cardsData = data?.map((card): AdminCardsData => {
-        console.log(card.images[0])
+        console.log(card.images[0]);
         return {
           id: card._id,
           img: `https://remote-demining.onrender.com/images/${card.images[0]}`,
