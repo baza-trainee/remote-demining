@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import { useState } from "react";
 import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
@@ -14,17 +15,20 @@ import styles from "./AdminCardsList.module.css";
 interface AdminCardsListProps {
   cardsData?: AdminCardsData[];
   handleEditCard: ({}: AdminCardsData) => void;
-  // onSave: () => void;
+  handleDeleteCard: (id: string) => void;
 }
 
 const AdminCardsList: React.FC<AdminCardsListProps> = ({
-  // onSave,
   cardsData,
   handleEditCard,
+  handleDeleteCard
 }) => {
   const [confDelModal, toggleDelModal] = useToggle(false);
   const [successModal, toggleSuccessModal] = useToggle(false);
-  const handleDeleteCard = (id: number) => {
+  const [cardId, setCardId] = useState("");
+  const deleteCard = () => {
+    handleDeleteCard(cardId);
+    setCardId("");
     toggleDelModal();
   };
   return (
@@ -53,7 +57,10 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
               </div>
               <div
                 className={styles.btn_container}
-                onClick={() => handleDeleteCard(id)}
+                onClick={() => {
+                  setCardId(id);
+                  toggleDelModal()
+                }}
               >
                 <Button isFullWidth outlined>
                   Видалити
@@ -66,7 +73,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
             className={styles.add_btn}
             onClick={() => {
               handleEditCard({
-                id: (cardsData && cardsData.length + 1) || 1,
+                id: "",
                 img: "",
                 title: "",
                 text: "",
@@ -84,7 +91,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
         <Modal isModalOpen={confDelModal} toggleModal={() => toggleDelModal()}>
           <ConfirmationModal
             message="Ви дійсно бажаєте видалити картку?"
-            approveChanges={() => {}}
+            approveChanges={() => deleteCard()}
             discardChanges={() => toggleDelModal()}
           />
         </Modal>

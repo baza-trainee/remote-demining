@@ -38,7 +38,7 @@
 .body {
   padding: 24px;
   overflow: hidden;
-  max-height: 180px;
+  height: 180px;
 }
 
 .title {
@@ -55,6 +55,9 @@
 }
 .btn_container {
   padding-top: 10px;
+  /* position: absolute; */
+  /* bottom: 0; */
+  /* width: 311px; */
   z-index: 5;
   background-color: #fff;
 }
