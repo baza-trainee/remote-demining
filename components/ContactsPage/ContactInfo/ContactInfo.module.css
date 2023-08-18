@@ -32,7 +32,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  max-width: 280px;
+  max-width: 296px;
 }
 
 .subheading {
@@ -56,6 +56,12 @@
 
 .emailText {
   text-decoration: underline;
+}
+
+@media (max-width: 359.98px) {
+  .infoWrapper {
+    max-width: 261px;
+  }
 }
 
 /* Tablet styles (768px and above) */

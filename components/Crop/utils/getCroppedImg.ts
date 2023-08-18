@@ -25,6 +25,28 @@ export function getRadianAngle(degreeValue: number) {
   return (degreeValue * Math.PI) / 180;
 }
 
+async function blobToBase64(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(blob);
+
+    reader.onload = () => {
+      const base64String = reader.result as string;
+      const parts = base64String.split(',');
+      if (parts.length === 2) {
+        resolve(parts[1]); // Extract the base64 part
+      } else {
+        reject(new Error('Invalid base64 data'));
+      }
+    };
+
+    reader.onerror = () => {
+      reject(new Error('Error converting Blob to base64'));
+    };
+  });
+}
+
 export async function getCroppedImg(
   imageSrc: string,
   pixelCrop: {
@@ -95,9 +117,18 @@ export async function getCroppedImg(
   // return croppedCanvas.toDataURL('image/jpeg');
 
   // As a blob
-  return new Promise((resolve, reject) => {
+  const blob: Blob | null = await new Promise((resolve, reject) => {
     croppedCanvas.toBlob((file) => {
-      resolve(URL.createObjectURL(file!));
+      resolve(file);
     }, 'image/jpeg');
   });
+
+  if (!blob) {
+    console.log('blob is null');
+    return null;
+  }
+
+  const base64Image = await blobToBase64(blob);
+
+  return base64Image as string;
 }
