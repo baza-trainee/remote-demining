@@ -2,11 +2,6 @@
   padding-bottom: 48px;
   width: 100%;
 }
-/* @media (orientation: landscape) {
-  .container {
-    min-width: 100%;
-  }
-} */
 @media (min-width: 340px) {
   .container {
     min-width: 328px;
@@ -33,11 +28,6 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 44px 44px 44px;
 }
-/* @media (orientation: landscape) {
-  .container {
-    transform-origin: top left;
-  }
-} */
 @media (min-width: 660px) {
   .content {
     grid-template-rows: 1fr 56px 56px 56px;
