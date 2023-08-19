@@ -52,8 +52,8 @@ const AdminNewsPage: React.FC = () => {
     setIsEditing();
   };
 
-  const handleEditNews = (news: AdminNewsValues) => {
-    setEditedNews(news);
+  const handleEditNews = (data: AdminNewsValues) => {
+    setEditedNews(data);
     setIsEditing();
   };
 

@@ -44,21 +44,17 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
                   handleEditNews({ id, image, title, description, link, date });
                 }}
               >
-                <a href={link} target="_blank" rel="noreferrer noopener">
-                  <Image
-                    src={image}
-                    className={styles.image}
-                    alt={title}
-                    width={310}
-                    height={170}
-                  />
-                </a>
+                <Image
+                  src={image}
+                  className={styles.image}
+                  alt={title}
+                  width={310}
+                  height={170}
+                />
 
                 <div className={styles.body}>
                   <div className={styles.content}>
-                    <a href={link} target="_blank" rel="noreferrer noopener">
-                      <h3 className={styles.title}>{title}</h3>
-                    </a>
+                    <h3 className={styles.title}>{title}</h3>
                     <p className={styles.text}>{description}</p>
                   </div>
                   <div className={styles.moreInfoWrapper}>
@@ -92,20 +88,20 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
               </div>
             </li>
           ))}
-        <li className={styles.add_card}>
-          <div
-            className={styles.add_btn}
-            onClick={() => {
-              handleEditNews({
-                id: "",
-                image: "",
-                title: "",
-                description: "",
-                link: "",
-                date: "",
-              });
-            }}
-          >
+        <li
+          className={styles.add_card}
+          onClick={() => {
+            handleEditNews({
+              id: "",
+              image: "",
+              title: "",
+              description: "",
+              link: "",
+              date: "",
+            });
+          }}
+        >
+          <div className={styles.add_btn}>
             <Image src={add_icon} width={50} height={51} alt={"add icon"} />
             <span>Додати</span>
           </div>

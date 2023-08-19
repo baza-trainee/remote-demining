@@ -34,10 +34,6 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
     }
   }, [image]);
 
-  const closeModal = () => {
-    toggleModal();
-  };
-
   const {
     register,
     handleSubmit,
@@ -111,7 +107,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
         <Button type="submit">Надіслати</Button>
       </div>
       {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+        <Modal isModalOpen={isModalOpen} toggleModal={toggleModal}>
           <ConfirmationModal message="Новину успішно додано" />
         </Modal>
       )}
