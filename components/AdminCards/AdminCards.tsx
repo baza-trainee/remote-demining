@@ -19,6 +19,8 @@ import AdminCardAdd from "./AdminCardAdd/AdminCardAdd";
 import AdminCardsList from "./AdminCardsList/AdminCardsList";
 
 import styles from "./AdminCards.module.css";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import Modal from "../Modal/Modal";
 
 export interface AdminCardsData {
   id: string;
@@ -30,6 +32,7 @@ export interface AdminCardsData {
 
 const AdminCards = () => {
   const [isEditing, setIsEditing] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
   const [cardData, setCardsData] = useState<AdminCardsData[]>();
   const [editedCard, setEditedCard] = useState<AdminCardsData>({
     id: "",
@@ -52,7 +55,9 @@ const AdminCards = () => {
   };
   const handleDeleteCard = async (id: string) => {
     await deleteCard(id);
+    toggleSuccessModal();
     await fetchCardsData();
+    
   };
   const fetchCardsData = async () => {
     try {
@@ -111,6 +116,14 @@ const AdminCards = () => {
           />
         )}
       </AdminWrapper>
+      {successModal && (
+        <Modal
+          isModalOpen={successModal}
+          toggleModal={() => toggleSuccessModal()}
+        >
+          <ConfirmationModal message="Картку успішно додано" />
+        </Modal>
+      )}
     </div>
   );
 };
