@@ -10,16 +10,11 @@
   align-items: center;
   background-color: rgba(0, 0, 0, 0.6);
 }
-@media (orientation: landscape) {
+@media (orientation: landscape)  and (max-height: 780px) {
   .container {
     overflow: auto;
   }
 }
-/* @media (min-height: 450px) {
-  .container {
-    overflow: auto;
-  }
-} */
 .content {
   position: relative;
   margin: 20px;
@@ -31,7 +26,7 @@
   outline: none;
   border-radius: var(--modal-big-border-radius);
 }
-@media (orientation: landscape)  {
+@media (orientation: landscape) and (max-height: 780px) {
   .content {
     position: absolute;
     top: 0;
