@@ -51,7 +51,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   });
 
   const onSubmit: SubmitHandler<AdminCard> = async (data) => {
-    // await console.log(data);
+    await console.log(croppedImg);
     toggleModal();
     await onSave({ id: cardData.id, ...data });
   };
@@ -59,8 +59,8 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   return (
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
       <AddImage
-        imgWidth={437}
-        imgHeight={240}
+        imgWidth={800}
+        imgHeight={600}
         setImage={setCroppedImg}
         title={"Додати зображення"}
       />

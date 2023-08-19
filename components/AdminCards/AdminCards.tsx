@@ -63,7 +63,6 @@ const AdminCards = () => {
     try {
       const data = await getCards();
       const cardsData = data?.map((card): AdminCardsData => {
-        console.log(data);
         return {
           id: card._id,
           img: `https://remote-demining.onrender.com/images/${card.images[0]}`,
