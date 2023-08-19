@@ -51,8 +51,9 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   });
 
   const onSubmit: SubmitHandler<AdminCard> = async (data) => {
-    await console.log(data);
-    onSave({ id: cardData.id, ...data });
+    // await console.log(data);
+    toggleModal();
+    await onSave({ id: cardData.id, ...data });
   };
 
   return (
