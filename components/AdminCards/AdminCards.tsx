@@ -14,13 +14,13 @@ import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import Button from "../Button/Button";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import Modal from "../Modal/Modal";
 
 import AdminCardAdd from "./AdminCardAdd/AdminCardAdd";
 import AdminCardsList from "./AdminCardsList/AdminCardsList";
 
 import styles from "./AdminCards.module.css";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import Modal from "../Modal/Modal";
 
 export interface AdminCardsData {
   id: string;

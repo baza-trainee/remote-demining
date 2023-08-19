@@ -3,11 +3,18 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useToggle } from "usehooks-ts";
 
-import { createNews, deleteNews, getNews } from "@/lib/admin/content";
+import {
+  createNews,
+  deleteNews,
+  getNews,
+  updateNews,
+} from "@/lib/admin/content";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import Button from "../Button/Button";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import Modal from "../Modal/Modal";
 
 import AdminNewsAdd from "./AdminNewsAdd/AdminNewsAdd";
 import AdminNewsList from "./AdminNewsList/AdminNewsList";
@@ -16,7 +23,7 @@ import styles from "./AdminNewsPage.module.css";
 
 export interface AdminNewsValues {
   id: string;
-  image: string | null;
+  image: string;
   title: string;
   description: string;
   link: string;
@@ -25,6 +32,7 @@ export interface AdminNewsValues {
 
 const AdminNewsPage: React.FC = () => {
   const [isEditing, setIsEditing] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
   const [newsData, setNewsData] = useState<AdminNewsValues[]>();
   const [editedNews, setEditedNews] = useState<AdminNewsValues>({
     id: "",
@@ -40,8 +48,8 @@ const AdminNewsPage: React.FC = () => {
   }, [isEditing]);
 
   const handleSave = async (data: AdminNewsValues) => {
-    await createNews(data);
-    await setIsEditing();
+    editedNews.id ? await updateNews(data) : await createNews(data);
+    setIsEditing();
   };
 
   const handleEditNews = (news: AdminNewsValues) => {
@@ -51,6 +59,7 @@ const AdminNewsPage: React.FC = () => {
 
   const handleDeleteNews = async (id: string) => {
     await deleteNews(id);
+    toggleSuccessModal();
     await fetchNewsData();
   };
 
@@ -58,7 +67,6 @@ const AdminNewsPage: React.FC = () => {
     try {
       const data = await getNews();
       const newsData = data?.map((news): AdminNewsValues => {
-        console.log(news.images[0]);
         return {
           id: news._id,
           image: `https://remote-demining.onrender.com/images/${news.images[0]}`,
@@ -113,6 +121,14 @@ const AdminNewsPage: React.FC = () => {
           />
         )}
       </AdminWrapper>
+      {successModal && (
+        <Modal
+          isModalOpen={successModal}
+          toggleModal={() => toggleSuccessModal()}
+        >
+          <ConfirmationModal message="Новину успішно видалено" />
+        </Modal>
+      )}
     </div>
   );
 };

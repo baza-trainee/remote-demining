@@ -48,7 +48,7 @@ export interface NewsItem {
   images: [string];
   data: {
     section: string;
-    id: number;
+    id: string;
     title: string;
     description: string;
     link: string;
@@ -56,7 +56,7 @@ export interface NewsItem {
   };
   dataSchema: {
     section: string;
-    id: number;
+    id: string;
     title: string;
     description: string;
     link: string;
@@ -89,7 +89,7 @@ const createNews = async (news: AdminNewsValues): Promise<void> => {
       },
       dataSchema: {
         section: "string",
-        id: "number",
+        id: "string",
         title: "string",
         description: "string",
         link: "string",
@@ -109,4 +109,35 @@ const deleteNews = async (id: string): Promise<void> => {
   }
 };
 
-export { createNews, deleteNews, getContacts, getNews, updateContacts };
+const updateNews = async (news: AdminNewsValues): Promise<void> => {
+  try {
+    await axios.patch(`content/${news.id}`, {
+      images: news.image,
+      data: {
+        section: "news",
+        title: news.title,
+        description: news.description,
+        link: news.link,
+        date: news.date,
+      },
+      dataSchema: {
+        section: "string",
+        title: "string",
+        description: "string",
+        link: "string",
+        date: "string",
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  createNews,
+  deleteNews,
+  getContacts,
+  getNews,
+  updateContacts,
+  updateNews,
+};

@@ -1,14 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
 import NavLink from "@/components/NavLink/NavLink";
-import { getNews, NewsItem } from "@/lib/admin/content";
 import add_icon from "@/public/images/icons/buttons/add.svg";
 
 import { AdminNewsValues } from "../AdminNewsPage";
@@ -27,7 +26,6 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
   handleDeleteNews,
 }) => {
   const [confDelModal, toggleDelModal] = useToggle(false);
-  const [successModal, toggleSuccessModal] = useToggle(false);
   const [newsId, setNewsId] = useState("");
   const deleteNews = () => {
     handleDeleteNews(newsId);
@@ -64,7 +62,13 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
                     <p className={styles.text}>{description}</p>
                   </div>
                   <div className={styles.moreInfoWrapper}>
-                    <NavLink href={link} isFullWidth isMoreInfo>
+                    <NavLink
+                      href={link}
+                      isFullWidth
+                      isMoreInfo
+                      target="_blank"
+                      rel="noreferrer noopener"
+                    >
                       Детальніше
                     </NavLink>
                     <div className={styles.date}>
@@ -115,14 +119,6 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
             approveChanges={() => deleteNews()}
             discardChanges={() => toggleDelModal()}
           />
-        </Modal>
-      )}
-      {successModal && (
-        <Modal
-          isModalOpen={successModal}
-          toggleModal={() => toggleSuccessModal()}
-        >
-          <ConfirmationModal message="Картку успішно додано" />
         </Modal>
       )}
     </div>

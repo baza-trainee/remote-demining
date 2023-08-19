@@ -41,22 +41,22 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
-    setError,
+    formState: { errors },
     setValue,
   } = useForm<AdminNewsValues>({
     defaultValues: {
-      image: null,
-      title: "",
-      description: "",
-      link: "",
+      image: newsData.image,
+      title: newsData.title,
+      description: newsData.description,
+      link: newsData.link,
+      date: newsData.date,
     },
     resolver: yupResolver(validationSchema) as any,
   });
 
   const onSubmit: SubmitHandler<AdminNews> = async (data) => {
-    await console.log(data);
     onSave({ id: newsData.id, ...data });
+    toggleModal();
   };
 
   return (
@@ -112,7 +112,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
       </div>
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
-          <ConfirmationModal message="Контакти були успішно відредаговані!" />
+          <ConfirmationModal message="Новину успішно додано" />
         </Modal>
       )}
     </form>
