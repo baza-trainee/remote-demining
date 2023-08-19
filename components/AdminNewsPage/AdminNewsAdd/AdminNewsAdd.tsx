@@ -10,6 +10,7 @@ import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import AddImage from "@/components/Crop/AddImage";
 import Modal from "@/components/Modal/Modal";
+import { createNews, updateNews } from "@/lib/admin/content";
 
 import { AdminNewsValues } from "../AdminNewsPage";
 
@@ -21,12 +22,14 @@ type AdminNews = Omit<AdminNewsValues, "id">;
 
 interface AdminNewsAddProps {
   newsData: AdminNewsValues;
-  onSave: ({}: AdminNewsValues) => void;
+  onSave: () => void;
 }
 
 const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
+  const [isLoading, setIsLoading] = useToggle(false);
   const [image, setImage] = useState<string | null>("");
+  const isNewNews = !newsData.id;
 
   useEffect(() => {
     if (image) {
@@ -51,9 +54,27 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
   });
 
   const onSubmit: SubmitHandler<AdminNews> = async (data) => {
-    onSave({ id: newsData.id, ...data });
-    toggleModal();
+    try {
+      setIsLoading();
+      !isNewNews
+        ? await updateNews({ id: newsData.id, ...data })
+        : await createNews({ id: newsData.id, ...data });
+      setIsLoading();
+      toggleModal();
+    } catch (error) {
+      setIsLoading();
+      console.error(error);
+    }
   };
+
+  const closeModal = () => {
+    toggleModal();
+    onSave();
+  };
+
+  const modalMessage = isNewNews
+    ? "Новину успішно додано"
+    : "Новину успішно оновлено";
 
   return (
     <form
@@ -104,11 +125,13 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
         <AddButton />
       </div>
       <div className={styles.btn_send_container}>
-        <Button type="submit">Надіслати</Button>
+        <Button type="submit" disabled={isLoading}>
+          {isLoading ? "Завантажується…" : "Надіслати"}
+        </Button>
       </div>
       {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} toggleModal={toggleModal}>
-          <ConfirmationModal message="Новину успішно додано" />
+        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+          <ConfirmationModal message={modalMessage} />
         </Modal>
       )}
     </form>

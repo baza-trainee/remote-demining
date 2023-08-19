@@ -47,8 +47,7 @@ const AdminNewsPage: React.FC = () => {
     fetchNewsData();
   }, [isEditing]);
 
-  const handleSave = async (data: AdminNewsValues) => {
-    editedNews.id ? await updateNews(data) : await createNews(data);
+  const handleSave = () => {
     setIsEditing();
   };
 
