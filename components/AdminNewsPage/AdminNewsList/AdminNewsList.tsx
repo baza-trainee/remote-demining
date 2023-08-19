@@ -50,6 +50,7 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
                   alt={title}
                   width={310}
                   height={170}
+                  priority
                 />
 
                 <div className={styles.body}>
