@@ -24,7 +24,6 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
   handleDeleteCard,
 }) => {
   const [confDelModal, toggleDelModal] = useToggle(false);
-  const [successModal, toggleSuccessModal] = useToggle(false);
   const [cardId, setCardId] = useState("");
   const deleteCard = () => {
     handleDeleteCard(cardId);
@@ -95,14 +94,6 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
             approveChanges={() => deleteCard()}
             discardChanges={() => toggleDelModal()}
           />
-        </Modal>
-      )}
-      {successModal && (
-        <Modal
-          isModalOpen={successModal}
-          toggleModal={() => toggleSuccessModal()}
-        >
-          <ConfirmationModal message="Картку успішно додано" />
         </Modal>
       )}
     </div>

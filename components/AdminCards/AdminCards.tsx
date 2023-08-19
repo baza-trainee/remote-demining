@@ -4,7 +4,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useToggle } from "usehooks-ts";
 
-import { createCard, deleteCard, getCards } from "@/lib/admin/cards";
+import {
+  createCard,
+  deleteCard,
+  getCards,
+  updateCard,
+} from "@/lib/admin/cards";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
@@ -14,6 +19,8 @@ import AdminCardAdd from "./AdminCardAdd/AdminCardAdd";
 import AdminCardsList from "./AdminCardsList/AdminCardsList";
 
 import styles from "./AdminCards.module.css";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import Modal from "../Modal/Modal";
 
 export interface AdminCardsData {
   id: string;
@@ -25,6 +32,7 @@ export interface AdminCardsData {
 
 const AdminCards = () => {
   const [isEditing, setIsEditing] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
   const [cardData, setCardsData] = useState<AdminCardsData[]>();
   const [editedCard, setEditedCard] = useState<AdminCardsData>({
     id: "",
@@ -38,7 +46,7 @@ const AdminCards = () => {
   }, [isEditing]);
 
   const handleSave = async (data: AdminCardsData) => {
-    await createCard(data);
+    editedCard.id !== "" ? await updateCard(data) : await createCard(data);
     await setIsEditing();
   };
 
@@ -48,13 +56,14 @@ const AdminCards = () => {
   };
   const handleDeleteCard = async (id: string) => {
     await deleteCard(id);
+    toggleSuccessModal();
     await fetchCardsData();
   };
   const fetchCardsData = async () => {
     try {
       const data = await getCards();
       const cardsData = data?.map((card): AdminCardsData => {
-        console.log(card.images[0]);
+        console.log(data);
         return {
           id: card._id,
           img: `https://remote-demining.onrender.com/images/${card.images[0]}`,
@@ -107,6 +116,14 @@ const AdminCards = () => {
           />
         )}
       </AdminWrapper>
+      {successModal && (
+        <Modal
+          isModalOpen={successModal}
+          toggleModal={() => toggleSuccessModal()}
+        >
+          <ConfirmationModal message="Картку успішно додано" />
+        </Modal>
+      )}
     </div>
   );
 };

@@ -8,7 +8,6 @@ interface CardsData {
   images: [string];
   data: {
     section: string;
-    id: number;
     title: string;
     text: string;
     img_description: string;
@@ -40,14 +39,12 @@ const createCard = async (card: AdminCardsData): Promise<void> => {
       images: card.img,
       data: {
         section: "cards",
-        id: card.id,
         title: card.title,
         text: card.text,
         img_description: card.img_description,
       },
       dataSchema: {
         section: "string",
-        id: "number",
         title: "string",
         text: "string",
         img_description: "string",
@@ -64,7 +61,28 @@ const deleteCard = async (id: string): Promise<void> => {
   } catch (error) {
     console.log(error);
   }
-}
+};
 
+const updateCard = async (card: AdminCardsData): Promise<void> => {
+  try {
+    await api.patch(`content/${card.id}`, {
+      images: card.img,
+      data: {
+        section: "cards",
+        title: card.title,
+        text: card.text,
+        img_description: card.img_description,
+      },
+      dataSchema: {
+        section: "string",
+        title: "string",
+        text: "string",
+        img_description: "string",
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-export { createCard,deleteCard,getCards };
+export { createCard, deleteCard, getCards, updateCard };
