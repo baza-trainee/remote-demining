@@ -32,7 +32,6 @@ export interface AdminNewsValues {
 
 const AdminNewsPage: React.FC = () => {
   const [isEditing, setIsEditing] = useToggle(false);
-  const [successModal, toggleSuccessModal] = useToggle(false);
   const [newsData, setNewsData] = useState<AdminNewsValues[]>();
   const [editedNews, setEditedNews] = useState<AdminNewsValues>({
     id: "",
@@ -56,9 +55,7 @@ const AdminNewsPage: React.FC = () => {
     setIsEditing();
   };
 
-  const handleDeleteNews = async (id: string) => {
-    await deleteNews(id);
-    toggleSuccessModal();
+  const onDelete = async () => {
     await fetchNewsData();
   };
 
@@ -116,18 +113,10 @@ const AdminNewsPage: React.FC = () => {
           <AdminNewsList
             newsData={newsData}
             handleEditNews={handleEditNews}
-            handleDeleteNews={handleDeleteNews}
+            onDelete={onDelete}
           />
         )}
       </AdminWrapper>
-      {successModal && (
-        <Modal
-          isModalOpen={successModal}
-          toggleModal={() => toggleSuccessModal()}
-        >
-          <ConfirmationModal message="Новину успішно видалено" />
-        </Modal>
-      )}
     </div>
   );
 };
