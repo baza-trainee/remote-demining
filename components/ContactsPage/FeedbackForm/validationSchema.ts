@@ -18,7 +18,7 @@ const validationSchema = object().shape({
       (value) => {
         if (value && value.includes("@")) {
           const domain = value.split("@")[1];
-          return !domain.endsWith(".ru");
+          return !domain.toLowerCase().endsWith(".ru");
         }
       }
     ),
