@@ -65,7 +65,7 @@ const AdminCards = () => {
       const cardsData = data?.map((card): AdminCardsData => {
         return {
           id: card._id,
-          img: `https://remote-demining.onrender.com/images/${card.images[0]}`,
+          img: card.images[0],
           title: card.data.title,
           text: card.data.text,
           img_description: card.data.img_description,

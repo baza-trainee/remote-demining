@@ -3,7 +3,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
 
-import AddButton from "@/components/AddButton/AddButton";
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
@@ -30,6 +29,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   };
 
   useEffect(() => {
+    console.log(cardData);
     if (croppedImg && croppedImg !== "") {
       setValue("img", croppedImg);
     }
@@ -51,7 +51,6 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   });
 
   const onSubmit: SubmitHandler<AdminCard> = async (data) => {
-    await console.log(croppedImg);
     toggleModal();
     await onSave({ id: cardData.id, ...data });
   };
@@ -59,8 +58,8 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   return (
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
       <AddImage
-        imgWidth={800}
-        imgHeight={600}
+        imgWidth={431}
+        imgHeight={240}
         setImage={setCroppedImg}
         title={"Додати зображення"}
       />
@@ -89,9 +88,6 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
           error={errors.text}
           errorMessage={errors.text?.message}
         />
-      </div>
-      <div className={styles.btn_add_container}>
-        <AddButton />
       </div>
       <div className={styles.btn_send_container}>
         <Button type="submit">Надіслати</Button>

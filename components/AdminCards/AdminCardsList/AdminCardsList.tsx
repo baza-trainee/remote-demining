@@ -43,7 +43,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
               >
                 <div className={styles.img_container}>
                   <Image
-                    src={img}
+                    src={`https://remote-demining.onrender.com/images/${img}`}
                     className={styles.image}
                     alt={img_description || title}
                     fill
