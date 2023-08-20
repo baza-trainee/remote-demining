@@ -1,26 +1,35 @@
 import { object, string } from "yup";
 
-const supportedFormats = ["pdf", "jpeg", "png", "jpg", "webp"];
-
 const validationSchema = object().shape({
   image: string()
-    // .test("fileFormat", "Invalid format", (value) => {
-    //   if (!value) return true; // Allow empty value
-    //   const format = value.split(";")[0].split("/")[1];
-    //   return supportedFormats.includes(format);
-    // })
-    .test("fileSize", "File size is too large", (value) => {
+    .test("fileSize", "Файл повинен бути менше 2MB", (value) => {
       if (!value) return true; // Allow empty value
       const fileSizeInBytes = (value.length * 3) / 4;
       const maxSizeInBytes = 2 * 1024 * 1024; // 2 MB
       return fileSizeInBytes <= maxSizeInBytes;
-    }),
+    })
+    .required(),
   title: string()
-    .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄ\s'-]+$/, "Невалідні символи")
-    .min(3, "Заголовок має містити мінімум 8 символів")
-    .max(300, "Заголовок має містити максимум 8 символів"),
-  description: string(),
-  link: string(),
+    // .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄ\s'-]+$/, "Невалідні символи")
+    .min(3, "Кількість символів має бути більше 3")
+    .max(300, "Кількість символів має бути менше 300")
+    .required(`Обов'язковe поле`),
+  img_description: string()
+    .min(3, "Кількість символів має бути більше 3")
+    .max(300, "Кількість символів має бути менше 300")
+    .required(`Обов'язковe поле`),
+  text: string()
+    .min(3, "Кількість символів має бути більше 3")
+    .max(300, "Кількість символів має бути менше 300")
+    .required(`Обов'язковe поле`),
+  link: string()
+    .min(3, "Кількість символів має бути більше 3")
+    .max(300, "Кількість символів має бути менше 300")
+    .required(`Обов'язковe поле`),
+  date: string()
+    .min(3, "Кількість символів має бути більше 3")
+    .max(300, "Кількість символів має бути менше 300")
+    .required(`Обов'язковe поле`),
 });
 
 export default validationSchema;

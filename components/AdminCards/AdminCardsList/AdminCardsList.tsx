@@ -49,6 +49,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                     fill
                   />
                 </div>
+
                 <div className={styles.body}>
                   <h3 className={styles.title}>{title}</h3>
                   <p className={styles.text}>{text}</p>

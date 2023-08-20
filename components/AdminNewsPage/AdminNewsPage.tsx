@@ -1,22 +1,84 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useToggle } from "usehooks-ts";
 
+import {
+  createNews,
+  deleteNews,
+  getNews,
+  updateNews,
+} from "@/lib/admin/content";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import Button from "../Button/Button";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import Modal from "../Modal/Modal";
 
 import AdminNewsAdd from "./AdminNewsAdd/AdminNewsAdd";
 import AdminNewsList from "./AdminNewsList/AdminNewsList";
 
 import styles from "./AdminNewsPage.module.css";
 
-const AdminNewsPage: React.FC = () => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+export interface AdminNewsValues {
+  id: string;
+  image: string;
+  title: string;
+  img_description: string;
+  text: string;
+  link: string;
+  date: string;
+}
 
-  const toggleEditing = () => {
-    setIsEditing(!isEditing);
+const AdminNewsPage: React.FC = () => {
+  const [isEditing, setIsEditing] = useToggle(false);
+  const [newsData, setNewsData] = useState<AdminNewsValues[]>();
+  const [editedNews, setEditedNews] = useState<AdminNewsValues>({
+    id: "",
+    image: "",
+    title: "",
+    img_description: "",
+    text: "",
+    link: "",
+    date: "",
+  });
+
+  useEffect(() => {
+    fetchNewsData();
+  }, [isEditing]);
+
+  const handleSave = () => {
+    setIsEditing();
+  };
+
+  const handleEditNews = (data: AdminNewsValues) => {
+    setEditedNews(data);
+    setIsEditing();
+  };
+
+  const onDelete = async () => {
+    await fetchNewsData();
+  };
+
+  const fetchNewsData = async () => {
+    try {
+      const data = await getNews();
+      const newsData = data?.map((news): AdminNewsValues => {
+        return {
+          id: news._id,
+          image: `https://remote-demining.onrender.com/images/${news.images[0]}`,
+          title: news.data.title,
+          img_description: news.data.img_description,
+          text: news.data.text,
+          link: news.data.link,
+          date: news.data.date,
+        };
+      });
+      setNewsData(newsData);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -36,7 +98,7 @@ const AdminNewsPage: React.FC = () => {
             <Button
               outlined
               onClick={() => {
-                setIsEditing(!isEditing);
+                setIsEditing();
               }}
               className={styles.backBtn}
             >
@@ -49,9 +111,13 @@ const AdminNewsPage: React.FC = () => {
       </div>
       <AdminWrapper size="bigWrapper">
         {isEditing ? (
-          <AdminNewsAdd />
+          <AdminNewsAdd onSave={handleSave} newsData={editedNews} />
         ) : (
-          <AdminNewsList toggleEditing={toggleEditing} />
+          <AdminNewsList
+            newsData={newsData}
+            handleEditNews={handleEditNews}
+            onDelete={onDelete}
+          />
         )}
       </AdminWrapper>
     </div>

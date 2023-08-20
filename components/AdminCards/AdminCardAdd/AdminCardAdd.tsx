@@ -94,7 +94,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
       </div>
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
-          <ConfirmationModal message="Контакти були успішно відредаговані!" />
+          <ConfirmationModal message="Картку успішно додано" />
         </Modal>
       )}
     </form>

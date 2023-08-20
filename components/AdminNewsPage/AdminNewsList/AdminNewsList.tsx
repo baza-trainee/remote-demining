@@ -1,83 +1,164 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
+import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
+import Modal from "@/components/Modal/Modal";
 import NavLink from "@/components/NavLink/NavLink";
-import { getNews, NewsItem } from "@/lib/admin/content";
+import { deleteNews } from "@/lib/admin/content";
 import add_icon from "@/public/images/icons/buttons/add.svg";
+
+import { AdminNewsValues } from "../AdminNewsPage";
 
 import styles from "./AdminNewsList.module.css";
 
 interface AdminNewsListProps {
-  toggleEditing: () => void;
+  newsData?: AdminNewsValues[];
+  handleEditNews: ({}: AdminNewsValues) => void;
+  onDelete: () => void;
 }
 
-const AdminNewsList: React.FC<AdminNewsListProps> = ({ toggleEditing }) => {
-  const [newsData, setNewsData] = useState<NewsItem[]>([]);
+const AdminNewsList: React.FC<AdminNewsListProps> = ({
+  newsData,
+  handleEditNews,
+  onDelete,
+}) => {
+  const [confDelModal, toggleDelModal] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
+  const [newsId, setNewsId] = useState("");
+  const [isLoading, setIsLoading] = useToggle(false);
 
-  useEffect(() => {
-    async function fetchNewsData() {
-      try {
-        const data = await getNews();
-        setNewsData(data);
-      } catch (error) {
-        console.error("Error fetching news data:", error);
-      }
+  const handleDeleteNews = async (newsId: string) => {
+    try {
+      setIsLoading();
+      await deleteNews(newsId);
+      setNewsId("");
+      setIsLoading();
+      toggleDelModal();
+      toggleSuccessModal();
+      onDelete();
+    } catch (error) {
+      console.error(error);
     }
-
-    fetchNewsData();
-  }, []);
+  };
 
   return (
-    <div className={styles.container}>
-      <ul className={styles.list}>
-        {newsData.map(({ id, image, title, text, link, date }) => (
-          <li key={id} className={styles.card}>
-            <a href={link} target="_blank" rel="noreferrer noopener">
-              <Image
-                src={image}
-                className={styles.image}
-                alt={title}
-                width={310}
-                height={170}
+    <>
+      {isLoading ? (
+        <p>Завантажується...</p>
+      ) : (
+        <div className={styles.container}>
+          <ul className={styles.list}>
+            {newsData &&
+              newsData.map(
+                ({ id, image, title, img_description, text, link, date }) => (
+                  <li key={id} className={styles.card}>
+                    <div
+                      onClick={() => {
+                        handleEditNews({
+                          id,
+                          image,
+                          title,
+                          img_description,
+                          text,
+                          link,
+                          date,
+                        });
+                      }}
+                    >
+                      <Image
+                        src={image}
+                        className={styles.image}
+                        alt={img_description}
+                        width={310}
+                        height={170}
+                        priority
+                      />
+
+                      <div className={styles.body}>
+                        <div className={styles.content}>
+                          <h3 className={styles.title}>{title}</h3>
+                          <p className={styles.text}>{text}</p>
+                        </div>
+                        <div className={styles.moreInfoWrapper}>
+                          <NavLink
+                            href={link}
+                            isFullWidth
+                            isMoreInfo
+                            target="_blank"
+                            rel="noreferrer noopener"
+                          >
+                            Детальніше
+                          </NavLink>
+                          <div className={styles.date}>
+                            <p>{date}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.btn_container}>
+                      <Button
+                        isFullWidth
+                        outlined
+                        className={styles.deleteBtn}
+                        onClick={() => {
+                          setNewsId(id);
+                          toggleDelModal();
+                        }}
+                      >
+                        Видалити
+                      </Button>
+                    </div>
+                  </li>
+                )
+              )}
+            <li
+              className={styles.add_card}
+              onClick={() => {
+                handleEditNews({
+                  id: "",
+                  image: "",
+                  title: "",
+                  img_description: "",
+                  text: "",
+                  link: "",
+                  date: "",
+                });
+              }}
+            >
+              <div className={styles.add_btn}>
+                <Image src={add_icon} width={50} height={51} alt={"add icon"} />
+                <span>Додати</span>
+              </div>
+            </li>
+            <li className={styles.last_card}></li>
+          </ul>
+          {confDelModal && (
+            <Modal
+              isModalOpen={confDelModal}
+              toggleModal={() => toggleDelModal()}
+            >
+              <ConfirmationModal
+                message="Ви дійсно бажаєте видалити картку?"
+                approveChanges={() => handleDeleteNews(newsId)}
+                discardChanges={() => toggleDelModal()}
               />
-            </a>
-
-            <div className={styles.body}>
-              <div className={styles.content}>
-                <a href={link} target="_blank" rel="noreferrer noopener">
-                  <h3 className={styles.title}>{title}</h3>
-                </a>
-                <p className={styles.text}>{text}</p>
-              </div>
-              <div className={styles.moreInfoWrapper}>
-                <NavLink href={link} isFullWidth isMoreInfo>
-                  Детальніше
-                </NavLink>
-                <div className={styles.date}>
-                  <p>{date}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.btn_container}>
-              <Button isFullWidth outlined className={styles.deleteBtn}>
-                Видалити
-              </Button>
-            </div>
-          </li>
-        ))}
-        <li className={styles.add_card}>
-          <div className={styles.add_btn} onClick={toggleEditing}>
-            <Image src={add_icon} width={50} height={51} alt={"add icon"} />
-            <span>Додати</span>
-          </div>
-        </li>
-        <li className={styles.last_card}></li>
-      </ul>
-    </div>
+            </Modal>
+          )}
+          {successModal && (
+            <Modal
+              isModalOpen={successModal}
+              toggleModal={() => toggleSuccessModal()}
+            >
+              <ConfirmationModal message="Новину успішно видалено" />
+            </Modal>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 
