@@ -38,13 +38,19 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
       email: contactData.email,
       phone: contactData.phone,
     },
-    resolver: yupResolver(validationSchema),
+    resolver: yupResolver(validationSchema) as any,
   });
 
   const onSubmit = async (data: ContactsFormValues) => {
     try {
       setIsLoading(true);
-      await updateContacts(data);
+      const updatedContact = {
+        id: contactData.id,
+        email: data.email,
+        phone: data.phone,
+      };
+
+      await updateContacts(updatedContact);
       setIsLoading(false);
       toggleModal();
     } catch (error) {
