@@ -25,7 +25,8 @@ export interface AdminNewsValues {
   id: string;
   image: string;
   title: string;
-  description: string;
+  img_description: string;
+  text: string;
   link: string;
   date: string;
 }
@@ -37,7 +38,8 @@ const AdminNewsPage: React.FC = () => {
     id: "",
     image: "",
     title: "",
-    description: "",
+    img_description: "",
+    text: "",
     link: "",
     date: "",
   });
@@ -67,7 +69,8 @@ const AdminNewsPage: React.FC = () => {
           id: news._id,
           image: `https://remote-demining.onrender.com/images/${news.images[0]}`,
           title: news.data.title,
-          description: news.data.description,
+          img_description: news.data.img_description,
+          text: news.data.text,
           link: news.data.link,
           date: news.data.date,
         };

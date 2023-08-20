@@ -50,7 +50,8 @@ export interface NewsItem {
     section: string;
     id: string;
     title: string;
-    description: string;
+    img_description: string;
+    text: string;
     link: string;
     date: string;
   };
@@ -58,8 +59,10 @@ export interface NewsItem {
     section: string;
     id: string;
     title: string;
-    description: string;
+    img_description: string;
+    text: string;
     link: string;
+    date: string;
   };
   _id: string;
 }
@@ -83,7 +86,8 @@ const createNews = async (news: AdminNewsValues): Promise<void> => {
         section: "news",
         id: news.id,
         title: news.title,
-        description: news.description,
+        img_description: news.img_description,
+        text: news.text,
         link: news.link,
         date: news.date,
       },
@@ -91,7 +95,8 @@ const createNews = async (news: AdminNewsValues): Promise<void> => {
         section: "string",
         id: "string",
         title: "string",
-        description: "string",
+        img_description: "string",
+        text: "string",
         link: "string",
         date: "string",
       },
@@ -116,14 +121,16 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
       data: {
         section: "news",
         title: news.title,
-        description: news.description,
+        img_description: news.img_description,
+        text: news.text,
         link: news.link,
         date: news.date,
       },
       dataSchema: {
         section: "string",
         title: "string",
-        description: "string",
+        img_description: "string",
+        text: "string",
         link: "string",
         date: "string",
       },

@@ -46,7 +46,8 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
     defaultValues: {
       image: newsData.image,
       title: newsData.title,
-      description: newsData.description,
+      img_description: newsData.img_description,
+      text: newsData.text,
       link: newsData.link,
       date: newsData.date,
     },
@@ -102,9 +103,16 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
         <AdminEditContactsInput
           placeholder="Опис зображення"
           editable
-          {...register("description")}
-          error={errors.description}
-          errorMessage={errors.description?.message}
+          {...register("img_description")}
+          error={errors.img_description}
+          errorMessage={errors.img_description?.message}
+        />
+        <AdminEditContactsInput
+          placeholder="Опис новини"
+          editable
+          {...register("text")}
+          error={errors.text}
+          errorMessage={errors.text?.message}
         />
         <AdminEditContactsInput
           placeholder="Посилання на новину"
@@ -120,9 +128,6 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
           error={errors.date}
           errorMessage={errors.date?.message}
         />
-      </div>
-      <div className={styles.btn_add_container}>
-        <AddButton />
       </div>
       <div className={styles.btn_send_container}>
         <Button type="submit" disabled={isLoading}>

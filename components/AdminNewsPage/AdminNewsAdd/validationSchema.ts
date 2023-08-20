@@ -13,7 +13,8 @@ const validationSchema = object().shape({
     // .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄ\s'-]+$/, "Невалідні символи")
     .min(3, "Кількість символів має бути більше 3")
     .max(300, "Кількість символів має бути менше 300"),
-  description: string(),
+  img_description: string(),
+  text: string(),
   link: string(),
   date: string(),
 });

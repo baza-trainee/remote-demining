@@ -6,9 +6,7 @@
   gap: 16px;
   padding: 24px 0 24px 0;
 }
-.btn_add_container {
-  text-align: right;
-}
+
 .btn_send_container {
   padding: 48px 0 140px 0;
   display: flex;

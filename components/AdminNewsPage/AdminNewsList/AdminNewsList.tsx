@@ -53,65 +53,68 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
         <div className={styles.container}>
           <ul className={styles.list}>
             {newsData &&
-              newsData.map(({ id, image, title, description, link, date }) => (
-                <li key={id} className={styles.card}>
-                  <div
-                    onClick={() => {
-                      handleEditNews({
-                        id,
-                        image,
-                        title,
-                        description,
-                        link,
-                        date,
-                      });
-                    }}
-                  >
-                    <Image
-                      src={image}
-                      className={styles.image}
-                      alt={title}
-                      width={310}
-                      height={170}
-                      priority
-                    />
+              newsData.map(
+                ({ id, image, title, img_description, text, link, date }) => (
+                  <li key={id} className={styles.card}>
+                    <div
+                      onClick={() => {
+                        handleEditNews({
+                          id,
+                          image,
+                          title,
+                          img_description,
+                          text,
+                          link,
+                          date,
+                        });
+                      }}
+                    >
+                      <Image
+                        src={image}
+                        className={styles.image}
+                        alt={img_description}
+                        width={310}
+                        height={170}
+                        priority
+                      />
 
-                    <div className={styles.body}>
-                      <div className={styles.content}>
-                        <h3 className={styles.title}>{title}</h3>
-                        <p className={styles.text}>{description}</p>
-                      </div>
-                      <div className={styles.moreInfoWrapper}>
-                        <NavLink
-                          href={link}
-                          isFullWidth
-                          isMoreInfo
-                          target="_blank"
-                          rel="noreferrer noopener"
-                        >
-                          Детальніше
-                        </NavLink>
-                        <div className={styles.date}>
-                          <p>{date}</p>
+                      <div className={styles.body}>
+                        <div className={styles.content}>
+                          <h3 className={styles.title}>{title}</h3>
+                          <p className={styles.text}>{text}</p>
+                        </div>
+                        <div className={styles.moreInfoWrapper}>
+                          <NavLink
+                            href={link}
+                            isFullWidth
+                            isMoreInfo
+                            target="_blank"
+                            rel="noreferrer noopener"
+                          >
+                            Детальніше
+                          </NavLink>
+                          <div className={styles.date}>
+                            <p>{date}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className={styles.btn_container}>
-                    <Button
-                      isFullWidth
-                      outlined
-                      className={styles.deleteBtn}
-                      onClick={() => {
-                        setNewsId(id);
-                        toggleDelModal();
-                      }}
-                    >
-                      Видалити
-                    </Button>
-                  </div>
-                </li>
-              ))}
+                    <div className={styles.btn_container}>
+                      <Button
+                        isFullWidth
+                        outlined
+                        className={styles.deleteBtn}
+                        onClick={() => {
+                          setNewsId(id);
+                          toggleDelModal();
+                        }}
+                      >
+                        Видалити
+                      </Button>
+                    </div>
+                  </li>
+                )
+              )}
             <li
               className={styles.add_card}
               onClick={() => {
@@ -119,7 +122,8 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
                   id: "",
                   image: "",
                   title: "",
-                  description: "",
+                  img_description: "",
+                  text: "",
                   link: "",
                   date: "",
                 });
