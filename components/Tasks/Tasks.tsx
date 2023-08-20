@@ -12,6 +12,7 @@ const Tasks: React.FC = () => {
       bgImg={bg.src}
       titleColor="var(--task-text-color)"
       centerTitle
+      alignTitle="center"
     >
       <TasksList items={tasksData} />
     </SectionContainer>
