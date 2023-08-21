@@ -24,7 +24,7 @@ import styles from "./AdminCards.module.css";
 
 export interface AdminCardsData {
   id: string;
-  img: string;
+  img?: string;
   title: string;
   text: string;
   img_description: string;

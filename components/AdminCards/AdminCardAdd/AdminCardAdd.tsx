@@ -29,7 +29,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   };
 
   useEffect(() => {
-    console.log(cardData);
+    // console.log(cardData);
     if (croppedImg && croppedImg !== "") {
       setValue("img", croppedImg);
     }
@@ -42,7 +42,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
     setValue,
   } = useForm({
     defaultValues: {
-      img: cardData.img,
+      img: cardData.img || "",
       title: cardData.title,
       img_description: cardData.img_description,
       text: cardData.text,
@@ -52,7 +52,14 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
 
   const onSubmit: SubmitHandler<AdminCard> = async (data) => {
     toggleModal();
-    await onSave({ id: cardData.id, ...data });
+    cardData.img === data.img
+      ? await onSave({
+          id: cardData.id,
+          title: data.title,
+          img_description: data.img_description,
+          text: data.text,
+        })
+      : await onSave({ id: cardData.id, ...data });
   };
 
   return (
