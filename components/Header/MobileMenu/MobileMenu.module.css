@@ -22,7 +22,7 @@
   content: "s";
   width: 100%;
   color: transparent;
-  padding-bottom: 150px;
+  padding-bottom: 80px;
 }
 @media screen and (max-height: 560px) {
   .burger_menu {
