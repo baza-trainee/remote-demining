@@ -120,7 +120,7 @@ const AdminCards = () => {
           isModalOpen={successModal}
           toggleModal={() => toggleSuccessModal()}
         >
-          <ConfirmationModal message="Картку успішно додано" />
+          <ConfirmationModal message="Картку успішно видалено" />
         </Modal>
       )}
     </div>

@@ -30,11 +30,11 @@ const Header = () => {
     !pathname.includes("admin") ? styles.fixed : ""
   }`;
 
-  useEffect(() => {
-    isOpenMenu
-      ? (document.body.style.overflowY = "hidden")
-      : (document.body.style.overflowY = "visible");
-  }, [isOpenMenu]);
+  // useEffect(() => {
+  //   isOpenMenu
+  //     ? (document.body.style.overflowY = "hidden")
+  //     : (document.body.style.overflowY = "visible");
+  // }, [isOpenMenu]);
 
   return (
     <header className={headerStyle}>
@@ -70,7 +70,11 @@ const Header = () => {
           </div>
         </div>
         {isOpenMenu && !pathname.includes("admin") && (
-          <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
+          <MobileMenu
+            isOpenMenu={isOpenMenu}
+            toggleMenu={toggleMenu}
+            toggleModal={toggleModal}
+          />
         )}
       </Container>
     </header>

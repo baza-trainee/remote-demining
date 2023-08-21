@@ -11,14 +11,12 @@
   column-gap: 17px;
 }
 
-.card {
+.item {
   background-color: var(--bg-white-color);
   border-top-left-radius: 17px;
   border-top-right-radius: 17px;
-  border: 1px solid #d9d9d9;
   width: 310px;
-  height: 445px;
-  overflow: hidden;
+  height: 450px;
 }
 
 .image {
@@ -31,13 +29,15 @@
 }
 
 .body {
+  border-right: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
   padding: 21px 17px 18px;
   overflow: hidden;
-  max-height: 226px;
+  max-height: 230px;
 }
 
 .content {
-  height: 101px;
+  height: 110px;
   overflow: hidden;
   margin-bottom: 11px;
 }
@@ -63,11 +63,11 @@
   font-size: 11px;
   font-weight: 400;
   line-height: normal;
-  margin-top: 11px;
+  margin-top: 9px;
 
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 9px;
 }
 
 .date::before {

@@ -17,6 +17,7 @@
   width: 100%;
   padding: 75px 16px 32px 16px;
 }
+
 .burger_btn_container::after {
   position: absolute;
   content: "s";

@@ -12,10 +12,10 @@ import styles from "./MobileMenu.module.css";
 interface MobileMenuProps {
   isOpenMenu: boolean;
   toggleMenu?: () => void;
+  toggleModal: () => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpenMenu, toggleMenu }) => {
-  const [isModalOpen, toggleModal] = useToggle(false);
+const MobileMenu: React.FC<MobileMenuProps> = ({ isOpenMenu, toggleMenu, toggleModal }) => {
   return (
     <div className={styles.burger_menu}>
       <div className={styles.sub_menu}>
@@ -26,11 +26,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpenMenu, toggleMenu }) => {
         <Button isFullWidth onClick={toggleModal}>
           Підтримати
         </Button>
-        {isModalOpen && (
-          <Modal isBigModal toggleModal={toggleModal} isModalOpen={isModalOpen}>
-            <Donate />
-          </Modal>
-        )}
       </div>
     </div>
   );
