@@ -24,7 +24,17 @@
   color: transparent;
   padding-bottom: 80px;
 }
-@media screen and (max-height: 560px) {
+
+@media screen and (max-height: 300px) and (orientation: landscape) {
+  .burger_menu {
+    min-height: 0;
+    max-height: 50vh;
+    overflow: scroll;
+  }
+}
+
+@media screen and (min-height: 301px) and (max-height: 560px) and (orientation: landscape) {
+
   .burger_menu {
     min-height: 0;
     max-height: 76vh;

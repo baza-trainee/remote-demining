@@ -1,6 +1,8 @@
 import axios, { AxiosResponse } from "axios";
 
+import { ContactsFormValues } from "@/components/AdminContactsPage/AdminContactsPage";
 import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
+
 
 axios.defaults.baseURL = "https://remote-demining.onrender.com";
 
@@ -10,27 +12,45 @@ axios.defaults.baseURL = "https://remote-demining.onrender.com";
   |==============================
 */
 
-interface Contact {
-  email: string;
-  phone: string;
+export interface ContactsData {
+  images: [string];
+  data: {
+    section: string;
+    email: string;
+    phone: string;
+  };
+  dataSchema: {
+    section: string;
+    email: string;
+    phone: string;
+  };
+  _id: string;
 }
 
-const getContacts = async (): Promise<Contact> => {
+const getContacts = async (): Promise<ContactsData[] | undefined> => {
   try {
-    const response: AxiosResponse<{ data: { contacts: Contact } }> =
-      await axios.get("/content/64d294bb71409c547cf883c1");
-    const { contacts } = response.data.data;
-    return contacts;
+    const response: AxiosResponse<ContactsData[]> = await axios.get(
+      `content/?data={"section":"contacts"}`
+    );
+    return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-const updateContacts = async (updatedContacts: Contact) => {
+const updateContacts = async (contact: ContactsFormValues): Promise<void> => {
   try {
-    await axios.patch("/content/64d294bb71409c547cf883c1", {
+    await axios.patch(`content/${contact.id}`, {
+      images: [],
       data: {
-        contacts: updatedContacts,
+        section: "contacts",
+        email: contact.email,
+        phone: contact.phone,
+      },
+      dataSchema: {
+        section: "string",
+        email: "string",
+        phone: "string",
       },
     });
   } catch (error) {
