@@ -26,22 +26,22 @@ const HeaderMenu: React.FC<HeaderMenuProps> = ({
   };
 
   return (
-    <nav className={menuWrapperStyle}>
-      <ul className={styles.menu_list}>
-        <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="/client">Про нас</NavLink>
-        </li>
-        <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="/client/activity">Наукова діяльність</NavLink>
-        </li>
-        <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="/client/socrat">Дистанційне розмінування</NavLink>
-        </li>
-        <li className={styles.menu_item} onClick={handleMenuItemClick}>
-          <NavLink href="/client/contacts">Контакти</NavLink>
-        </li>
-      </ul>
-    </nav>
+      <nav className={menuWrapperStyle}>
+        <ul className={styles.menu_list}>
+          <li className={styles.menu_item} onClick={handleMenuItemClick}>
+            <NavLink href="/client">Про нас</NavLink>
+          </li>
+          <li className={styles.menu_item} onClick={handleMenuItemClick}>
+            <NavLink href="/client/activity">Наукова діяльність</NavLink>
+          </li>
+          <li className={styles.menu_item} onClick={handleMenuItemClick}>
+            <NavLink href="/client/socrat">Дистанційне розмінування</NavLink>
+          </li>
+          <li className={styles.menu_item} onClick={handleMenuItemClick}>
+            <NavLink href="/client/contacts">Контакти</NavLink>
+          </li>
+        </ul>
+      </nav>
   );
 };
 

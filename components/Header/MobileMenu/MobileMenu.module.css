@@ -17,6 +17,13 @@
   width: 100%;
   padding: 75px 16px 32px 16px;
 }
+.burger_btn_container::after {
+  position: absolute;
+  content: "s";
+  width: 100%;
+  color: transparent;
+  padding-bottom: 80px;
+}
 
 @media screen and (max-height: 300px) and (orientation: landscape) {
   .burger_menu {
@@ -27,6 +34,7 @@
 }
 
 @media screen and (min-height: 301px) and (max-height: 560px) and (orientation: landscape) {
+
   .burger_menu {
     min-height: 0;
     max-height: 76vh;

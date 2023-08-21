@@ -43,12 +43,13 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
               >
                 <div className={styles.img_container}>
                   <Image
-                    src={img}
+                    src={`https://remote-demining.onrender.com/images/${img}`}
                     className={styles.image}
                     alt={img_description || title}
                     fill
                   />
                 </div>
+
                 <div className={styles.body}>
                   <h3 className={styles.title}>{title}</h3>
                   <p className={styles.text}>{text}</p>

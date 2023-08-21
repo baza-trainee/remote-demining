@@ -66,7 +66,7 @@ const deleteCard = async (id: string): Promise<void> => {
 const updateCard = async (card: AdminCardsData): Promise<void> => {
   try {
     await api.patch(`content/${card.id}`, {
-      images: card.img,
+      images: [card.img],
       data: {
         section: "cards",
         title: card.title,
