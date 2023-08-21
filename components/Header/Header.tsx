@@ -70,7 +70,7 @@ const Header = () => {
           </div>
         </div>
         {isOpenMenu && !pathname.includes("admin") && (
-          <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
+          <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} toggleModal={toggleModal} />
         )}
       </Container>
     </header>
