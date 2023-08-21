@@ -3,18 +3,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useToggle } from "usehooks-ts";
 
-import {
-  createNews,
-  deleteNews,
-  getNews,
-  updateNews,
-} from "@/lib/admin/content";
+import { getNews } from "@/lib/admin/content";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import Button from "../Button/Button";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import Modal from "../Modal/Modal";
 
 import AdminNewsAdd from "./AdminNewsAdd/AdminNewsAdd";
 import AdminNewsList from "./AdminNewsList/AdminNewsList";
@@ -67,7 +60,7 @@ const AdminNewsPage: React.FC = () => {
       const newsData = data?.map((news): AdminNewsValues => {
         return {
           id: news._id,
-          image: `https://remote-demining.onrender.com/images/${news.images[0]}`,
+          image: news.images[0],
           title: news.data.title,
           img_description: news.data.img_description,
           text: news.data.text,

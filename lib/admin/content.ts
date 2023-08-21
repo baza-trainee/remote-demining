@@ -3,7 +3,6 @@ import axios, { AxiosResponse } from "axios";
 import { ContactsFormValues } from "@/components/AdminContactsPage/AdminContactsPage";
 import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
 
-
 axios.defaults.baseURL = "https://remote-demining.onrender.com";
 
 /*
@@ -137,7 +136,7 @@ const deleteNews = async (id: string): Promise<void> => {
 const updateNews = async (news: AdminNewsValues): Promise<void> => {
   try {
     await axios.patch(`content/${news.id}`, {
-      images: news.image,
+      images: [news.image],
       data: {
         section: "news",
         title: news.title,

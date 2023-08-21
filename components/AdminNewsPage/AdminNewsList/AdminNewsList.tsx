@@ -55,8 +55,9 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
             {newsData &&
               newsData.map(
                 ({ id, image, title, img_description, text, link, date }) => (
-                  <li key={id} className={styles.card}>
+                  <li key={id} className={styles.item}>
                     <div
+                      className={styles.card}
                       onClick={() => {
                         handleEditNews({
                           id,
@@ -70,7 +71,7 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
                       }}
                     >
                       <Image
-                        src={image}
+                        src={`https://remote-demining.onrender.com/images/${image}`}
                         className={styles.image}
                         alt={img_description}
                         width={310}
