@@ -26,6 +26,7 @@
 .openMenu {
   display: flex;
 }
+
 .menu_wrapper.openMenu .menu_list {
   width: 100%;
   flex-direction: column;
