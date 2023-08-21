@@ -135,8 +135,25 @@ const deleteNews = async (id: string): Promise<void> => {
 
 const updateNews = async (news: AdminNewsValues): Promise<void> => {
   try {
-    await axios.patch(`content/${news.id}`, {
-      images: [news.image],
+    const payload: {
+      data: {
+        section: string;
+        title: string;
+        img_description: string;
+        text: string;
+        link: string;
+        date: string;
+      };
+      dataSchema: {
+        section: string;
+        title: string;
+        img_description: string;
+        text: string;
+        link: string;
+        date: string;
+      };
+      images?: string[];
+    } = {
       data: {
         section: "news",
         title: news.title,
@@ -153,7 +170,13 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
         link: "string",
         date: "string",
       },
-    });
+    };
+
+    if (news.image) {
+      payload.images = [news.image];
+    }
+
+    await axios.patch(`content/${news.id}`, payload);
   } catch (error) {
     console.log(error);
   }
