@@ -9,6 +9,7 @@
   width: 360px;
   min-height: 489px;
   background-color: var(--bg-white-color);
+  overflow-x: hidden;
 }
 .sub_menu {
   width: 100%;
@@ -30,16 +31,15 @@
   .burger_menu {
     min-height: 0;
     max-height: 50vh;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 }
 
 @media screen and (min-height: 301px) and (max-height: 560px) and (orientation: landscape) {
-
   .burger_menu {
     min-height: 0;
     max-height: 76vh;
-    overflow: scroll;
+    overflow-y: scroll;
   }
 }
 
