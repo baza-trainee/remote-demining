@@ -4,7 +4,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
 
-import AddButton from "@/components/AddButton/AddButton";
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
@@ -109,6 +108,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
           {...register("title")}
           error={errors.title}
           errorMessage={errors.title?.message}
+          autoComplete="off"
         />
         <AdminEditContactsInput
           placeholder="Опис зображення"
@@ -116,6 +116,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
           {...register("img_description")}
           error={errors.img_description}
           errorMessage={errors.img_description?.message}
+          autoComplete="off"
         />
         <AdminEditContactsInput
           placeholder="Опис новини"
@@ -123,6 +124,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
           {...register("text")}
           error={errors.text}
           errorMessage={errors.text?.message}
+          autoComplete="off"
         />
         <AdminEditContactsInput
           placeholder="Посилання на новину"
@@ -130,6 +132,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
           {...register("link")}
           error={errors.link}
           errorMessage={errors.link?.message}
+          autoComplete="off"
         />
         <AdminEditContactsInput
           placeholder="Дата публікації"
@@ -137,6 +140,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
           {...register("date")}
           error={errors.date}
           errorMessage={errors.date?.message}
+          autoComplete="off"
         />
       </div>
       <div className={styles.btn_send_container}>
