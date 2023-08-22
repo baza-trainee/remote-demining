@@ -8,13 +8,14 @@ const validationSchema = object().shape({
   email: string()
     .required("Введіть e-mail")
     .matches(emailRegex, "Невалідний формат пошти")
+    .email("Невалідний формат пошти")
     .test(
       "is-valid-domain",
       "E-mail з доменом .ru не підтримується",
       (value) => {
         if (value && value.includes("@")) {
           const domain = value.split("@")[1];
-          return !domain.endsWith(".ru");
+          return !domain.toLowerCase().endsWith(".ru");
         }
       }
     ),
