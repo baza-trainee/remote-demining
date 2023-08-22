@@ -57,10 +57,20 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
   const onSubmit: SubmitHandler<AdminNews> = async (data) => {
     try {
       setIsLoading();
+
+      const payload = { id: newsData.id, ...data };
+
+      if (data.image && data.image[0] !== newsData.image[0]) {
+        payload.image = data.image;
+      } else {
+        payload.image = "";
+      }
+
       !isNewNews
-        ? await updateNews({ id: newsData.id, ...data })
+        ? await updateNews(payload)
         : await createNews({ id: newsData.id, ...data });
       setIsLoading();
+      setImage("");
       toggleModal();
     } catch (error) {
       setIsLoading();
