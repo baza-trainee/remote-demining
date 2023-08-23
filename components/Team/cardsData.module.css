@@ -1,0 +1,58 @@
+.card_body {
+  max-width: 328px;
+}
+.card_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.card_contacts span {
+  display: inline-block;
+  font-weight: 400;
+}
+.card_contacts a {
+  display: inline-block;
+  font-weight: 400;
+  color: var(--button-primary-bg-color);
+  text-decoration: underline;
+}
+
+@media (max-width: 1279px) {
+  .card_contacts a {
+    display: block;
+    margin-bottom: 16px;
+    margin-top: 8px;
+  }
+}
+@media (min-width: 1280px) {
+  .card_contacts > *:last-child {
+    padding-top: 16px;
+  }
+  .card_head > *:first-child {
+    padding-bottom: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card_body {
+    max-width: 250px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card_body {
+    min-width: 223px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card_body {
+    max-width: 223px;
+    min-width: 223px;
+  }
+  .card_text {
+    gap: 32px;
+  }
+}

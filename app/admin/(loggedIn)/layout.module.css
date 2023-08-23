@@ -1,0 +1,11 @@
+.pageWrapper {
+  display: flex;
+  column-gap: var(--admin-layout-gap);
+  height: 100%;
+}
+
+.pageWrapper > :nth-child(2) {
+  padding: 32px 0;
+  /* align-self: center; */
+  margin: 0 auto;
+}

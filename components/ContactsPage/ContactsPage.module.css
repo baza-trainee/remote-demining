@@ -1,0 +1,49 @@
+.sectionWrapper {
+  background-color: var(--bg-primary-color);
+  padding-top: 72px;
+  padding-bottom: 72px;
+  height: fit-content;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Only mobile styles (from 320px to 767.95px)  */
+@media (min-width: 320px) and (max-width: 767.95px) {
+  .box {
+    gap: 72px;
+    align-items: center;
+  }
+}
+
+/* Only tablet styles (from 768px to 1279.95px) */
+@media (min-width: 768px) and (max-width: 1279.95px) {
+  .box {
+    gap: 80px;
+    align-items: center;
+  }
+}
+
+/* Tablet styles (768px and above) */
+@media (min-width: 768px) {
+  .sectionWrapper {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* Desktop styles (1280px and above) */
+@media (min-width: 1280px) {
+  .sectionWrapper {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .box {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 150px;
+  }
+}

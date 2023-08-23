@@ -1,0 +1,16 @@
+.wrapper {
+  background-color: var(--bg-white-color);
+  border-radius: 20px;
+}
+
+.bigWrapper {
+  min-height: 556px;
+  width: 1014px;
+  padding: 32px 24px;
+}
+
+.smallWrapper {
+  min-height: 434px;
+  width: 391px;
+  padding: 50px 50px 40px;
+}

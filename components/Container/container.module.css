@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+/* Mobile styles (360px to 767px) */
+@media (min-width: 320px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Tablet styles (768px to 1439px) */
+@media (min-width: 768px) {
+  .container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+/* Desktop styles (1280px and above) */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1440px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}

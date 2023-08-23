@@ -1,0 +1,36 @@
+.logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+.sub_logo {
+  font-size: 1rem;
+  display: block;
+  font-weight: 400;
+}
+.logo_container {
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 5;
+  cursor: pointer;
+  max-width: 325px;
+}
+
+/* Logo text */
+.logo::before {
+  content: "НАН України";
+}
+.sub_logo::before {
+  content: "ДП НДЦ «Георесурс»";
+}
+
+@media screen and (min-width: 1200px) {
+  .sub_logo::before {
+    content: "ДП НДЦ проблем надрокористування «Георесурс»";
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .logo::before {
+    content: "НAHУ";
+  }
+}

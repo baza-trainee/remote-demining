@@ -1,0 +1,37 @@
+.container {
+  height: 100%;
+}
+.heading {
+  color: var(--admin-heading-text-color);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+
+  display: flex;
+  gap: 0.75rem;
+}
+
+.breadcrumb {
+  color: var(--admin-breadcrumb-color);
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.buttonWrapper {
+  margin-top: 3rem;
+  text-align: center;
+}
+.heading_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn_back {
+  margin-left: auto;
+}

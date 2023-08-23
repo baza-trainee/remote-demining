@@ -1,0 +1,10 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--admin-navbar-bg-color);
+  width: var(--admin-navbar-width);
+  row-gap: var(--admin-navbar-row-gap);
+  padding: 24px;
+  padding-top: var(--admin-navbar-top-padding);
+}

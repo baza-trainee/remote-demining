@@ -1,0 +1,47 @@
+.card {
+  border-radius: var(--card-border-rad);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: var(--card-img-height);
+}
+
+.body {
+  padding: 24px;
+  background-color: var(--bg-white-color);
+}
+
+.primary {
+  background-color: var(--bg-primary-color);
+}
+
+.light-blue {
+  background-color: var(--bg-light-blue);
+}
+
+@media screen and (max-width: 400px) {
+  .image {
+    height: var(--card-img-height-mobile);
+  }
+}
+
+@media (min-width: 320px) {
+  .body {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .body {
+    padding: 12px 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .body {
+    padding: 16px 24px;
+  }
+}

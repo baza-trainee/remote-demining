@@ -1,0 +1,15 @@
+<svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Open Question">
+<circle id="Ellipse 1" cx="25" cy="25" r="25" fill="#4285F4"/>
+<g id="Close">
+<g id="Vector">
+<path d="M16 34L34 16L16 34Z" fill="#4285F4"/>
+<path d="M16 34L34 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="Vector_2">
+<path d="M34 34L16 16L34 34Z" fill="#4285F4"/>
+<path d="M34 34L16 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</svg>

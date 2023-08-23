@@ -1,0 +1,305 @@
+.container {
+  padding-bottom: 48px;
+  width: 100%;
+}
+@media (min-width: 340px) {
+  .container {
+    min-width: 328px;
+  }
+}
+@media (min-width: 660px) {
+  .container {
+    min-width: 600px;
+    padding-bottom: 64px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    min-width: 898px;
+    padding-bottom: 120px;
+  }
+}
+.content {
+  padding: 0 24px;
+  display: grid;
+  gap: 16px;
+  justify-self: center;
+  align-self: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 44px 44px 44px;
+}
+@media (min-width: 660px) {
+  .content {
+    grid-template-rows: 1fr 56px 56px 56px;
+    padding: 0 64px;
+    gap: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  .content {
+    grid-template-rows: 1fr 70px 70px 70px;
+    padding: 0 115px;
+  }
+}
+.donate_items {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 44px 44px;
+}
+@media (min-width: 660px) {
+  .donate_items {
+    grid-template-rows: 56px 56px;
+  }
+}
+@media (min-width: 1024px) {
+  .donate_items {
+    gap: 24px;
+    grid-template-rows: 70px 70px;
+  }
+}
+.title {
+  text-align: center;
+  font-weight: 600;
+  padding-top: 40px;
+  padding-bottom: 32px;
+  font-size: 20px;
+}
+@media (min-width: 660px) {
+  .title {
+    font-size: 28px;
+    padding-top: 48px;
+  }
+}
+@media (min-width: 1024px) {
+  .title {
+    font-size: 36px;
+    padding-top: 80px;
+  }
+}
+.title_pay_ways {
+  text-align: center;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 20px;
+}
+@media (min-width: 660px) {
+  .title_pay_ways {
+    font-size: 28px;
+  }
+}
+@media (min-width: 1024px) {
+  .title_pay_ways {
+    font-size: 36px;
+  }
+}
+.item {
+  cursor: pointer;
+  grid-row: 1;
+  background-color: var(--bg-white-color);
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+}
+@media (min-width: 660px) {
+  .item {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .item {
+    font-size: 28px;
+  }
+}
+.item:focus,
+.item:hover {
+  outline: 3px solid #4285f4;
+}
+.item:first-of-type {
+  grid-column: span 2;
+}
+.item:nth-of-type(2) {
+  grid-column: 3 / 5;
+}
+.item:last-of-type {
+  grid-column: 5 / 7;
+}
+
+.pay_ways {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-rows: minmax(auto 98px);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (min-width: 660px) {
+  .pay_ways {
+    gap: 24px;
+  }
+}
+.item_way:focus,
+.item_way:hover {
+  outline: 3px solid #4285f4;
+}
+.item_way {
+  cursor: pointer;
+  background-color: var(--bg-white-color);
+  border: none;
+  border-radius: 5px;
+  max-height: 72px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+@media (min-width: 660px) {
+  .item_way {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1024px) {
+  .item_way {
+    font-size: 30px;
+  }
+}
+.apple_icon {
+  position: relative;
+  display: inline-block;
+  height: 17.5px;
+  width: 17.5px;
+  margin-bottom: 4px;
+}
+@media (min-width: 660px) {
+  .apple_icon {
+    height: 25.5px;
+    width: 25.5px;
+  }
+}
+@media (min-width: 1024px) {
+  .apple_icon {
+    height: 32px;
+    width: 32px;
+    margin-bottom: 8px;
+  }
+}
+.google_icon {
+  position: relative;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  margin-right: 5px;
+}
+@media (min-width: 660px) {
+  .google_icon {
+    height: 26px;
+    width: 26px;
+  }
+}
+@media (min-width: 1024px) {
+  .google_icon {
+    height: 32px;
+    width: 32px;
+    margin-right: 10px;
+  }
+}
+.visa {
+  position: relative;
+  display: inline-block;
+  height: 10px;
+  width: 31px;
+  margin-right: 5px;
+}
+@media (min-width: 660px) {
+  .visa {
+    height: 16.8px;
+    width: 52px;
+  }
+}
+@media (min-width: 1024px) {
+  .visa {
+    height: 24px;
+    width: 75px;
+    margin-right: 10px;
+  }
+}
+.mastercard {
+  position: relative;
+  display: inline-block;
+  height: 10px;
+  width: 16px;
+}
+@media (min-width: 660px) {
+  .mastercard {
+    height: 16.8px;
+    width: 26px;
+  }
+}
+@media (min-width: 1024px) {
+  .mastercard {
+    height: 38px;
+    width: 38px;
+  }
+}
+
+.pay_way_text {
+  display: inline-block;
+}
+.input {
+  border: none;
+  border-radius: 5px;
+  grid-row: 2;
+  grid-column: 1 / 7;
+  padding-left: 20px;
+  font-size: 16px;
+  outline: none;
+}
+@media (min-width: 660px) {
+  .input {
+    font-size: 18px;
+  }
+}
+@media (min-width: 1024px) {
+  .input {
+    font-size: 24px;
+  }
+}
+.input:focus {
+  outline: 3px solid #4285f4;
+}
+.btn_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  grid-template-rows: 44px;
+  font-size: 14px;
+  padding-top: 16px;
+}
+@media (min-width: 660px) {
+  .btn_container {
+    grid-template-rows: 56px;
+    font-size: 20px;
+    padding-top: 32px;
+  }
+}
+@media (min-width: 1024px) {
+  .btn_container {
+    grid-template-rows: 70px;
+    font-size: 24px;
+    padding-top: 40px;
+  }
+}
+.btn_container > * {
+  font-size: 14px !important;
+}
+@media (min-width: 660px) {
+  .btn_container > * {
+    font-size: 20px !important;
+  }
+}
+@media (min-width: 1024px) {
+  .btn_container > * {
+    font-size: 24px !important;
+  }
+}

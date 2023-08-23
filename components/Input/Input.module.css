@@ -1,0 +1,43 @@
+/* General styles */
+
+.input {
+  border: none;
+  border-radius: var(--input-border-rad);
+  height: var(--input-height);
+  padding-left: 0.5rem;
+}
+
+.input:focus {
+  outline: 1px solid var(--button-primary-bg-color);
+}
+
+/* Sizes */
+
+.small {
+  width: var(--input-width);
+}
+
+.full {
+  width: 100%;
+}
+
+.primary {
+  background-color: var(--input-primary-bg-color);
+}
+
+.secondary {
+  background-color: var(--input-secondary-bg-color);
+}
+
+.label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.error {
+  padding-top: 0.88rem;
+  color: var(--error-color);
+}

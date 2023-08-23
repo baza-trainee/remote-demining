@@ -1,0 +1,28 @@
+.input_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0 24px 0;
+}
+
+.btn_send_container {
+  padding: 48px 0 140px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn_send_container > * {
+  width: 291px;
+  height: 64px;
+}
+
+.error_message {
+  padding-top: 3px;
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-transform: lowercase;
+}

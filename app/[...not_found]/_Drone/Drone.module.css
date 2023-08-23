@@ -1,0 +1,166 @@
+@keyframes scale-scaner {
+  0% {
+    transform: scale(0);
+  }
+  20% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes rotateAnimation-left {
+  0% {
+    transform: rotate(var(--drone-box-rotation));
+  }
+  20% {
+    transform: rotate(var(--drone-box-rotation));
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(var(--drone-box-rotation));
+  }
+}
+@keyframes rotateAnimation-right {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(calc(-1 * var(--drone-box-rotation)));
+  }
+  100% {
+    transform: rotate(calc(-1 * var(--drone-box-rotation)));
+  }
+}
+@keyframes text {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  25% {
+    opacity: 0.5;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 0.75;
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.animated {
+  animation-iteration-count: 1;
+  animation-duration: var(--drone-animation-duration);
+  animation-timing-function: var(--drone-timing-function);
+  animation-fill-mode: var(--drone-fill-mode);
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* drone */
+
+.drone {
+  z-index: 30;
+  position: relative;
+  width: 250px;
+  height: 84px;
+  bottom: -15px;
+  @media (min-width: 360px) {
+  }
+  @media (min-width: 768px) {
+    width: 358px;
+    height: 120px;
+  }
+}
+
+/* Scaner */
+.wraper {
+  position: relative;
+  width: 656px;
+  height: 328px;
+  overflow: hidden;
+  z-index: 30;
+}
+.scaner {
+  position: absolute;
+
+  box-sizing: border-box;
+  display: block;
+  background: radial-gradient(
+    50.99% 50.99% at 50% 49.01%,
+    #dab700 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  width: 656px;
+  height: 656px;
+  border-radius: 100%;
+  top: -328px;
+  z-index: 10;
+  animation-name: scale-scaner;
+}
+.box {
+  background: var(--bg-primary-color);
+  width: 656px;
+  height: 656px;
+  position: absolute;
+  z-index: 10;
+}
+.box-left {
+  left: -50%;
+  top: -1px;
+  transform-origin: top right;
+  transform: rotate(var(--drone-box-rotation));
+
+  animation-name: rotateAnimation-left;
+}
+.box-right {
+  right: -50%;
+  top: -1px;
+  transform-origin: top left;
+  transform: rotate(calc(-1 * var(--drone-box-rotation)));
+
+  animation-name: rotateAnimation-right;
+}
+
+.text {
+  width: 176px;
+  height: 72px;
+
+  z-index: 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  animation-name: text;
+
+  @media (min-width: 320px) {
+    width: 176px;
+    height: 72px;
+  }
+  @media (min-width: 768px) {
+    width: 244px;
+    height: 100px;
+  }
+}

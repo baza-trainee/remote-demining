@@ -1,0 +1,44 @@
+/* Sizes */
+
+.base {
+  width: var(--input-width);
+}
+
+.full {
+  width: 100%;
+}
+
+.label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* General styles */
+
+.textarea {
+  border: none;
+  border-radius: var(--input-border-rad);
+  height: var(--textarea-primary-height);
+  padding: 1rem 0.5rem;
+  resize: none;
+}
+
+.textarea:focus {
+  outline: 1px solid var(--button-primary-bg-color);
+}
+
+.primary {
+  background-color: var(--input-primary-bg-color);
+}
+
+.secondary {
+  background-color: var(--input-secondary-bg-color);
+}
+
+.error {
+  padding-top: 0.88rem;
+  color: var(--error-color);
+}
