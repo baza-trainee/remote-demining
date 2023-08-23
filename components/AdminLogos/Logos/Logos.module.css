@@ -1,0 +1,12 @@
+.wrapper {
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 0.5rem;
+  min-height: 36rem;
+}
+
+.logos {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}

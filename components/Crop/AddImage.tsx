@@ -14,11 +14,12 @@ import { Area, Point } from "react-easy-crop/types";
 import Button from "@/components/Button/Button";
 import addImg from "@/public/images/admin/add.svg";
 
-import api from "../../lib/api/baseQuery";
 
-import { getCroppedImg } from "./utils/getCroppedImg";
+import { getCroppedImg } from './utils/getCroppedImg';
 
-import styles from "./AddImage.module.css";
+import styles from './AddImage.module.css';
+import ImagePreview from './ImagePreview/ImagePreview';
+
 
 interface AddImageProps {
   imgWidth: number;
@@ -38,7 +39,7 @@ const AddImage: FC<AddImageProps> = ({
   const [imgSrc, setImgSrc] = useState("");
   const [isDragActive, setIsDragActive] = useState(false);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
-
+  const [croppedImage, setCroppedImage] = useState<string | null>(null);
   const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
     e.preventDefault();
   };
@@ -98,17 +99,17 @@ const AddImage: FC<AddImageProps> = ({
     };
   }, [handleEscKey]);
 
-  const showCroppedImage = useCallback(async () => {
+  const cropImage = useCallback(async () => {
     try {
       if (imgSrc && croppedAreaPixels) {
         const croppedImage = await getCroppedImg(imgSrc, croppedAreaPixels);
-        setImgSrc("");
-        setImage(croppedImage);
+        setImage(croppedImage?.base64Image!);
+        setCroppedImage(croppedImage?.blobUrl!);
       }
     } catch (e) {
       console.error(e);
     }
-  }, [imgSrc, croppedAreaPixels, setImage]);
+  }, [imgSrc, croppedAreaPixels]);
 
   return (
     <>
@@ -156,7 +157,6 @@ const AddImage: FC<AddImageProps> = ({
           </div>
           <div className={styles.controls}>
             <span>Приблизити</span>
-
             <input
               value={zoom}
               type="range"
@@ -165,10 +165,19 @@ const AddImage: FC<AddImageProps> = ({
               step={0.1}
               onChange={handleZoomChange}
             />
-            <Button onClick={showCroppedImage} type="button">
+
+            <Button type="button" onClick={cropImage}>
+
               Обрізати
             </Button>
           </div>
+          {croppedImage && (
+            <ImagePreview
+              img={croppedImage}
+              setCroppedImage={setCroppedImage}
+              setImgSrc={setImgSrc}
+            />
+          )}
         </>
       )}
     </>
