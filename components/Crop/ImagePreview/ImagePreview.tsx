@@ -10,12 +10,16 @@ interface ImagePreviewProps {
   img: string | null;
   setCroppedImage: Dispatch<SetStateAction<string | null>>;
   setImgSrc: Dispatch<SetStateAction<string>>;
+  imgWidth: number;
+  imgHeight: number;
 }
 
 const ImagePreview: FC<ImagePreviewProps> = ({
   img,
   setCroppedImage,
   setImgSrc,
+  imgHeight,
+  imgWidth,
 }) => {
   const handleClose = () => {
     setCroppedImage(null);
@@ -37,7 +41,12 @@ const ImagePreview: FC<ImagePreviewProps> = ({
           alt="close icon"
         />
       </div>
-      <Image width={300} height={300} alt="preview photo" src={img || ''} />
+      <Image
+        width={imgWidth}
+        height={imgHeight}
+        alt="preview photo"
+        src={img || ''}
+      />
       <div>
         <Button type="button" onClick={handleAccept}>
           Підтвердити

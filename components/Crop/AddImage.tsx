@@ -173,6 +173,8 @@ const AddImage: FC<AddImageProps> = ({
           </div>
           {croppedImage && (
             <ImagePreview
+            imgWidth={ imgWidth}
+            imgHeight={ imgHeight}
               img={croppedImage}
               setCroppedImage={setCroppedImage}
               setImgSrc={setImgSrc}
