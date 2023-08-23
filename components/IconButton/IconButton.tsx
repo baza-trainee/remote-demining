@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import css from './iconButton.module.css';
+import Image from "next/image";
+import css from "./iconButton.module.css";
 
 export interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon: string;
@@ -18,16 +18,17 @@ const IconButton: React.FC<Props> = ({
   border,
   gap,
   color,
-  onClick
+  onClick,
+  ...rest
 }) => {
-
   return (
     <button
       className={css.iconButton}
       style={{ gap: gap, border: border, padding: padding, color: color }}
       onClick={onClick}
+      {...rest}
     >
-      <Image alt='admin-icon' src={icon}/>
+      <Image alt="admin-icon" src={icon} />
       <span className={css.label}>{label}</span>
     </button>
   );

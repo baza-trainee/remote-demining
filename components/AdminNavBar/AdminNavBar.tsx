@@ -1,13 +1,16 @@
-import styles from "./AdminNavBar.module.css";
-import AdminNavLink from "./AdminNavLink/AdminNavLink";
-import ExitButton from "../ExitButton/ExitButton";
 import cards from "@/public/images/icons/links/Group.svg";
+import contacts from "@/public/images/icons/links/noun-contacts-1722449 1.svg";
 import partners from "@/public/images/icons/links/noun-group-124925 1.svg";
 import news from "@/public/images/icons/links/noun-newspaper-2172898 1.svg";
-import slider from "@/public/images/icons/links/noun-slider-2123171 1.svg";
 import reports from "@/public/images/icons/links/noun-reporting-5104327 1.svg";
-import contacts from "@/public/images/icons/links/noun-contacts-1722449 1.svg";
 import password from "@/public/images/icons/links/noun-reset-password-3309848 1.svg";
+import slider from "@/public/images/icons/links/noun-slider-2123171 1.svg";
+
+import ExitButton from "../ExitButton/ExitButton";
+
+import AdminNavLink from "./AdminNavLink/AdminNavLink";
+
+import styles from "./AdminNavBar.module.css";
 
 const AdminNavBar = () => {
   return (

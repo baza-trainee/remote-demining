@@ -9,12 +9,7 @@
   width: 360px;
   min-height: 489px;
   background-color: var(--bg-white-color);
-  @media screen and (max-width: 360px) {
-    width: 100%;
-  }
-  @media screen and (min-width: 990px) {
-    display: none;
-  }
+  overflow-x: hidden;
 }
 .sub_menu {
   width: 100%;
@@ -22,4 +17,40 @@
 .burger_btn_container {
   width: 100%;
   padding: 75px 16px 32px 16px;
+}
+
+.burger_btn_container::after {
+  position: absolute;
+  content: "s";
+  width: 100%;
+  color: transparent;
+  padding-bottom: 80px;
+}
+
+@media screen and (max-height: 300px) and (orientation: landscape) {
+  .burger_menu {
+    min-height: 0;
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (min-height: 301px) and (max-height: 560px) and (orientation: landscape) {
+  .burger_menu {
+    min-height: 0;
+    max-height: 76vh;
+    overflow-y: scroll;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .burger_menu {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .burger_menu {
+    display: none;
+  }
 }

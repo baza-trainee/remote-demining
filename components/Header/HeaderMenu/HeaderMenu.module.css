@@ -26,6 +26,7 @@
 .openMenu {
   display: flex;
 }
+
 .menu_wrapper.openMenu .menu_list {
   width: 100%;
   flex-direction: column;
@@ -44,4 +45,16 @@
 .menu_wrapper.openMenu .menu_item:hover,
 .menu_wrapper.openMenu .menu_item:focus {
   background-color: var(--burger-menu-hover-color);
+}
+
+@media (min-width: 1280px) {
+  .menu_list {
+    gap: 25px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .menu_list {
+    gap: 32px;
+  }
 }

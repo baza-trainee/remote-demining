@@ -11,6 +11,12 @@
   gap: 16px;
 }
 
+@media (min-width: 320px) and (max-width: 360px) {
+  .wrapper {
+    width: 18.5rem;
+  }
+}
+
 @media (min-width: 768px) {
   .wrapper {
     width: 28.75rem;

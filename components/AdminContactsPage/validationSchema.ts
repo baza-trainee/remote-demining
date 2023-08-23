@@ -8,19 +8,20 @@ const validationSchema = object().shape({
   email: string()
     .required("Введіть e-mail")
     .matches(emailRegex, "Невалідний формат пошти")
+    .email("Невалідний формат пошти")
     .test(
       "is-valid-domain",
       "E-mail з доменом .ru не підтримується",
       (value) => {
         if (value && value.includes("@")) {
           const domain = value.split("@")[1];
-          return !domain.endsWith(".ru");
+          return !domain.toLowerCase().endsWith(".ru");
         }
       }
     ),
   phone: string()
     .required("Телефон є обов'язковим полем")
-    .matches(phoneRegex, "Введіть номер телефону у форматі +38 (067) 333 444"),
+    .matches(phoneRegex, "Введіть номер телефону у форматі +38 (067) 333 4444"),
 });
 
 export default validationSchema;

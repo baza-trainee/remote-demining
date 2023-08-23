@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 import { useToggle } from "usehooks-ts";
 
 import btn_close_burger from "@/public/images/icons/header/btn_close_burger.svg";
@@ -25,7 +26,16 @@ const Header = () => {
   const pathname = usePathname();
 
   const contentBox = `${styles.box} ${isOpenMenu ? styles.bottom_border : ""}`;
-  const headerStyle = `${styles.header} ${!pathname.includes("admin") ? styles.fixed : ""}`
+  const headerStyle = `${styles.header} ${
+    !pathname.includes("admin") ? styles.fixed : ""
+  }`;
+
+  // useEffect(() => {
+  //   isOpenMenu
+  //     ? (document.body.style.overflowY = "hidden")
+  //     : (document.body.style.overflowY = "visible");
+  // }, [isOpenMenu]);
+
   return (
     <header className={headerStyle}>
       <Container>
@@ -60,7 +70,11 @@ const Header = () => {
           </div>
         </div>
         {isOpenMenu && !pathname.includes("admin") && (
-          <MobileMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
+          <MobileMenu
+            isOpenMenu={isOpenMenu}
+            toggleMenu={toggleMenu}
+            toggleModal={toggleModal}
+          />
         )}
       </Container>
     </header>

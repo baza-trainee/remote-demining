@@ -1,14 +1,20 @@
 .container {
   padding-bottom: 48px;
   width: 100%;
-  @media (min-width: 340px) {
+}
+@media (min-width: 340px) {
+  .container {
     min-width: 328px;
   }
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .container {
     min-width: 600px;
     padding-bottom: 64px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .container {
     min-width: 898px;
     padding-bottom: 120px;
   }
@@ -21,12 +27,16 @@
   align-self: center;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 44px 44px 44px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .content {
     grid-template-rows: 1fr 56px 56px 56px;
     padding: 0 64px;
     gap: 24px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .content {
     grid-template-rows: 1fr 70px 70px 70px;
     padding: 0 115px;
   }
@@ -36,10 +46,14 @@
   gap: 16px;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 44px 44px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .donate_items {
     grid-template-rows: 56px 56px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .donate_items {
     gap: 24px;
     grid-template-rows: 70px 70px;
   }
@@ -50,11 +64,15 @@
   padding-top: 40px;
   padding-bottom: 32px;
   font-size: 20px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .title {
     font-size: 28px;
     padding-top: 48px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .title {
     font-size: 36px;
     padding-top: 80px;
   }
@@ -64,10 +82,14 @@
   padding-top: 16px;
   font-weight: 600;
   font-size: 20px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .title_pay_ways {
     font-size: 28px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .title_pay_ways {
     font-size: 36px;
   }
 }
@@ -78,10 +100,14 @@
   border: none;
   border-radius: 5px;
   font-size: 14px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .item {
     font-size: 20px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .item {
     font-size: 28px;
   }
 }
@@ -105,7 +131,9 @@
   grid-auto-rows: minmax(auto 98px);
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .pay_ways {
     gap: 24px;
   }
 }
@@ -125,24 +153,28 @@
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .item_way {
     font-size: 24px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .item_way {
     font-size: 30px;
   }
 }
 .apple_icon {
   position: relative;
   display: inline-block;
-  height: 18px;
-  width: 18px;
+  height: 17.5px;
+  width: 17.5px;
   margin-bottom: 4px;
 }
 @media (min-width: 660px) {
   .apple_icon {
-    height: 26px;
-    width: 26px;
+    height: 25.5px;
+    width: 25.5px;
   }
 }
 @media (min-width: 1024px) {
@@ -222,10 +254,14 @@
   padding-left: 20px;
   font-size: 16px;
   outline: none;
-  @media (min-width: 660px) {
-    font-size: 18px; 
+}
+@media (min-width: 660px) {
+  .input {
+    font-size: 18px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .input {
     font-size: 24px;
   }
 }
@@ -239,12 +275,16 @@
   grid-template-rows: 44px;
   font-size: 14px;
   padding-top: 16px;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .btn_container {
     grid-template-rows: 56px;
     font-size: 20px;
     padding-top: 32px;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .btn_container {
     grid-template-rows: 70px;
     font-size: 24px;
     padding-top: 40px;
@@ -252,10 +292,14 @@
 }
 .btn_container > * {
   font-size: 14px !important;
-  @media (min-width: 660px) {
+}
+@media (min-width: 660px) {
+  .btn_container > * {
     font-size: 20px !important;
   }
-  @media (min-width: 1024px) {
+}
+@media (min-width: 1024px) {
+  .btn_container > * {
     font-size: 24px !important;
   }
 }

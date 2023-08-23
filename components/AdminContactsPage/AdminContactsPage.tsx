@@ -11,6 +11,7 @@ import AdminEditContacts from "./AdminEditContacts/AdminEditContacts";
 import styles from "./AdminContactsPage.module.css";
 
 export interface ContactsFormValues {
+  id: string;
   email: string;
   phone: string;
 }
@@ -18,6 +19,7 @@ export interface ContactsFormValues {
 const AdminContactsPage: React.FC = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [contactData, setContactData] = useState<ContactsFormValues>({
+    id: "",
     email: "",
     phone: "",
   });
@@ -31,7 +33,14 @@ const AdminContactsPage: React.FC = () => {
   const fetchContactData = async () => {
     try {
       const data = await getContacts();
-      setContactData(data);
+      if (data?.length) {
+        const firstContact = data[0];
+        setContactData({
+          id: firstContact._id,
+          email: firstContact.data.email,
+          phone: firstContact.data.phone,
+        });
+      }
     } catch (error) {
       console.error("Error fetching contacts:", error);
     }
@@ -47,7 +56,7 @@ const AdminContactsPage: React.FC = () => {
       <h1 className={styles.heading}>
         <span className={isEditing ? styles.breadcrumb : undefined}>
           Контакти
-        </span>{" "}
+        </span>
         {isEditing && <span className={styles.breadcrumb}>&gt;</span>}
         {isEditing && <span className={styles.edit}>Редагувати</span>}
       </h1>
