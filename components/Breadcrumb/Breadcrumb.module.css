@@ -1,0 +1,15 @@
+.breadcrumb {
+  color: #1b3969;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 150%;
+  margin-bottom: 2rem;
+}
+
+.link {
+  color: #adabc3;
+}
+
+.separator {
+  color: #adabc3;
+}
