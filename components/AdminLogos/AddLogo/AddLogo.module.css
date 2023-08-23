@@ -1,0 +1,47 @@
+.wrapper {
+  width: 10.8125rem;
+  height: 10.8125rem;
+  background-image: repeating-linear-gradient(
+      -36deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      54deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      144deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      234deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    );
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  width: 2.5rem;
+  height: 2.5rem;
+}

@@ -1,0 +1,15 @@
+.wrapper {
+  background-color: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 0.5rem;
+  min-height: 36rem;
+  min-width: 63rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}

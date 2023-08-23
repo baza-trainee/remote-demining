@@ -57,7 +57,7 @@ export async function getCroppedImg(
   },
   rotation: number = 0,
   flip = { horizontal: false, vertical: false }
-): Promise<string | null> {
+): Promise<{ base64Image: string; blobUrl: string } | null> {
   const image = await createImage(imageSrc);
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -128,7 +128,13 @@ export async function getCroppedImg(
     return null;
   }
 
+  const blobUrl: string = await new Promise((resolve, reject) => {
+    croppedCanvas.toBlob((file) => {
+      resolve(URL.createObjectURL(file!));
+    }, 'image/jpeg');
+  });
+
   const base64Image = await blobToBase64(blob);
 
-  return base64Image as string;
+  return { base64Image, blobUrl };
 }
