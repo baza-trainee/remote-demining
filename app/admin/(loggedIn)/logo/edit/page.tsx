@@ -30,7 +30,11 @@ const Page: FC = ({}) => {
     { label: 'Додати лого', path: '/admin/logo/edit' },
   ];
   const validationSchema = object().shape({
-    description: yup.string().required(),
+    description: yup
+      .string()
+      .min(3, 'Кількість символів має бути більше 3')
+      .max(300, 'Кількість символів має бути менше 300')
+      .required('Помилка валідації'),
   });
 
   const {
@@ -85,6 +89,7 @@ const Page: FC = ({}) => {
             imgWidth={213}
             imgHeight={140}
           />
+
           <AdminEditContactsInput
             placeholder="Опис зображення"
             type="text"
@@ -92,6 +97,9 @@ const Page: FC = ({}) => {
             error={errors.description}
             {...register('description')}
           />
+          {errors.description && (
+            <p className={styles.error}>{errors.description.message}</p>
+          )}
           <Button width="291" height="64" type="submit" disabled={isSubmitting}>
             Надіслати
           </Button>
