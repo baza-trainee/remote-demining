@@ -1,6 +1,4 @@
-import React from "react";
-
-import AdminCards from "@/components/AdminCards/AdminCards";
+import AdminCards from '@/components/AdminCards/AdminCards';
 
 function Cards() {
   return <AdminCards />;
