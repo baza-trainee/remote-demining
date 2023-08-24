@@ -13,3 +13,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.error {
+  color: var(--error-color);
+  align-self: flex-start;
+  font-size: 0.8rem;
+}
