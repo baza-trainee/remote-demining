@@ -14,8 +14,6 @@ import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import Button from "../Button/Button";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import Modal from "../Modal/Modal";
 
 import AdminCardAdd from "./AdminCardAdd/AdminCardAdd";
 import AdminCardsList from "./AdminCardsList/AdminCardsList";
@@ -32,7 +30,6 @@ export interface AdminCardsData {
 
 const AdminCards = () => {
   const [isEditing, setIsEditing] = useToggle(false);
-  const [successModal, toggleSuccessModal] = useToggle(false);
   const [cardData, setCardsData] = useState<AdminCardsData[]>();
   const [editedCard, setEditedCard] = useState<AdminCardsData>({
     id: "",
@@ -45,19 +42,20 @@ const AdminCards = () => {
     fetchCardsData();
   }, [isEditing]);
 
-  const handleSave = async (data: AdminCardsData) => {
-    editedCard.id !== "" ? await updateCard(data) : await createCard(data);
-    await setIsEditing();
+  const handleSave = () => {
+    setIsEditing();
   };
 
   const handleEditCard = (card: AdminCardsData) => {
     setEditedCard(card);
     setIsEditing();
   };
-  const handleDeleteCard = async (id: string) => {
-    await deleteCard(id);
-    toggleSuccessModal();
-    await fetchCardsData();
+  const handleDeleteCard = async () => {
+    try {
+      await fetchCardsData();
+    } catch (error) {
+      console.log(error);
+    }
   };
   const fetchCardsData = async () => {
     try {
@@ -115,14 +113,6 @@ const AdminCards = () => {
           />
         )}
       </AdminWrapper>
-      {successModal && (
-        <Modal
-          isModalOpen={successModal}
-          toggleModal={() => toggleSuccessModal()}
-        >
-          <ConfirmationModal message="Картку успішно видалено" />
-        </Modal>
-      )}
     </div>
   );
 };
