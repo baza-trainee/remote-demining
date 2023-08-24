@@ -8,6 +8,7 @@ import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import AddImage from "@/components/Crop/AddImage";
 import Modal from "@/components/Modal/Modal";
+import { createCard, updateCard } from "@/lib/admin/cards";
 
 import { AdminCardsData } from "../AdminCards";
 import validationSchema from "../validationSchema";
@@ -18,7 +19,7 @@ type AdminCard = Omit<AdminCardsData, "id">;
 
 interface AdminCardAddProps {
   cardData: AdminCardsData;
-  onSave: ({}: AdminCardsData) => void;
+  onSave: () => void;
 }
 
 const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
@@ -26,6 +27,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   const [croppedImg, setCroppedImg] = useState<string | null>(null);
   const closeModal = () => {
     toggleModal();
+    onSave();
   };
 
   useEffect(() => {
@@ -51,15 +53,19 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   });
 
   const onSubmit: SubmitHandler<AdminCard> = async (data) => {
-    toggleModal();
-    cardData.img === data.img
-      ? await onSave({
-          id: cardData.id,
-          title: data.title,
-          img_description: data.img_description,
-          text: data.text,
-        })
-      : await onSave({ id: cardData.id, ...data });
+    try {
+      cardData.img === data.img
+        ? await updateCard({
+            id: cardData.id,
+            title: data.title,
+            img_description: data.img_description,
+            text: data.text,
+          })
+        : await createCard({ id: cardData.id, ...data });
+      await toggleModal();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -105,7 +111,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
             message={
               cardData.id === ""
                 ? "Картку успішно додано"
-                : "Картку успішно оновленно"
+                : "Картку успішно оновлено"
             }
           />
         </Modal>
