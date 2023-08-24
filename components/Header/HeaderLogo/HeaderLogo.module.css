@@ -8,6 +8,7 @@
   font-weight: 400;
 }
 .logo_container {
+  color: var(--main-text-color);
   display: flex;
   flex-wrap: wrap;
   z-index: 5;
