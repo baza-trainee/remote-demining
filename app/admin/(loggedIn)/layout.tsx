@@ -1,10 +1,23 @@
-import { FC } from "react";
+'use client';
 
-import AdminNavBar from "@/components/AdminNavBar/AdminNavBar";
+'use client';
+import { redirect } from 'next/navigation';
+import { FC, useEffect } from 'react';
+import { useReadLocalStorage } from 'usehooks-ts';
 
-import styles from "./layout.module.css";
+import AdminNavBar from '@/components/AdminNavBar/AdminNavBar';
+
+import styles from './layout.module.css';
 
 const LoggedInLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
+  const token = useReadLocalStorage('token');
+
+  useEffect(() => {
+    if (!token) {
+      redirect('/admin');
+    }
+  }, [token]);
+
   return (
     <div className={styles.pageWrapper}>
       <AdminNavBar />

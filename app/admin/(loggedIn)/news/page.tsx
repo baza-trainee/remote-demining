@@ -1,4 +1,4 @@
-import AdminNewsPage from "@/components/AdminNewsPage/AdminNewsPage";
+import AdminNewsPage from '@/components/AdminNewsPage/AdminNewsPage';
 
 const Page = () => {
   return <AdminNewsPage />;

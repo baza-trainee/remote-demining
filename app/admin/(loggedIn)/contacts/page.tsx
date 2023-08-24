@@ -1,4 +1,4 @@
-import AdminContactsPage from "@/components/AdminContactsPage/AdminContactsPage";
+import AdminContactsPage from '@/components/AdminContactsPage/AdminContactsPage';
 
 const Contacts = () => {
   return <AdminContactsPage />;
