@@ -1,4 +1,5 @@
 .header {
+  color: var(--main-text-color);
   margin: 0 auto;
   width: 100%;
   font-family: inherit;

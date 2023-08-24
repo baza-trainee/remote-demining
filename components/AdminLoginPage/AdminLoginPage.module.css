@@ -1,5 +1,6 @@
 .section {
   padding-top: 100px;
+  color: var(--main-text-color);
 }
 
 .wrapper {
