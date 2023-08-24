@@ -153,6 +153,10 @@
   --admin-navbar-top-padding: 120px;
 }
 
+::-ms-reveal {
+  display: none;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
