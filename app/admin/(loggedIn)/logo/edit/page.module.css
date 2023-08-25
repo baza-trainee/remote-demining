@@ -13,3 +13,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.heading_container {
+  margin-bottom: 32px;
+}
