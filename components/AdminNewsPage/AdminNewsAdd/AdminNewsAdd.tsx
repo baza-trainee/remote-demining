@@ -1,10 +1,14 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
 
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
+import AdminWrapper from "@/components/AdminWrapper/AdminWrapper";
+import Breadcrumb, { CrumbItem } from "@/components/Breadcrumb/Breadcrumb";
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import AddImage from "@/components/Crop/AddImage";
@@ -24,6 +28,11 @@ interface AdminNewsAddProps {
   onSave: () => void;
 }
 
+const items: CrumbItem[] = [
+  { label: "Новини", path: "/admin/news" },
+  { label: "Додати картки новин", path: "/admin/news/edit" },
+];
+
 const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
   const [isLoading, setIsLoading] = useToggle(false);
@@ -31,10 +40,19 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
   const isNewNews = !newsData.id;
 
   useEffect(() => {
+    if (newsData) {
+      setValue("image", newsData.image);
+      setValue("title", newsData.title);
+      setValue("img_description", newsData.img_description);
+      setValue("text", newsData.text);
+      setValue("link", newsData.link);
+      setValue("date", newsData.date);
+    }
+
     if (image) {
       setValue("image", image);
     }
-  }, [image]);
+  }, [image, newsData]);
 
   const {
     register,
@@ -74,6 +92,14 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
     } catch (error) {
       setIsLoading();
       console.error(error);
+      toast.error("Упс..., щось пішло не так!", {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
@@ -87,73 +113,83 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
     : "Новину успішно оновлено";
 
   return (
-    <form
-      className={styles.container}
-      onSubmit={handleSubmit(onSubmit)}
-      noValidate
-    >
-      <AddImage
-        imgWidth={437}
-        imgHeight={240}
-        title="Додати зображення"
-        setImage={setImage}
-      />
-      {errors.image?.message && (
-        <span className={styles.error_message}>{errors.image.message}</span>
-      )}
-      <div className={styles.input_container}>
-        <AdminEditContactsInput
-          placeholder="Заголовок"
-          editable
-          {...register("title")}
-          error={errors.title}
-          errorMessage={errors.title?.message}
-          autoComplete="off"
-        />
-        <AdminEditContactsInput
-          placeholder="Опис зображення"
-          editable
-          {...register("img_description")}
-          error={errors.img_description}
-          errorMessage={errors.img_description?.message}
-          autoComplete="off"
-        />
-        <AdminEditContactsInput
-          placeholder="Опис новини"
-          editable
-          {...register("text")}
-          error={errors.text}
-          errorMessage={errors.text?.message}
-          autoComplete="off"
-        />
-        <AdminEditContactsInput
-          placeholder="Посилання на новину"
-          editable
-          {...register("link")}
-          error={errors.link}
-          errorMessage={errors.link?.message}
-          autoComplete="off"
-        />
-        <AdminEditContactsInput
-          placeholder="Дата публікації"
-          editable
-          {...register("date")}
-          error={errors.date}
-          errorMessage={errors.date?.message}
-          autoComplete="off"
-        />
+    <div>
+      <div className={styles.heading_container}>
+        <Breadcrumb items={items} />
+        <Link href="/admin/news" className={styles.backBtn}>
+          Назад
+        </Link>
       </div>
-      <div className={styles.btn_send_container}>
-        <Button type="submit" disabled={isLoading}>
-          {isLoading ? "Завантажується…" : "Надіслати"}
-        </Button>
-      </div>
-      {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
-          <ConfirmationModal message={modalMessage} />
-        </Modal>
-      )}
-    </form>
+      <AdminWrapper size="bigWrapper">
+        <form
+          className={styles.container}
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
+          <AddImage
+            imgWidth={437}
+            imgHeight={240}
+            title="Додати зображення"
+            setImage={setImage}
+          />
+          {errors.image?.message && (
+            <span className={styles.error_message}>{errors.image.message}</span>
+          )}
+          <div className={styles.input_container}>
+            <AdminEditContactsInput
+              placeholder="Заголовок"
+              editable
+              {...register("title")}
+              error={errors.title}
+              errorMessage={errors.title?.message}
+              autoComplete="off"
+            />
+            <AdminEditContactsInput
+              placeholder="Опис зображення"
+              editable
+              {...register("img_description")}
+              error={errors.img_description}
+              errorMessage={errors.img_description?.message}
+              autoComplete="off"
+            />
+            <AdminEditContactsInput
+              placeholder="Опис новини"
+              editable
+              {...register("text")}
+              error={errors.text}
+              errorMessage={errors.text?.message}
+              autoComplete="off"
+            />
+            <AdminEditContactsInput
+              placeholder="Посилання на новину"
+              editable
+              {...register("link")}
+              error={errors.link}
+              errorMessage={errors.link?.message}
+              autoComplete="off"
+            />
+            <AdminEditContactsInput
+              placeholder="Дата публікації"
+              editable
+              {...register("date")}
+              error={errors.date}
+              errorMessage={errors.date?.message}
+              autoComplete="off"
+            />
+          </div>
+          <div className={styles.btn_send_container}>
+            <Button type="submit" disabled={isLoading}>
+              {isLoading ? "Завантажується…" : "Надіслати"}
+            </Button>
+          </div>
+          {isModalOpen && (
+            <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+              <ConfirmationModal message={modalMessage} />
+            </Modal>
+          )}
+        </form>
+      </AdminWrapper>
+    </div>
   );
 };
 

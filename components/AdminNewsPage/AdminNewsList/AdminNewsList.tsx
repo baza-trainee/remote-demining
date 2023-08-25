@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
@@ -42,6 +44,14 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
       onDelete();
     } catch (error) {
       console.error(error);
+      toast.error("Упс..., щось пішло не так!", {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
@@ -116,24 +126,18 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
                   </li>
                 )
               )}
-            <li
-              className={styles.add_card}
-              onClick={() => {
-                handleEditNews({
-                  id: "",
-                  image: "",
-                  title: "",
-                  img_description: "",
-                  text: "",
-                  link: "",
-                  date: "",
-                });
-              }}
-            >
-              <div className={styles.add_btn}>
-                <Image src={add_icon} width={50} height={51} alt={"add icon"} />
-                <span>Додати</span>
-              </div>
+            <li className={styles.add_card}>
+              <Link href="/admin/news/edit">
+                <div className={styles.add_btn}>
+                  <Image
+                    src={add_icon}
+                    width={50}
+                    height={51}
+                    alt={"add icon"}
+                  />
+                  <span>Додати</span>
+                </div>
+              </Link>
             </li>
             <li className={styles.last_card}></li>
           </ul>
