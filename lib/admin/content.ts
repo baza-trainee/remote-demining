@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { ContactsFormValues } from "@/components/AdminContactsPage/AdminContactsPage";
 import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
 
-axios.defaults.baseURL = "https://remote-demining.onrender.com";
+axios.defaults.baseURL = "https://remote-demining.onrender.com/";
 
 /*
   |==============================
