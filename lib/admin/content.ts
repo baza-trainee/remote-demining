@@ -1,9 +1,9 @@
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 
 import { ContactsFormValues } from "@/components/AdminContactsPage/AdminContactsPage";
 import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
 
-axios.defaults.baseURL = "https://remote-demining.onrender.com/";
+import api from "../api/baseQuery";
 
 /*
   |==============================
@@ -28,7 +28,7 @@ export interface ContactsData {
 
 const getContacts = async (): Promise<ContactsData[] | undefined> => {
   try {
-    const response: AxiosResponse<ContactsData[]> = await axios.get(
+    const response: AxiosResponse<ContactsData[]> = await api.get(
       `content/?data={"section":"contacts"}`
     );
     return response.data;
@@ -39,7 +39,7 @@ const getContacts = async (): Promise<ContactsData[] | undefined> => {
 
 const updateContacts = async (contact: ContactsFormValues): Promise<void> => {
   try {
-    await axios.patch(`content/${contact.id}`, {
+    await api.patch(`content/${contact.id}`, {
       images: [],
       data: {
         section: "contacts",
@@ -88,7 +88,7 @@ export interface NewsItem {
 
 const getNews = async (): Promise<NewsItem[]> => {
   try {
-    const { data }: AxiosResponse<NewsItem[]> = await axios.get(
+    const { data }: AxiosResponse<NewsItem[]> = await api.get(
       `content/?data={"section":"news"}`
     );
     return data;
@@ -99,7 +99,7 @@ const getNews = async (): Promise<NewsItem[]> => {
 
 const createNews = async (news: AdminNewsValues): Promise<void> => {
   try {
-    await axios.post("content", {
+    await api.post("content", {
       images: news.image,
       data: {
         section: "news",
@@ -127,7 +127,7 @@ const createNews = async (news: AdminNewsValues): Promise<void> => {
 
 const deleteNews = async (id: string): Promise<void> => {
   try {
-    await axios.delete(`content/${id}`);
+    await api.delete(`content/${id}`);
   } catch (error) {
     throw error;
   }
@@ -176,7 +176,7 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
       payload.images = [news.image];
     }
 
-    await axios.patch(`content/${news.id}`, payload);
+    await api.patch(`content/${news.id}`, payload);
   } catch (error) {
     throw error;
   }
@@ -184,7 +184,7 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
 
 const getNewsById = async (id: string): Promise<NewsItem> => {
   try {
-    const { data }: AxiosResponse<NewsItem> = await axios.get(`content/${id}`);
+    const { data }: AxiosResponse<NewsItem> = await api.get(`content/${id}`);
     return data;
   } catch (error) {
     throw error;
