@@ -1,15 +1,15 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useToggle } from "usehooks-ts";
+import { toast } from "react-toastify";
 
 import { getNews } from "@/lib/admin/content";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
-import Button from "../Button/Button";
+import Breadcrumb, { CrumbItem } from "../Breadcrumb/Breadcrumb";
 
-import AdminNewsAdd from "./AdminNewsAdd/AdminNewsAdd";
 import AdminNewsList from "./AdminNewsList/AdminNewsList";
 
 import styles from "./AdminNewsPage.module.css";
@@ -24,30 +24,18 @@ export interface AdminNewsValues {
   date: string;
 }
 
+const items: CrumbItem[] = [{ label: "Новини", path: "/admin/news" }];
+
 const AdminNewsPage: React.FC = () => {
-  const [isEditing, setIsEditing] = useToggle(false);
   const [newsData, setNewsData] = useState<AdminNewsValues[]>();
-  const [editedNews, setEditedNews] = useState<AdminNewsValues>({
-    id: "",
-    image: "",
-    title: "",
-    img_description: "",
-    text: "",
-    link: "",
-    date: "",
-  });
+  const router = useRouter();
 
   useEffect(() => {
     fetchNewsData();
-  }, [isEditing]);
-
-  const handleSave = () => {
-    setIsEditing();
-  };
+  }, []);
 
   const handleEditNews = (data: AdminNewsValues) => {
-    setEditedNews(data);
-    setIsEditing();
+    router.push(`/admin/news/edit?id=${data.id}`);
   };
 
   const onDelete = async () => {
@@ -71,47 +59,29 @@ const AdminNewsPage: React.FC = () => {
       setNewsData(newsData);
     } catch (e) {
       console.error(e);
+      toast.error("Упс..., щось пішло не так!", {
+        position: "top-right",
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
   };
 
   return (
     <div>
       <div className={styles.heading_container}>
-        <h1 className={styles.heading}>
-          <span className={isEditing ? styles.breadcrumb : undefined}>
-            Новини
-          </span>
-          {isEditing && <span className={styles.breadcrumb}>&gt;</span>}
-          {isEditing && (
-            <span className={styles.edit}>Додати картки новин</span>
-          )}
-        </h1>
-        <div>
-          {isEditing ? (
-            <Button
-              outlined
-              onClick={() => {
-                setIsEditing();
-              }}
-              className={styles.backBtn}
-            >
-              Назад
-            </Button>
-          ) : (
-            <Image src={pen} alt="edit_img" width={27} height={27} />
-          )}
-        </div>
+        <Breadcrumb items={items} />
+        <Image src={pen} alt="edit_img" width={27} height={27} />
       </div>
       <AdminWrapper size="bigWrapper">
-        {isEditing ? (
-          <AdminNewsAdd onSave={handleSave} newsData={editedNews} />
-        ) : (
-          <AdminNewsList
-            newsData={newsData}
-            handleEditNews={handleEditNews}
-            onDelete={onDelete}
-          />
-        )}
+        <AdminNewsList
+          newsData={newsData}
+          handleEditNews={handleEditNews}
+          onDelete={onDelete}
+        />
       </AdminWrapper>
     </div>
   );

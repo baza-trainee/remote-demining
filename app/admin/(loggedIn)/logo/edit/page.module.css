@@ -14,6 +14,10 @@
   justify-content: center;
 }
 
+.heading_container {
+  margin-bottom: 32px;
+}
+
 .error {
   color: var(--error-color);
   align-self: flex-start;

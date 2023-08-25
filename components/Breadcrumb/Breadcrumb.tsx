@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { FC, ReactNode } from 'react';
+import Link from "next/link";
+import { FC, ReactNode } from "react";
 
-import styles from './Breadcrumb.module.css';
+import styles from "./Breadcrumb.module.css";
 
 export type CrumbItem = {
   label: ReactNode;
@@ -18,15 +18,19 @@ const Breadcrumb: FC<BreadcrumbProps> = ({ items }) => {
         const isLastItem = i === items.length - 1;
         if (!isLastItem) {
           return (
-            <>
-              <Link href={crumb.path} key={i} className={styles.link}>
+            <div key={i}>
+              <Link href={crumb.path} className={styles.link}>
                 {crumb.label}
               </Link>
-              <span className={styles.separator}> &gt; </span>
-            </>
+              {!isLastItem && <span className={styles.separator}> &gt; </span>}
+            </div>
           );
         } else {
-          return crumb.label;
+          return (
+            <div key={i}>
+              <p>{crumb.label}</p>
+            </div>
+          );
         }
       })}
     </div>

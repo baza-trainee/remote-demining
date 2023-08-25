@@ -178,7 +178,16 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
 
     await axios.patch(`content/${news.id}`, payload);
   } catch (error) {
-    console.log(error);
+    throw error;
+  }
+};
+
+const getNewsById = async (id: string): Promise<NewsItem> => {
+  try {
+    const { data }: AxiosResponse<NewsItem> = await axios.get(`content/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -187,6 +196,7 @@ export {
   deleteNews,
   getContacts,
   getNews,
+  getNewsById,
   updateContacts,
   updateNews,
 };
