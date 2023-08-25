@@ -1,12 +1,12 @@
 "use client";
 import { redirect } from "next/navigation";
 import { FC, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
 import { useReadLocalStorage } from "usehooks-ts";
 
-import "react-toastify/dist/ReactToastify.css";
 import AdminNavBar from "@/components/AdminNavBar/AdminNavBar";
-import { ToastContainer } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./layout.module.css";
 
 const LoggedInLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
