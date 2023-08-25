@@ -1,5 +1,5 @@
 'use client';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useToggle } from 'usehooks-ts';
@@ -18,6 +18,7 @@ import api from '@/lib/api/baseQuery';
 import styles from './page.module.css';
 
 interface LogosFormValues {
+  image: string;
   description: string;
 }
 
@@ -29,7 +30,9 @@ const Page: FC = ({}) => {
     { label: 'Лого партнерів', path: '/admin/logo' },
     { label: 'Додати лого', path: '/admin/logo/edit' },
   ];
+
   const validationSchema = object().shape({
+    image: yup.string().required('Помилка валідації'),
     description: yup
       .string()
       .min(3, 'Кількість символів має бути більше 3')
@@ -42,12 +45,22 @@ const Page: FC = ({}) => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setValue,
   } = useForm<LogosFormValues>({
     defaultValues: {
+      image: '',
       description: '',
     },
     resolver: yupResolver(validationSchema),
   });
+
+  useEffect(() => {
+    if (image) {
+      setValue('image', image, {
+        shouldValidate: true,
+      });
+    }
+  }, [image]);
 
   const closeModal = () => {
     toggleModal();
@@ -89,7 +102,9 @@ const Page: FC = ({}) => {
             imgWidth={213}
             imgHeight={140}
           />
-
+          {errors.image && (
+            <p className={styles.error}>{errors.image.message}</p>
+          )}
           <AdminEditContactsInput
             placeholder="Опис зображення"
             type="text"
