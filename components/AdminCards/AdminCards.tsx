@@ -5,10 +5,7 @@ import { useEffect, useState } from "react";
 import { useToggle } from "usehooks-ts";
 
 import {
-  createCard,
-  deleteCard,
   getCards,
-  updateCard,
 } from "@/lib/admin/cards";
 import pen from "@/public/images/adminInputs/pen.svg";
 

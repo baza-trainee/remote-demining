@@ -3,28 +3,11 @@ import { AxiosResponse } from "axios";
 import { AdminCardsData } from "@/components/AdminCards/AdminCards";
 
 import api from "../api/baseQuery";
+import { ProjectsCardsData } from "../types/ProjectsCardDataType";
 
-interface CardsData {
-  images: [string];
-  data: {
-    section: string;
-    title: string;
-    text: string;
-    img_description: string;
-  };
-  dataSchema: {
-    section: string;
-    id: number;
-    title: string;
-    text: string;
-    img_description: string;
-  };
-  _id: string;
-}
-
-const getCards = async (): Promise<CardsData[] | undefined> => {
+const getCards = async (): Promise<ProjectsCardsData[] | undefined> => {
   try {
-    const response: AxiosResponse<CardsData[]> = await api.get(
+    const response: AxiosResponse<ProjectsCardsData[]> = await api.get(
       `content/?data={"section":"cards"}`
     );
     return response.data;
