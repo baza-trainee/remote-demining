@@ -44,14 +44,7 @@ const AdminNewsList: React.FC<AdminNewsListProps> = ({
       onDelete();
     } catch (error) {
       console.error(error);
-      toast.error("Упс..., щось пішло не так!", {
-        position: "top-right",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast.error("Упс..., щось пішло не так!");
     }
   };
 

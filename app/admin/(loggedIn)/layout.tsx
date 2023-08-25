@@ -22,7 +22,14 @@ const LoggedInLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
     <div className={styles.pageWrapper}>
       <AdminNavBar />
       {children}
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={false}
+        hideProgressBar={false}
+        closeOnClick={true}
+        pauseOnHover={true}
+        draggable={true}
+      />
     </div>
   );
 };

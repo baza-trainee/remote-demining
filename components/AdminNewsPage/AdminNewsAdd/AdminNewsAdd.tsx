@@ -92,14 +92,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
     } catch (error) {
       setIsLoading();
       console.error(error);
-      toast.error("Упс..., щось пішло не так!", {
-        position: "top-right",
-        autoClose: false,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
+      toast.error("Упс..., щось пішло не так!");
     }
   };
 
