@@ -6,6 +6,7 @@ import { useToggle } from "usehooks-ts";
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
+import { deleteCard } from "@/lib/admin/cards";
 import add_icon from "@/public/images/icons/buttons/add.svg";
 
 import { AdminCardsData } from "../AdminCards";
@@ -15,7 +16,7 @@ import styles from "./AdminCardsList.module.css";
 interface AdminCardsListProps {
   cardsData?: AdminCardsData[];
   handleEditCard: ({}: AdminCardsData) => void;
-  handleDeleteCard: (id: string) => void;
+  handleDeleteCard: () => void;
 }
 
 const AdminCardsList: React.FC<AdminCardsListProps> = ({
@@ -24,11 +25,18 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
   handleDeleteCard,
 }) => {
   const [confDelModal, toggleDelModal] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
   const [cardId, setCardId] = useState("");
-  const deleteCard = () => {
-    handleDeleteCard(cardId);
-    setCardId("");
-    toggleDelModal();
+  const deleteCardHandler = async () => {
+    try {
+      await deleteCard(cardId);
+      await toggleSuccessModal();
+      await setCardId("");
+      await toggleDelModal();
+      await handleDeleteCard();
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className={styles.container}>
@@ -88,12 +96,20 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
         <li className={styles.last_card}></li>
       </ul>
       {confDelModal && (
-        <Modal isModalOpen={confDelModal} toggleModal={() => toggleDelModal()}>
+        <Modal isModalOpen={confDelModal} toggleModal={toggleDelModal}>
           <ConfirmationModal
             message="Ви дійсно бажаєте видалити картку?"
-            approveChanges={() => deleteCard()}
+            approveChanges={() => deleteCardHandler()}
             discardChanges={() => toggleDelModal()}
           />
+        </Modal>
+      )}
+      {successModal && (
+        <Modal
+          isModalOpen={successModal}
+          toggleModal={toggleSuccessModal}
+        >
+          <ConfirmationModal message="Картку успішно видалено" />
         </Modal>
       )}
     </div>

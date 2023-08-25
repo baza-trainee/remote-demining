@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <body className={open_sans.className}>
       <Header />
-      <Container style={{ height: "100%" }}>{children}</Container>
+      <Container style={{ height: "100%", backgroundColor: "#f5f5f5" }}>{children}</Container>
     </body>
   );
 }

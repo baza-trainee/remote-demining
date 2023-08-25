@@ -17,3 +17,9 @@
 .heading_container {
   margin-bottom: 32px;
 }
+
+.error {
+  color: var(--error-color);
+  align-self: flex-start;
+  font-size: 0.8rem;
+}

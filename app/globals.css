@@ -153,7 +153,8 @@
   --admin-navbar-top-padding: 120px;
 }
 
-@media (prefers-color-scheme: dark) {
+::-ms-reveal {
+  display: none;
 }
 
 * {
@@ -180,12 +181,10 @@ ul {
   list-style: none;
 }
 
+
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
 }
 
 /* hide the badge of recaptcha */
