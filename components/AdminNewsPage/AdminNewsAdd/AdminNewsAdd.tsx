@@ -25,7 +25,6 @@ type AdminNews = Omit<AdminNewsValues, "id">;
 
 interface AdminNewsAddProps {
   newsData: AdminNewsValues;
-  onSave: () => void;
 }
 
 const items: CrumbItem[] = [
@@ -33,7 +32,7 @@ const items: CrumbItem[] = [
   { label: "Додати картки новин", path: "/admin/news/edit" },
 ];
 
-const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
+const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
   const [isLoading, setIsLoading] = useToggle(false);
   const [image, setImage] = useState<string | null>("");
@@ -98,7 +97,6 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData, onSave }) => {
 
   const closeModal = () => {
     toggleModal();
-    onSave();
   };
 
   const modalMessage = isNewNews

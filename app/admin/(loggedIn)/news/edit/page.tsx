@@ -47,13 +47,9 @@ const Page = () => {
     }
   };
 
-  const handleSave = () => {
-    router.push("/admin/news");
-  };
-
   return (
     <>
-      <AdminNewsAdd onSave={handleSave} newsData={editedNews} />
+      <AdminNewsAdd newsData={editedNews} />
     </>
   );
 };
