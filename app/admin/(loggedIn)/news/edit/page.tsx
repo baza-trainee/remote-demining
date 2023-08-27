@@ -1,11 +1,11 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 import AdminNewsAdd from "@/components/AdminNewsPage/AdminNewsAdd/AdminNewsAdd";
 import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
 import { getNewsById } from "@/lib/admin/content";
-import { toast } from "react-toastify";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -41,26 +41,15 @@ const Page = () => {
         };
         setEditedNews(newsData);
       } catch (e) {
-        toast.error("Упс..., щось пішло не так!", {
-          position: "top-right",
-          autoClose: false,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        toast.error("Упс..., щось пішло не так!");
         console.error(e);
       }
     }
   };
 
-  const handleSave = () => {
-    router.push("/admin/news");
-  };
-
   return (
     <>
-      <AdminNewsAdd onSave={handleSave} newsData={editedNews} />
+      <AdminNewsAdd newsData={editedNews} />
     </>
   );
 };

@@ -5,18 +5,30 @@ import styles from "./NewsItem.module.css";
 import Link from "next/link";
 
 interface NewsItem {
-  id: number;
+  id: string;
   text: string;
-  img: string;
+  image: string;
   title: string;
   link: string;
   date: string;
+  img_description: string;
 }
 
-const NewsItem: React.FC<NewsItem> = ({ id, img, text, title, link, date }) => {
+const NewsItem: React.FC<NewsItem> = ({
+  id,
+  image,
+  text,
+  title,
+  link,
+  date,
+  img_description,
+}) => {
   return (
     <div key={id} className={styles.item}>
-      <Card img={img} alt={title}>
+      <Card
+        img={`https://remote-demining.onrender.com/images/${image}`}
+        alt={img_description}
+      >
         <div className={styles.content}>
           <div className={styles.text_content}>
             <Link

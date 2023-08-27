@@ -23,7 +23,7 @@ const validationSchema = object().shape({
       const maxSizeInBytes = 2 * 1024 * 1024; // 2 MB
       return fileSizeInBytes <= maxSizeInBytes;
     })
-    .required(),
+    .required(`Обов'язковe поле`),
   title: string()
     // .matches(/^[a-zA-Zа-яА-ЯіІїЇєЄ\s'-]+$/, "Невалідні символи")
     .min(3, "Кількість символів має бути більше 3")
