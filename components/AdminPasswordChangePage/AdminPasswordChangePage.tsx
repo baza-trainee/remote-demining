@@ -1,9 +1,10 @@
 "use client";
 
-import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useToggle } from "usehooks-ts";
 import axios from "axios";
 
 import passwordChange from "@/lib/admin/passwordChange";
@@ -11,6 +12,7 @@ import passwordChange from "@/lib/admin/passwordChange";
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import AutorizationInput from "../AutorizationInput/AutorizationInput";
 import Button from "../Button/Button";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import Modal from "../Modal/Modal";
 
 import validationSchema from "./validation";
@@ -24,8 +26,13 @@ interface PasswordChangeFormValues {
 }
 
 const AdminPasswordChangePage: FC = () => {
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isSuccessModalOpen, toggleSuccessModalOpen] = useToggle(false);
   const router = useRouter();
+
+  const closeModal = () => {
+    toggleSuccessModalOpen();
+    router.push("/admin/");
+  }
 
   const {
     register,
@@ -56,8 +63,7 @@ const AdminPasswordChangePage: FC = () => {
         }
 
         await passwordChange(password, confirmPassword);
-        router.push("/admin/");
-        setIsSuccessModalOpen(true);
+        await toggleSuccessModalOpen();
       } catch (error) {
         if (axios.isAxiosError(error)) {
           if (
@@ -139,13 +145,11 @@ const AdminPasswordChangePage: FC = () => {
       </AdminWrapper>
       {isSuccessModalOpen && (
         <div className={styles.modal}>
-          <Modal
-            toggleModal={() => setIsSuccessModalOpen(false)}
-            isModalOpen={isSuccessModalOpen}
-            isBigModal={true}
-          >
-            <p>Пароль успішно змінено.</p>
-          </Modal>
+          <Modal isModalOpen={isSuccessModalOpen} toggleModal={closeModal}>
+          <ConfirmationModal
+            message="Пароль успішно змінено"
+          />
+        </Modal>
         </div>
       )}
     </section>
