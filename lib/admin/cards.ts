@@ -13,6 +13,7 @@ const getCards = async (): Promise<ProjectsCardsData[] | undefined> => {
     return response.data;
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -35,6 +36,7 @@ const createCard = async (card: AdminCardsData): Promise<void> => {
     });
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -43,6 +45,7 @@ const deleteCard = async (id: string): Promise<void> => {
     await api.delete(`content/${id}`);
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 
@@ -65,6 +68,7 @@ const updateCard = async (card: AdminCardsData): Promise<void> => {
     });
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 

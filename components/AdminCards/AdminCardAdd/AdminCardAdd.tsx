@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
 
@@ -65,6 +66,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
       await toggleModal();
     } catch (error) {
       console.log(error);
+      toast.error("Упс..., щось пішло не так!");
     }
   };
 

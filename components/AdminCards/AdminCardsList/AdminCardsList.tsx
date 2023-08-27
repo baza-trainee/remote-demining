@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
@@ -36,6 +37,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
       await handleDeleteCard();
     } catch (error) {
       console.log(error);
+      toast.error("Упс..., щось пішло не так!");
     }
   };
   return (
@@ -105,10 +107,7 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
         </Modal>
       )}
       {successModal && (
-        <Modal
-          isModalOpen={successModal}
-          toggleModal={toggleSuccessModal}
-        >
+        <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
           <ConfirmationModal message="Картку успішно видалено" />
         </Modal>
       )}

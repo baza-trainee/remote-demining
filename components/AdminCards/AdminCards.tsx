@@ -2,11 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useToggle } from "usehooks-ts";
 
-import {
-  getCards,
-} from "@/lib/admin/cards";
+import { getCards } from "@/lib/admin/cards";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
@@ -52,6 +51,7 @@ const AdminCards = () => {
       await fetchCardsData();
     } catch (error) {
       console.log(error);
+      toast.error("Упс..., щось пішло не так!");
     }
   };
   const fetchCardsData = async () => {
@@ -67,8 +67,9 @@ const AdminCards = () => {
         };
       });
       setCardsData(cardsData);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
+      toast.error("Упс..., щось пішло не так!");
     }
   };
   return (

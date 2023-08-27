@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import { useWindowSize } from "usehooks-ts";
 
 import { fetchProjectsCards } from "@/lib/projects/projectsData";
@@ -32,6 +33,7 @@ const Projects = () => {
       setProjectsData(cardData);
     } catch (error) {
       console.log(error);
+      toast.error("Упс..., щось пішло не так!");
     }
   };
 
