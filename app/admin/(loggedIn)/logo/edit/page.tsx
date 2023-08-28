@@ -24,6 +24,7 @@ interface LogosFormValues {
 const Page: FC = ({}) => {
   const [image, setImage] = useState<string | null>("");
   const [isModalOpen, toggleModal] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
 
   const items: CrumbItem[] = [
     { label: "Лого партнерів", path: "/admin/logo" },
@@ -32,9 +33,9 @@ const Page: FC = ({}) => {
   const validationSchema = object().shape({
     description: yup
       .string()
-      .min(3, 'Кількість символів має бути більше 3')
-      .max(300, 'Кількість символів має бути менше 300')
-      .required('Помилка валідації'),
+      .min(3, "Кількість символів має бути більше 3")
+      .max(300, "Кількість символів має бути менше 300")
+      .required("Помилка валідації"),
   });
 
   const {
@@ -88,6 +89,7 @@ const Page: FC = ({}) => {
           <AddImage
             setImage={setImage}
             title="Додати лого"
+            toggleSuccessModal={toggleSuccessModal}
             imgWidth={213}
             imgHeight={140}
           />
@@ -110,6 +112,11 @@ const Page: FC = ({}) => {
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
           <ConfirmationModal message={"Лого успішно додано "} />
+        </Modal>
+      )}
+      {successModal && (
+        <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
+          <ConfirmationModal message="Зображення успішно додано" />
         </Modal>
       )}
     </div>

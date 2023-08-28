@@ -25,6 +25,7 @@ interface AdminCardAddProps {
 
 const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
   const [croppedImg, setCroppedImg] = useState<string | null>(null);
   const closeModal = () => {
     toggleModal();
@@ -37,6 +38,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
       setValue("img", croppedImg);
     }
   }, [croppedImg]);
+
 
   const {
     register,
@@ -54,9 +56,11 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
   });
 
   const onSubmit: SubmitHandler<AdminCard> = async (data) => {
+    // console.log(data);
     try {
-      cardData.img === data.img
+      cardData.id !== ""
         ? await updateCard({
+            img: data.img,
             id: cardData.id,
             title: data.title,
             img_description: data.img_description,
@@ -72,12 +76,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
 
   return (
     <form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
-      <AddImage
-        imgWidth={431}
-        imgHeight={240}
-        setImage={setCroppedImg}
-        title={"Додати зображення"}
-      />
+      <AddImage setImage={setCroppedImg} title={"Додати зображення"} toggleSuccessModal={toggleSuccessModal} />
       {errors.img?.message && (
         <span className={styles.error_message}>{errors.img.message}</span>
       )}
@@ -116,6 +115,11 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ onSave, cardData }) => {
                 : "Картку успішно оновлено"
             }
           />
+        </Modal>
+      )}
+      {successModal && (
+        <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
+          <ConfirmationModal message="Зображення успішно додано" />
         </Modal>
       )}
     </form>
