@@ -77,11 +77,13 @@ const Footer = () => {
           <ul className={`${styles.contacts} ${styles.category}`}>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={tel} alt="tel" />{" "}
-              <span>{contactData.phone}</span>
+              <span>
+                {contactData ? contactData.phone : "+38 (044) 209 5302"}
+              </span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={mail} alt="mail" />
-              <span>{contactData.email}</span>
+              <span>{contactData ? contactData.email : "2021snp@ukr.net"}</span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={map} alt="map" />
