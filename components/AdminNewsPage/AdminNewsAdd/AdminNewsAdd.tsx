@@ -36,8 +36,9 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
   const [isModalOpen, toggleModal] = useToggle(false);
   const [isLoading, setIsLoading] = useToggle(false);
   const [image, setImage] = useState<string | null>("");
+  const [successModal, toggleSuccessModal] = useToggle(false);
   const isNewNews = !newsData.id;
-
+  
   useEffect(() => {
     if (newsData) {
       setValue("image", newsData.image);
@@ -118,10 +119,9 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
           noValidate
         >
           <AddImage
-            imgWidth={437}
-            imgHeight={240}
             title="Додати зображення"
             setImage={setImage}
+            toggleSuccessModal={toggleSuccessModal}
           />
           {errors.image?.message && (
             <span className={styles.error_message}>{errors.image.message}</span>
@@ -180,6 +180,11 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
           )}
         </form>
       </AdminWrapper>
+  {successModal && (
+    <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
+      <ConfirmationModal message="Зображення успішно додано" />
+    </Modal>
+  )}
     </div>
   );
 };

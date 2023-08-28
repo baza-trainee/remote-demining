@@ -10,9 +10,13 @@ import {
 } from "react";
 import Cropper from "react-easy-crop";
 import { Area, Point } from "react-easy-crop/types";
+import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
 import addImg from "@/public/images/admin/add.svg";
+
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import Modal from "../Modal/Modal";
 
 import ImagePreview from "./ImagePreview/ImagePreview";
 import { getCroppedImg } from "./utils/getCroppedImg";
@@ -20,17 +24,19 @@ import { getCroppedImg } from "./utils/getCroppedImg";
 import styles from "./AddImage.module.css";
 
 interface AddImageProps {
-  imgWidth: number;
-  imgHeight: number;
+  imgWidth?: number;
+  imgHeight?: number;
   title: string;
   setImage: Dispatch<SetStateAction<string | null>>;
+  toggleSuccessModal: () => void;
 }
 
 const AddImage: FC<AddImageProps> = ({
-  imgWidth = 432,
-  imgHeight = 240,
+  imgWidth,
+  imgHeight,
   title = "Додати зображення",
   setImage,
+  toggleSuccessModal,
 }) => {
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -40,6 +46,7 @@ const AddImage: FC<AddImageProps> = ({
   const [croppedImage, setCroppedImage] = useState<string | null>(null);
   const [typeError, setTypeError] = useState(false);
   const [sizeError, setSizeError] = useState(false);
+  const [imgSize, setImgSize] = useState({ width: 0, height: 0 });
 
   const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
     e.preventDefault();
@@ -101,6 +108,10 @@ const AddImage: FC<AddImageProps> = ({
   const handleZoomChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const zoomValue = parseFloat(e.target.value);
     setZoom(zoomValue);
+  };
+
+  const onMediaLoad = (mediaSize: { width: number; height: number }) => {
+    setImgSize({ width: mediaSize.width, height: mediaSize.height });
   };
 
   const handleEscKey = useCallback(
@@ -176,7 +187,11 @@ const AddImage: FC<AddImageProps> = ({
               onCropChange={setCrop}
               onCropComplete={onCropComplete}
               onZoomChange={setZoom}
-              cropSize={{ width: imgWidth, height: imgHeight }}
+              onMediaLoaded={onMediaLoad}
+              cropSize={{
+                width: imgWidth ? imgWidth : imgSize.width,
+                height: imgHeight ? imgHeight : imgSize.height,
+              }}
             />
           </div>
           <div className={styles.controls}>
@@ -196,13 +211,23 @@ const AddImage: FC<AddImageProps> = ({
           </div>
           {croppedImage && (
             <ImagePreview
-              imgWidth={imgWidth}
-              imgHeight={imgHeight}
+              imgWidth={
+                imgWidth ? imgWidth : imgSize.width > 800 ? 800 : imgSize.width
+              }
+              imgHeight={
+                imgHeight
+                  ? imgHeight
+                  : imgSize.height > 600
+                  ? 600
+                  : imgSize.height
+              }
               img={croppedImage}
               setCroppedImage={setCroppedImage}
               setImgSrc={setImgSrc}
+              toggleSuccessModal={toggleSuccessModal}
             />
           )}
+
         </>
       )}
     </>
