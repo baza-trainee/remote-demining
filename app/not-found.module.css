@@ -1,13 +1,13 @@
 .wraper {
-  margin-top: 20px;
+  margin-top: 1400px;
   margin-bottom: 80px;
 
   @media (min-width: 768px) {
-    margin-top: 80px;
+    margin-top: 180px;
     margin-bottom: 80px;
   }
   @media (min-width: 1280px) {
-    margin-top: 80px;
+    margin-top: 180px;
     margin-bottom: 120px;
   }
 }
