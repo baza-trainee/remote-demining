@@ -3,6 +3,7 @@ import { AxiosResponse } from "axios";
 import { AdminCardsData } from "@/components/AdminCards/AdminCards";
 
 import api from "../api/baseQuery";
+import { AdminCard } from "../types/adminCard";
 import { ProjectsCardsData } from "../types/ProjectsCardDataType";
 
 const getCards = async (): Promise<ProjectsCardsData[] | undefined> => {
@@ -17,7 +18,7 @@ const getCards = async (): Promise<ProjectsCardsData[] | undefined> => {
   }
 };
 
-const createCard = async (card: AdminCardsData): Promise<void> => {
+const createCard = async (card: AdminCard): Promise<void> => {
   try {
     await api.post("content", {
       images: card.img,
@@ -50,9 +51,10 @@ const deleteCard = async (id: string): Promise<void> => {
 };
 
 const updateCard = async (card: AdminCardsData): Promise<void> => {
+  console.log(card)
   try {
     await api.patch(`content/${card.id}`, {
-      images: card.img !== "" ? [card.img] : undefined,
+      images: card.img ? [card.img] : undefined,
       data: {
         section: "cards",
         title: card.title,
@@ -72,4 +74,15 @@ const updateCard = async (card: AdminCardsData): Promise<void> => {
   }
 };
 
-export { createCard, deleteCard, getCards, updateCard };
+const getCardById = async (id: string): Promise<ProjectsCardsData> => {
+  try {
+    const { data }: AxiosResponse<ProjectsCardsData> = await api.get(
+      `content/${id}`
+    );
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { createCard, deleteCard, getCardById, getCards, updateCard };

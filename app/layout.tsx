@@ -5,8 +5,6 @@ import "./globals.css";
 import "./normalize.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
 
 const open_sans = Open_Sans({ subsets: ["latin"] });
 
@@ -25,11 +23,7 @@ export default function RootLayout({
       <head>
         <meta name="format-detection" content="telephone=no" />
       </head>
-      <body className={open_sans.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body className={open_sans.className}>{children}</body>
     </html>
   );
 }

@@ -51,14 +51,15 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                   handleEditCard({ id, img, title, text, img_description });
                 }}
               >
-                <div className={styles.img_container}>
+                {/* <div className={styles.img_container}> */}
                   <Image
                     src={`https://remote-demining.onrender.com/images/${img}`}
                     className={styles.image}
                     alt={img_description || title}
-                    fill
+                    width={310}
+                    height={170}
                   />
-                </div>
+                {/* </div> */}
 
                 <div className={styles.body}>
                   <h3 className={styles.title}>{title}</h3>

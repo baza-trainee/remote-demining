@@ -43,6 +43,7 @@
 
   .body {
     padding: var(--card-list-padding-tablet);
+    max-width: 50%;
   }
 }
 

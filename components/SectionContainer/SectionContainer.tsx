@@ -16,6 +16,7 @@ interface ContainerProps {
   hasTitleWidth?: boolean;
   titleMargin?: boolean;
   alignTitle?: "center" | "left";
+  activityPaddingTop?: boolean;
 }
 
 const SectionContainer: React.FC<ContainerProps> = ({
