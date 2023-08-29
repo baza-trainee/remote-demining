@@ -1,5 +1,6 @@
+import Link from "next/link";
+
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
-import Button from "@/components/Button/Button";
 
 import { ContactsFormValues } from "../AdminContactsPage";
 
@@ -7,12 +8,10 @@ import styles from "../AdminContactsPage.module.css";
 
 interface NonEditableContactsProps {
   contactData: ContactsFormValues;
-  onEdit: () => void;
 }
 
 const AdminDisplayContacts: React.FC<NonEditableContactsProps> = ({
   contactData,
-  onEdit,
 }) => {
   return (
     <form>
@@ -34,9 +33,7 @@ const AdminDisplayContacts: React.FC<NonEditableContactsProps> = ({
         />
       </div>
       <div className={styles.buttonWrapper}>
-        <Button onClick={onEdit} width="291" height="64">
-          Редагувати
-        </Button>
+        <Link href="/admin/contacts/edit">Редагувати</Link>
       </div>
     </form>
   );
