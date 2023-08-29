@@ -10,8 +10,8 @@
   gap: 0.75rem;
 }
 
-.breadcrumb {
-  color: var(--admin-breadcrumb-color);
+.heading_container {
+  margin-bottom: 32px;
 }
 
 .inputWrapper {
@@ -23,4 +23,30 @@
 .buttonWrapper {
   margin-top: 3rem;
   text-align: center;
+}
+
+.buttonWrapper a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: var(--button-primary-padding);
+  background-color: var(--button-primary-bg-color);
+  border-radius: var(--button-primary-border-rad);
+
+  color: var(--button-primary-color);
+  font-size: 20px;
+  font-weight: 600;
+
+  width: 291px;
+  height: 64px;
+
+  transition: background-color var(--transition),
+    color var(--transition) outline var(--transition);
+}
+
+.buttonWrapper a:hover {
+  background-color: var(--button-primary-hover-color);
+  color: var(--button-primary-bg-color);
+  outline: 2px solid var(--button-primary-bg-color);
 }

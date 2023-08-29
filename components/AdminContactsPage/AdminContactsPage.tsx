@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { getContacts } from "@/lib/admin/content";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
+import Breadcrumb, { CrumbItem } from "../Breadcrumb/Breadcrumb";
 
 import AdminDisplayContacts from "./AdminDisplayContacts/AdminDisplayContacts";
-import AdminEditContacts from "./AdminEditContacts/AdminEditContacts";
 
 import styles from "./AdminContactsPage.module.css";
 
@@ -16,8 +16,9 @@ export interface ContactsFormValues {
   phone: string;
 }
 
+const items: CrumbItem[] = [{ label: "Контакти", path: "/admin/contacts" }];
+
 const AdminContactsPage: React.FC = () => {
-  const [isEditing, setIsEditing] = useState(false);
   const [contactData, setContactData] = useState<ContactsFormValues>({
     id: "",
     email: "",
@@ -25,10 +26,8 @@ const AdminContactsPage: React.FC = () => {
   });
 
   useEffect(() => {
-    if (!isEditing) {
-      fetchContactData();
-    }
-  }, [isEditing]);
+    fetchContactData();
+  }, []);
 
   const fetchContactData = async () => {
     try {
@@ -46,29 +45,13 @@ const AdminContactsPage: React.FC = () => {
     }
   };
 
-  // Function to handle Save button click
-  const handleSave = () => {
-    setIsEditing(false);
-  };
-
   return (
     <div>
-      <h1 className={styles.heading}>
-        <span className={isEditing ? styles.breadcrumb : undefined}>
-          Контакти
-        </span>
-        {isEditing && <span className={styles.breadcrumb}>&gt;</span>}
-        {isEditing && <span className={styles.edit}>Редагувати</span>}
-      </h1>
+      <div className={styles.heading_container}>
+        <Breadcrumb items={items} />
+      </div>
       <AdminWrapper size="bigWrapper">
-        {isEditing ? (
-          <AdminEditContacts contactData={contactData} onSave={handleSave} />
-        ) : (
-          <AdminDisplayContacts
-            contactData={contactData}
-            onEdit={() => setIsEditing(true)}
-          />
-        )}
+        <AdminDisplayContacts contactData={contactData} />
       </AdminWrapper>
     </div>
   );
