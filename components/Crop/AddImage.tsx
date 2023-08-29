@@ -10,18 +10,15 @@ import {
 } from "react";
 import Cropper from "react-easy-crop";
 import { Area, Point } from "react-easy-crop/types";
-import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
 import addImg from "@/public/images/admin/add.svg";
-
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import Modal from "../Modal/Modal";
 
 import ImagePreview from "./ImagePreview/ImagePreview";
 import { getCroppedImg } from "./utils/getCroppedImg";
 
 import styles from "./AddImage.module.css";
+import { assert } from "console";
 
 interface AddImageProps {
   imgWidth?: number;
@@ -29,6 +26,7 @@ interface AddImageProps {
   title: string;
   setImage: Dispatch<SetStateAction<string | null>>;
   toggleSuccessModal: () => void;
+  aspect?: number;
 }
 
 const AddImage: FC<AddImageProps> = ({
@@ -37,6 +35,7 @@ const AddImage: FC<AddImageProps> = ({
   title = "Додати зображення",
   setImage,
   toggleSuccessModal,
+  aspect,
 }) => {
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -188,10 +187,15 @@ const AddImage: FC<AddImageProps> = ({
               onCropComplete={onCropComplete}
               onZoomChange={setZoom}
               onMediaLoaded={onMediaLoad}
-              cropSize={{
-                width: imgWidth ? imgWidth : imgSize.width,
-                height: imgHeight ? imgHeight : imgSize.height,
-              }}
+              aspect={aspect}
+              cropSize={
+                imgWidth && imgHeight
+                  ? {
+                      width: imgWidth,
+                      height: imgHeight,
+                    }
+                  : undefined
+              }
             />
           </div>
           <div className={styles.controls}>
@@ -212,7 +216,7 @@ const AddImage: FC<AddImageProps> = ({
           {croppedImage && (
             <ImagePreview
               imgWidth={
-                imgWidth ? imgWidth : imgSize.width > 800 ? 800 : imgSize.width
+                imgWidth ? imgWidth : imgSize.width > 900 ? 900 : imgSize.width
               }
               imgHeight={
                 imgHeight
@@ -227,7 +231,6 @@ const AddImage: FC<AddImageProps> = ({
               toggleSuccessModal={toggleSuccessModal}
             />
           )}
-
         </>
       )}
     </>

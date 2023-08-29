@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -38,7 +39,8 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
   const [image, setImage] = useState<string | null>("");
   const [successModal, toggleSuccessModal] = useToggle(false);
   const isNewNews = !newsData.id;
-  
+  const router = useRouter();
+
   useEffect(() => {
     if (newsData) {
       setValue("image", newsData.image);
@@ -98,6 +100,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
 
   const closeModal = () => {
     toggleModal();
+    router.push(`/admin/news`);
   };
 
   const modalMessage = isNewNews
@@ -122,6 +125,7 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
             title="Додати зображення"
             setImage={setImage}
             toggleSuccessModal={toggleSuccessModal}
+            aspect={31/17}
           />
           {errors.image?.message && (
             <span className={styles.error_message}>{errors.image.message}</span>
@@ -180,11 +184,11 @@ const AdminNewsAdd: React.FC<AdminNewsAddProps> = ({ newsData }) => {
           )}
         </form>
       </AdminWrapper>
-  {successModal && (
-    <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
-      <ConfirmationModal message="Зображення успішно додано" />
-    </Modal>
-  )}
+      {successModal && (
+        <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
+          <ConfirmationModal message="Зображення успішно додано" />
+        </Modal>
+      )}
     </div>
   );
 };
