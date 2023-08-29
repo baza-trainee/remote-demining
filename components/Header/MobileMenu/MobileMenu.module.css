@@ -49,7 +49,7 @@
   }
 }
 
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 1279px) {
   .burger_menu {
     display: none;
   }

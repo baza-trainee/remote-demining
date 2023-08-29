@@ -12,12 +12,12 @@
   padding-left: 20px;
   width: max-content;
 }
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1279px) {
   .menu_wrapper {
     display: none;
   }
 }
-@media screen and (min-width: 990px) {
+@media screen and (min-width: 1279px) {
   .menu_wrapper.mobile {
     display: none;
   }
