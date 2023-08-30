@@ -1,0 +1,20 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.buttonWrapper {
+  margin-top: 3rem;
+  text-align: center;
+}
+.heading_container {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn_back {
+  margin-left: auto;
+}
