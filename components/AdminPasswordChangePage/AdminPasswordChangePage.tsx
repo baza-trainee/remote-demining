@@ -20,7 +20,6 @@ import validationSchema from "./validation";
 import styles from "./AdminPasswordChangePage.module.css";
 
 interface PasswordChangeFormValues {
-  oldPassword: string;
   password: string;
   confirmPassword: string;
 }
@@ -70,10 +69,6 @@ const AdminPasswordChangePage: FC = () => {
             error.response?.status === 404 ||
             error.response?.status === 401
           ) {
-            setError("oldPassword", {
-              type: "custom",
-              message: "Помилка валідації",
-            });
             setError("password", {
               type: "custom",
               message: "Помилка валідації",
@@ -84,10 +79,6 @@ const AdminPasswordChangePage: FC = () => {
             });
           }
           if (error.response?.status === 500) {
-            setError("oldPassword", {
-              type: "custom",
-              message: "Упс... щось пішло не так",
-            });
             setError("password", {
               type: "custom",
               message: "Упс... щось пішло не так",
@@ -97,7 +88,6 @@ const AdminPasswordChangePage: FC = () => {
               message: "Упс... щось пішло не так",
             });
           }
-          setValue("oldPassword", "");
           setValue("password", "");
           setValue("confirmPassword", "");
         }
@@ -116,13 +106,6 @@ const AdminPasswordChangePage: FC = () => {
           noValidate
         >
           <div className={styles.inputWrapper}>
-            <AutorizationInput
-              label="Введіть старий пароль*"
-              type="password"
-              errorMessage={errors.oldPassword?.message}
-              error={errors.oldPassword}
-              {...register("oldPassword")}
-            />
             <AutorizationInput
               label="Введіть новий пароль*"
               type="password"
