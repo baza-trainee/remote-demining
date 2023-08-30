@@ -42,6 +42,10 @@ const Footer = () => {
     }
   };
 
+  const scrollUp = ():void => {
+    document.body.scrollTo(0, 0)
+  }
+
   return (
     <footer className={styles.footer}>
       <Container>
@@ -51,16 +55,16 @@ const Footer = () => {
           </a>
           <ul className={`${styles.menu} ${styles.category}`}>
             <li>
-              <NavLink href="/client">Про нас</NavLink>
+              <NavLink href="/client" scrollUp>Про нас</NavLink>
             </li>
             <li>
-              <NavLink href="/client/activity">Наукова діяльність</NavLink>
+              <NavLink href="/client/activity" scrollUp>Наукова діяльність</NavLink>
             </li>
             <li>
-              <NavLink href="/client/socrat">Дистанційне розмінування</NavLink>
+              <NavLink href="/client/socrat" scrollUp>Дистанційне розмінування</NavLink>
             </li>
             <li>
-              <NavLink href="/client/contacts">Контакти</NavLink>
+              <NavLink href="/client/contacts" scrollUp>Контакти</NavLink>
             </li>
           </ul>
           <ul className={`${styles.web__rights} ${styles.category}`}>
