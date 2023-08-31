@@ -1,25 +1,25 @@
-"use client";
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-import { getContacts } from "@/lib/admin/content";
-import logo from "@/public/images/footer/logo.svg";
-import mail from "@/public/images/footer/mail.svg";
-import map from "@/public/images/footer/map.svg";
-import tel from "@/public/images/footer/tel.svg";
+import { getContacts } from '@/lib/admin/content';
+import logo from '@/public/images/footer/logo.svg';
+import mail from '@/public/images/footer/mail.svg';
+import map from '@/public/images/footer/map.svg';
+import tel from '@/public/images/footer/tel.svg';
 
-import { ContactsFormValues } from "../AdminContactsPage/AdminContactsPage";
-import Container from "../Container/Container";
-import NavLink from "../NavLink/NavLink";
+import { ContactsFormValues } from '../AdminContactsPage/AdminContactsPage';
+import Container from '../Container/Container';
+import NavLink from '../NavLink/NavLink';
 
-import styles from "./Footer.module.css";
+import styles from './Footer.module.css';
 
 const Footer = () => {
   const [contactData, setContactData] = useState<ContactsFormValues>({
-    id: "",
-    email: "",
-    phone: "",
+    id: '',
+    email: '',
+    phone: '',
   });
 
   useEffect(() => {
@@ -38,38 +38,48 @@ const Footer = () => {
         });
       }
     } catch (error) {
-      console.error("Error fetching contacts:", error);
+      console.error('Error fetching contacts:', error);
     }
   };
 
-  const scrollUp = ():void => {
-    document.body.scrollTo(0, 0)
-  }
+  const scrollUp = (): void => {
+    document.body.scrollTo(0, 0);
+  };
 
   return (
     <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
-          <a href={"#top"} className={styles.logo}>
+          <a href={'#top'} className={styles.logo}>
             <Image height={149} width={117} src={logo} alt="logo" />
           </a>
           <ul className={`${styles.menu} ${styles.category}`}>
             <li>
-              <NavLink href="/client" scrollUp>Про нас</NavLink>
+              <NavLink href="/client" scrollUp>
+                Про нас
+              </NavLink>
             </li>
             <li>
-              <NavLink href="/client/activity" scrollUp>Наукова діяльність</NavLink>
+              <NavLink href="/client/activity" scrollUp>
+                Наукова діяльність
+              </NavLink>
             </li>
             <li>
-              <NavLink href="/client/socrat" scrollUp>Дистанційне розмінування</NavLink>
+              <NavLink href="/client/socrat" scrollUp>
+                Дистанційне розмінування
+              </NavLink>
             </li>
             <li>
-              <NavLink href="/client/contacts" scrollUp>Контакти</NavLink>
+              <NavLink href="/client/contacts" scrollUp>
+                Контакти
+              </NavLink>
             </li>
           </ul>
           <ul className={`${styles.web__rights} ${styles.category}`}>
             <li>
-              <Link href="">Політика конфіденційності</Link>
+              <Link target="_blank" href="/files/privacy.pdf">
+                Політика конфіденційності
+              </Link>
             </li>
             <li>
               <Link href="">Правила користування сайтом</Link>
@@ -80,14 +90,14 @@ const Footer = () => {
           </ul>
           <ul className={`${styles.contacts} ${styles.category}`}>
             <li className={styles.contacts__item}>
-              <Image width={22} height={22} src={tel} alt="tel" />{" "}
+              <Image width={22} height={22} src={tel} alt="tel" />{' '}
               <span>
-                {contactData ? contactData.phone : "+38 (044) 209 5302"}
+                {contactData ? contactData.phone : '+38 (044) 209 5302'}
               </span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={mail} alt="mail" />
-              <span>{contactData ? contactData.email : "2021snp@ukr.net"}</span>
+              <span>{contactData ? contactData.email : '2021snp@ukr.net'}</span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={map} alt="map" />
@@ -96,8 +106,8 @@ const Footer = () => {
           </ul>
         </div>
         <div className={styles.baza}>
-          Розробка Baza Trainee Ukraine 2023 <br className={styles.br} /> &copy; Всі
-          права захищені
+          Розробка Baza Trainee Ukraine 2023 <br className={styles.br} /> &copy;
+          Всі права захищені
         </div>
       </Container>
     </footer>
