@@ -1,23 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useToggle } from "usehooks-ts";
+import { toast } from "react-toastify";
 
-import {
-  createCard,
-  deleteCard,
-  getCards,
-  updateCard,
-} from "@/lib/admin/cards";
+import { getCards } from "@/lib/admin/cards";
 import pen from "@/public/images/adminInputs/pen.svg";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
-import Button from "../Button/Button";
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
-import Modal from "../Modal/Modal";
+import Breadcrumb, { CrumbItem } from "../Breadcrumb/Breadcrumb";
 
-import AdminCardAdd from "./AdminCardAdd/AdminCardAdd";
 import AdminCardsList from "./AdminCardsList/AdminCardsList";
 
 import styles from "./AdminCards.module.css";
@@ -30,34 +23,25 @@ export interface AdminCardsData {
   img_description: string;
 }
 
+const items: CrumbItem[] = [{ label: "Картки", path: "/admin/cards" }];
+
 const AdminCards = () => {
-  const [isEditing, setIsEditing] = useToggle(false);
-  const [successModal, toggleSuccessModal] = useToggle(false);
-  const [cardData, setCardsData] = useState<AdminCardsData[]>();
-  const [editedCard, setEditedCard] = useState<AdminCardsData>({
-    id: "",
-    img: "",
-    title: "",
-    text: "",
-    img_description: "",
-  });
+  const [cardsData, setCardsData] = useState<AdminCardsData[]>();
+  const router = useRouter();
   useEffect(() => {
     fetchCardsData();
-  }, [isEditing]);
-
-  const handleSave = async (data: AdminCardsData) => {
-    editedCard.id !== "" ? await updateCard(data) : await createCard(data);
-    await setIsEditing();
-  };
+  }, []);
 
   const handleEditCard = (card: AdminCardsData) => {
-    setEditedCard(card);
-    setIsEditing();
+    router.push(`/admin/cards/edit?id=${card.id}`);
   };
-  const handleDeleteCard = async (id: string) => {
-    await deleteCard(id);
-    toggleSuccessModal();
-    await fetchCardsData();
+  const handleDeleteCard = async () => {
+    try {
+      await fetchCardsData();
+    } catch (error) {
+      console.log(error);
+      toast.error("Упс..., щось пішло не так!");
+    }
   };
   const fetchCardsData = async () => {
     try {
@@ -72,57 +56,24 @@ const AdminCards = () => {
         };
       });
       setCardsData(cardsData);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
+      toast.error("Упс..., щось пішло не так!");
     }
   };
   return (
-    <div className={styles.container}>
+    <div>
       <div className={styles.heading_container}>
-        <h1 className={styles.heading}>
-          <span className={isEditing ? styles.breadcrumb : undefined}>
-            Картки
-          </span>
-          {isEditing && <span className={styles.breadcrumb}>&gt;</span>}
-          {isEditing && <span className={styles.edit}>Додати Картки</span>}
-        </h1>
-        {isEditing && (
-          <span className={styles.btn_back}>
-            <Button
-              outlined
-              onClick={() => {
-                setIsEditing();
-              }}
-            >
-              Назад
-            </Button>
-          </span>
-        )}
-        {!isEditing && (
-          <div>
-            <Image src={pen} alt="edit_img" width={27} height={27} />
-          </div>
-        )}
+        <Breadcrumb items={items} />
+        <Image src={pen} alt="edit_img" width={27} height={27} />
       </div>
       <AdminWrapper size="bigWrapper">
-        {isEditing ? (
-          <AdminCardAdd onSave={handleSave} cardData={editedCard} />
-        ) : (
-          <AdminCardsList
-            cardsData={cardData}
-            handleEditCard={handleEditCard}
-            handleDeleteCard={handleDeleteCard}
-          />
-        )}
+        <AdminCardsList
+          cardsData={cardsData}
+          handleEditCard={handleEditCard}
+          handleDeleteCard={handleDeleteCard}
+        />
       </AdminWrapper>
-      {successModal && (
-        <Modal
-          isModalOpen={successModal}
-          toggleModal={() => toggleSuccessModal()}
-        >
-          <ConfirmationModal message="Картку успішно видалено" />
-        </Modal>
-      )}
     </div>
   );
 };

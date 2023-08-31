@@ -28,10 +28,5 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-}
-
-.backBtn {
-  padding: 8px 16px;
-  font-size: 16px;
-  line-height: 1.5;
+  margin-bottom: 32px;
 }

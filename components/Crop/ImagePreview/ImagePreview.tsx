@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import { Dispatch, FC, SetStateAction } from 'react';
+import Image from "next/image";
+import { Dispatch, FC, SetStateAction } from "react";
 
-import Button from '@/components/Button/Button';
-import closeIcons from '@/public/images/socrat/Open-Question.svg';
+import Button from "@/components/Button/Button";
+import closeIcons from "@/public/images/socrat/Open-Question.svg";
 
-import styles from './ImagePreview.module.css';
+import styles from "./ImagePreview.module.css";
 
 interface ImagePreviewProps {
   img: string | null;
@@ -12,6 +12,7 @@ interface ImagePreviewProps {
   setImgSrc: Dispatch<SetStateAction<string>>;
   imgWidth: number;
   imgHeight: number;
+  toggleSuccessModal: () => void;
 }
 
 const ImagePreview: FC<ImagePreviewProps> = ({
@@ -20,13 +21,15 @@ const ImagePreview: FC<ImagePreviewProps> = ({
   setImgSrc,
   imgHeight,
   imgWidth,
+  toggleSuccessModal
 }) => {
   const handleClose = () => {
     setCroppedImage(null);
   };
 
   const handleAccept = () => {
-    setImgSrc('');
+    toggleSuccessModal();
+    setImgSrc("");
     setCroppedImage(null);
   };
   return (
@@ -45,9 +48,9 @@ const ImagePreview: FC<ImagePreviewProps> = ({
         width={imgWidth}
         height={imgHeight}
         alt="preview photo"
-        src={img || ''}
+        src={img || ""}
       />
-      <div>
+      <div className={styles.btn_container}>
         <Button type="button" onClick={handleAccept}>
           Підтвердити
         </Button>

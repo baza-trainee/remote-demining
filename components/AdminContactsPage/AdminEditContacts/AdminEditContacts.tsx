@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useToggle } from "usehooks-ts";
 import axios from "axios";
 
 import AdminEditContactsInput from "@/components/AdminEditContactsForm/AdminEditContactsInput";
+import AdminWrapper from "@/components/AdminWrapper/AdminWrapper";
+import Breadcrumb, { CrumbItem } from "@/components/Breadcrumb/Breadcrumb";
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
@@ -19,6 +21,11 @@ interface EditableContactsFormProps {
   contactData: ContactsFormValues;
   onSave: () => void;
 }
+
+const items: CrumbItem[] = [
+  { label: "Контакти", path: "/admin/contacts" },
+  { label: "Редагувати", path: "/admin/contacts/edit" },
+];
 
 const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
   contactData,
@@ -40,6 +47,13 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
     },
     resolver: yupResolver(validationSchema) as any,
   });
+
+  useEffect(() => {
+    if (contactData) {
+      setValue("phone", contactData.phone);
+      setValue("email", contactData.email);
+    }
+  }, [contactData]);
 
   const onSubmit = async (data: ContactsFormValues) => {
     try {
@@ -89,38 +103,45 @@ const AdminEditContacts: React.FC<EditableContactsFormProps> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <div className={styles.inputWrapper}>
-        <AdminEditContactsInput
-          label="Телефони"
-          type="tel"
-          editable={true}
-          error={errors.phone}
-          errorMessage={errors.phone?.message}
-          {...register("phone")}
-        />
-
-        <AdminEditContactsInput
-          label="Електронна пошта"
-          type="email"
-          editable={true}
-          error={errors.email}
-          errorMessage={errors.email?.message}
-          {...register("email")}
-        />
+    <div>
+      <div className={styles.heading_container}>
+        <Breadcrumb items={items} />
       </div>
+      <AdminWrapper size="bigWrapper">
+        <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          <div className={styles.inputWrapper}>
+            <AdminEditContactsInput
+              label="Телефони"
+              type="tel"
+              editable={true}
+              error={errors.phone}
+              errorMessage={errors.phone?.message}
+              {...register("phone")}
+            />
 
-      <div className={styles.buttonWrapper}>
-        <Button width="291" height="64" type="submit" disabled={isLoading}>
-          {isLoading ? "Завантажується…" : "Надіслати"}
-        </Button>
-      </div>
-      {isModalOpen && (
-        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
-          <ConfirmationModal message="Контакти були успішно відредаговані!" />
-        </Modal>
-      )}
-    </form>
+            <AdminEditContactsInput
+              label="Електронна пошта"
+              type="email"
+              editable={true}
+              error={errors.email}
+              errorMessage={errors.email?.message}
+              {...register("email")}
+            />
+          </div>
+
+          <div className={styles.buttonWrapper}>
+            <Button width="291" height="64" type="submit" disabled={isLoading}>
+              {isLoading ? "Завантажується…" : "Надіслати"}
+            </Button>
+          </div>
+          {isModalOpen && (
+            <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+              <ConfirmationModal message="Контакти були успішно відредаговані!" />
+            </Modal>
+          )}
+        </form>
+      </AdminWrapper>
+    </div>
   );
 };
 

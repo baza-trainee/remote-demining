@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 import { ContactsFormValues } from "@/components/AdminContactsPage/AdminContactsPage";
 import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
 
-axios.defaults.baseURL = "https://remote-demining.onrender.com";
+axios.defaults.baseURL = "https://remote-demining.onrender.com/";
 
 /*
   |==============================
@@ -29,7 +29,7 @@ export interface ContactsData {
 const getContacts = async (): Promise<ContactsData[] | undefined> => {
   try {
     const response: AxiosResponse<ContactsData[]> = await axios.get(
-      `content/?data={"section":"contacts"}`
+      `content?data={"section":"contacts"}`
     );
     return response.data;
   } catch (error) {
@@ -89,7 +89,7 @@ export interface NewsItem {
 const getNews = async (): Promise<NewsItem[]> => {
   try {
     const { data }: AxiosResponse<NewsItem[]> = await axios.get(
-      `content/?data={"section":"news"}`
+      `content?data={"section":"news"}`
     );
     return data;
   } catch (error) {
@@ -178,7 +178,16 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
 
     await axios.patch(`content/${news.id}`, payload);
   } catch (error) {
-    console.log(error);
+    throw error;
+  }
+};
+
+const getNewsById = async (id: string): Promise<NewsItem> => {
+  try {
+    const { data }: AxiosResponse<NewsItem> = await axios.get(`content/${id}`);
+    return data;
+  } catch (error) {
+    throw error;
   }
 };
 
@@ -187,6 +196,7 @@ export {
   deleteNews,
   getContacts,
   getNews,
+  getNewsById,
   updateContacts,
   updateNews,
 };

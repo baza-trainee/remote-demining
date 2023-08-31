@@ -8,9 +8,11 @@
   overflow: hidden;
   background-color: var(--bg-white-color);
   border-radius: var(--card-border-rad);
+  min-height: 425px;
 }
 
 .image {
+  position: relative;
   display: block;
   object-fit: cover;
   width: 100%;
@@ -36,10 +38,12 @@
 
   .card {
     display: flex;
+    min-height: 240px;
   }
 
   .body {
     padding: var(--card-list-padding-tablet);
+    max-width: 50%;
   }
 }
 
@@ -63,6 +67,7 @@
 
   .card {
     width: 437px;
+    min-height: 485px;
   }
 
   .image {

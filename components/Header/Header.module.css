@@ -57,7 +57,7 @@
     margin-left: 0;
   }
 }
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1279px) {
   .btn_menu {
     display: block;
   }

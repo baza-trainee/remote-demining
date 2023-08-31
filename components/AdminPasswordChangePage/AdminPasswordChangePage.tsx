@@ -1,9 +1,10 @@
 "use client";
 
-import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
+import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useToggle } from "usehooks-ts";
 import axios from "axios";
 
 import passwordChange from "@/lib/admin/passwordChange";
@@ -11,6 +12,7 @@ import passwordChange from "@/lib/admin/passwordChange";
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
 import AutorizationInput from "../AutorizationInput/AutorizationInput";
 import Button from "../Button/Button";
+import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import Modal from "../Modal/Modal";
 
 import validationSchema from "./validation";
@@ -18,14 +20,18 @@ import validationSchema from "./validation";
 import styles from "./AdminPasswordChangePage.module.css";
 
 interface PasswordChangeFormValues {
-  oldPassword: string;
   password: string;
   confirmPassword: string;
 }
 
 const AdminPasswordChangePage: FC = () => {
-  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isSuccessModalOpen, toggleSuccessModalOpen] = useToggle(false);
   const router = useRouter();
+
+  const closeModal = () => {
+    toggleSuccessModalOpen();
+    router.push("/admin/");
+  }
 
   const {
     register,
@@ -56,18 +62,13 @@ const AdminPasswordChangePage: FC = () => {
         }
 
         await passwordChange(password, confirmPassword);
-        router.push("/admin/");
-        setIsSuccessModalOpen(true);
+        await toggleSuccessModalOpen();
       } catch (error) {
         if (axios.isAxiosError(error)) {
           if (
             error.response?.status === 404 ||
             error.response?.status === 401
           ) {
-            setError("oldPassword", {
-              type: "custom",
-              message: "Помилка валідації",
-            });
             setError("password", {
               type: "custom",
               message: "Помилка валідації",
@@ -78,10 +79,6 @@ const AdminPasswordChangePage: FC = () => {
             });
           }
           if (error.response?.status === 500) {
-            setError("oldPassword", {
-              type: "custom",
-              message: "Упс... щось пішло не так",
-            });
             setError("password", {
               type: "custom",
               message: "Упс... щось пішло не так",
@@ -91,7 +88,6 @@ const AdminPasswordChangePage: FC = () => {
               message: "Упс... щось пішло не так",
             });
           }
-          setValue("oldPassword", "");
           setValue("password", "");
           setValue("confirmPassword", "");
         }
@@ -110,13 +106,6 @@ const AdminPasswordChangePage: FC = () => {
           noValidate
         >
           <div className={styles.inputWrapper}>
-            <AutorizationInput
-              label="Введіть старий пароль*"
-              type="password"
-              errorMessage={errors.oldPassword?.message}
-              error={errors.oldPassword}
-              {...register("oldPassword")}
-            />
             <AutorizationInput
               label="Введіть новий пароль*"
               type="password"
@@ -139,13 +128,11 @@ const AdminPasswordChangePage: FC = () => {
       </AdminWrapper>
       {isSuccessModalOpen && (
         <div className={styles.modal}>
-          <Modal
-            toggleModal={() => setIsSuccessModalOpen(false)}
-            isModalOpen={isSuccessModalOpen}
-            isBigModal={true}
-          >
-            <p>Пароль успішно змінено.</p>
-          </Modal>
+          <Modal isModalOpen={isSuccessModalOpen} toggleModal={closeModal}>
+          <ConfirmationModal
+            message="Пароль успішно змінено"
+          />
+        </Modal>
         </div>
       )}
     </section>

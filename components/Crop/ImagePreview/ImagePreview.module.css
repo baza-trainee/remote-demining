@@ -32,3 +32,6 @@
 .img{
     cursor: pointer;
 }
+.btn_container {
+  padding-top: 20px;
+}

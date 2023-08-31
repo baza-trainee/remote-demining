@@ -1,11 +1,13 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import { useToggle } from "usehooks-ts";
 
 import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
+import { deleteCard } from "@/lib/admin/cards";
 import add_icon from "@/public/images/icons/buttons/add.svg";
 
 import { AdminCardsData } from "../AdminCards";
@@ -15,7 +17,7 @@ import styles from "./AdminCardsList.module.css";
 interface AdminCardsListProps {
   cardsData?: AdminCardsData[];
   handleEditCard: ({}: AdminCardsData) => void;
-  handleDeleteCard: (id: string) => void;
+  handleDeleteCard: () => void;
 }
 
 const AdminCardsList: React.FC<AdminCardsListProps> = ({
@@ -24,11 +26,19 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
   handleDeleteCard,
 }) => {
   const [confDelModal, toggleDelModal] = useToggle(false);
+  const [successModal, toggleSuccessModal] = useToggle(false);
   const [cardId, setCardId] = useState("");
-  const deleteCard = () => {
-    handleDeleteCard(cardId);
-    setCardId("");
-    toggleDelModal();
+  const deleteCardHandler = async () => {
+    try {
+      await deleteCard(cardId);
+      await toggleSuccessModal();
+      await setCardId("");
+      await toggleDelModal();
+      await handleDeleteCard();
+    } catch (error) {
+      console.log(error);
+      toast.error("Упс..., щось пішло не так!");
+    }
   };
   return (
     <div className={styles.container}>
@@ -41,14 +51,15 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
                   handleEditCard({ id, img, title, text, img_description });
                 }}
               >
-                <div className={styles.img_container}>
+                {/* <div className={styles.img_container}> */}
                   <Image
                     src={`https://remote-demining.onrender.com/images/${img}`}
                     className={styles.image}
                     alt={img_description || title}
-                    fill
+                    width={310}
+                    height={170}
                   />
-                </div>
+                {/* </div> */}
 
                 <div className={styles.body}>
                   <h3 className={styles.title}>{title}</h3>
@@ -88,12 +99,17 @@ const AdminCardsList: React.FC<AdminCardsListProps> = ({
         <li className={styles.last_card}></li>
       </ul>
       {confDelModal && (
-        <Modal isModalOpen={confDelModal} toggleModal={() => toggleDelModal()}>
+        <Modal isModalOpen={confDelModal} toggleModal={toggleDelModal}>
           <ConfirmationModal
             message="Ви дійсно бажаєте видалити картку?"
-            approveChanges={() => deleteCard()}
+            approveChanges={() => deleteCardHandler()}
             discardChanges={() => toggleDelModal()}
           />
+        </Modal>
+      )}
+      {successModal && (
+        <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
+          <ConfirmationModal message="Картку успішно видалено" />
         </Modal>
       )}
     </div>

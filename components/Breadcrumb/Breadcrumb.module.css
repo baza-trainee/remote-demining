@@ -3,11 +3,14 @@
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 150%;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
+  display: flex;
+  gap: 12px;
 }
 
 .link {
   color: #adabc3;
+  margin-right: 12px;
 }
 
 .separator {

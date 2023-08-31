@@ -1,5 +1,5 @@
-'use client';
-import Image from 'next/image';
+"use client";
+import Image from "next/image";
 import {
   Dispatch,
   FC,
@@ -7,39 +7,45 @@ import {
   useCallback,
   useEffect,
   useState,
-} from 'react';
-import Cropper from 'react-easy-crop';
-import { Area, Point } from 'react-easy-crop/types';
+} from "react";
+import Cropper from "react-easy-crop";
+import { Area, Point } from "react-easy-crop/types";
 
-import Button from '@/components/Button/Button';
-import addImg from '@/public/images/admin/add.svg';
+import Button from "@/components/Button/Button";
+import addImg from "@/public/images/admin/add.svg";
 
-import ImagePreview from './ImagePreview/ImagePreview';
-import { getCroppedImg } from './utils/getCroppedImg';
+import ImagePreview from "./ImagePreview/ImagePreview";
+import { getCroppedImg } from "./utils/getCroppedImg";
 
-import styles from './AddImage.module.css';
+import styles from "./AddImage.module.css";
+import { assert } from "console";
 
 interface AddImageProps {
-  imgWidth: number;
-  imgHeight: number;
+  imgWidth?: number;
+  imgHeight?: number;
   title: string;
   setImage: Dispatch<SetStateAction<string | null>>;
+  toggleSuccessModal: () => void;
+  aspect?: number;
 }
 
 const AddImage: FC<AddImageProps> = ({
-  imgWidth = 432,
-  imgHeight = 240,
-  title = 'Додати зображення',
+  imgWidth,
+  imgHeight,
+  title = "Додати зображення",
   setImage,
+  toggleSuccessModal,
+  aspect,
 }) => {
   const [crop, setCrop] = useState<Point>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
-  const [imgSrc, setImgSrc] = useState('');
+  const [imgSrc, setImgSrc] = useState("");
   const [isDragActive, setIsDragActive] = useState(false);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area>();
   const [croppedImage, setCroppedImage] = useState<string | null>(null);
   const [typeError, setTypeError] = useState(false);
   const [sizeError, setSizeError] = useState(false);
+  const [imgSize, setImgSize] = useState({ width: 0, height: 0 });
 
   const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
     e.preventDefault();
@@ -73,9 +79,9 @@ const AddImage: FC<AddImageProps> = ({
     if (e.target.files && e.target.files.length > 0) {
       const filename = e.target.files[0].name;
 
-      const extension = filename.split('.').pop();
+      const extension = filename.split(".").pop();
 
-      const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'svg'];
+      const allowedExtensions = ["jpg", "jpeg", "png", "webp", "svg"];
 
       //Check file size
       if (e.target.files[0].size > 2 * 1000 * 1024) {
@@ -88,8 +94,8 @@ const AddImage: FC<AddImageProps> = ({
       //Check file type
       if (allowedExtensions.includes(extension!)) {
         const reader = new FileReader();
-        reader.addEventListener('load', () =>
-          setImgSrc(reader.result?.toString() || '')
+        reader.addEventListener("load", () =>
+          setImgSrc(reader.result?.toString() || "")
         );
         reader.readAsDataURL(e.target.files[0]);
       } else {
@@ -103,19 +109,23 @@ const AddImage: FC<AddImageProps> = ({
     setZoom(zoomValue);
   };
 
+  const onMediaLoad = (mediaSize: { width: number; height: number }) => {
+    setImgSize({ width: mediaSize.width, height: mediaSize.height });
+  };
+
   const handleEscKey = useCallback(
     (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setImgSrc('');
+      if (event.key === "Escape") {
+        setImgSrc("");
       }
     },
     [setImgSrc]
   );
 
   useEffect(() => {
-    document.addEventListener('keydown', handleEscKey);
+    document.addEventListener("keydown", handleEscKey);
     return () => {
-      document.removeEventListener('keydown', handleEscKey);
+      document.removeEventListener("keydown", handleEscKey);
     };
   }, [handleEscKey]);
 
@@ -134,7 +144,7 @@ const AddImage: FC<AddImageProps> = ({
   return (
     <>
       <label
-        className={`${styles.wrapper} ${isDragActive ? styles.dragActive : ''}`}
+        className={`${styles.wrapper} ${isDragActive ? styles.dragActive : ""}`}
         onDragEnter={handleDragEnter}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
@@ -162,7 +172,9 @@ const AddImage: FC<AddImageProps> = ({
         </div>
       </label>
       {sizeError && <p className={styles.error}>Файл повинен бути менше 2MB</p>}
-      {typeError && <p className={styles.error}>Помилка валідації</p>}
+      {typeError && (
+        <p className={styles.error}>Допустимий формат PNG,JPEG,SVG,webP</p>
+      )}
       {imgSrc && (
         <>
           <div className={styles.inner}>
@@ -174,7 +186,16 @@ const AddImage: FC<AddImageProps> = ({
               onCropChange={setCrop}
               onCropComplete={onCropComplete}
               onZoomChange={setZoom}
-              cropSize={{ width: imgWidth, height: imgHeight }}
+              onMediaLoaded={onMediaLoad}
+              aspect={aspect}
+              cropSize={
+                imgWidth && imgHeight
+                  ? {
+                      width: imgWidth,
+                      height: imgHeight,
+                    }
+                  : undefined
+              }
             />
           </div>
           <div className={styles.controls}>
@@ -194,11 +215,20 @@ const AddImage: FC<AddImageProps> = ({
           </div>
           {croppedImage && (
             <ImagePreview
-              imgWidth={imgWidth}
-              imgHeight={imgHeight}
+              imgWidth={
+                imgWidth ? imgWidth : imgSize.width > 900 ? 900 : imgSize.width
+              }
+              imgHeight={
+                imgHeight
+                  ? imgHeight
+                  : imgSize.height > 600
+                  ? 600
+                  : imgSize.height
+              }
               img={croppedImage}
               setCroppedImage={setCroppedImage}
               setImgSrc={setImgSrc}
+              toggleSuccessModal={toggleSuccessModal}
             />
           )}
         </>

@@ -1,17 +1,51 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
+import { getContacts } from "@/lib/admin/content";
 import logo from "@/public/images/footer/logo.svg";
 import mail from "@/public/images/footer/mail.svg";
 import map from "@/public/images/footer/map.svg";
 import tel from "@/public/images/footer/tel.svg";
 
+import { ContactsFormValues } from "../AdminContactsPage/AdminContactsPage";
 import Container from "../Container/Container";
 import NavLink from "../NavLink/NavLink";
 
 import styles from "./Footer.module.css";
 
 const Footer = () => {
+  const [contactData, setContactData] = useState<ContactsFormValues>({
+    id: "",
+    email: "",
+    phone: "",
+  });
+
+  useEffect(() => {
+    fetchContactData();
+  }, []);
+
+  const fetchContactData = async () => {
+    try {
+      const data = await getContacts();
+      if (data?.length) {
+        const firstContact = data[0];
+        setContactData({
+          id: firstContact._id,
+          email: firstContact.data.email,
+          phone: firstContact.data.phone,
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching contacts:", error);
+    }
+  };
+
+  const scrollUp = ():void => {
+    document.body.scrollTo(0, 0)
+  }
+
   return (
     <footer className={styles.footer}>
       <Container>
@@ -21,16 +55,16 @@ const Footer = () => {
           </a>
           <ul className={`${styles.menu} ${styles.category}`}>
             <li>
-              <NavLink href="/client">Про нас</NavLink>
+              <NavLink href="/client" scrollUp>Про нас</NavLink>
             </li>
             <li>
-              <NavLink href="/client/activity">Наукова діяльність</NavLink>
+              <NavLink href="/client/activity" scrollUp>Наукова діяльність</NavLink>
             </li>
             <li>
-              <NavLink href="/client/socrat">Дистанційне розмінування</NavLink>
+              <NavLink href="/client/socrat" scrollUp>Дистанційне розмінування</NavLink>
             </li>
             <li>
-              <NavLink href="/client/contacts">Контакти</NavLink>
+              <NavLink href="/client/contacts" scrollUp>Контакти</NavLink>
             </li>
           </ul>
           <ul className={`${styles.web__rights} ${styles.category}`}>
@@ -47,11 +81,13 @@ const Footer = () => {
           <ul className={`${styles.contacts} ${styles.category}`}>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={tel} alt="tel" />{" "}
-              <span>+38 (044) 209 5302</span>
+              <span>
+                {contactData ? contactData.phone : "+38 (044) 209 5302"}
+              </span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={mail} alt="mail" />
-              <span>2021snp@ukr.net</span>
+              <span>{contactData ? contactData.email : "2021snp@ukr.net"}</span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={map} alt="map" />
@@ -60,7 +96,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className={styles.baza}>
-          Розробка Baza Trainee Ukraine 2023 <br className={styles.br} /> Всі
+          Розробка Baza Trainee Ukraine 2023 <br className={styles.br} /> &copy; Всі
           права захищені
         </div>
       </Container>
