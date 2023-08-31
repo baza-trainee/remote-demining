@@ -44,18 +44,17 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
     <div className={styles.container}>
       <ul className={styles.list}>
         {sliderData &&
-          sliderData.map(({ id, img, title, text, img_description }) => (
+          sliderData.map(({ id, img, title, text }) => (
             <li key={id} className={styles.card}>
               <div
                 onClick={() => {
-                  handleEditSlider({ id, img, title, text, img_description });
+                  handleEditSlider({ id, img, title, text });
                 }}
               >
-                {/* <div className={styles.img_container}> */}
                 <Image
                   src={`https://remote-demining.onrender.com/images/${img}`}
                   className={styles.image}
-                  alt={img_description || title}
+                  alt={title}
                   width={966}
                   height={535}
                 />
@@ -87,7 +86,6 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
                 img: "",
                 title: "",
                 text: "",
-                img_description: "",
               });
             }}
           >
@@ -100,7 +98,7 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
       {confDelModal && (
         <Modal isModalOpen={confDelModal} toggleModal={toggleDelModal}>
           <ConfirmationModal
-            message="Ви дійсно бажаєте видалити картку?"
+            message="Ви дійсно бажаєте видалити зображення?"
             approveChanges={() => deleteSliderHandler()}
             discardChanges={() => toggleDelModal()}
           />
@@ -108,7 +106,7 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
       )}
       {successModal && (
         <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
-          <ConfirmationModal message="Картку успішно видалено" />
+          <ConfirmationModal message="Зображення успішно додано" />
         </Modal>
       )}
     </div>

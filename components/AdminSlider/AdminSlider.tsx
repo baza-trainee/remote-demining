@@ -20,7 +20,6 @@ export interface AdminSliderData {
   img?: string;
   title: string;
   text: string;
-  img_description: string;
 }
 
 const items: CrumbItem[] = [{ label: "Слайдер", path: "/admin/slider" }];
@@ -46,14 +45,13 @@ const AdminSlider = () => {
   const fetchSliderData = async () => {
     try {
       const data = await getSliders();
-      console.log("data", data);
+      // console.log("data", data);
       const slidersData = data?.map((slider): AdminSliderData => {
         return {
           id: slider._id,
           img: slider.images[0],
           title: slider.data.title,
           text: slider.data.text,
-          img_description: slider.data.img_description,
         };
       });
       setSliderData(slidersData);

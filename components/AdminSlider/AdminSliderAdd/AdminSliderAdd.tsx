@@ -38,14 +38,13 @@ const AdminSliderAdd: React.FC<AdminSliderAddProps> = ({ sliderData }) => {
   const router = useRouter();
   const closeModal = () => {
     toggleModal();
-    router.push(`/admin/sliders`);
+    router.push(`/admin/slider`);
   };
 
   useEffect(() => {
     // console.log(sliderData);
     if (sliderData) {
       setValue("img", sliderData.img || "");
-      setValue("img_description", sliderData.img_description);
       setValue("text", sliderData.text);
       setValue("title", sliderData.title);
     }
@@ -64,20 +63,19 @@ const AdminSliderAdd: React.FC<AdminSliderAddProps> = ({ sliderData }) => {
     defaultValues: {
       img: sliderData.img || "",
       title: sliderData.title,
-      img_description: sliderData.img_description,
       text: sliderData.text,
     },
     resolver: yupResolver(validationSchema),
   });
 
   const onSubmit: SubmitHandler<AdminSlider> = async (data) => {
+    // console.log(data);
     try {
       sliderData.id !== ""
         ? await updateSlider({
             img: sliderData.img !== data.img ? data.img : undefined,
             id: sliderData.id,
             title: data.title,
-            img_description: data.img_description,
             text: data.text,
           })
         : await createSlider(data);
@@ -118,9 +116,9 @@ const AdminSliderAdd: React.FC<AdminSliderAddProps> = ({ sliderData }) => {
             <AdminEditContactsInput
               placeholder={"Опис зображення"}
               editable
-              {...register("img_description")}
-              error={errors.img_description}
-              errorMessage={errors.img_description?.message}
+              {...register("text")}
+              error={errors.text}
+              errorMessage={errors.text?.message}
             />
           </div>
           <div className={styles.btn_send_container}>
@@ -139,7 +137,7 @@ const AdminSliderAdd: React.FC<AdminSliderAddProps> = ({ sliderData }) => {
           )}
           {successModal && (
             <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
-              <ConfirmationModal message="Зображення успішно додано" />
+              <ConfirmationModal message="Картику для слайдеру успішно додано" />
             </Modal>
           )}
         </form>

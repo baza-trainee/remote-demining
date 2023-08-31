@@ -23,16 +23,14 @@ const createSlider = async (slider: AdminSlider): Promise<void> => {
     await api.post("content", {
       images: slider.img,
       data: {
-        section: "sliders",
+        section: "slider",
         title: slider.title,
         text: slider.text,
-        img_description: slider.img_description,
       },
       dataSchema: {
         section: "string",
         title: "string",
         text: "string",
-        img_description: "string",
       },
     });
   } catch (error) {
@@ -56,16 +54,14 @@ const updateSlider = async (slider: AdminSliderData): Promise<void> => {
     await api.patch(`content/${slider.id}`, {
       images: slider.img ? [slider.img] : undefined,
       data: {
-        section: "sliders",
+        section: "slider",
         title: slider.title,
         text: slider.text,
-        img_description: slider.img_description,
       },
       dataSchema: {
         section: "string",
         title: "string",
         text: "string",
-        img_description: "string",
       },
     });
   } catch (error) {

@@ -17,12 +17,10 @@ function SlidersAddPage() {
     img: "",
     title: "",
     text: "",
-    img_description: "",
   });
 
   useEffect(() => {
     fetchSliderData();
-    console.log(editedSlider);
   }, [id]);
 
   const fetchSliderData = async () => {
@@ -34,7 +32,6 @@ function SlidersAddPage() {
           img: data.images[0],
           title: data.data.title,
           text: data.data.text,
-          img_description: data.data.img_description,
         });
       } catch (e) {
         toast.error("Упс..., щось пішло не так!");
