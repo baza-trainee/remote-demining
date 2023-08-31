@@ -1,5 +1,19 @@
 .accordion_item {
   padding-bottom: 2rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .accordion_item {
+    max-width: 522px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .accordion_item {
+    max-width: 1013px;
+  }
 }
 
 .button {
@@ -103,7 +117,7 @@
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1279px) {
   .question {
     max-width: 300px;
   }
