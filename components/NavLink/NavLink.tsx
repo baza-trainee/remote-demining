@@ -11,6 +11,7 @@ interface NavLinkPropsType {
   isMoreInfo?: boolean;
   target?: string;
   rel?: string;
+  scrollUp?: boolean;
 }
 
 const NavLink: React.FC<NavLinkPropsType> = ({
@@ -20,14 +21,19 @@ const NavLink: React.FC<NavLinkPropsType> = ({
   isButton,
   isFullWidth,
   isMoreInfo,
+  scrollUp,
   ...rest
 }: NavLinkPropsType) => {
   const styledLink = `${styles.link} ${isActive && styles.active} ${
     isButton && styles.link_btn
   } ${isFullWidth && styles.fullWidth} ${isMoreInfo && styles.moreInfo_btn}`;
 
+  const scrollUpFunc = ():void => {
+    document.body.scrollTo(0, 0)
+  }
+
   return (
-    <Link className={styledLink} href={href} {...rest}>
+    <Link className={styledLink} href={href} {...rest} onClick={scrollUp ? scrollUpFunc : undefined} >
       {children}
     </Link>
   );
