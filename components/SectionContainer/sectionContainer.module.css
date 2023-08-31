@@ -139,7 +139,7 @@
   }
 
   .title:not(.centered) {
-    min-width: 376px;
+    min-width: 400px;
     max-width: 405px;
   }
 
