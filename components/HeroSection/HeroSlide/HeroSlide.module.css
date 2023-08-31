@@ -22,15 +22,21 @@
   align-self: center;
 }
 
-.contentImage {
-  object-fit: contain;
-  width: 100%;
-  height: auto;
+.imageWrapper {
+  position: relative;
+  width: 673px;
+  height: 324px;
   object-position: left;
   grid-row: 1 / 4;
   grid-column: 2 / 3;
   align-self: center;
 }
+
+.contentImage {
+  object-fit: contain;
+  height: 324px;
+}
+
 .slideBtn {
   padding: 14px 40px;
 }
@@ -55,7 +61,7 @@
     row-gap: 32px;
   }
 
-  .contentImage {
+  .imageWrapper {
     grid-row: auto;
     grid-column: auto;
   }
@@ -83,4 +89,18 @@
 
 .fullWidth {
   width: 100%;
+}
+
+@media (min-width: 768px) and (max-width: 1279.98px) {
+  .imageWrapper {
+    width: 304px;
+    height: 146px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .imageWrapper {
+    width: 288px;
+    height: 137px;
+  }
 }
