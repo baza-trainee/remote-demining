@@ -11,11 +11,7 @@
   flex-direction: column;
   gap: 24px;
 }
-@media (max-width: 767px) {
-  .imgDescription {
-    padding: 0 50px;
-  }
-}
+
 @media (max-width: 480px) {
   .imgDescription {
     width: 340px;

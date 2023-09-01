@@ -1,9 +1,12 @@
-import axios, { AxiosResponse } from "axios";
+import { Dispatch, SetStateAction } from 'react';
+import axios, { AxiosResponse } from 'axios';
 
-import { ContactsFormValues } from "@/components/AdminContactsPage/AdminContactsPage";
-import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
+import { ContactsFormValues } from '@/components/AdminContactsPage/AdminContactsPage';
+import { AdminNewsValues } from '@/components/AdminNewsPage/AdminNewsPage';
 
-axios.defaults.baseURL = "https://remote-demining.onrender.com/";
+import api from '../api/baseQuery';
+
+axios.defaults.baseURL = 'https://remote-demining.onrender.com/';
 
 /*
   |==============================
@@ -42,14 +45,14 @@ const updateContacts = async (contact: ContactsFormValues): Promise<void> => {
     await axios.patch(`content/${contact.id}`, {
       images: [],
       data: {
-        section: "contacts",
+        section: 'contacts',
         email: contact.email,
         phone: contact.phone,
       },
       dataSchema: {
-        section: "string",
-        email: "string",
-        phone: "string",
+        section: 'string',
+        email: 'string',
+        phone: 'string',
       },
     });
   } catch (error) {
@@ -99,10 +102,10 @@ const getNews = async (): Promise<NewsItem[]> => {
 
 const createNews = async (news: AdminNewsValues): Promise<void> => {
   try {
-    await axios.post("content", {
+    await axios.post('content', {
       images: news.image,
       data: {
-        section: "news",
+        section: 'news',
         id: news.id,
         title: news.title,
         img_description: news.img_description,
@@ -111,13 +114,13 @@ const createNews = async (news: AdminNewsValues): Promise<void> => {
         date: news.date,
       },
       dataSchema: {
-        section: "string",
-        id: "string",
-        title: "string",
-        img_description: "string",
-        text: "string",
-        link: "string",
-        date: "string",
+        section: 'string',
+        id: 'string',
+        title: 'string',
+        img_description: 'string',
+        text: 'string',
+        link: 'string',
+        date: 'string',
       },
     });
   } catch (error) {
@@ -155,7 +158,7 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
       images?: string[];
     } = {
       data: {
-        section: "news",
+        section: 'news',
         title: news.title,
         img_description: news.img_description,
         text: news.text,
@@ -163,12 +166,12 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
         date: news.date,
       },
       dataSchema: {
-        section: "string",
-        title: "string",
-        img_description: "string",
-        text: "string",
-        link: "string",
-        date: "string",
+        section: 'string',
+        title: 'string',
+        img_description: 'string',
+        text: 'string',
+        link: 'string',
+        date: 'string',
       },
     };
 
@@ -199,4 +202,32 @@ export {
   getNewsById,
   updateContacts,
   updateNews,
+};
+
+/*
+  |==============================
+  | Logos
+  |==============================
+*/
+interface Data {
+  section: string;
+  img_description: string;
+}
+
+export interface LogosInDTO {
+  _id: string;
+  images: string[];
+  data: Data;
+}
+
+export const getLogos = async (): Promise<LogosInDTO[]> => {
+  try {
+    const { data } = await api.get(
+      '/content?data={%22section%22:%22logosImg%22}'
+    );
+    return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    throw error;
+  }
 };

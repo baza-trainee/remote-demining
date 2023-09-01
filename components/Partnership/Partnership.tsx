@@ -1,18 +1,37 @@
-"use client";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+'use client';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
-import { useMyMedia } from "@/hooks/useMedia";
+import { useMyMedia } from '@/hooks/useMedia';
+import { getLogos, LogosInDTO } from '@/lib/admin/content';
 
-import SectionContainer from "../SectionContainer/SectionContainer";
-import Slider from "../Slider/Slider";
+import SectionContainer from '../SectionContainer/SectionContainer';
+import Slider from '../Slider/Slider';
 
-import partnersData, { Partner } from "./partnersData";
-
-import styles from "./Parnership.module.css";
+import styles from './Parnership.module.css';
 
 const Partnership = () => {
   const [perPage, setPerPage] = useState<number>(0);
+  const [logos, setLogos] = useState<LogosInDTO[]>([]);
+
+  const getData = async () => {
+    try {
+      const logos = await getLogos();
+      setLogos(logos);
+    } catch (error) {
+      console.error(error);
+      toast.error('Упс..., щось пішло не так!', {
+        position: 'top-right',
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+    }
+  };
+
   const {
     isSMobile,
     isMobile,
@@ -34,6 +53,7 @@ const Partnership = () => {
     isMTablet && setPerPage(3.3);
     isSDesktop && setPerPage(4);
     isDesktop && setPerPage(5.5);
+    getData();
   }, [
     isSMobile,
     isMobile,
@@ -55,9 +75,14 @@ const Partnership = () => {
     >
       <Slider
         slidesPerPage={perPage}
-        slides={partnersData.map((el: Partner) => (
-          <div key={el.id}>
-            <Image src={el.img} alt="partner" width={213} height={140} />
+        slides={logos.map((el) => (
+          <div key={el._id}>
+            <Image
+              src={`https://remote-demining.onrender.com/images/${el.images}`}
+              alt={el.data.img_description}
+              width={213}
+              height={140}
+            />
           </div>
         ))}
         infinite={false}

@@ -10,7 +10,6 @@
   font-weight: 600;
   line-height: normal;
   padding-left: 8px;
-  width: 100%;
 }
 
 .desc {
@@ -129,6 +128,8 @@
   }
 
   .container.hasBgImg {
+    margin: 0 auto;
+    max-width: 1440px;
     padding-top: var(--section-padding-bgImg);
     padding-bottom: var(--section-padding-bgImg);
   }
@@ -138,8 +139,8 @@
   }
 
   .title:not(.centered) {
-    min-width: 376px;
-    max-width: 395px;
+    min-width: 400px;
+    max-width: 405px;
   }
 
   .title.excludeMaxWidthTitle {

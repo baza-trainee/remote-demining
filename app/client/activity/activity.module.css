@@ -1,5 +1,9 @@
+.custom_padding_top {
+  padding-top: 70px !important;
+}
+
 @media (min-width: 1280px) {
   .custom_padding_top {
-    padding-top: 80px;
+    padding-top: 80px !important;
   }
 }

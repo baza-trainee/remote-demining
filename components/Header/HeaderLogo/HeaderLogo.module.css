@@ -18,7 +18,7 @@
 
 /* Logo text */
 .logo::before {
-  content: "НАН України";
+  content: "НAHУ";
 }
 .sub_logo::before {
   content: "ДП НДЦ «Георесурс»";
@@ -30,8 +30,8 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (min-width: 768px) {
   .logo::before {
-    content: "НAHУ";
+    content: "НАН України";
   }
 }
