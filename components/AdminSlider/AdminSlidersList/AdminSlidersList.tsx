@@ -51,32 +51,32 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
                   handleEditSlider({ id, img, title, text });
                 }}
               >
-                <Image
-                  src={`https://remote-demining.onrender.com/images/${img}`}
-                  className={styles.image}
-                  alt={title}
-                  width={966}
-                  height={535}
-                />
-
-                <div className={styles.body}>
-                  <h3 className={styles.title}>{title}</h3>
-                  <p className={styles.text}>{text}</p>
+                <div
+                  className={styles["slide"]}
+                  style={{
+                    background: `lightgray url(https://remote-demining.onrender.com/images/${img}) left / cover`,
+                  }}
+                >
+                  <h2 className={styles["title"]}>{title}</h2>
+                  <p className={styles["caption"]}>{text}</p>
+                  <Button className={styles.slideBtn}>Підтримати</Button>
                 </div>
-              </div>
-              <div
-                className={styles.btn_container}
-                onClick={() => {
-                  setSliderId(id);
-                  toggleDelModal();
-                }}
-              >
-                <Button isFullWidth outlined>
-                  Видалити
-                </Button>
+
+                <div
+                  className={styles.btn_container}
+                  onClick={() => {
+                    setSliderId(id);
+                    toggleDelModal();
+                  }}
+                >
+                  <Button isFullWidth outlined>
+                    Видалити
+                  </Button>
+                </div>
               </div>
             </li>
           ))}
+
         <li className={styles.add_card}>
           <div
             className={styles.add_btn}

@@ -18,6 +18,7 @@
   width: 966px;
   height: 535px;
   cursor: pointer;
+  margin-bottom: 133px;
 }
 
 .image {
@@ -53,9 +54,14 @@
   color: var(--section-title-color);
 }
 .btn_container {
-  padding-top: 10px;
   z-index: 5;
   background-color: #fff;
+  height: 101px;
+}
+
+.btn_container > button {
+  height: 101px;
+  border-radius: 0px;
 }
 
 .add_card {
@@ -114,4 +120,112 @@
   height: 535px;
   background-color: #d9d9d9;
   border-radius: 20px;
+}
+
+.slide {
+  width: 966px;
+  height: 535px; 
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position: left;
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 4fr 5fr;
+  align-content: center;
+  padding: 40px var(--hero-horizontal-padding);
+  color: var(--hero-text-color);
+  gap: 16px 40px;
+}
+
+.slide > *:not(.contentImage) {
+  justify-self: start;
+}
+
+.info {
+  align-self: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 288px;
+  height: 137px;
+  object-position: left;
+  grid-row: 1 / 4;
+  grid-column: 2 / 3;
+  align-self: center;
+}
+
+.contentImage {
+  object-fit: contain;
+}
+
+.slideBtn {
+  padding: 14px 40px;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.caption {
+  margin-bottom: unset;
+}
+
+@media screen and (max-width: 767.98px) {
+  .slide {
+    height: var(--hero-height-tablet);
+    padding: 40px 16px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .slide {
+    grid-template: 1fr / 1fr 2fr;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .slide {
+    height: var(--hero-height-mobile);
+    grid-template: repeat(4, auto) / 1fr;
+    align-content: start;
+    row-gap: 32px;
+  }
+
+  .imageWrapper {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .slideBtn {
+    grid-row: 4 / 5;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .caption {
+    margin-bottom: 38px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279.98px) {
+  .imageWrapper {
+    width: 304px;
+    height: 146px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .imageWrapper {
+    width: 673px;
+    height: 324px;
+  }
 }
