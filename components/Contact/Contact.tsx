@@ -1,11 +1,9 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import bgContainer from "@/public/images/contact/bg.jpg";
+import ContactForm from '../ContactForm/ContactForm';
+import SectionContainer from '../SectionContainer/SectionContainer';
 
-import ContactForm from "../ContactForm/ContactForm";
-import SectionContainer from "../SectionContainer/SectionContainer";
-
-import styles from "./Contact.module.css";
+import styles from './Contact.module.css';
 
 interface ContactProps {
   backgroundImage: string;

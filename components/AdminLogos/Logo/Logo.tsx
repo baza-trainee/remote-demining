@@ -29,13 +29,13 @@ const Logo: FC<LogoProps> = ({
   return (
     <div className={styles.wrapper}>
       <Image
-        width={173}
-        height={133}
+        width={213}
+        height={140}
         src={`https://remote-demining.onrender.com/images/${img}`}
         alt={description}
       />
       <Button
-        width="173"
+        width="213"
         height="40"
         type="submit"
         outlined
