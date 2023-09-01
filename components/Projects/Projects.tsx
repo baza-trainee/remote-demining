@@ -56,6 +56,7 @@ const Projects = () => {
                   src={`https://remote-demining.onrender.com/images/${img}`}
                   fill
                   alt={title}
+                  sizes="437px"
                 />
               </div>
               <div className={styles.body}>
@@ -75,6 +76,8 @@ const Projects = () => {
                     src={`https://remote-demining.onrender.com/images/${img}`}
                     fill
                     alt={title}
+                    sizes="(min-width: 768px) 340px,
+                    100vw"
                   />
                 </div>
                 <div className={styles.body}>

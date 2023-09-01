@@ -43,6 +43,9 @@ const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
               quality={100}
               priority
               fill
+              sizes="(min-width: 1280px) 673px, 
+              (min-width: 768px) 304px,
+              288px"
             />
           </div>
         )}

@@ -10,8 +10,13 @@ import styles from "./HeroSocrat.module.css";
 
 const HeroSocrat = () => {
   return (
-    <div className={styles.socrat_bg} >
-      <Image src={socrat_bg} alt="socrat_bg" fill objectFit="cover" objectPosition="center"/>
+    <div className={styles.socrat_bg}>
+      <Image
+        src={socrat_bg}
+        alt="socrat_bg"
+        fill
+        style={{ objectFit: "cover" }}
+      />
       <Container>
         <div className={styles.container}>
           <h2 className={styles.title}>Проєкт SOCRAT</h2>
