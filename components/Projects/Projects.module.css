@@ -14,7 +14,6 @@
 .image {
   position: relative;
   display: block;
-  object-fit: cover;
   width: 100%;
   height: var(--card-img-height-mobile);
 }

@@ -1,7 +1,9 @@
-import { FC } from "react";
-import styles from "./ActivityListItem.module.css";
-import { ActivityListItemData } from "../activityData";
 import Image from "next/image";
+import { FC } from "react";
+
+import { ActivityListItemData } from "../activityData";
+
+import styles from "./ActivityListItem.module.css";
 
 const ActivityListItem: FC<{ data: ActivityListItemData }> = ({
   data: { image, title, description },
