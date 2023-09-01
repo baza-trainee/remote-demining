@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "remote-demining.onrender.com",
+        port: "",
+        pathname: "/images/**",
+      },
+    ],
   },
   env: {
     SERVICE_ID: "service_7ll2pvb",

@@ -8,7 +8,7 @@ export const cardsData = teamData.map(
   ({ id, img, projectPosition, phone, email, name }) => {
     return (
       <div key={id} className={styles.card_body}>
-        <Card img={img}>
+        <Card img={img} alt="A person's portrait">
           {
             <div className={styles.card_text}>
               <div className={styles.card_head}>
@@ -16,8 +16,12 @@ export const cardsData = teamData.map(
                 <p>{projectPosition}</p>
               </div>
               <div className={styles.card_contacts}>
-                <div><span>Телефон:</span><a href={`tel:${phone}`}>{phone}</a></div>
-                <span>Пошта:</span><a href={`mailto:${email}`}>{email}</a>
+                <div>
+                  <span>Телефон:</span>
+                  <a href={`tel:${phone}`}>{phone}</a>
+                </div>
+                <span>Пошта:</span>
+                <a href={`mailto:${email}`}>{email}</a>
               </div>
             </div>
           }

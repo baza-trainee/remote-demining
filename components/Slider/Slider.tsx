@@ -43,9 +43,16 @@ const Slider: React.FC<SliderProps> = ({
     ),
     arrows: true,
     appendDots: (dots) => (
-      <ul style={{ bottom: dotsPlacement === "outer" ? -16 : 16 }}>{dots}</ul>
+      <ul
+        style={{ bottom: dotsPlacement === "outer" ? -16 : 16 }}
+        id="controldots"
+      >
+        {dots}
+      </ul>
     ),
-    customPaging: (i) => <button></button>,
+    customPaging: (i) => (
+      <button aria-labelledby="controldots" aria-label="controldots"></button>
+    ),
     dotsClass: styles["dots"],
     infinite,
     dots,

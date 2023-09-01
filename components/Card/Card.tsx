@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import styles from "./Card.module.css";
 
 type BackgroundColors = "primary" | "light-blue";
@@ -7,17 +9,21 @@ interface CardProps {
   alt?: string;
   background?: BackgroundColors;
   children?: React.ReactNode;
+  imageContainerStyles?: string;
 }
 
 const Card: React.FC<CardProps> = ({
   img,
-  alt,
+  alt = "",
   background = "primary",
   children,
+  imageContainerStyles,
 }) => {
   return (
     <div className={`${styles.card} ${styles[background]}`}>
-      <img className={styles.image} src={img} alt={alt} />
+      <div className={`${imageContainerStyles || ""} ${styles.imageContainer}`}>
+        <Image className={styles.image} src={img} alt={alt} fill />
+      </div>
       <div className={styles.body}>{children}</div>
     </div>
   );

@@ -1,11 +1,16 @@
 .card_body {
   max-width: 328px;
 }
+
 .card_text {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 48px;
+}
+
+.card_head h2 {
+  margin-bottom: 16px;
 }
 
 .card_contacts span {
@@ -19,7 +24,7 @@
   text-decoration: underline;
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1279.98px) {
   .card_contacts a {
     display: block;
     margin-bottom: 16px;

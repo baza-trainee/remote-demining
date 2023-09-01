@@ -11,8 +11,8 @@ import { HeroData } from "../heroData";
 import styles from "./HeroSlide.module.css";
 
 interface HeroSlideProps {
-  item: HeroData,
-  toggleModal: () => void,
+  item: HeroData;
+  toggleModal: () => void;
 }
 
 const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
@@ -35,13 +35,16 @@ const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
           Підтримати
         </Button>
         {item.contentImage && (
-          <Image
-            src={item.contentImage}
-            alt={item.title}
-            className={styles["contentImage"]}
-            width={0}
-            height={0}
-          />
+          <div className={styles["imageWrapper"]}>
+            <Image
+              src={item.contentImage}
+              alt={item.title}
+              className={styles["contentImage"]}
+              quality={100}
+              priority
+              fill
+            />
+          </div>
         )}
       </div>
     </div>
