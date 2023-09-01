@@ -30,12 +30,6 @@ const Header = () => {
     !pathname.includes("admin") ? styles.fixed : ""
   }`;
 
-  // useEffect(() => {
-  //   isOpenMenu
-  //     ? (document.body.style.overflowY = "hidden")
-  //     : (document.body.style.overflowY = "visible");
-  // }, [isOpenMenu]);
-
   return (
     <header className={headerStyle}>
       <Container>

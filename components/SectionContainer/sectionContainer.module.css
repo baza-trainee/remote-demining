@@ -40,8 +40,8 @@
   text-align: center;
 }
 
-/* Mobile styles (320px to 767px) */
-@media (min-width: 320px) {
+/* Mobile styles (to 767px) */
+@media (max-width: 767.98px) {
   .container {
     padding-top: var(--section-padding-main-mobile);
     padding-bottom: var(--section-padding-main-mobile);

@@ -24,8 +24,8 @@
 
 .imageWrapper {
   position: relative;
-  width: 673px;
-  height: 324px;
+  width: 288px;
+  height: 137px;
   object-position: left;
   grid-row: 1 / 4;
   grid-column: 2 / 3;
@@ -34,16 +34,30 @@
 
 .contentImage {
   object-fit: contain;
-  height: 324px;
 }
 
 .slideBtn {
   padding: 14px 40px;
 }
 
-@media screen and (max-width: 767px) {
+.fullWidth {
+  width: 100%;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.caption {
+  margin-bottom: unset;
+}
+
+@media screen and (max-width: 767.98px) {
   .slide {
     height: var(--hero-height-tablet);
+    padding: 40px 16px;
   }
 }
 
@@ -71,24 +85,10 @@
   }
 }
 
-.title {
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.caption {
-  margin-bottom: unset;
-}
-
 @media screen and (max-width: 767px) {
   .caption {
     margin-bottom: 38px;
   }
-}
-
-.fullWidth {
-  width: 100%;
 }
 
 @media (min-width: 768px) and (max-width: 1279.98px) {
@@ -100,7 +100,7 @@
 
 @media (min-width: 1280px) {
   .imageWrapper {
-    width: 288px;
-    height: 137px;
+    width: 673px;
+    height: 324px;
   }
 }

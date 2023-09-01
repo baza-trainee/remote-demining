@@ -28,6 +28,7 @@ const Arrow: React.FC<ArrowProps> = ({
       className={styles[arrowType === "next" ? "arrow-next" : "arrow-prev"]}
       disabled={isDisabled}
       aria-disabled={isDisabled}
+      aria-label={arrowType === "next" ? "arrow-next" : "arrow-prev"}
       type="button"
       {...props}
     >
