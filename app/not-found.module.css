@@ -1,15 +1,6 @@
 .wraper {
   margin-top: 140px;
   margin-bottom: 80px;
-
-  @media (min-width: 768px) {
-    margin-top: 180px;
-    margin-bottom: 80px;
-  }
-  @media (min-width: 1280px) {
-    margin-top: 180px;
-    margin-bottom: 120px;
-  }
 }
 
 .content {
@@ -19,4 +10,35 @@
   justify-content: center;
   align-items: center;
   gap: 42px;
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text p:first-child {
+  margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+  .wraper {
+    margin-top: 180px;
+    margin-bottom: 80px;
+  }
+
+  .content {
+    gap: 60px;
+  }
+
+  .text {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1280px) {
+  .wraper {
+    margin-top: 180px;
+    margin-bottom: 120px;
+  }
 }

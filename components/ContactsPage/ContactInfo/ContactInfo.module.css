@@ -3,9 +3,7 @@
   width: 100%;
   max-width: 557px;
 
-  height: 100%;
-  min-height: 768px;
-  max-height: 993px;
+  height: 810px;
 }
 
 .img {
@@ -66,6 +64,10 @@
 
 /* Tablet styles (768px and above) */
 @media (min-width: 768px) {
+  .wrapper {
+    height: 993px;
+  }
+
   .content {
     padding: 48px 40px;
   }
@@ -77,6 +79,10 @@
 
 /* Desktop styles (1280px and above) */
 @media (min-width: 1280px) {
+  .wrapper {
+    height: 768px;
+  }
+
   .content {
     padding: 40px;
   }

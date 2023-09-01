@@ -13,7 +13,10 @@ export default function NotFound() {
       <div className={styles.wraper}>
         <Drone />
         <div className={styles.content}>
-          <p>Вибачте! Сторінка загубилася</p>
+          <div className={styles.text}>
+            <p>Шкода, але сторінку не знайдено. </p>
+            <p>Можливо, її перенесли або видалили.</p>
+          </div>
           <NavLink isButton href="/">
             Повернутися на Головну
           </NavLink>
