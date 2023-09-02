@@ -107,7 +107,7 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
       )}
       {successModal && (
         <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
-          <ConfirmationModal message="Зображення успішно додано" />
+          <ConfirmationModal message="Слайд успішно видалено" />
         </Modal>
       )}
     </div>
