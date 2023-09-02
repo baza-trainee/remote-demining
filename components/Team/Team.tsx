@@ -9,6 +9,8 @@ import Slider from "../Slider/Slider";
 
 import { cardsData } from "./cardsData";
 
+import styles from "./Team.module.css";
+
 const Team: React.FC = () => {
   const [perPage, setPerPage] = useState<number>(0);
 
@@ -52,6 +54,8 @@ const Team: React.FC = () => {
       titleColor="var(--task-text-color)"
       bgImg={teamBg.src}
       excludeMaxWidthTitle={true}
+      className={styles.section}
+      hasNoRightPadding
     >
       <Slider slides={cardsData} slidesPerPage={perPage} />
     </SectionContainer>

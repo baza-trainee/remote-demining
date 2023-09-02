@@ -1,5 +1,6 @@
 .wrapper {
   padding: 2.5rem 0;
+  min-height: 888px;
 }
 
 .inner {
@@ -28,6 +29,10 @@
 }
 
 @media (min-width: 768px) {
+  .wrapper {
+    min-height: 820px;
+  }
+
   .title {
     width: 14.25rem;
     font-size: 1.5rem;
@@ -41,6 +46,9 @@
 }
 
 @media (min-width: 1280px) {
+  .wrapper {
+    min-height: 800px;
+  }
   .title {
     width: 38.125rem;
     font-size: 2rem;
