@@ -57,22 +57,23 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
                     background: `lightgray url(https://remote-demining.onrender.com/images/${img}) left / cover`,
                   }}
                 >
-                  <h2 className={styles["title"]}>{title}</h2>
-                  <p className={styles["caption"]}>{text}</p>
-                  <Button className={styles.slideBtn}>Підтримати</Button>
+                  <div className={styles.text_container}>
+                    <h2 className={styles["title"]}>{title}</h2>
+                    <p className={styles["caption"]}>{text}</p>
+                    <Button className={styles.slideBtn}>Підтримати</Button>
+                  </div>
                 </div>
-
-                <div
-                  className={styles.btn_container}
-                  onClick={() => {
-                    setSliderId(id);
-                    toggleDelModal();
-                  }}
-                >
-                  <Button isFullWidth outlined>
-                    Видалити
-                  </Button>
-                </div>
+              </div>
+              <div
+                className={styles.btn_container}
+                onClick={() => {
+                  setSliderId(id);
+                  toggleDelModal();
+                }}
+              >
+                <Button isFullWidth outlined>
+                  Видалити
+                </Button>
               </div>
             </li>
           ))}

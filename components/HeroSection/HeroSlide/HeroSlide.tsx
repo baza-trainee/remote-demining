@@ -1,17 +1,15 @@
 "use client";
 
-import Image from "next/image";
 import { FC } from "react";
 import { useWindowSize } from "usehooks-ts";
 
+import { AdminSliderData } from "@/components/AdminSlider/AdminSlider";
 import Button from "@/components/Button/Button";
-
-import { HeroData } from "../heroData";
 
 import styles from "./HeroSlide.module.css";
 
 interface HeroSlideProps {
-  item: HeroData;
+  item: AdminSliderData;
   toggleModal: () => void;
 }
 
@@ -22,12 +20,12 @@ const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
       <div
         className={styles["slide"]}
         style={{
-          background: `lightgray url(${item.backgroundImage})`,
+          background: `lightgray url(https://remote-demining.onrender.com/images/${item.img})`,
         }}
       >
         <div className={styles.text_container}>
           <h2 className={styles["title"]}>{item.title}</h2>
-          <p className={styles["caption"]}>{item.caption}</p>
+          <p className={styles["caption"]}>{item.text}</p>
           <Button
             className={styles.slideBtn}
             onClick={toggleModal}
@@ -36,14 +34,6 @@ const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
             Підтримати
           </Button>
         </div>
-        {/* <div className={styles.bg_container}>
-          <Image
-            src={item.backgroundImage}
-            alt="socrat_bg"
-            fill
-            className={styles.bg}
-          />
-        </div> */}
       </div>
     </div>
   );

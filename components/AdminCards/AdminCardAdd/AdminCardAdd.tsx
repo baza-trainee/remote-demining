@@ -102,7 +102,7 @@ const AdminCardAdd: React.FC<AdminCardAddProps> = ({ cardData }) => {
             setImage={setCroppedImg}
             title={"Додати зображення"}
             toggleSuccessModal={toggleSuccessModal}
-            aspect={31 / 17}
+            aspect={16 / 9}
           />
           {errors.img?.message && (
             <span className={styles.error_message}>{errors.img.message}</span>
