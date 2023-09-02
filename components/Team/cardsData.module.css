@@ -1,5 +1,6 @@
 .card_body {
   max-width: 328px;
+  overflow: hidden;
 }
 
 .card_text {

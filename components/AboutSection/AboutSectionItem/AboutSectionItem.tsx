@@ -17,7 +17,6 @@ const AboutSectionItem: React.FC<AboutSectionItemProps> = ({ img, text }) => {
             src={img}
             alt="About us"
             fill
-            objectFit="cover"
             sizes="(min-width: 1280px) 588px,
             (min-width: 768px) 340px,
             100vw"
