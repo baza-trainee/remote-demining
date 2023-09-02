@@ -133,7 +133,7 @@
   padding: 40px 16px 0 16px;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 397px) {
   .text_container {
     justify-content: center;
     max-width: 300px;
