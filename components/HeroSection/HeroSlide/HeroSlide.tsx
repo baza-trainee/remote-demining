@@ -19,8 +19,13 @@ const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
   const { width } = useWindowSize();
   return (
     <div>
-      <div className={styles["slide"]}>
-      <div className={styles.text_container}>
+      <div
+        className={styles["slide"]}
+        style={{
+          background: `lightgray url(${item.backgroundImage})`,
+        }}
+      >
+        <div className={styles.text_container}>
           <h2 className={styles["title"]}>{item.title}</h2>
           <p className={styles["caption"]}>{item.caption}</p>
           <Button
@@ -31,14 +36,14 @@ const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
             Підтримати
           </Button>
         </div>
-        <div className={styles.bg_container}>
+        {/* <div className={styles.bg_container}>
           <Image
             src={item.backgroundImage}
             alt="socrat_bg"
             fill
             className={styles.bg}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );

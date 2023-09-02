@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 
-import heroBg1 from "@/public/images/hero/Group 39525.png";
+import heroBg1 from "@/public/images/hero/Group_39525.png";
 import heroBg2 from "@/public/images/hero/slide_2.jpg"
 import heroBg3 from "@/public/images/hero/slide_3.jpg"
 import socrat from "@/public/images/socrat.png";
