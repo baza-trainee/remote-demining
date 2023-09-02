@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.download_container {
+  display: inline-flex;
+  padding: 17px 24px 16px 24px;
+  justify-content: space-between;
+  border-radius: 5px;
+  background: var(--bg-primary-color);
+  width: 420px;
+  height: 57px;
+}
+
+.download_container p {
+  color: var(--admin-breadcrumb-color);
+  line-height: normal;
+}
+
+.edit_delete_container {
+  display: flex;
+  justify-content: space-between;
+  gap: 264px;
+}
+
+.add_container {
+  display: flex;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.add_text {
+  color: #010413;
+  line-height: 1.5;
+}
+
+.delete_container {
+  display: flex;
+  gap: 16px;
+}
+
+.pencil {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

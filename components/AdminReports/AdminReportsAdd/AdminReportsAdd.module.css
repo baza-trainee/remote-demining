@@ -1,0 +1,87 @@
+.heading_container {
+  margin-bottom: 32px;
+}
+
+.delete_container {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  margin-bottom: 33px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 60.375rem;
+  height: 7.5rem;
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-image: repeating-linear-gradient(
+      -36deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      54deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      144deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    ),
+    repeating-linear-gradient(
+      234deg,
+      #c7c7c7,
+      #c7c7c7 16px,
+      transparent 16px,
+      transparent 26px,
+      #c7c7c7 26px
+    );
+  background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+  background-position: 0 0, 0 0, 100% 0, 0 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+.input {
+  display: none;
+}
+
+.icon {
+  vertical-align: middle;
+  margin-right: 0.75rem;
+}
+
+.title {
+  color: #9fbdd7;
+  line-height: 1.5;
+}
+
+.btn_send_container {
+  padding: 48px 0 140px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn_send_container > * {
+  width: 291px;
+  height: 64px;
+}
