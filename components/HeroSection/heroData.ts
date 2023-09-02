@@ -1,12 +1,15 @@
-import socrat from "@/public/images/socrat.png";
-import heroBg1 from "@/public/images/hero/heroBg1.jpg";
 import { CSSProperties } from "react";
+
+import heroBg1 from "@/public/images/hero/Group 39525.png";
+import heroBg2 from "@/public/images/hero/slide_2.jpg"
+import heroBg3 from "@/public/images/hero/slide_3.jpg"
+import socrat from "@/public/images/socrat.png";
 
 export interface HeroData {
   id: number;
   title: string;
   caption: string;
-  backgroundImage: CSSProperties["backgroundImage"];
+  backgroundImage:string;
   contentImage?: string;
 }
 
@@ -24,7 +27,7 @@ export const heroData: HeroData[] = [
     title: "Напрямки роботи ДП",
     caption:
       "Отримайте всі переваги членства в нашій організації - від інформації про заходи до швидкого рецензування наукових робіт",
-    backgroundImage: heroBg1.src,
+    backgroundImage: heroBg2.src,
     contentImage: socrat.src,
   },
   {
@@ -32,7 +35,7 @@ export const heroData: HeroData[] = [
     title: "Напрямки роботи ДП",
     caption:
       "Отримайте всі переваги членства в нашій організації - від інформації про заходи до швидкого рецензування наукових робіт",
-    backgroundImage: heroBg1.src,
+    backgroundImage: heroBg3.src,
     contentImage: socrat.src,
   },
 ];

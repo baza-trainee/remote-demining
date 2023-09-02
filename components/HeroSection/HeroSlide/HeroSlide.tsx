@@ -19,36 +19,26 @@ const HeroSlide: FC<HeroSlideProps> = ({ item, toggleModal }) => {
   const { width } = useWindowSize();
   return (
     <div>
-      <div
-        className={styles["slide"]}
-        style={{
-          background: `lightgray url(${item.backgroundImage}) left / cover`,
-        }}
-      >
-        <h2 className={styles["title"]}>{item.title}</h2>
-        <p className={styles["caption"]}>{item.caption}</p>
-        <Button
-          className={styles.slideBtn}
-          onClick={toggleModal}
-          isFullWidth={width < 768}
-        >
-          Підтримати
-        </Button>
-        {item.contentImage && (
-          <div className={styles["imageWrapper"]}>
-            <Image
-              src={item.contentImage}
-              alt={item.title}
-              className={styles["contentImage"]}
-              quality={100}
-              priority
-              fill
-              sizes="(min-width: 1280px) 673px, 
-              (min-width: 768px) 304px,
-              288px"
-            />
-          </div>
-        )}
+      <div className={styles["slide"]}>
+      <div className={styles.text_container}>
+          <h2 className={styles["title"]}>{item.title}</h2>
+          <p className={styles["caption"]}>{item.caption}</p>
+          <Button
+            className={styles.slideBtn}
+            onClick={toggleModal}
+            isFullWidth={width < 768}
+          >
+            Підтримати
+          </Button>
+        </div>
+        <div className={styles.bg_container}>
+          <Image
+            src={item.backgroundImage}
+            alt="socrat_bg"
+            fill
+            className={styles.bg}
+          />
+        </div>
       </div>
     </div>
   );
