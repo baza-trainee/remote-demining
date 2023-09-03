@@ -1,8 +1,19 @@
 .container {
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 100%;
   background-color: transparent;
+  position: relative;
+}
+
+.container.hasBgImg {
+  background-color: var(--grey-text-color);
+}
+
+.container img {
+  object-position: center 25%;
+  object-fit: cover;
+}
+
+.wrapper {
+  position: absolute;
 }
 
 .title {
@@ -155,5 +166,11 @@
   }
   .title_margin {
     margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 1279.98px) {
+  .wrapper.noRightPadding {
+    padding-right: 0;
   }
 }

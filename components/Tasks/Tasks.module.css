@@ -1,0 +1,21 @@
+.section {
+  min-height: 888px;
+}
+
+@media (min-width: 712px) {
+  .section {
+    min-height: 592px;
+  }
+}
+
+@media (min-width: 1132px) {
+  .section {
+    min-height: 430px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    min-height: 390px;
+  }
+}

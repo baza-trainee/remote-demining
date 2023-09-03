@@ -48,6 +48,7 @@
   color: var(--about-section-text-color);
 }
 .image {
+  object-fit: cover;
   border-radius: var(--card-border-rad);
 }
 @media (max-width: 375px) {

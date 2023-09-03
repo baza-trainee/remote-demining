@@ -4,6 +4,8 @@ import { Open_Sans } from "next/font/google";
 import Container from "@/components/Container/Container";
 import Header from "@/components/Header/Header";
 
+import styles from "./layout.module.css";
+
 export const metadata: Metadata = {
   title: "",
   description: "",
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <body className={open_sans.className}>
       <Header />
-      <Container style={{ height: "100%", backgroundColor: "#f5f5f5" }}>{children}</Container>
+      <Container style={styles.container}>{children}</Container>
     </body>
   );
 }
