@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { getReports } from "@/lib/admin/content";
+import { getReports, ReportsInDTO } from "@/lib/admin/content";
 import addImg from "@/public/images/admin/add.svg";
 import pencil from "@/public/images/adminInputs/pen.svg";
 import download from "@/public/images/icons/admin/download.svg";
@@ -12,10 +12,15 @@ import trash from "@/public/images/icons/admin/trash.svg";
 import styles from "./AdminReportsList.module.css";
 
 const AdminReportsList = () => {
+  const [selectedReport, setSelectedReport] = useState<ReportsInDTO | null>(
+    null
+  );
+  const [reportData, setReportData] = useState<ReportsInDTO[]>([]);
+
   const fetchReportsData = async () => {
     try {
       const data = await getReports();
-      console.log(data);
+      data && setReportData(data);
     } catch (e) {
       console.error(e);
     }
@@ -25,11 +30,30 @@ const AdminReportsList = () => {
     fetchReportsData();
   }, []);
 
+  const handleReportSelect = (report: ReportsInDTO) => {
+    setSelectedReport(report);
+  };
+
+  console.log(selectedReport);
+
   return (
     <>
       <div className={styles.container}>
         <div className={styles.download_container}>
           <p>Оберіть звітність</p>
+          <div className={styles.dropdown_content}>
+            {reportData?.map((report) => (
+              <a
+                key={report._id}
+                onClick={() => handleReportSelect(report)}
+                className={styles.dropdown_item}
+                href={`data:application/pdf;base64,${report.data.report}`}
+                download={report.data.name}
+              >
+                {report.data.name}
+              </a>
+            ))}
+          </div>
           <Image
             className={styles.icon}
             src={download}
@@ -56,7 +80,6 @@ const AdminReportsList = () => {
           </div>
         </div>
       </div>
-      <p></p>
     </>
   );
 };

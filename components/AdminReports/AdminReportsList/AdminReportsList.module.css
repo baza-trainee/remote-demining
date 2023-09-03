@@ -5,18 +5,46 @@
 }
 
 .download_container {
+  position: relative;
   display: inline-flex;
   padding: 17px 24px 16px 24px;
   justify-content: space-between;
   border-radius: 5px;
-  background: var(--bg-primary-color);
+  background-color: var(--bg-primary-color);
   width: 420px;
   height: 57px;
+  cursor: pointer;
 }
 
 .download_container p {
   color: var(--admin-breadcrumb-color);
   line-height: normal;
+}
+
+.dropdown_content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: fit-content;
+  border-top: 1px solid var(--admin-breadcrumb-color);
+  background-color: var(--bg-primary-color);
+  z-index: 1;
+}
+
+.dropdown_content a {
+  color: #010413;
+  padding: 17px 24px 16px 24px;
+  display: block;
+}
+
+.dropdown_content a:hover {
+  background-color: #f1f1f1;
+}
+
+.download_container:hover .dropdown_content {
+  display: block;
 }
 
 .edit_delete_container {

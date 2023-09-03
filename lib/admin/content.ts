@@ -239,9 +239,13 @@ export const getLogos = async (): Promise<LogosInDTO[]> => {
 */
 
 export interface ReportsInDTO {
+  data: { section: string; report: string; name: string };
+  dataSchema: {
+    section: string;
+    report: string;
+    name: string;
+  };
   _id: string;
-  images: string[];
-  data: { section: string };
 }
 
 export const getReports = async (): Promise<ReportsInDTO[] | undefined> => {
@@ -249,23 +253,27 @@ export const getReports = async (): Promise<ReportsInDTO[] | undefined> => {
     const response: AxiosResponse<ReportsInDTO[]> = await axios.get(
       `content?data={"section":"reports"}`
     );
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;
   }
 };
 
-export const createReports = async (base64Data: string): Promise<void> => {
-  console.log(base64Data);
+export const createReports = async (
+  base64Data: string,
+  reportName: string
+): Promise<void> => {
   try {
     await axios.post("content", {
-      images: [base64Data],
       data: {
         section: "reports",
+        report: base64Data,
+        name: reportName,
       },
       dataSchema: {
         section: "string",
+        report: "string",
+        name: "string",
       },
     });
   } catch (error) {

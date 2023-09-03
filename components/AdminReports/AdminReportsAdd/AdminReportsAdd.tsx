@@ -37,17 +37,17 @@ const AdminReportsAdd = () => {
     resolver: yupResolver(reportsValidate) as any,
   });
 
-  const onSubmit = async (data: { report: File | null }) => {
-    const file = data.report;
+  const onSubmit = async (data: any) => {
+    const file = data.report?.[0];
+    const fileName = file.name;
     if (file) {
-      console.log(file);
       const reader = new FileReader();
       reader.onload = async (event) => {
         if (typeof event.target?.result === "string") {
           const base64Data = event.target.result.split(",")[1];
           console.log(base64Data);
           try {
-            await createReports(base64Data);
+            await createReports(base64Data, fileName);
           } catch (error) {
             console.log(error);
           }
