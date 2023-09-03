@@ -51,17 +51,17 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
                   handleEditSlider({ id, img, title, text });
                 }}
               >
-                <Image
-                  src={`https://remote-demining.onrender.com/images/${img}`}
-                  className={styles.image}
-                  alt={title}
-                  width={966}
-                  height={535}
-                />
-
-                <div className={styles.body}>
-                  <h3 className={styles.title}>{title}</h3>
-                  <p className={styles.text}>{text}</p>
+                <div
+                  className={styles["slide"]}
+                  style={{
+                    background: `lightgray url(https://remote-demining.onrender.com/images/${img}) left / cover`,
+                  }}
+                >
+                  <div className={styles.text_container}>
+                    <h2 className={styles["title"]}>{title}</h2>
+                    <p className={styles["caption"]}>{text}</p>
+                    <Button className={styles.slideBtn}>Підтримати</Button>
+                  </div>
                 </div>
               </div>
               <div
@@ -77,6 +77,7 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
               </div>
             </li>
           ))}
+
         <li className={styles.add_card}>
           <div
             className={styles.add_btn}
@@ -106,7 +107,7 @@ const AdminSlidersList: React.FC<AdminSlidersListProps> = ({
       )}
       {successModal && (
         <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
-          <ConfirmationModal message="Зображення успішно додано" />
+          <ConfirmationModal message="Слайд успішно видалено" />
         </Modal>
       )}
     </div>

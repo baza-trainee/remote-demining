@@ -18,6 +18,7 @@
   width: 966px;
   height: 535px;
   cursor: pointer;
+  margin-bottom: 133px;
 }
 
 .image {
@@ -41,21 +42,18 @@
   height: 180px;
 }
 
-.title {
-  margin-bottom: 16px;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: normal;
-  color: var(--section-title-color);
-}
-
 .text {
   color: var(--section-title-color);
 }
 .btn_container {
-  padding-top: 10px;
   z-index: 5;
   background-color: #fff;
+  height: 101px;
+}
+
+.btn_container > button {
+  height: 101px;
+  border-radius: 0px;
 }
 
 .add_card {
@@ -114,4 +112,38 @@
   height: 535px;
   background-color: #d9d9d9;
   border-radius: 20px;
+}
+
+.slide {
+  width: 966px;
+  height: 535px; 
+  background-size: cover;
+  background-blend-mode: multiply;
+  background-position: left;
+  position: relative;
+}
+
+.text_container {
+  padding-top: 147px;
+  color: var(--slider-dots-primary);
+  max-width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  z-index: 1;
+  height: 100%;
+  padding-left: 155px;
+  max-width: 600px;
+}
+
+.slideBtn {
+  margin-top: auto;
+  margin-bottom: 78px;
+}
+.title {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 24px;
 }
