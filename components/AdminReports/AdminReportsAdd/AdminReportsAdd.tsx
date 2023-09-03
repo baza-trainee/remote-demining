@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import AdminWrapper from "@/components/AdminWrapper/AdminWrapper";
 import Breadcrumb, { CrumbItem } from "@/components/Breadcrumb/Breadcrumb";
 import Button from "@/components/Button/Button";
+import { createReports } from "@/lib/admin/content";
 import pencil from "@/public/images/adminInputs/pen.svg";
 import download from "@/public/images/icons/admin/download.svg";
 import trash from "@/public/images/icons/admin/trash.svg";
@@ -19,8 +20,8 @@ const items: CrumbItem[] = [
   { label: "Додати звітність", path: "/admin/reports/edit" },
 ];
 
-interface ReportsI {
-  report: string | null;
+export interface ReportsI {
+  report: File | null;
 }
 
 const AdminReportsAdd = () => {
@@ -36,8 +37,25 @@ const AdminReportsAdd = () => {
     resolver: yupResolver(reportsValidate) as any,
   });
 
-  const onSubmit = (data: ReportsI) => {
-    console.log(data);
+  const onSubmit = async (data: { report: File | null }) => {
+    const file = data.report;
+    if (file) {
+      console.log(file);
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        if (typeof event.target?.result === "string") {
+          const base64Data = event.target.result.split(",")[1];
+          console.log(base64Data);
+          try {
+            await createReports(base64Data);
+          } catch (error) {
+            console.log(error);
+          }
+        }
+      };
+
+      reader.readAsDataURL(file);
+    }
   };
 
   return (

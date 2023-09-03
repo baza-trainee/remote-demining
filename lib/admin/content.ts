@@ -1,12 +1,12 @@
-import { Dispatch, SetStateAction } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosResponse } from "axios";
 
-import { ContactsFormValues } from '@/components/AdminContactsPage/AdminContactsPage';
-import { AdminNewsValues } from '@/components/AdminNewsPage/AdminNewsPage';
+import { ContactsFormValues } from "@/components/AdminContactsPage/AdminContactsPage";
+import { AdminNewsValues } from "@/components/AdminNewsPage/AdminNewsPage";
+import { ReportsI } from "@/components/AdminReports/AdminReportsAdd/AdminReportsAdd";
 
-import api from '../api/baseQuery';
+import api from "../api/baseQuery";
 
-axios.defaults.baseURL = 'https://remote-demining.onrender.com/';
+axios.defaults.baseURL = "https://remote-demining.onrender.com/";
 
 /*
   |==============================
@@ -45,14 +45,14 @@ const updateContacts = async (contact: ContactsFormValues): Promise<void> => {
     await axios.patch(`content/${contact.id}`, {
       images: [],
       data: {
-        section: 'contacts',
+        section: "contacts",
         email: contact.email,
         phone: contact.phone,
       },
       dataSchema: {
-        section: 'string',
-        email: 'string',
-        phone: 'string',
+        section: "string",
+        email: "string",
+        phone: "string",
       },
     });
   } catch (error) {
@@ -102,10 +102,10 @@ const getNews = async (): Promise<NewsItem[]> => {
 
 const createNews = async (news: AdminNewsValues): Promise<void> => {
   try {
-    await axios.post('content', {
+    await axios.post("content", {
       images: news.image,
       data: {
-        section: 'news',
+        section: "news",
         id: news.id,
         title: news.title,
         img_description: news.img_description,
@@ -114,13 +114,13 @@ const createNews = async (news: AdminNewsValues): Promise<void> => {
         date: news.date,
       },
       dataSchema: {
-        section: 'string',
-        id: 'string',
-        title: 'string',
-        img_description: 'string',
-        text: 'string',
-        link: 'string',
-        date: 'string',
+        section: "string",
+        id: "string",
+        title: "string",
+        img_description: "string",
+        text: "string",
+        link: "string",
+        date: "string",
       },
     });
   } catch (error) {
@@ -158,7 +158,7 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
       images?: string[];
     } = {
       data: {
-        section: 'news',
+        section: "news",
         title: news.title,
         img_description: news.img_description,
         text: news.text,
@@ -166,12 +166,12 @@ const updateNews = async (news: AdminNewsValues): Promise<void> => {
         date: news.date,
       },
       dataSchema: {
-        section: 'string',
-        title: 'string',
-        img_description: 'string',
-        text: 'string',
-        link: 'string',
-        date: 'string',
+        section: "string",
+        title: "string",
+        img_description: "string",
+        text: "string",
+        link: "string",
+        date: "string",
       },
     };
 
@@ -223,11 +223,52 @@ export interface LogosInDTO {
 export const getLogos = async (): Promise<LogosInDTO[]> => {
   try {
     const { data } = await api.get(
-      '/content?data={%22section%22:%22logosImg%22}'
+      "/content?data={%22section%22:%22logosImg%22}"
     );
     return data;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
+/*
+  |==============================
+  | Reports
+  |==============================
+*/
+
+export interface ReportsInDTO {
+  _id: string;
+  images: string[];
+  data: { section: string };
+}
+
+export const getReports = async (): Promise<ReportsInDTO[] | undefined> => {
+  try {
+    const response: AxiosResponse<ReportsInDTO[]> = await axios.get(
+      `content?data={"section":"reports"}`
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const createReports = async (base64Data: string): Promise<void> => {
+  console.log(base64Data);
+  try {
+    await axios.post("content", {
+      images: [base64Data],
+      data: {
+        section: "reports",
+      },
+      dataSchema: {
+        section: "string",
+      },
+    });
+  } catch (error) {
     throw error;
   }
 };
