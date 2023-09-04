@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,9 +13,7 @@ import Button from "@/components/Button/Button";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
 import { createReports } from "@/lib/admin/content";
-import pencil from "@/public/images/adminInputs/pen.svg";
 import download from "@/public/images/icons/admin/download.svg";
-import trash from "@/public/images/icons/admin/trash.svg";
 
 import reportsValidate from "./reportsValidate";
 
@@ -33,17 +32,27 @@ const AdminReportsAdd = () => {
   const [isModalOpen, toggleModal] = useToggle(false);
   const [isLoading, setIsLoading] = useToggle(false);
   const router = useRouter();
+  const [successModal, toggleSuccessModal] = useToggle(false);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm<ReportsI>({
     defaultValues: {
       report: null,
     },
     resolver: yupResolver(reportsValidate) as any,
   });
+
+  const report = watch("report");
+
+  useEffect(() => {
+    if (report) {
+      toggleSuccessModal();
+    }
+  }, [report]);
 
   const onSubmit = async (data: any) => {
     const file = data.report?.[0];
@@ -117,6 +126,11 @@ const AdminReportsAdd = () => {
       {isModalOpen && (
         <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
           <ConfirmationModal message="Звітність успішно додано" />
+        </Modal>
+      )}
+      {successModal && (
+        <Modal isModalOpen={successModal} toggleModal={toggleSuccessModal}>
+          <ConfirmationModal message="Документ завантажено" />
         </Modal>
       )}
     </div>

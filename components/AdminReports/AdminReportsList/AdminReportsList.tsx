@@ -10,7 +10,6 @@ import Modal from "@/components/Modal/Modal";
 import { deleteReport, getReports, ReportsInDTO } from "@/lib/admin/content";
 import { openReportInNewWindow } from "@/lib/utils/openReportInNewWindow";
 import addImg from "@/public/images/admin/add.svg";
-import pencil from "@/public/images/adminInputs/pen.svg";
 import download from "@/public/images/icons/admin/download.svg";
 import trash from "@/public/images/icons/admin/trash.svg";
 
@@ -64,11 +63,14 @@ const AdminReportsList = () => {
 
   const handleAddReport = () => {
     if (reportData.length > 0) {
-      toast.warning("Можна додати лише одну звітність.");
+      toast.warning("Можна додати лише одну звітність!");
     } else {
       router.push(`/admin/reports/edit`);
     }
   };
+
+  const downloadContainerText =
+    reportData.length > 0 ? "Оберіть звітність" : "Немає доступних звітностей";
 
   return (
     <>
@@ -86,7 +88,9 @@ const AdminReportsList = () => {
                 selectedReport && styles.selected_report_text
               }`}
             >
-              {!selectedReport ? "Оберіть звітність" : selectedReport.data.name}
+              {!selectedReport
+                ? downloadContainerText
+                : selectedReport.data.name}
             </p>
             {reportData.length > 0 && (
               <ul className={styles.dropdown_content}>
