@@ -280,3 +280,11 @@ export const createReports = async (
     throw error;
   }
 };
+
+export const deleteReport = async (id: string): Promise<void> => {
+  try {
+    await axios.delete(`content/${id}`);
+  } catch (error) {
+    throw error;
+  }
+};

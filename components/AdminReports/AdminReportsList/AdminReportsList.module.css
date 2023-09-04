@@ -16,9 +16,13 @@
   cursor: pointer;
 }
 
-.download_container p {
+.download_container_text {
   color: var(--admin-breadcrumb-color);
   line-height: normal;
+}
+
+.selected_report_text {
+  color: #010413;
 }
 
 .dropdown_content {
