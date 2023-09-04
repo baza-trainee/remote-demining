@@ -2,10 +2,9 @@
   color: var(--main-text-color);
   margin: 0 auto;
   width: 100%;
-  z-index: 10;
-  position: relative;
   font-family: inherit;
   background-color: var(--bg-white-color);
+  z-index: 10;
 }
 .fixed {
   position: fixed;
