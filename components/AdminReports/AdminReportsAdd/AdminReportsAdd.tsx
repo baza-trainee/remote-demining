@@ -1,11 +1,16 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useToggle } from "usehooks-ts";
 
 import AdminWrapper from "@/components/AdminWrapper/AdminWrapper";
 import Breadcrumb, { CrumbItem } from "@/components/Breadcrumb/Breadcrumb";
 import Button from "@/components/Button/Button";
+import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
+import Modal from "@/components/Modal/Modal";
 import { createReports } from "@/lib/admin/content";
 import pencil from "@/public/images/adminInputs/pen.svg";
 import download from "@/public/images/icons/admin/download.svg";
@@ -25,6 +30,10 @@ export interface ReportsI {
 }
 
 const AdminReportsAdd = () => {
+  const [isModalOpen, toggleModal] = useToggle(false);
+  const [isLoading, setIsLoading] = useToggle(false);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -45,17 +54,26 @@ const AdminReportsAdd = () => {
       reader.onload = async (event) => {
         if (typeof event.target?.result === "string") {
           const base64Data = event.target.result.split(",")[1];
-          console.log(base64Data);
           try {
+            setIsLoading();
             await createReports(base64Data, fileName);
+            setIsLoading();
+            toggleModal();
           } catch (error) {
+            setIsLoading();
             console.log(error);
+            toast.error("Упс..., щось пішло не так!");
           }
         }
       };
 
       reader.readAsDataURL(file);
     }
+  };
+
+  const closeModal = () => {
+    toggleModal();
+    router.push(`/admin/reports`);
   };
 
   return (
@@ -101,10 +119,17 @@ const AdminReportsAdd = () => {
             <p className={styles.error}>{errors.report?.message}</p>
           )}
           <div className={styles.btn_send_container}>
-            <Button type="submit">Надіслати</Button>
+            <Button type="submit" disabled={isLoading}>
+              {isLoading ? "Завантажується…" : "Надіслати"}
+            </Button>
           </div>
         </form>
       </AdminWrapper>
+      {isModalOpen && (
+        <Modal isModalOpen={isModalOpen} toggleModal={closeModal}>
+          <ConfirmationModal message="Звітність успішно додано" />
+        </Modal>
+      )}
     </div>
   );
 };
