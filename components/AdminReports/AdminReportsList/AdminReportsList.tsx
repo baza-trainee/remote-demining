@@ -30,6 +30,7 @@ const AdminReportsList = () => {
       data && setReportData(data);
     } catch (e) {
       console.error(e);
+      toast.error("Упс..., щось пішло не так!");
     }
   };
 
@@ -96,12 +97,12 @@ const AdminReportsList = () => {
               <Image src={addImg} width={24} height={24} alt="Знак плюс" />
               <p className={styles.add_text}>Додати звітність</p>
             </Link>
-            <div
-              className={styles.delete_container}
-              onClick={() => selectedReport && toggleDelModal()}
-            >
+            <div className={styles.delete_container}>
               <Image src={pencil} alt="Олівець" width={27} height={27} />
-              <button className={styles.pencil}>
+              <button
+                className={styles.trash}
+                onClick={() => selectedReport && toggleDelModal()}
+              >
                 <Image
                   src={trash}
                   alt="Декоративна корзина для сміття"
