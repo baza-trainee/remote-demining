@@ -36,7 +36,9 @@
 .web__rights a {
   text-decoration-line: underline;
   text-underline-offset: 6px;
+  cursor: pointer;
 }
+
 .contacts__item {
   display: flex;
   align-items: flex-start;

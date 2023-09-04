@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -9,6 +8,7 @@ import { useToggle } from "usehooks-ts";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
 import { deleteReport, getReports, ReportsInDTO } from "@/lib/admin/content";
+import { openReportInNewWindow } from "@/lib/utils/openReportInNewWindow";
 import addImg from "@/public/images/admin/add.svg";
 import pencil from "@/public/images/adminInputs/pen.svg";
 import download from "@/public/images/icons/admin/download.svg";
@@ -95,8 +95,6 @@ const AdminReportsList = () => {
                     key={report._id}
                     onClick={() => handleReportSelect(report)}
                     className={styles.dropdown_item}
-                    // href={`data:application/pdf;base64,${report.data.report}`}
-                    // download={report.data.name}
                   >
                     {report.data.name}
                   </li>
@@ -104,11 +102,7 @@ const AdminReportsList = () => {
               </ul>
             )}
             {selectedReport ? (
-              <a
-                href={`data:application/pdf;base64,${selectedReport.data.report}`}
-                download={selectedReport.data.name}
-              >
-                {" "}
+              <a onClick={() => openReportInNewWindow(reportData[0])}>
                 <Image
                   className={styles.icon}
                   src={download}
