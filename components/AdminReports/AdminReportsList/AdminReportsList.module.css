@@ -54,7 +54,7 @@
 .edit_delete_container {
   display: flex;
   justify-content: space-between;
-  gap: 264px;
+  width: 50%;
 }
 
 .add_container {
@@ -66,11 +66,6 @@
 .add_text {
   color: #010413;
   line-height: 1.5;
-}
-
-.delete_container {
-  display: flex;
-  gap: 16px;
 }
 
 .trash {

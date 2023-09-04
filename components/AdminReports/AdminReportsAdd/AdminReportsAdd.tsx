@@ -38,7 +38,6 @@ const AdminReportsAdd = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm<ReportsI>({
     defaultValues: {
       report: null,
@@ -66,7 +65,6 @@ const AdminReportsAdd = () => {
           }
         }
       };
-
       reader.readAsDataURL(file);
     }
   };
@@ -82,15 +80,6 @@ const AdminReportsAdd = () => {
         <Breadcrumb items={items} />
       </div>
       <AdminWrapper size="bigWrapper">
-        <div className={styles.delete_container}>
-          <Image src={pencil} alt="Олівець" width={27} height={27} />
-          <Image
-            src={trash}
-            alt="Декоративна корзина для сміття"
-            width={27}
-            height={27}
-          />
-        </div>
         <form
           className={styles.form}
           onSubmit={handleSubmit(onSubmit)}

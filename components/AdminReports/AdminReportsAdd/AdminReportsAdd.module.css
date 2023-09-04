@@ -2,13 +2,6 @@
   margin-bottom: 32px;
 }
 
-.delete_container {
-  display: flex;
-  gap: 16px;
-  justify-content: flex-end;
-  margin-bottom: 33px;
-}
-
 .wrapper {
   margin: 0 auto;
   width: 60.375rem;
