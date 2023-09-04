@@ -90,10 +90,14 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="">Правила користування сайтом</Link>
+              <Link target="_blank" href="/files/privacy.pdf">
+                Правила користування сайтом
+              </Link>
             </li>
             <li>
-              <Link href="">Статут</Link>
+              <Link target="_blank" href="/files/privacy.pdf">
+                Статут
+              </Link>
             </li>
             <li>
               <a onClick={() => openReportInNewWindow(reportData[0])}>

@@ -1,19 +1,17 @@
 .pageWrapper {
   display: flex;
   column-gap: var(--admin-layout-gap);
-  height: inherit;
-  position: relative;
-  z-index: 1;
+  height: 100%;
 }
 .pageWrapper::after {
   position: relative;
   content: "s";
   display: block;
   position: fixed;
-  z-index: -1;
+  z-index: 1;
   margin-top: -120px;
   color: transparent;
-  width: calc(var(--admin-navbar-width) - 24px);
+  width: var(--admin-navbar-width);
   height: 100%;
   background-color: var(--admin-navbar-bg-color);
 }
