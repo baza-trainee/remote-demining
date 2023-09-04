@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useToggle } from "usehooks-ts";
@@ -8,6 +8,7 @@ import { useToggle } from "usehooks-ts";
 import ConfirmationModal from "@/components/ConfirmationModal/ConfirmationModal";
 import Modal from "@/components/Modal/Modal";
 import { deleteReport, getReports, ReportsInDTO } from "@/lib/admin/content";
+import { openReportInNewWindow } from "@/lib/utils/openReportInNewWindow";
 import addImg from "@/public/images/admin/add.svg";
 import pencil from "@/public/images/adminInputs/pen.svg";
 import download from "@/public/images/icons/admin/download.svg";
@@ -23,12 +24,16 @@ const AdminReportsList = () => {
   const [confDelModal, toggleDelModal] = useToggle(false);
   const [successModal, toggleSuccessModal] = useToggle(false);
   const [isLoading, setIsLoading] = useToggle(false);
+  const router = useRouter();
 
   const fetchReportsData = async () => {
     try {
+      setIsLoading();
       const data = await getReports();
       data && setReportData(data);
+      setIsLoading();
     } catch (e) {
+      setIsLoading();
       console.error(e);
       toast.error("Упс..., щось пішло не так!");
     }
@@ -57,13 +62,25 @@ const AdminReportsList = () => {
     }
   };
 
+  const handleAddReport = () => {
+    if (reportData.length > 0) {
+      toast.warning("Можна додати лише одну звітність.");
+    } else {
+      router.push(`/admin/reports/edit`);
+    }
+  };
+
   return (
     <>
       {isLoading ? (
         <p>Завантажується...</p>
       ) : (
         <div className={styles.container}>
-          <div className={styles.download_container}>
+          <div
+            className={`${styles.download_container} ${
+              selectedReport && styles.selected_report
+            }`}
+          >
             <p
               className={`${styles.download_container_text} ${
                 selectedReport && styles.selected_report_text
@@ -71,37 +88,53 @@ const AdminReportsList = () => {
             >
               {!selectedReport ? "Оберіть звітність" : selectedReport.data.name}
             </p>
-            <div className={styles.dropdown_content}>
-              {reportData?.map((report) => (
-                <a
-                  key={report._id}
-                  onClick={() => handleReportSelect(report)}
-                  className={styles.dropdown_item}
-                  href={`data:application/pdf;base64,${report.data.report}`}
-                  download={report.data.name}
-                >
-                  {report.data.name}
-                </a>
-              ))}
-            </div>
-            <Image
-              className={styles.icon}
-              src={download}
-              width={24}
-              height={24}
-              alt="Іконка завантаження"
-            />
+            {reportData.length > 0 && (
+              <ul className={styles.dropdown_content}>
+                {reportData?.map((report) => (
+                  <li
+                    key={report._id}
+                    onClick={() => handleReportSelect(report)}
+                    className={styles.dropdown_item}
+                  >
+                    {report.data.name}
+                  </li>
+                ))}
+              </ul>
+            )}
+            {selectedReport ? (
+              <a onClick={() => openReportInNewWindow(reportData[0])}>
+                <Image
+                  className={styles.icon}
+                  src={download}
+                  width={24}
+                  height={24}
+                  alt="Іконка завантаження"
+                />
+              </a>
+            ) : (
+              <Image
+                className={styles.icon}
+                src={download}
+                width={24}
+                height={24}
+                alt="Іконка завантаження"
+              />
+            )}
           </div>
           <div className={styles.edit_delete_container}>
-            <Link href="/admin/reports/edit" className={styles.add_container}>
+            <div className={styles.add_container} onClick={handleAddReport}>
               <Image src={addImg} width={24} height={24} alt="Знак плюс" />
               <p className={styles.add_text}>Додати звітність</p>
-            </Link>
+            </div>
             <div className={styles.delete_container}>
               <Image src={pencil} alt="Олівець" width={27} height={27} />
               <button
                 className={styles.trash}
-                onClick={() => selectedReport && toggleDelModal()}
+                onClick={() =>
+                  selectedReport
+                    ? toggleDelModal()
+                    : toast.warning("Оберіть звітність!")
+                }
               >
                 <Image
                   src={trash}

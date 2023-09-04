@@ -1,29 +1,32 @@
-'use client';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import { getContacts } from '@/lib/admin/content';
-import logo from '@/public/images/footer/logo.svg';
-import mail from '@/public/images/footer/mail.svg';
-import map from '@/public/images/footer/map.svg';
-import tel from '@/public/images/footer/tel.svg';
+import { getContacts, getReports, ReportsInDTO } from "@/lib/admin/content";
+import { openReportInNewWindow } from "@/lib/utils/openReportInNewWindow";
+import logo from "@/public/images/footer/logo.svg";
+import mail from "@/public/images/footer/mail.svg";
+import map from "@/public/images/footer/map.svg";
+import tel from "@/public/images/footer/tel.svg";
 
-import { ContactsFormValues } from '../AdminContactsPage/AdminContactsPage';
-import Container from '../Container/Container';
-import NavLink from '../NavLink/NavLink';
+import { ContactsFormValues } from "../AdminContactsPage/AdminContactsPage";
+import Container from "../Container/Container";
+import NavLink from "../NavLink/NavLink";
 
-import styles from './Footer.module.css';
+import styles from "./Footer.module.css";
 
 const Footer = () => {
   const [contactData, setContactData] = useState<ContactsFormValues>({
-    id: '',
-    email: '',
-    phone: '',
+    id: "",
+    email: "",
+    phone: "",
   });
+  const [reportData, setReportData] = useState<ReportsInDTO[]>([]);
 
   useEffect(() => {
     fetchContactData();
+    fetchReportsData();
   }, []);
 
   const fetchContactData = async () => {
@@ -38,19 +41,24 @@ const Footer = () => {
         });
       }
     } catch (error) {
-      console.error('Error fetching contacts:', error);
+      console.error("Error fetching contacts:", error);
     }
   };
 
-  const scrollUp = (): void => {
-    document.body.scrollTo(0, 0);
+  const fetchReportsData = async () => {
+    try {
+      const data = await getReports();
+      data && setReportData(data);
+    } catch (e) {
+      console.error("Error fetching reports:", e);
+    }
   };
 
   return (
     <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
-          <a href={'#top'} className={styles.logo}>
+          <a href={"#top"} className={styles.logo}>
             <Image height={149} width={117} src={logo} alt="logo" />
           </a>
           <ul className={`${styles.menu} ${styles.category}`}>
@@ -87,17 +95,22 @@ const Footer = () => {
             <li>
               <Link href="">Статут</Link>
             </li>
+            <li>
+              <a onClick={() => openReportInNewWindow(reportData[0])}>
+                Звітність
+              </a>
+            </li>
           </ul>
           <ul className={`${styles.contacts} ${styles.category}`}>
             <li className={styles.contacts__item}>
-              <Image width={22} height={22} src={tel} alt="tel" />{' '}
+              <Image width={22} height={22} src={tel} alt="tel" />{" "}
               <span>
-                {contactData ? contactData.phone : '+38 (044) 209 5302'}
+                {contactData ? contactData.phone : "+38 (044) 209 5302"}
               </span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={mail} alt="mail" />
-              <span>{contactData ? contactData.email : '2021snp@ukr.net'}</span>
+              <span>{contactData ? contactData.email : "2021snp@ukr.net"}</span>
             </li>
             <li className={styles.contacts__item}>
               <Image width={22} height={22} src={map} alt="map" />

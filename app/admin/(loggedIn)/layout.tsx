@@ -24,7 +24,7 @@ const LoggedInLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
       {children}
       <ToastContainer
         position="top-right"
-        autoClose={false}
+        autoClose={5000}
         hideProgressBar={false}
         closeOnClick={true}
         pauseOnHover={true}
