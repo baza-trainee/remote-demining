@@ -37,17 +37,17 @@
   z-index: 1;
 }
 
-.dropdown_content a {
+.dropdown_content li {
   color: #010413;
   padding: 17px 24px 16px 24px;
   display: block;
 }
 
-.dropdown_content a:hover {
+.dropdown_content li:hover {
   background-color: #f1f1f1;
 }
 
-.download_container:hover .dropdown_content {
+.download_container:not(.selected_report):hover .dropdown_content {
   display: block;
 }
 
