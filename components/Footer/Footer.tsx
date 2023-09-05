@@ -85,17 +85,29 @@ const Footer = () => {
           </ul>
           <ul className={`${styles.web__rights} ${styles.category}`}>
             <li>
-              <Link target="_blank" href="/files/privacy.pdf">
+              <Link
+                target="_blank"
+                href="/files/privacy.pdf#toolbar=0"
+                aria-readonly={true}
+              >
                 Політика конфіденційності
               </Link>
             </li>
             <li>
-              <Link target="_blank" href="/files/privacy.pdf">
+              <Link
+                target="_blank"
+                href="/files/privacy.pdf#toolbar=0"
+                aria-readonly
+              >
                 Правила користування сайтом
               </Link>
             </li>
             <li>
-              <Link target="_blank" href="/files/privacy.pdf">
+              <Link
+                target="_blank"
+                href="/files/privacy.pdf#toolbar=0"
+                aria-readonly
+              >
                 Статут
               </Link>
             </li>
