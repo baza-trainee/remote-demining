@@ -10,10 +10,10 @@ import axios from "axios";
 import passwordChange from "@/lib/admin/passwordChange";
 
 import AdminWrapper from "../AdminWrapper/AdminWrapper";
-import AutorizationInput from "../AutorizationInput/AutorizationInput";
 import Button from "../Button/Button";
 import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
 import Modal from "../Modal/Modal";
+import PasswordInputToggle from "../PasswordInputToggle/PasswordInputToggle";
 
 import validationSchema from "./validation";
 
@@ -106,19 +106,17 @@ const AdminPasswordChangePage: FC = () => {
           noValidate
         >
           <div className={styles.inputWrapper}>
-            <AutorizationInput
+            <PasswordInputToggle
+              {...register("password")}
               label="Введіть новий пароль*"
-              type="password"
               errorMessage={errors.password?.message}
               error={errors.password}
-              {...register("password")}
             />
-            <AutorizationInput
+            <PasswordInputToggle
+              {...register("confirmPassword")}
               label="Підтвердіть новий пароль*"
-              type="password"
               errorMessage={errors.confirmPassword?.message}
               error={errors.confirmPassword}
-              {...register("confirmPassword")}
             />
           </div>
           <Button isFullWidth type="submit">
@@ -127,13 +125,11 @@ const AdminPasswordChangePage: FC = () => {
         </form>
       </AdminWrapper>
       {isSuccessModalOpen && (
-        <div className={styles.modal}>
           <Modal isModalOpen={isSuccessModalOpen} toggleModal={closeModal}>
           <ConfirmationModal
             message="Пароль успішно змінено"
           />
         </Modal>
-        </div>
       )}
     </section>
   );
