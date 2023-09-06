@@ -9,6 +9,9 @@ import styles from "./layout.module.css";
 export const metadata: Metadata = {
   title: "",
   description: "",
+  robots: {
+    index: false,
+  }
 };
 
 const open_sans = Open_Sans({ subsets: ["latin"] });

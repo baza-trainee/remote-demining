@@ -8,8 +8,9 @@ import HeaderLayoutBox from "@/components/Header/HeaderLayoutBox/HeaderLayoutBox
 const open_sans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "",
-  description: "",
+  title: "ДП НДЦ «Георесурс» | Про нас",
+  description:
+    "Проводить тестування існуючої розробки та обладнання сучасної методики визначення місць знаходження вибухонебезпечних предметів",
 };
 
 export default function RootLayout({
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <body className={open_sans.className}>
       <Header />
-      <HeaderLayoutBox/>
+      <HeaderLayoutBox />
       {children}
       <Footer />
     </body>

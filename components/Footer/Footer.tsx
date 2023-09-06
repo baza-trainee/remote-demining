@@ -112,7 +112,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <a onClick={() => openReportInNewWindow(reportData[0])}>
+              <a href="#" onClick={() => openReportInNewWindow(reportData[0])}>
                 Звітність
               </a>
             </li>
