@@ -6,6 +6,7 @@ const phoneRegex = /^\+38 \(\d{3}\) \d{3} \d{4}$/;
 
 const validationSchema = object().shape({
   email: string()
+    .trim()
     .required("Введіть e-mail")
     .matches(emailRegex, "Невалідний формат пошти")
     .email("Невалідний формат пошти")
@@ -20,6 +21,7 @@ const validationSchema = object().shape({
       }
     ),
   phone: string()
+    .trim()
     .required("Телефон є обов'язковим полем")
     .matches(phoneRegex, "Введіть номер телефону у форматі +38 (067) 333 4444"),
 });
