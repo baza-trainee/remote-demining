@@ -19,6 +19,7 @@ interface SandMailValues {
 const validationScheme = yup.object({
   email: yup
     .string()
+    .trim()
     .email("Помилка валідації")
     .required("Це поле не повинно бути пустим"),
 });
