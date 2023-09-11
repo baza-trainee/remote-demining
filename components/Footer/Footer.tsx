@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { getContacts, getReports, ReportsInDTO } from "@/lib/admin/content";
@@ -23,6 +24,8 @@ const Footer = () => {
     phone: "",
   });
   const [reportData, setReportData] = useState<ReportsInDTO[]>([]);
+
+  const pathname = usePathname();
 
   useEffect(() => {
     fetchContactData();
@@ -55,7 +58,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className={styles.footer}>
+    !pathname.includes("admin") && <footer className={styles.footer}>
       <Container>
         <div className={styles.wrapper}>
           <a href={"#top"} className={styles.logo}>

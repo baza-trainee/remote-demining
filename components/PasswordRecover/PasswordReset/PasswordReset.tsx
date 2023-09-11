@@ -25,11 +25,13 @@ interface PasswordResetValues {
 const validationScheme = yup.object({
   password: yup
     .string()
+    .trim()
     .min(8, "Пароль має містити мінімум 8 символів")
     .max(14, "Пароль має містити максимум 14 символів")
     .required("Це поле не повинно бути пустим"),
   confirmPassword: yup
     .string()
+    .trim()
     .min(8, "Пароль має містити мінімум 8 символів")
     .max(14, "Пароль має містити максимум 14 символів")
     .oneOf([yup.ref("password")], "Помилка валідації")

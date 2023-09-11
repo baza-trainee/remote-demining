@@ -7,11 +7,11 @@ const ForgotPasswordPage = ({
   params: { id: string; token: string };
 }) => {
   return (
-    <div>
+    <main>
       <PasswordRecover>
         <PasswordReset id={params.id} token={params.token} />
       </PasswordRecover>
-    </div>
+    </main>
   );
 };
 export default ForgotPasswordPage;
