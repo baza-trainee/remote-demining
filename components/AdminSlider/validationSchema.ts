@@ -10,13 +10,15 @@ const validationSchema = object().shape({
       return fileSizeInBytes <= maxSizeInBytes;
     }),
   title: string()
+    .trim()
     .min(3, "Кількість символів має бути більше 3")
     .max(30, "Кількість символів має бути менше 30")
     .required("Помилка валідації"),
   text: string()
+    .trim()
     .min(3, "Кількість символів має бути більше 3")
     .max(300, "Кількість символів має бути менше 300")
-    .required("Помилка валідації")
+    .required("Помилка валідації"),
 });
 
 export default validationSchema;
