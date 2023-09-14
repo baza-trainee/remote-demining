@@ -37,7 +37,7 @@ const Header = () => {
           <HeaderLogo />
           {!pathname.includes("admin") && <HeaderMenu />}
           <div className={styles.box_btn}>
-            <LanguageMenu />
+            {/* <LanguageMenu /> */}
             <Button onClick={toggleModal} className={styles.btn_support}>
               Підтримати
             </Button>
