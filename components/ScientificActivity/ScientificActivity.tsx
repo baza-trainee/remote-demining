@@ -1,7 +1,7 @@
-import styles from "./ScientificActivity.module.css";
 import ActivityListItem from "./ActivityListItem/ActivityListItem";
 import activityData from "./activityData";
-import { it } from "node:test";
+
+import styles from "./ScientificActivity.module.css";
 
 const ScientificActivity = () => {
   return (
