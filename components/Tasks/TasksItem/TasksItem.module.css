@@ -9,7 +9,7 @@
 }
 
 .text {
-  line-height: normal;
+  line-height: 150%;
   color: var(--task-text-color);
 }
 

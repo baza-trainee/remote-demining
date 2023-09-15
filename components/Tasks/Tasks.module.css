@@ -1,7 +1,32 @@
 .section {
-  min-height: 888px;
+  min-height: 1120px;
 }
 
+@media (min-width: 322px) {
+  .section {
+    min-height: 1050px;
+  }
+}
+@media (min-width: 328px) {
+  .section {
+    min-height: 1000px;
+  }
+}
+@media (min-width: 338px) {
+  .section {
+    min-height: 940px;
+  }
+}
+@media (min-width: 360px) {
+  .section {
+    min-height: 920px;
+  }
+}
+@media (min-width: 403px) {
+  .section {
+    min-height: 880px;
+  }
+}
 @media (min-width: 712px) {
   .section {
     min-height: 592px;
@@ -10,12 +35,12 @@
 
 @media (min-width: 1132px) {
   .section {
-    min-height: 430px;
+    min-height: 460px;
   }
 }
 
 @media (min-width: 1280px) {
   .section {
-    min-height: 390px;
+    min-height: 430px;
   }
 }

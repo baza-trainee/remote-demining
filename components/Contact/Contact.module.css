@@ -12,7 +12,7 @@
   width: 20.5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  line-height: normal;
+  line-height: 150%;
 }
 
 @media (min-width: 320px) and (max-width: 360px) {

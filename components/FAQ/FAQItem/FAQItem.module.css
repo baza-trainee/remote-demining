@@ -55,7 +55,7 @@
   color: #151515;
   font-size: 1.125rem;
   font-weight: 400;
-  line-height: 1.875rem;
+  line-height: 150%;
 }
 
 @media (max-width: 768px) {
