@@ -73,6 +73,7 @@ const Partnership = () => {
       className={styles.section}
       hasTitleWidth
       titleMargin
+      hasNoPaddingTop
     >
       <Slider
         slidesPerPage={perPage}

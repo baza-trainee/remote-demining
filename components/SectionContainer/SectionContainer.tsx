@@ -19,6 +19,7 @@ interface ContainerProps {
   alignTitle?: "center" | "left";
   activityPaddingTop?: boolean;
   hasNoRightPadding?: boolean;
+  hasNoPaddingTop?: boolean;
 }
 
 const SectionContainer: React.FC<ContainerProps> = ({
@@ -34,6 +35,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
   titleMargin,
   alignTitle,
   hasNoRightPadding,
+  hasNoPaddingTop,
 }) => {
   // const containerStyle = {
   //   backgroundImage: bgImg ? `url(${bgImg})` : "none",
@@ -46,7 +48,7 @@ const SectionContainer: React.FC<ContainerProps> = ({
 
   const containerClassName = `${styles.container} ${
     bgImg ? styles.hasBgImg : ""
-  } ${className || ""}`;
+  } ${className || ""} ${hasNoPaddingTop ? styles.noPaddingTop : ""}`;
 
   const containerHeaderWrapperClassName = `${styles.containerHeaderWrapper} ${
     centerTitle ? `${styles.containerHeaderWrapper} ${styles.centered}` : ""
