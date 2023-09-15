@@ -43,7 +43,7 @@
 .text {
   font-size: 16px;
   font-weight: 400;
-  line-height: normal;
+  line-height: 150%;
   letter-spacing: 0em;
   color: var(--about-section-text-color);
 }
@@ -72,9 +72,6 @@
   li:nth-child(even) .contentWrapper {
     flex-direction: row-reverse;
   }
-  .text {
-    line-height: 24px;
-  }
 }
 
 @media (min-width: 1280px) {
@@ -89,8 +86,5 @@
 
   li:nth-child(even) .contentWrapper {
     flex-direction: row-reverse;
-  }
-  .text {
-    line-height: 24px;
   }
 }

@@ -27,7 +27,7 @@
   color: var(--section-title-color);
   font-size: 16px;
   font-weight: 400;
-  line-height: normal;
+  line-height: 150%;
 }
 
 .descLine {
@@ -83,6 +83,9 @@
   .desc {
     text-align: left;
   }
+  .noPaddingTop {
+    padding-top: 0;
+  }
 }
 
 /* Tablet styles (768px to 1439px) */
@@ -127,6 +130,9 @@
     .descLine {
       width: 3px;
     }
+  }
+  .noPaddingTop {
+    padding-top: 0;
   }
 }
 

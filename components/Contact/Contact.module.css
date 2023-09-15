@@ -12,7 +12,7 @@
   width: 20.5rem;
   font-size: 1.25rem;
   font-weight: 600;
-  line-height: normal;
+  line-height: 150%;
 }
 
 @media (min-width: 320px) and (max-width: 360px) {
@@ -45,12 +45,17 @@
   }
 }
 
+@media (min-width: 1100px) {
+  .title {
+    width: 38.125rem;
+  }
+}
 @media (min-width: 1280px) {
   .wrapper {
     min-height: 900px;
   }
   .title {
-    width: 38.125rem;
+    /* width: 38.125rem; */
     font-size: 2rem;
   }
 

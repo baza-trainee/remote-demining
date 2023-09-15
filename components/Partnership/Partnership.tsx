@@ -72,6 +72,8 @@ const Partnership = () => {
       description="Організації, з якими ми постійно співпрацюємо"
       className={styles.section}
       hasTitleWidth
+      titleMargin
+      hasNoPaddingTop
     >
       <Slider
         slidesPerPage={perPage}

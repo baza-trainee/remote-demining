@@ -11,7 +11,7 @@
   flex-direction: column;
   row-gap: 16px;
   padding: 24px;
-  line-height: normal;
+  line-height: 24px;
 }
 
 .title {
@@ -44,10 +44,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: var(--activity-list-item-gap);
-  }
-
-  .text {
-    line-height: 24px;
   }
 }
 
