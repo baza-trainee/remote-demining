@@ -20,7 +20,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpenMenu, toggleMenu, toggleM
     <div className={styles.burger_menu}>
       <div className={styles.sub_menu}>
         <HeaderMenu isOpenMenu={isOpenMenu} isMobile toggleMenu={toggleMenu} />
-        <LanguageMenu isOpenMenu={isOpenMenu} isMobile />
+        {/* <LanguageMenu isOpenMenu={isOpenMenu} isMobile /> */}
       </div>
       <div className={styles.burger_btn_container}>
         <Button isFullWidth onClick={toggleModal}>
