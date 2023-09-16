@@ -37,7 +37,7 @@
 }
 @media (min-width: 1024px) {
   .content {
-    grid-template-rows: 1fr 70px 70px 70px;
+    grid-template-rows: 1fr 70px 70px 0fr 70px;
     padding: 0 115px;
   }
 }
@@ -270,6 +270,7 @@
 }
 .btn_container {
   display: grid;
+  grid-row: 5;
   grid-template-columns: 1fr;
   gap: 20px;
   grid-template-rows: 44px;
@@ -302,4 +303,14 @@
   .btn_container > * {
     font-size: 24px !important;
   }
+}
+.error_message {
+  padding-top: 3px;
+  color: var(--error-color);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+.error_top {
+  grid-column: 1 / 7;
 }
