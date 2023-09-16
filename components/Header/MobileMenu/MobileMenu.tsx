@@ -15,7 +15,11 @@ interface MobileMenuProps {
   toggleModal: () => void;
 }
 
-const MobileMenu: React.FC<MobileMenuProps> = ({ isOpenMenu, toggleMenu, toggleModal }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({
+  isOpenMenu,
+  toggleMenu,
+  toggleModal,
+}) => {
   return (
     <div className={styles.burger_menu}>
       <div className={styles.sub_menu}>
@@ -23,7 +27,13 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpenMenu, toggleMenu, toggleM
         {/* <LanguageMenu isOpenMenu={isOpenMenu} isMobile /> */}
       </div>
       <div className={styles.burger_btn_container}>
-        <Button isFullWidth onClick={toggleModal}>
+        <Button
+          isFullWidth
+          onClick={() => {
+            toggleMenu && toggleMenu();
+            toggleModal();
+          }}
+        >
           Підтримати
         </Button>
       </div>
