@@ -100,7 +100,7 @@ const Footer = () => {
               <li>
                 <Link
                   target="_blank"
-                  href="/files/privacy.pdf#toolbar=0"
+                  href="/files/terms-of-use.pdf#toolbar=0"
                   aria-readonly
                 >
                   Правила користування сайтом
